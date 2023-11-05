@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+    List<VaiTro> ListVaiTro()
+    {
+        return context.VaiTros.Where(x => x.Active == true).ToList();
+    }
+}
+
+@model BanHangOnl.Models.TaiKhoan
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Horizontal Form</h5>
+
+        <!-- Horizontal Form -->
+        <form action="/TaiKhoan/Sua" method="post">
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Tài khoản</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.TenTk" type="text" class="form-control" id="inputText">
+                    <input asp-for="@Model.Idtk" type="hidden" class="form-control" id="inputText">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Mật khẩu</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.Pass" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Vai trò</label>
+                <div class="col-sm-10">
+                    <select required class="form-select" asp-for="@Model.Idvt" aria-label="Default select example">
+                        <option value="" selected disabled> --Sảnh--</option>
+
+                        @foreach (VaiTro item in ListVaiTro())
+                        {
+
+                            <option value="@item.Idvt">@item.TenVt</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form><!-- End Horizontal Form -->
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Nhóm tin tức";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+
+@model BanHangOnl.Models.NhomHangHoa
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Horizontal Form</h5>
+
+        <!-- Horizontal Form -->
+        <form action="/NhomHangHoa/Them" method="post">
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Mã nhóm</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.MaNhh" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Tên nhóm</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.TenNhh" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Cấp nhóm</label>
+                <div class="col-sm-10">
+                    <select asp-for="@Model.Levels" id="selectCap" class="form-select">
+                        <option selected="">Chọn cấp</option>
+                        <option value="1">Cấp 1</option>
+                        <option value="2">Cấp 2</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <select asp-for="@Model.Thuoc" id="selectNhom" class="form-select d-none">
+                        <option selected disabled>Thuộc nhóm</option>
+                        @foreach (NhomHangHoa item in ViewBag.NhomHHCap1)
+                        {
+                            <option value="@item.Idnhh">@item.TenNhh</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            @*<div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Cấp</label>
+                <div class="col-md-6">
+                    <select asp-for="@Model.Levels" id="selectCap" class="form-select">
+                        <option selected="">Chọn cấp</option>
+                        <option value="1">Cấp 1</option>
+                        <option value="2">Cấp 2</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select asp-for="@Model.Levels" id="selectNhom" class="form-select d-none">
+                        <option selected="">Thuộc nhóm</option>
+                        <option value="1">Áo</option>
+                        <option value="2">Quần 2</option>
+                        <option value="3">Đùi 3</option>
+                    </select>
+                </div>
+                
+            </div>*@
+            
+
+           
+          
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <button type="reset" class="btn btn-secondary">Hủy</button>
+            </div>
+        </form><!-- End Horizontal Form -->
+
+    </div>
+</div>
+<script>
+    // Lấy thẻ select với id 'selectCap'
+    var selectCap = document.getElementById('selectCap');
+
+    // Lấy thẻ select với id 'selectNhom'
+    var selectNhom = document.getElementById('selectNhom');
+
+    // Thêm sự kiện 'change' cho thẻ select 'selectCap'
+    selectCap.addEventListener('change', function () {
+        // Kiểm tra giá trị được chọn trong 'selectCap'
+        if (selectCap.value == '2') {
+            // Nếu giá trị là 2, thì loại bỏ lớp 'd-none' khỏi 'selectNhom'
+            selectNhom.classList.remove('d-none');
+        } else {
+            // Nếu giá trị khác 2, thì thêm lớp 'd-none' vào 'selectNhom'
+            selectNhom.classList.add('d-none');
+        }
+    });
+</script>
+
+
+

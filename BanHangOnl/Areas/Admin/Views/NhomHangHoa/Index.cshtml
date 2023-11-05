@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Thông tin tài khoản";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+
+
+
+    string getTenNhom(int? id)
+    {
+        if (id > 0)
+        {
+            return context.NhomHangHoas.Find(id).TenNhh;
+
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+}
+
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="card-title">Datatables</h5>
+                        </div>
+                        <div class="col-auto mt-3">
+                            <a href="/NhomHangHoa/Them" class="btn btn-success">Thêm mới</a>
+                        </div>
+                    </div>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>                            
+                                <th scope="col">Mã nhóm</th>
+                                <th scope="col">Tên nhóm</th>
+                                <th scope="col">Level</th>
+                                <th scope="col">Thuộc nhóm</th>
+                                <th scope="col">Hiển thị</th>
+                                <th scope="col">Tùy chọn</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (NhomHangHoa tk in ViewBag.NhomHangHoa)
+                            {
+                                <tr>
+                                    <td>@tk.MaNhh</td>
+                                    <td>@tk.TenNhh</td>
+                                    <td>Cấp @tk.Levels</td>
+                                    <td>@getTenNhom(@tk.Thuoc)</td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input @tk.HienThi class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="/NhomHangHoa/ViewSua/@tk.Idnhh" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                        <a href="/NhomHangHoa/Xoa/@tk.Idnhh" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                    </td>
+                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

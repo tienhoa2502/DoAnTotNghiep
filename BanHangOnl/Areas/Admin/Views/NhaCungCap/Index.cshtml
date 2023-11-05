@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Thông tin tài khoản";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="card-title">Datatables</h5>
+                        </div>
+                        <div class="col-auto mt-3">
+                            <a href="/NhaCungCap/Them" class="btn btn-success">Thêm mới</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã nhà cung cấp</th>
+                                <th scope="col">Tên nhà cung cấp</th>
+                                <th scope="col">Địa chỉ</th>
+                                <th scope="col">Số điện thoại</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Ghi chú</th>
+                                <th scope="col">Tùy chọn</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (NhaCungCap tk in ViewBag.NhaCungCap)
+                            {
+                                <tr>
+                                    <td>@tk.MaNcc</td>
+                                    <td>@tk.TenNcc</td>
+                                    <td>@tk.DiaChi</td>
+                                    <td>@tk.DienThoai</td>
+                                    <td>@tk.Mail</td>
+                                    <td>@tk.GhiChu</td>
+                                    <td>
+                                        <a href="/NhaCungCap/ViewSua/@tk.Idncc" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                        <a href="/NhaCungCap/Xoa/@tk.Idncc" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                    </td>
+                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

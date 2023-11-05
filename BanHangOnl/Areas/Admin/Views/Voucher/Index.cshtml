@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Voucher";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="card-title">Datatables</h5>
+                        </div>
+                        <div class="col-auto mt-3">
+                            <a href="/Voucher/Them" class="btn btn-success">Thêm mới</a>
+                        </div>
+                    </div>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Tên voucher</th>
+                                <th scope="col">Mã voucher</th>
+                                <th scope="col">Ngày áp dụng</th>
+                                <th scope="col">Cho phép áp dụng</th>
+                                <th scope="col">Tùy chọn</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Voucher tk in ViewBag.Voucher)
+                            {
+                                <tr>
+                                    <td>@tk.Id</td>
+                                    <td>@tk.TenVoucher</td>
+                                    <td>@tk.MaVoucher</td>
+                                    @*<td>@tk.ChiTiet</td>
+                                    <td>@tk.NgayTao</td>
+                                    <td>@tk.NguoiTao</td>*@
+                                    <td>
+                                        <a href="/Voucher/ViewSua/@tk.Id" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                        <a href="/Voucher/Xoa/@tk.Id" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                    </td>
+                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

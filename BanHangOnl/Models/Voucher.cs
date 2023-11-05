@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace BanHangOnl.Models;
+
+public partial class Voucher
+{
+    public int Id { get; set; }
+
+    public string? MaVoucher { get; set; }
+
+    public string? TenVoucher { get; set; }
+
+    public bool? Active { get; set; }
+
+    public bool? HienThi { get; set; }
+
+    public bool? ApDung { get; set; }
+}

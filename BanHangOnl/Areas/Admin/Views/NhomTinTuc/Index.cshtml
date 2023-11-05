@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Thông tin tài khoản";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="card-title">Datatables</h5>                         
+                        </div>    
+                        <div class="col-auto mt-3">
+                            <a href="/NhomTinTuc/Them" class="btn btn-success">Thêm mới</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Tên nhóm</th>
+                                <th scope="col">Hiển thị</th>                              
+                                <th scope="col">Tùy chọn</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (NhomTinTuc tk in ViewBag.NhomTinTuc)
+                            {
+                                <tr>
+                                    <td>@tk.Id</td>
+                                    <td>@tk.TenNtt</td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">                                          
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="/NhomTinTuc/ViewSua/@tk.Id" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                        <a href="/NhomTinTuc/Xoa/@tk.Id" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                    </td>
+                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
