@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Chọn và Lưu Ảnh</h1>
+<form id="formThemHH">
+
+</form>
+<input type="file" id="fileInput" class="file-upload" multiple>
+<label for="fileInput" class="custom-file-upload">Chọn Ảnh</label>
+<button id="saveButton" onclick="UpdateHangHoa()">Lưu Ảnh</button>
+<script src="~/jsadmin/hanghoa.js"></script>
