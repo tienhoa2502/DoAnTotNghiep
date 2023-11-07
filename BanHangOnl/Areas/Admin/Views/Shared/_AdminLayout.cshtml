@@ -42,7 +42,13 @@
 </head>
 
 <body>
-
+    <div id="toast" style="position: absolute; top: 0; right: 0;z-index: 99999;" class="toast align-items-center text-white border-0 position-fixed top-0 end-0 p-3" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="toastContent">
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close" onclick="hideToast()"></button>
+        </div>
+    </div>
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
