@@ -43,7 +43,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
         public IActionResult Edit(NhomTinTuc vaiTro)
         {
-            NhomTinTuc tt = context.NhomTinTucs.Find(vaiTro.Id);
+            NhomTinTuc tt = context.NhomTinTucs.Find(vaiTro.Idntt);
             tt.TenNtt = vaiTro.TenNtt;
             //ncc.DienThoai = vaiTro.DienThoai;
             //ncc.Mail = vaiTro.Mail;

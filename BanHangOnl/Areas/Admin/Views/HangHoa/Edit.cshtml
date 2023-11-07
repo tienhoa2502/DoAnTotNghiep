@@ -1,0 +1,33 @@
+﻿@*@{
+    ViewData["Title"] = "Nhóm tin tức";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+
+@model BanHangOnl.Models.HangHoa
+
+
+<input type="file" id="fileInput" style="display: none;" accept=".jpg, .jpeg, .png, .gif">
+<button onclick="openFileInput()">Chọn tập tin</button>
+<button onclick="uploadFile()">Tải lên</button>
+
+
+<script>
+    function openFileInput() {
+        document.getElementById("fileInput").click();
+    }
+
+    function uploadFile() {
+        const fileInput = document.getElementById("fileInput");
+        if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            // Tại đây, bạn có thể thực hiện xử lý tập tin, ví dụ: tải lên máy chủ.
+            console.log("Tên tập tin: " + file.name);
+            console.log("Loại tập tin: " + file.type);
+            console.log("Kích thước tập tin: " + file.size + " bytes");
+        } else {
+            alert("Vui lòng chọn tập tin trước khi tải lên.");
+        }
+    }
+</script>*@

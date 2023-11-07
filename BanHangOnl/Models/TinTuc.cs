@@ -24,4 +24,8 @@ public partial class TinTuc
     public string? Alias { get; set; }
 
     public bool Active { get; set; }
+
+    public int? Idntt { get; set; }
+
+    public virtual NhomTinTuc? IdnttNavigation { get; set; }
 }

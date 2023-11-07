@@ -21,6 +21,12 @@ public partial class HangHoa
 
     public bool? HienThi { get; set; }
 
+    public string? ImgDaiDien { get; set; }
+
+    public string? Size { get; set; }
+
+    public string? Color { get; set; }
+
     public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; } = new List<ChiTietPhieuNhap>();
 
     public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; } = new List<ChiTietPhieuXuat>();

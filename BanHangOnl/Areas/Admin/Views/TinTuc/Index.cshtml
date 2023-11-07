@@ -34,12 +34,11 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Hình ảnh</th>
                                 <th scope="col">Tên tin tức</th>
                                 <th scope="col">Chi tiết</th>                              
                                 <th scope="col">Ngày tạo</th>
-                                <th scope="col">Người tạo</th>
+                                <th scope="col">Thuộc nhóm tin</th>
                                 <th scope="col">Hiển thị</th>
                                 <th scope="col">Tùy chọn</th>
 
@@ -49,11 +48,10 @@
                             @foreach (TinTuc tk in ViewBag.TinTuc)
                             {
                                 <tr>
-                                    <td>@tk.Idtt</td>
                                     <td>@tk.Img</td>
                                     <td>@tk.TenTt</td>
-                                    <td>@tk.ChiTiet</td>                                   
-                                    <td>@tk.NgayTao</td>
+                                    <td>@tk.ChiTiet</td>
+                                    <td>@tk?.IdnttNavigation?.TenNtt</td>
                                     <td>@tk.NguoiTao</td>
                                     <td>
                                         <div class="form-check form-switch">
@@ -64,7 +62,7 @@
                                         <a href="/TinTuc/ViewSua/@tk.Idtt" type="button" class="btn btn-primary btn-sm">Sửa</a>
                                         <a href="/TinTuc/Xoa/@tk.Idtt" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
-                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
+                                    
                                 </tr>
                             }
 

@@ -24,6 +24,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/HangHoa/Them")]
         public IActionResult ViewAdd()
         {
+            ViewBag.NhomHangHoa = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 2).ToList();
             return View("Add");  
         }
         [HttpPost("/HangHoa/updateHangHoa")]
@@ -68,5 +69,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
     }
 }

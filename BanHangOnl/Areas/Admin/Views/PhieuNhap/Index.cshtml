@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Thông tin tài khoản";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+
+
+
+    //string getTenNhom(int? id)
+    //{
+    //    if (id > 0)
+    //    {
+    //        return context.NhomHangHoas.Find(id).TenNhh;
+
+    //    }
+    //    else
+    //    {
+    //        return "";
+    //    }
+    //}
+
+}
+
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="card-title">Datatables</h5>
+                        </div>
+                        <div class="col-auto mt-3">
+                            <a href="/PhieuNhap/Them" class="btn btn-success">Thêm mới</a>
+                        </div>
+                    </div>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Số phiếu nhập</th>
+                                <th scope="col">Số hóa đơn</th>
+                                <th scope="col">Nhà cung cấp</th>
+                                <th scope="col">Tổng tiền</th>
+                                <th scope="col">Ngày nhập</th>
+                                <th scope="col">Người nhập</th>
+                                <th scope="col">Ghi chú</th>
+                                <th scope="col">Tùy chọn</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (PhieuNhap tk in ViewBag.PhieuNhap)
+                            {
+                                <tr>
+                                    <td>@tk.SoPn</td>
+                                    <td>@tk.SoHd</td>
+                                    <td>@tk?.IdnccNavigation?.TenNcc</td>
+                                    <td>@tk?.ChiTietPhieuNhaps?.Sum(x => x.Gia)</td>
+                                    <td>@tk.NgayNhap</td>                                 
+                                    <td>@tk?.IdnvNavigation?.Ten</td>
+                                    <td>@tk.GhiChu</td>
+                                    <td>
+                                        <a href="/PhieuNhap/Xem/@tk.Idpn" type="button" class="btn btn-primary btn-sm">Xem</a>
+                                        <a href="/PhieuNhap/ViewSua/@tk.Idpn" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                        <a href="/PhieuNhap/Xoa/@tk.Idpn" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                    </td>
+                                    
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

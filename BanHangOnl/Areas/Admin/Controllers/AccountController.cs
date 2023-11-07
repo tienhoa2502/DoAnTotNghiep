@@ -17,7 +17,10 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/TaiKhoan/ChiTiet")]
         public IActionResult Detail()
         {
-            ViewBag.TaiKhoan = context.TaiKhoans.Include(x => x.IdvtNavigation).Where(x => x.Active == true).ToList();
+           
+            ViewBag.TaiKhoan = context.TaiKhoans
+                .Include(x => x.NhanViens)
+                .Include(x => x.IdvtNavigation).Where(x => x.Active == true).ToList();
             return View();
         }
 

@@ -207,11 +207,13 @@ public partial class QuanLyNhaHangContext : DbContext
             entity.ToTable("HangHoa");
 
             entity.Property(e => e.Idhh).HasColumnName("IDHH");
+            entity.Property(e => e.Color).HasMaxLength(10);
             entity.Property(e => e.Iddvt).HasColumnName("IDDVT");
             entity.Property(e => e.Idnhh).HasColumnName("IDNHH");
             entity.Property(e => e.MaHh)
                 .HasMaxLength(100)
                 .HasColumnName("MaHH");
+            entity.Property(e => e.Size).HasMaxLength(3);
             entity.Property(e => e.TenHh)
                 .HasMaxLength(100)
                 .HasColumnName("TenHH");
@@ -337,9 +339,11 @@ public partial class QuanLyNhaHangContext : DbContext
 
         modelBuilder.Entity<NhomTinTuc>(entity =>
         {
+            entity.HasKey(e => e.Idntt);
+
             entity.ToTable("NhomTinTuc");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Idntt).HasColumnName("IDNtt");
             entity.Property(e => e.TenNtt)
                 .HasMaxLength(50)
                 .HasColumnName("TenNTT");
@@ -437,6 +441,7 @@ public partial class QuanLyNhaHangContext : DbContext
             entity.ToTable("TinTuc");
 
             entity.Property(e => e.Idtt).HasColumnName("IDTT");
+            entity.Property(e => e.Idntt).HasColumnName("IDNtt");
             entity.Property(e => e.NgaySua).HasColumnType("datetime");
             entity.Property(e => e.NgayTao).HasColumnType("datetime");
             entity.Property(e => e.NguoiSua).HasMaxLength(50);
@@ -444,6 +449,10 @@ public partial class QuanLyNhaHangContext : DbContext
             entity.Property(e => e.TenTt)
                 .HasMaxLength(150)
                 .HasColumnName("TenTT");
+
+            entity.HasOne(d => d.IdnttNavigation).WithMany(p => p.TinTucs)
+                .HasForeignKey(d => d.Idntt)
+                .HasConstraintName("FK_TinTuc_NhomTinTuc");
         });
 
         modelBuilder.Entity<TonKho>(entity =>

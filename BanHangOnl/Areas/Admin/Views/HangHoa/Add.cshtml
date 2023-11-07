@@ -1,11 +1,131 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Nhóm tin tức";
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+
 }
 
-<h1>Chọn và Lưu Ảnh</h1>
+@model BanHangOnl.Models.HangHoa
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Horizontal Form</h5>
+
+        
+
+        <!-- Horizontal Form -->
+        <form action="/HangHoa/Them" method="post">
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Hình ảnh</label>
+                <div class="col-sm-10">
+                    @*<input asp-for="@Model.ImgHangHoas" type="image" class="form-control" id="inputText">*@
+                    <div class="col-md-8 col-lg-9">                       
+                     
+                        <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                    </div>
+                    
+                    <div class="form-check">
+                        
+                        <input class="form-check-input" type="checkbox" id="changesMade" checked="">
+                        
+                    </div>
+                    <div class="col-md-8 col-lg-9">                       
+
+                        <img src="~/AdAssets/img/profile-img.jpg" alt="Profile">
+                        <div class="pt-2">
+                            <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                            <a href="#"  class="btn btn-danger btn-sm" title="Remove img"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Mã hàng hóa</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.MaHh" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Tên hàng hóa</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.TenHh" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Thuộc nhóm</label>
+                <div class="col-sm-10">
+                    <select asp-for="@Model.TenHh" id="selectCap" class="form-select">
+                        <option selected="">Chọn cấp</option>
+                        @foreach (NhomHangHoa item in ViewBag.NhomHangHoa)
+                        {
+                        <option value="@item.Idnhh">@item.TenNhh</option>
+                            
+                        }
+
+                        
+                    </select>
+                </div>
+            </div>
+           
+            
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Chi tiết</label>
+                <div class="col-md-4">
+                    <select id="inputState" class="form-select">
+                        <option selected="">Size</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="inputState" class="form-select">
+                        <option selected="">Màu</option>
+                        <option>...</option>
+                    </select>
+                </div>
+            </div>
+            
+
+
+
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <button type="reset" class="btn btn-secondary">Hủy</button>
+            </div>
+        </form><!-- End Horizontal Form -->
+
+    </div>
+</div>
+<script>
+    // Lấy thẻ select với id 'selectCap'
+    var selectCap = document.getElementById('selectCap');
+
+    // Lấy thẻ select với id 'selectNhom'
+    var selectNhom = document.getElementById('selectNhom');
+
+    // Thêm sự kiện 'change' cho thẻ select 'selectCap'
+    selectCap.addEventListener('change', function () {
+        // Kiểm tra giá trị được chọn trong 'selectCap'
+        if (selectCap.value == '2') {
+            // Nếu giá trị là 2, thì loại bỏ lớp 'd-none' khỏi 'selectNhom'
+            selectNhom.classList.remove('d-none');
+        } else {
+            // Nếu giá trị khác 2, thì thêm lớp 'd-none' vào 'selectNhom'
+            selectNhom.classList.add('d-none');
+        }
+    });
+</script>
+
+
+
+
 <form id="formThemHH">
 
 </form>
@@ -13,3 +133,5 @@
 <label for="fileInput" class="custom-file-upload">Chọn Ảnh</label>
 <button id="saveButton" onclick="UpdateHangHoa()">Lưu Ảnh</button>
 <script src="~/jsadmin/hanghoa.js"></script>
+
+

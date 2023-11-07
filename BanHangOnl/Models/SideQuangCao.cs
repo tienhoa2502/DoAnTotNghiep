@@ -18,4 +18,6 @@ public partial class SideQuangCao
     public string? NguoiSua { get; set; }
 
     public bool? Active { get; set; }
+
+    public bool? HienThi { get; set; }
 }

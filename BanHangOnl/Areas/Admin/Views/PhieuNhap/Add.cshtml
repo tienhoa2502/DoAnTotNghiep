@@ -1,0 +1,220 @@
+﻿@{
+    ViewData["Title"] = "Nhóm tin tức";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+
+@model BanHangOnl.Models.PhieuNhap
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Thông tin thêm mới phiếu nhập</h5>
+
+
+
+        <!-- Horizontal Form -->
+        <form action="/PhieuNhap/Them" method="post">
+
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Số phiếu nhập</label>
+                <div class="col-sm-4">
+                    <input asp-for="@Model.SoPn" type="text" class="form-control" id="inputText">
+                </div>
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Số hóa đơn</label>
+                <div class="col-sm-4">
+                    <input asp-for="@Model.SoHd" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Ngày nhập</label>
+                <div class="col-sm-10">
+                    <select asp-for="@Model.IdnccNavigation" id="selectCap" class="form-select">
+                        <option selected="">Chọn cấp</option>
+                        @foreach (NhaCungCap item in ViewBag.NhaCungCap)
+                        {
+                            <option value="@item.Idncc">@item.TenNcc</option>
+
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Ngày nhập</label>
+                <div class="col-sm-5">
+                    <input type="date" class="form-control">
+                </div>
+                 
+
+                <label for="inputEmail3" class="col-sm-2 col-form-label">      Nhân viên thực hiện</label>
+                <div class="col-sm-3">
+                    <select asp-for="@Model.IdnccNavigation" id="selectCap" class="form-select">
+                        <option selected="">Chọn cấp</option>
+                        @foreach (NhanVien item in ViewBag.NhanVien)
+                        {
+                            <option value="@item.Idnv">@item.Ten</option>
+
+                        }
+
+
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-body">                
+
+                    <!-- Table with stripped rows -->
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã hàng hóa</th>
+                                <th scope="col">Tên hàng hóa</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Màu</th>
+                                <th scope="col">Đơn giá</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-chitiet">
+                            
+                                <tr>
+                                    <td> <input asp-for="@Model.SoPn" type="text" class="form-control" id="inputText"></td>
+                                    <td> <input asp-for="@Model.SoPn" type="text" class="form-control" id="inputText"></td>
+                                    <td>
+                                    <select asp-for="@Model.SoHd" id="selectCap" class="form-select selectCap">
+                                        <option selected="">Chọn cấp</option>
+                                        @foreach (NhaCungCap item in ViewBag.NhaCungCap)
+                                        {
+                                            <option value="@item.Idncc">@item.TenNcc</option>
+
+                                        }
+
+
+                                    </select>
+                                    </td>
+                                    <td>
+                                    <select asp-for="@Model.SoHd" id="selectCap" class="form-select">
+                                        <option selected="">Chọn cấp</option>
+                                        @foreach (NhaCungCap item in ViewBag.NhaCungCap)
+                                        {
+                                            <option value="@item.Idncc">@item.TenNcc</option>
+
+                                        }
+
+
+                                    </select>
+                                    </td>
+                                    <td> <input asp-for="@Model.SoPn" type="text" class="form-control" id="inputText"></td>
+                                    <td> <input asp-for="@Model.SoPn" type="text" class="form-control" id="inputText"></td>
+                                    <td>
+                                        <a  type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                    </td>
+                               
+                                </tr>
+                       
+                            
+
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                    <button type="button" class="btn btn-success" onclick="addNewRow()"><i class="ri-add-line"></i></button>
+                </div>
+            
+            </div>
+
+
+
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <button type="reset" class="btn btn-secondary">Hủy</button>
+            </div>
+
+
+            
+
+        </form>
+    </div>
+    </div>
+</div>
+
+<script>
+function addNewRow() {
+        var newrow = `<tr>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td>
+                                    <select  id = "selectCap" class="form-select selectCap">
+                                    <option selected=""> Chọn cấp </option>
+                                </select>
+                        </td>
+                        <td>
+                              <select  id="selectCap" class= "form-select">
+                                 <option selected=""> Chọn cấp </option>
+                              </select>
+                         </td>
+                         <td> <input type="text" class="form-control"> </td>
+                         <td> <input type="text" class="form-control"> </td>
+                          <td>
+                            <a type="button" class="btn btn-outline-danger btn-sm"> Xóa </a>
+                          </td>
+                        </tr>`
+        $('#tbody-chitiet').append(newrow);
+        configdropdown($("#tbody-chitiet tr:last"));
+}
+        function configdropdown(tr) {
+            var rowNguon = tr.prev();
+        var selectnguon = rowNguon.find(".selectCap");
+
+        var selectMoi = tr.find(".selectCap");
+
+        // Tạo một bản sao của phần tử select nguồn
+        var clonedSelect = selectnguon.clone();
+
+        clonedSelect.find("option").each(function () {
+            var option = $(this).clone();
+            selectMoi.append(option);
+        });
+ }
+    $('#tbody-chitiet').on('click', ".btn-outline-danger", function () {
+            $(this).closest('tr').remove();
+
+        $('#tbody-chitiet').on('click', ".btn-outline-danger", function () {
+            // Đảm bảo rằng có ít nhất một hàng mặc định còn lại
+            if ($('#tbody-chitiet tr').length > 1) {
+                $(this).closest('tr').remove();
+            } else {
+                alert("Bạn phải giữ lại ít nhất một hàng dữ liệu.");
+            }
+        });
+
+        //let defaultRowHTML = $("#default-row").prop("outerHTML");
+        //$('#tbody-chitiet').on('click', ".btn-outline-danger", function () {
+        //    // Đảm bảo rằng có ít nhất một hàng mặc định còn lại
+        //    if ($('#tbody-chitiet tr').length > 1) {
+        //        $(this).closest('tr').remove();
+        //    } else {
+        //        alert("Bạn phải giữ lại ít nhất một hàng dữ liệu.");
+        //        // Khôi phục dữ liệu
+        //        $('#tbody-chitiet').append(defaultnewrow);
+        //    }
+        //});
+
+
+
+
+ })
+</script>
+
+
+

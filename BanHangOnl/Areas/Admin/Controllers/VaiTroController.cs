@@ -59,5 +59,16 @@ namespace BanHangOnl.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Detail");
         }
+
+        [Route("/VaiTro/Xoa/{id}")]
+        public IActionResult Xoa(int id)
+        {
+            VaiTro ncc = context.VaiTros.Find(id);
+            ncc.Active = false;
+
+            context.VaiTros.Update(ncc);
+            context.SaveChanges();
+            return RedirectToAction("Detail");
+        }
     }
 }

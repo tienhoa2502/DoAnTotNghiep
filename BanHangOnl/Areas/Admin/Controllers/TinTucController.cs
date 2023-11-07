@@ -11,7 +11,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/TinTuc")]
         public IActionResult Index()
         {
-            ViewBag.TinTuc = context.TinTucs.Where(x => x.Active == true).ToList();
+            ViewBag.TinTuc = context.TinTucs.Include(x => x.IdnttNavigation).Where(x => x.Active == true).ToList();
 
             return View();
         }

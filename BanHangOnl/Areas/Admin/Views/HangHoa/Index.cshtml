@@ -55,6 +55,8 @@
                                 <th scope="col">Hình ảnh</th>
                                 <th scope="col">Mã hàng hóa</th>
                                 <th scope="col">Tên hàng hóa</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Màu</th>
                                 <th scope="col">Thuộc nhóm</th>
                                 <th scope="col">Hiển thị</th>
                                 <th scope="col">Tùy chọn</th>
@@ -65,10 +67,11 @@
                             @foreach (HangHoa tk in ViewBag.HangHoa)
                             {
                                 <tr>
-                                    <td>@tk.ImgHangHoas</td>
+                                    <td>img src="~/img/HangHoa/@tk?.ImgHangHoas.FirstOrDefault(x => x.IsDefault == true)?.Img" </td> 
                                     <td>@tk.MaHh</td>
                                     <td>@tk.TenHh</td>
-
+                                    <td>@tk.Size</td>
+                                    <td>@tk.Color</td>
                                     <td>@getTenNhom(@tk.Idnhh)</td>
                                     <td>
                                         <div class="form-check form-switch">

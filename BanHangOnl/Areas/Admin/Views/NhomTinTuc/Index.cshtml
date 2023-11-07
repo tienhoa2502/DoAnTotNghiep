@@ -45,7 +45,7 @@
                             @foreach (NhomTinTuc tk in ViewBag.NhomTinTuc)
                             {
                                 <tr>
-                                    <td>@tk.Id</td>
+                                    <td>@tk.Idntt</td>
                                     <td>@tk.TenNtt</td>
                                     <td>
                                         <div class="form-check form-switch">
@@ -53,8 +53,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a href="/NhomTinTuc/ViewSua/@tk.Id" type="button" class="btn btn-primary btn-sm">Sửa</a>
-                                        <a href="/NhomTinTuc/Xoa/@tk.Id" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                        <a href="/NhomTinTuc/ViewSua/@tk.Idntt" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                        <a href="/NhomTinTuc/Xoa/@tk.Idntt" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
                                     @*<td>@tk.IdvtNavigation.TenVt</td>*@
                                 </tr>
