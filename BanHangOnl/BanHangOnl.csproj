@@ -25,7 +25,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
-    <Folder Include="wwwroot\img\HangHoa\" />
+    <Folder Include="wwwroot\img\Slide\" />
     <Folder Include="wwwroot\jsAdmin\" />
   </ItemGroup>
 
@@ -525,6 +525,48 @@
     <None Include="wwwroot\AdAssets\scss\utilities\_icon-size.scss" />
     <None Include="wwwroot\AdAssets\scss\variables\_theme-variables.scss" />
     <None Include="wwwroot\AdAssets\scss\variables\_variables.scss" />
+    <None Include="wwwroot\UsAssets\js\categories_custom.js" />
+    <None Include="wwwroot\UsAssets\js\contact_custom.js" />
+    <None Include="wwwroot\UsAssets\js\custom.js" />
+    <None Include="wwwroot\UsAssets\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\UsAssets\js\single_custom.js" />
+    <None Include="wwwroot\UsAssets\plugins\easing\easing.js" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\animated.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\core.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\fixed-width.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\font-awesome.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\icons.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\larger.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\list.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\mixins.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\path.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\screen-reader.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\stacked.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\less\variables.less" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_animated.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_core.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_icons.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_larger.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_list.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_mixins.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_path.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
+    <None Include="wwwroot\UsAssets\plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="wwwroot\UsAssets\plugins\Isotope\isotope.pkgd.min.js" />
+    <None Include="wwwroot\UsAssets\plugins\jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <None Include="wwwroot\UsAssets\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <None Include="wwwroot\UsAssets\plugins\themify-icons\fonts\themify.svg" />
+    <None Include="wwwroot\UsAssets\styles\bootstrap4\bootstrap.min.js" />
+    <None Include="wwwroot\UsAssets\styles\bootstrap4\popper.js" />
   </ItemGroup>
 
   <ItemGroup>

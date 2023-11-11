@@ -45,7 +45,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (NhaCungCap tk in ViewBag.NhaCungCap)
+                           @foreach (NhaCungCap tk in ViewBag.NhaCungCap)
                             {
                                 <tr>
                                     <td>@tk.MaNcc</td>
@@ -58,7 +58,6 @@
                                         <a href="/NhaCungCap/ViewSua/@tk.Idncc" type="button" class="btn btn-primary btn-sm">Sửa</a>
                                         <a href="/NhaCungCap/Xoa/@tk.Idncc" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
-                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
                                 </tr>
                             }
 

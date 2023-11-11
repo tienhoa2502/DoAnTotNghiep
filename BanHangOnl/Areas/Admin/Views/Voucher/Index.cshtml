@@ -34,11 +34,13 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Tên voucher</th>
                                 <th scope="col">Mã voucher</th>
+                                <th scope="col">Tên voucher</th>
+                                
                                 <th scope="col">Ngày áp dụng</th>
+                                <th scope="col">Ngày kết thúc</th>
                                 <th scope="col">Cho phép áp dụng</th>
+                                <th scope="col">Hiển thị</th>
                                 <th scope="col">Tùy chọn</th>
 
                             </tr>
@@ -47,17 +49,25 @@
                             @foreach (Voucher tk in ViewBag.Voucher)
                             {
                                 <tr>
-                                    <td>@tk.Id</td>
-                                    <td>@tk.TenVoucher</td>
                                     <td>@tk.MaVoucher</td>
-                                    @*<td>@tk.ChiTiet</td>
-                                    <td>@tk.NgayTao</td>
-                                    <td>@tk.NguoiTao</td>*@
+                                    <td>@tk.TenVoucher</td>
+                              
+                                    <td>@tk.NgayBd</td>
+                                    <td>@tk.NgayKt</td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input @tk.ApDung class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input @tk.HienThi class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                        </div>
+                                    </td>
                                     <td>
                                         <a href="/Voucher/ViewSua/@tk.Id" type="button" class="btn btn-primary btn-sm">Sửa</a>
                                         <a href="/Voucher/Xoa/@tk.Id" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
-                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
                                 </tr>
                             }
 

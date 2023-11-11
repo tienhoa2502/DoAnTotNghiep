@@ -17,8 +17,28 @@
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Hình ảnh</label>
                 <div class="col-sm-10">
-                    <input asp-for="@Model.Img" type="image" class="form-control" id="inputText">
-                    <input asp-for="@Model.Idtt" type="hidden" class="form-control" id="inputText">
+                    <div class="col-md-8 col-lg-9">
+                        <input type="file" id="fileInput" class="custom-file-input" name="file" style="display: none">
+                        <label class="custom-file-upload btn btn-primary btn-sm" for="fileInput">
+                            <i class="bi bi-upload"></i> Tải lên tệp
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="checkbox" id="changesMade" checked="">
+
+                    </div>
+                    <div class="col-md-8 col-lg-9">
+
+                        <img src="/AdAssets/img/profile-img.jpg" alt="Profile">
+                        <div class="pt-2">
+                            <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                            <a href="#" class="btn btn-danger btn-sm" title="Remove img"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
             <div class="row mb-3">
@@ -27,6 +47,23 @@
                     <input asp-for="@Model.TenTt" type="text" class="form-control" id="inputText">
                 </div>
             </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Thuộc nhóm</label>
+                <div class="col-sm-10">
+                    <select asp-for="@Model.IdnttNavigation.TenNtt" id="selectCap" class="form-select">
+                        <option selected="">--Thuộc nhóm--</option>
+                        @foreach (NhomTinTuc item in ViewBag.NhomTinTuc)
+                        {
+                            <option value="@item.Idntt">@item.TenNtt</option>
+
+                        }
+
+
+                    </select>
+                </div>
+            </div>
+
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Chi tiết</label>
                 <div class="col-sm-10">

@@ -11,21 +11,20 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/TaiKhoan")]
         public IActionResult Index()
         {
+            ViewBag.TaiKhoan = context.TaiKhoans.Include(x => x.IdvtNavigation).Where(x => x.Active == true).ToList();
+
             return View();
         }
 
-        [HttpGet("/TaiKhoan/ChiTiet")]
-        public IActionResult Detail()
+        [HttpGet("/TaiKhoan/Them")]
+        public IActionResult viewAdd()
         {
-           
-            ViewBag.TaiKhoan = context.TaiKhoans
-                .Include(x => x.NhanViens)
-                .Include(x => x.IdvtNavigation).Where(x => x.Active == true).ToList();
-            return View();
+            ViewBag.TaiKhoan = context.TaiKhoans.Where(x => x.Active == true).ToList();
+            return View("Add");
         }
 
         [HttpGet("/TaiKhoan/ViewThem")]
-        public IActionResult viewAdd()
+        public IActionResult Add()
         {
 
             return View("Add");
@@ -37,7 +36,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             vaiTro.Active = true;
             context.TaiKhoans.Add(vaiTro);
             context.SaveChanges();
-            return RedirectToAction("Detail");
+            return RedirectToAction("Index");
         }
 
 
@@ -57,10 +56,9 @@ namespace BanHangOnl.Areas.Admin.Controllers
             ncc.Pass = vaiTro.Pass;
 
 
-
             context.TaiKhoans.Update(ncc);
             context.SaveChanges();
-            return RedirectToAction("Detail");
+            return RedirectToAction("Index");
         }
 
         [Route("/TaiKhoan/Xoa/{id}")]
@@ -71,7 +69,29 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
             context.TaiKhoans.Update(ncc);
             context.SaveChanges();
-            return RedirectToAction("Detail");
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+        //[Route("/TaiKhoan/ThongTinCaNhan/{id}")]
+        //public IActionResult viewInfo(int id)
+        //{
+        //    NhanVien xem = context.NhanViens.Find(id);
+
+        //    ViewBag.NhanVien = context.NhanViens.Include(x => x.IdtkNavigation).Where(x => x.Active == true).ToList();
+        //    return View("ThongTinCaNhan", xem);
+
+        [HttpGet("/TaiKhoan/ThongTinCaNhan")]
+        public IActionResult Info()
+        {
+             ViewBag.NhanVien = context.NhanViens.Include(x => x.IdtkNavigation).Where(x => x.Active == true).ToList();
+
+             return View();
+        }
+
         }
     }
-}
+

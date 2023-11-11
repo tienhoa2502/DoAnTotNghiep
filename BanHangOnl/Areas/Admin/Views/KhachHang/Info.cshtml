@@ -1,0 +1,172 @@
+﻿@{
+    ViewData["Title"] = "Thông tin tài khoản";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+
+}
+
+
+<div class="pagetitle">
+    <h1>Thông tin khách hàng</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/KhachHang">Trang chủ</a></li>
+            <li class="breadcrumb-item">Xem</li>
+            <li class="breadcrumb-item active">Thông tin khách hàng</li>
+        </ol>
+    </nav>
+</div>
+<section class="section profile">
+    <div class="row">
+       
+
+
+            <div class="card">
+                <div class="card-body pt-3">
+                    <!-- Bordered Tabs -->
+                    <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="true" role="tab">Thông tin cá nhân</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" role="tab" tabindex="-1">Lịch sử đặt hàng</button>
+                        </li>
+
+
+                    </ul>
+                    <div class="tab-content pt-2">
+
+                        <div class="tab-pane fade profile-overview active show" id="profile-overview" role="tabpanel">
+
+                            <h5 class="card-title">Thông tin chi tiết</h5>
+
+
+                            @foreach (KhachHang tk in ViewBag.KhachHang)
+                            {
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Mã khách hàng</div>
+                                    <div class="col-lg-9 col-md-8">@tk.MaKh</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Họ tên</div>
+                                    <div class="col-lg-9 col-md-8">@tk.TenKh</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Số điện thoại</div>
+                                    <div class="col-lg-9 col-md-8">@tk.Phone</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Email</div>
+                                    <div class="col-lg-9 col-md-8">@tk.Email</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Địa chỉ</div>
+                                    <div class="col-lg-9 col-md-8">@tk.DiaChi</div>
+                                </div>                     
+                            }
+
+                        </div>
+
+                        <div class="tab-pane fade profile-edit pt-3" id="profile-edit" role="tabpanel">
+
+                            <!-- Profile Edit Form -->
+                            <form>
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Hình ảnh</th>
+                                        <th scope="col">Mã hàng hóa</th>
+                                        <th scope="col">Tên hàng hóa</th>
+                                        <th scope="col">Size</th>
+                                        <th scope="col">Màu</th>
+                                        <th scope="col">ĐVT</th>
+                                        <th scope="col">Giá bán</th>
+                                        <th scope="col">Giá sale</th>
+                                        <th scope="col">Thuộc nhóm</th>
+                                        <th scope="col">Hiển thị</th>
+                                        <th scope="col">Tùy chọn</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   @* @foreach (HangHoa tk in ViewBag.HangHoa)
+                                    {
+                                        <tr>
+                                            <td><img src="@tk?.ImgHangHoas.FirstOrDefault(x => x.IsDefault == true)?.Img" width="50" height="50" /> </td>
+                                            <td>@tk.MaHh</td>
+                                            <td>@tk.TenHh</td>
+                                            <td>@tk.Size</td>
+                                            <td>@tk.Color</td>
+                                            <td>@tk?.IddvtNavigation?.TenDvt</td>
+                                            <td>@tk?.IdgiaNavigation?.GiaBan</td>
+                                            <td>@tk?.IdgiaNavigation?.GiaSale</td>
+                                            <td>@getTenNhom(@tk.Idnhh)</td>
+                                            <td>
+                                                <div class="form-check form-switch">
+                                                    <input @tk.HienThi class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="/HangHoa/ViewSua/@tk.Idhh" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                                <a href="/HangHoa/Xoa/@tk.Idhh" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                            </td>s
+                                        </tr>
+                                    }*@
+
+
+                                </tbody>
+                            </table>
+
+                                
+                            </form><!-- End Profile Edit Form -->
+
+                        </div>
+
+                       @* <div class="tab-pane fade pt-3" id="profile-change-password" role="tabpanel">
+                            <!-- Change Password Form -->
+                            <form>
+
+                                <div class="row mb-3">
+                                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu cũ</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="password" type="password" class="form-control" id="currentPassword">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu mới</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Nhập lại mật khẩu</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                                </div>
+                            </form><!-- End Change Password Form -->
+
+                        </div>*@
+
+                    </div><!-- End Bordered Tabs -->
+
+                </div>
+            </div>
+
+        </div>
+
+</section>
+

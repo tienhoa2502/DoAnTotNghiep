@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="card-title">Datatables</h5>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã khách hàng</th>
+                                <th scope="col">Tên khách hàng</th>
+                                <th scope="col">Đơn đặt hàng</th>
+                                <th scope="col">Trạng thái</th>
+                                <th scope="col">Tùy chọn</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (KhachHang tk in ViewBag.KhachHang)
+                            {
+                                <tr>
+                                    <td>@tk.MaKh</td>
+                                    <td>@tk.TenKh</td>
+                                    <td>@tk.</td>
+                                    <td>@tk.</td>
+                                   
+                                    <td>
+                                        <a href="/KhachHang/ThongTinKhachHang/@tk.Idkh" type="button" class="btn btn-primary btn-sm">Xem</a>
+                @*                        <a href="/HangHoa/ViewSua/@tk.Idkh" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                        <a href="/HangHoa/Xoa/@tk.Idkh" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>*@
+                                    </td>s
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

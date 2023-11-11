@@ -21,8 +21,8 @@
 
 </style>
 <div class="card">
-    <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs nav-fill p-0" id="myTab" data-bs-toggle="tabs" role="tablist">
+    @*<div class="card-header">
+        @*<ul class="nav nav-tabs card-header-tabs nav-fill p-0" id="myTab" data-bs-toggle="tabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <a href="#tabs-lapPhieu" id="tab-lapphieu" class="nav-link text-dark active" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1">
                     <!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -36,7 +36,7 @@
                     Lập phiếu
                 </a>
             </li>
-            <li class="nav-item" role="presentation">
+            @*<li class="nav-item" role="presentation">
                 <a href="#tabs-dsPhieu" class="nav-link text-dark" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1">
                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -52,24 +52,23 @@
                 </a>
             </li>
         </ul>
-    </div>
+    </div>*@
 
     <div class="card-body p-2">
 
         <div class="tab-content">
-
-            <div class="tab-pane fade show active"
-                 role="tabpanel"
-                 aria-labelledby="detail-tab"
-                 id="tabXemPhieu">
+            
+            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="detail-tab" id="tabXemPhieu">
                 <form action="/download/BaoCaoHoaDon" method="post">
 
+                    <h5>Thông tin phiếu </h5>
+                    
                     <div class="form-group p-2 mb-2"
                          id="groupTTSearchLichSu"
                          style="border-radius: 5px; border: 1px solid black">
-                        <div class="row">
-                            <label class="col-sm-1 col-lg-1 col-form-label">Số phiếu</label>
-                            <div class="col-md-2 mb-2 col-lg-2">
+                        <div class="row mb-3">
+                            <label class="col-sm-auto col-lg-2 col-form-label">Số phiếu</label>
+                            <div class="col-sm-4">
                                 <input class="form-control"
                                        type="text"
                                        name="soPN"
@@ -77,117 +76,169 @@
                                        placeholder="Từ ngày"
                                        disabled />
                             </div>
-                            <label class="col-sm-1 col-lg-1 col-form-label">Nhà CC</label>
-                            <div class="col-sm-4 col-lg-2">
-                                <select name="nhaCungCap" class="form-select" style="width : 150px">
+
+                            <label class="col-sm-2 col-lg-2 col-form-label">Số hóa đơn</label>
+                            <div class="col-sm-4">
+                                <input class="form-control"
+                                       type="text"
+                                       name="soHD"
+                                       value="Auto"
+                                       placeholder="Từ ngày"
+                                       disabled />
+                            </div>                          
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">Nhà cung cấp</label>
+                            <div class="col-md-10">
+                                <select name="nhaCungCap" class="form-select" style="width : max">
                                     <option selected value="0">-- Nhà cung cấp--</option>
                                     @foreach (NhaCungCap n in getListNhaCungCap())
                                     {
                                         <option value="@n.Idncc">@n.TenNcc</option>
                                     }
                                 </select>
-                            </div>
-                            <label class="col-sm-1 col-lg-1 col-form-label">Ngày nhập</label>
-                            <div class="col-lg-2 col-sm-2">
-                                <input class="form-control"
-                                       type="text"
-                                       name="ngayNhap"
-                                       value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                       placeholder="Ngày nhập" />
-                            </div>
-
-                            <div class="col-md-1 mb-2 col-lg-1 d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary" onclick="loadTableBCNK()">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </div>
+                            </div>                          
                         </div>
-                        <div class="row">
-                            <label class="col-sm-12 col-lg-1 col-form-label">Ghi chú</label>
-                            <div class="col-md-2 mb-2 col-lg-2">
+                        
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">Ngày nhập</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="ngayNhap"
+                                           value="@DateTime.Now.ToString("dd-MM-yyyy")"
+                                           placeholder="Ngày nhập" />
+                                </div>
+
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Người nhập</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control"
+                                           type="text"
+                                           name=""
+                                           value=""
+                                           placeholder="Người nhập" />
+                                </div>
+                        </div>
+                   
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">Ghi chú</label>
+                            <div class="col-md-10">
                                 <input class="form-control"
                                        type="text"
                                        name="ghiChu"
-                                       placeholder="Từ ngày" />
+                                       placeholder="..." />
                             </div>
+
+                            @*<div class="col-sm-10">
+                                <textarea class="form-control" style="height: 98px;"></textarea>
+                            </div>*@
+
                         </div>
                     </div>
+
+                    <h5>Thông tin thêm hàng hóa </h5>
+
                     <div class="form-group p-2 mb-2"
                          id="groupThemHangHoa"
                          style="border-radius: 5px; border: 1px solid black">
                         <div class="row">
-                            <label class="col-sm-1 col-lg-1 col-form-label">Tên hàng hóa</label>
-                            <select name="hangHoa" class="form-select" style="width : 200px">
-                                <option selected value="">-- Tên hàng hóa--</option>
-                                @foreach (HangHoa n in getListHangHoa())
-                                {
-                                    <option value="@n.Idhh">@n.TenHh</option>
-                                }
-                            </select>
-                            <label class="col-sm-1 col-lg-1 col-form-label">Đơn vị tính</label>
-                            <div class="col-sm-4 col-lg-2">
-                                <input class="form-control"
-                                       type="text"
-                                       readonly
-                                       name="donViTinh"
-                                       id="donViTinh"
-                                       value=""
-                                       placeholder="Ngày sản xuất" />
-                            </div>
-                            <label class="col-sm-1 col-lg-1 col-form-label">Ngày sản xuất</label>
-                            <div class="col-lg-2 col-sm-2">
-                                <input class="form-control"
-                                       type="text"
-                                       name="ngaySanXuat"
-                                       id="ngaySanXuat"
-                                       placeholder="Ngày sản xuất" />
+
+
+                            
+
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Tên hàng hóa</label>
+                                <div class="col-sm-6">
+                                    <select name="hangHoa" class="form-select col-sm-4" style="width : max">
+                                        <option selected value="">-- Tên hàng hóa--</option>
+                                        @foreach (HangHoa n in getListHangHoa())
+                                        {
+                                            <option value="@n.Idhh">@n.TenHh</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <label class="col-sm-2 col-form-label">Đơn vị tính</label>
+                                <div class="col-sm-4 col-lg-2">
+                                    <input class="form-control"
+                                           type="text"
+                                           readonly
+                                           name="donViTinh"
+                                           id="donViTinh"
+                                           value=""
+                                           placeholder="Đơn vị tính" />
+                                </div>
+
                             </div>
 
-                            @* <div class="col-md-1 mb-2 col-lg-1 d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary" onclick="loadTableBCNK()">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
-                            </div> *@
-                            <label class="col-sm-1 col-lg-1 col-form-label">Hạn sử dụng</label>
-                            <div class="col-lg-2 col-sm-2">
-                                <input class="form-control"
-                                       type="text"
-                                       name="hanSuDung"
-                                       id="hanSuDung"
-                                       placeholder="Hạn sử dụng" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-12 col-lg-1 col-form-label">Số lượng</label>
-                            <div class="col-md-2 mb-2 col-lg-2">
-                                <input class="form-control formatted-number"
-                                       type="text"
-                                       name="soLuong"
-                                       id="soLuong"
-                                       placeholder="Số lượng" />
-                            </div>
-                            <label class="col-sm-12 col-lg-1 col-form-label">Đơn giá</label>
-                            <div class="col-md-2 mb-2 col-lg-2">
-                                <input class="form-control formatted-number"
-                                       type="text"
-                                       name="donGia"
-                                       id="donGia"
-                                       placeholder="Đơn giá" />
-                            </div>
-                            <label class="col-sm-12 col-lg-1 col-form-label">Thành tiền</label>
-                            <div class="col-md-2 mb-2 col-lg-2">
-                                <input class="form-control formatted-number"
-                                       type="text"
-                                       name="thanhTien"
-                                       id="thanhTien"
-                                       placeholder="Thành tiền" />
-                            </div>
-                            <div class="col-md-2 mb-2 col-lg-2">
-                                <button type="button" class="btn btn-primary" onclick="AddRowPhieuNhapKho()">
-                                    Thêm
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Size</label>
+                                <div class="col-lg-2 col-sm-2">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="ngaySanXuat"
+                                           id="ngaySanXuat"
+                                           placeholder="Size" />
+                                </div>
+
+                                @* <div class="col-md-1 mb-2 col-lg-1 d-flex justify-content-end">
+                                <button type="button" class="btn btn-primary" onclick="loadTableBCNK()">
+                                <i class="fa-solid fa-magnifying-glass"></i>
                                 </button>
+                                </div> *@
+                                <label class="col-sm-1 col-lg-1 col-form-label">Màu</label>
+                                <div class="col-lg-2 col-sm-2">
+
+
+                                    <input class="form-control"
+                                           type="text"
+                                           name="hanSuDung"
+                                           id="hanSuDung"
+                                           placeholder="Màu" />
+
+
+                                </div>
+
+                                <label class="col-sm-12 col-lg-1 col-form-label">Số lượng</label>
+                                <div class="col-md-2 mb-2 col-lg-2">
+                                    <input class="form-control formatted-number"
+                                           type="number"
+                                           name="soLuong"
+                                           id="soLuong"
+                                           min="1"
+                                           placeholder="Số lượng" />
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+
+                                <label class="col-sm-auto col-lg-2 col-form-label">Đơn giá</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control formatted-number"
+                                           type="text"
+                                           name="donGia"
+                                           id="donGia"
+                                           min="0"
+                                           placeholder="Đơn giá" />
+                                </div>
+                                <label class="col-sm-auto col-lg-2 col-form-label">Thành tiền</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control formatted-number"
+                                           type="text"
+                                           name="thanhTien"
+                                           id="thanhTien"
+                                           placeholder="Thành tiền" />
+                                </div>
+                                <div class="col-md-2 mb-2 col-lg-2">
+                                    <button type="button" class="btn btn-primary" onclick="AddRowPhieuNhapKho()">
+                                        Thêm
+                                    </button>
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
                     <div id="table-nhapkho" class="table-responsive" style="min-height:47vh;height:47vh;">
@@ -198,9 +249,9 @@
                                     <th class="text-center p-1 w-25 text-wrap" style="position: sticky;left: 33px;z-index: 4 !important;">Tên hàng hóa</th>
                                     <th class="text-center p-1 text-wrap">SL nhập</th>
                                     <th class="text-center p-1 text-wrap">Giá nhập</th>
+                                    <th class="text-center p-1 text-wrap">Size</th>
+                                    <th class="text-center p-1 text-wrap">Màu</th>
                                     <th class="text-center p-1 text-wrap">Thành tiền</th>
-                                    <th class="text-center p-1 text-wrap">Ngày SX</th>
-                                    <th class="text-center p-1 text-wrap">Hạn SD</th>
                                     <th class="text-center last-th-column p-1">
                                         <a href="#" class="text-red" id="remove-all-phieuNhapCt">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -266,9 +317,7 @@
                                     <div class="row">
                                         <div class="col-12 col-lg-3 mb-1">
                                             <div class="row">
-                                                <label class="col-form-label col-3">
-                                                    Từ ngày:
-                                                </label>
+                                                <label class="col-form-label col-3">Từ ngày:</label>
                                                 <div class="col-9">
                                                     <input autocomplete="off" required type="text" autocomplete="off" class="form-control input-date-default" name="TuNgay">
                                                 </div>
@@ -276,9 +325,7 @@
                                         </div>
                                         <div class="col-12 col-lg-3 mb-1">
                                             <div class="row">
-                                                <label class="col-form-label col-3">
-                                                    Đến ngày:
-                                                </label>
+                                                <label class="col-form-label col-3">Đến ngày:</label>
                                                 <div class="col-9">
                                                     <input autocomplete="off" required type="text" autocomplete="off" class="form-control input-date-default" name="DenNgay">
                                                 </div>
@@ -286,9 +333,7 @@
                                         </div>
                                         <div class="col-12 col-lg-6 mb-1">
                                             <div class="row">
-                                                <label class="col-form-label col-3">
-                                                    Nơi cung cấp:
-                                                </label>
+                                                <label class="col-form-label col-3">Nơi cung cấp:</label>
                                                 <div class="col-9">
                                                     <select class="form-select cbNhaCungCap" name="IdNhaCungCap">
                                                     </select>
@@ -312,9 +357,7 @@
                                         </div>
                                         <div class="col-12 col-lg-3 mb-1">
                                             <div class="row">
-                                                <label class="col-form-label col-3">
-                                                    Số phiếu:
-                                                </label>
+                                                <label class="col-form-label col-3">Số phiếu:</label>
                                                 <div class="col-9">
                                                     <input type="text" autocomplete="off" class="form-control" placeholder="Số phiếu" name="SoPhieu">
                                                 </div>
@@ -322,9 +365,7 @@
                                         </div>
                                         <div class="col-12 col-lg-3 mb-1">
                                             <div class="row">
-                                                <label class="col-form-label col-3">
-                                                    Số HĐ:
-                                                </label>
+                                                <label class="col-form-label col-3">Số HĐ:</label>
                                                 <div class="col-9">
                                                     <input type="text" autocomplete="off" class="form-control" placeholder="Số hóa đơn" name="SoHD">
                                                 </div>
@@ -404,6 +445,8 @@
 
         </div>
     </div>
-</div>
+    </div>
+
+
 <script src="~/jsadmin/common.js"></script>
 <script src="~/jsadmin/phieunhap.js"></script>

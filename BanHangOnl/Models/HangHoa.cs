@@ -27,11 +27,15 @@ public partial class HangHoa
 
     public string? Color { get; set; }
 
+    public int? Idgia { get; set; }
+
     public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; } = new List<ChiTietPhieuNhap>();
 
     public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; } = new List<ChiTietPhieuXuat>();
 
     public virtual DonViTinh? IddvtNavigation { get; set; }
+
+    public virtual Gium? IdgiaNavigation { get; set; }
 
     public virtual NhomHangHoa? IdnhhNavigation { get; set; }
 

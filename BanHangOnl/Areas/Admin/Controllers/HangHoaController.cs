@@ -29,6 +29,16 @@ namespace BanHangOnl.Areas.Admin.Controllers
             ViewBag.NhomHangHoa = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 2).ToList();
             return View("Add");  
         }
+        [Route("/HangHoa/Them")]
+        public IActionResult Add(HangHoa vaiTro)
+        {
+            vaiTro.Active = true;
+            context.HangHoas.Add(vaiTro);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
         [HttpPost("/HangHoa/updateHangHoa")]
         public dynamic addHangHoa(HangHoa hangHoa) {
             return new
@@ -72,6 +82,49 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        
+
+        [Route("/HangHoa/ViewSua/{id}")]
+        public IActionResult viewEdit(int id)
+        {
+            HangHoa sua = context.HangHoas.Find(id);
+            //ViewBag.NhomHangHoa = context.NhomHangHoas.Where(x => x.Active == true).ToList();
+            return View("Edit", sua);
+        }
+
+        [Route("/HangHoa/Sua")]
+
+        public IActionResult Edit(HangHoa vaiTro)
+        {
+            HangHoa tt = context.HangHoas.Find(vaiTro.Idhh);
+
+            tt.MaHh = vaiTro.MaHh;
+            tt.TenHh = vaiTro.TenHh;
+            tt.ImgHangHoas = vaiTro.ImgHangHoas;
+            tt.TenHh = vaiTro.TenHh;
+            tt.MaHh = vaiTro.MaHh;
+            tt.TenHh = vaiTro.TenHh;
+            //tt.Levels = vaiTro.Levels;
+
+
+
+            context.HangHoas.Update(tt);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
+
+        [Route("/HangHoa/Xoa/{id}")]
+        public IActionResult Xoa(int id)
+        {
+            HangHoa tt = context.HangHoas.Find(id);
+            tt.Active = false;
+
+            context.HangHoas.Update(tt);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

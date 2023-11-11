@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Thông tin tài khoản";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+
+
+
+    //string getTenNhom(int? id)
+    //{
+    //    if (id > 0)
+    //    {
+    //        return context.NhomHangHoas.Find(id).TenNhh;
+
+    //    }
+    //    else
+    //    {
+    //        return "";
+    //    }
+    //}
+
+}
+
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+
+
+    <div class="card">
+        <div class="card-body">
+            <div class="row justify-content-between">
+                <div class="col-auto">
+                    <h5 class="card-title">Datatables</h5>
+                </div>
+                <div class="col-auto mt-3">
+                    <a href="/DonDatHang/Them" class="btn btn-success">Thêm mới</a>
+                </div>
+            </div>
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+                <thead>
+                    <tr>
+                        <th scope="col">Số phiếu xuất</th>
+                        <th scope="col">Số hóa đơn</th>
+                        <th scope="col">Tên khách hàng</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Ngày xuất</th>
+                        <th scope="col">Người xuất</th>
+                        <th scope="col">Ghi chú</th>
+                        <th scope="col">Tùy chọn</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (PhieuXuat tk in ViewBag.PhieuXuat)
+                    {
+                        <tr>
+                            <td>@tk.SoPx</td>
+                            <td>@tk.SoHd</td>
+                            <td></td>
+                            <td>@tk?.ChiTietPhieuXuats?.Sum(x => x.Gia)</td>
+                            <td>@tk.NgayTao</td>
+                            <td>@tk?.IdnvNavigation?.Ten</td>
+                            <td>@tk?.GhiChu</td>
+                            <td>
+                                <a href="/DonDatHang/ChiTietDonDatHang/@tk.Idpx" type="button" class="btn btn-primary btn-sm">Xem</a>
+                                <a href="/DonDatHang/ViewSua/@tk.Idpx" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                <a href="/DonDatHang/Xoa/@tk.Idpx" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+
+        </div>
+    </div>
+
+
+
+</section>
+
+

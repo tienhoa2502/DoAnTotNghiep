@@ -13,7 +13,9 @@ public partial class KhachHang
 
     public string? Email { get; set; }
 
-    public int? MaKh { get; set; }
-
     public string? DiaChi { get; set; }
+
+    public bool? Active { get; set; }
+
+    public string? MaKh { get; set; }
 }

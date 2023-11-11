@@ -1,7 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Thông tin tài khoản";
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+
+    QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+    string getTenNhom(int? id)
+    {
+        if (id > 0)
+        {
+            return context.NhomTinTucs.Find(id).TenNtt;
+
+        }
+        else
+        {
+            return "";
+        }
+    }
+
 }
+}
+
+
+
 
 
 <div class="pagetitle">
@@ -51,8 +71,8 @@
                                     <td>@tk.Img</td>
                                     <td>@tk.TenTt</td>
                                     <td>@tk.ChiTiet</td>
-                                    <td>@tk?.IdnttNavigation?.TenNtt</td>
-                                    <td>@tk.NguoiTao</td>
+                                    <td>@tk.NgayTao</td>
+                                    <td>@getTenNhom(@tk.Idntt)</td>
                                     <td>
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">

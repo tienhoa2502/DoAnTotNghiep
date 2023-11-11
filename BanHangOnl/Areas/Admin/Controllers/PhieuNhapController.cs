@@ -24,7 +24,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 .Include(x => x.IdnvNavigation).Where(x => x.Active == true).ToList();
             return View();
         }
-        [HttpGet("/PhieuNhap/Xem")]
+        [HttpGet("/PhieuNhap/ChiTietPhieuNhap")]
         public IActionResult Info()
         {
 
@@ -121,28 +121,28 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        [Route("/PhieuNhap/ViewSua/{id}")]
-        public IActionResult viewEdit(int id)
-        {
-            PhieuNhap sua = context.PhieuNhaps.Find(id);
-            return View("Edit", sua);
-        }
+        //[Route("/PhieuNhap/ViewSua/{id}")]
+        //public IActionResult viewEdit(int id)
+        //{
+        //    PhieuNhap sua = context.PhieuNhaps.Find(id);
+        //    return View("Edit", sua);
+        //}
 
-        [Route("/PhieuNhap/Sua")]
+        //[Route("/PhieuNhap/Sua")]
 
-        public IActionResult Edit(PhieuNhap vaiTro)
-        {
-            PhieuNhap tt = context.PhieuNhaps.Find(vaiTro.Idpn);
-            //tt.Img = vaiTro.Img;
-            //tt.TenTt = vaiTro.TenTt;
-            //tt.ChiTiet = vaiTro.ChiTiet;
+        //public IActionResult Edit(PhieuNhap vaiTro)
+        //{
+        //    PhieuNhap tt = context.PhieuNhaps.Find(vaiTro.Idpn);
+        //    //tt.Img = vaiTro.Img;
+        //    //tt.TenTt = vaiTro.TenTt;
+        //    //tt.ChiTiet = vaiTro.ChiTiet;
 
             
 
-            context.PhieuNhaps.Update(tt);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //    context.PhieuNhaps.Update(tt);
+        //    context.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         [Route("/PhieuNhap/Xoa/{id}")]
         public IActionResult Xoa(int id)

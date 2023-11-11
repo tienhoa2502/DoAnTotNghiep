@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Slide";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+
+@model BanHangOnl.Models.Voucher
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Horizontal Form</h5>
+
+        <!-- Horizontal Form -->
+        <form action="/Voucher/Sua" method="post">
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Mã voucher</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.MaVoucher" type="text" class="form-control" id="inputText">
+                    <input asp-for="@Model.Id" type="hidden" class="form-control" id="inputText">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Tên voucher</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.TenVoucher" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Ngày bắt đầu</label>
+                <div class="col-sm-4">
+                    <input asp-for="@Model.NgayBd" type="date" class="form-control">
+                </div>
+
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Ngày kết thúc</label>
+                <div class="col-sm-4">
+                    <input asp-for="@Model.NgayBd" type="date" class="form-control">
+                </div>
+            </div>
+
+
+
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <button type="reset" class="btn btn-secondary">Hủy</button>
+            </div>
+        </form><!-- End Horizontal Form -->
+
+    </div>
+
+
+
+</div>
+
+
+

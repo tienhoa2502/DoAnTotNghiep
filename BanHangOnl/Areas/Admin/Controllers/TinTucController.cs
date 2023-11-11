@@ -18,7 +18,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/TinTuc/Them")]
         public IActionResult viewAdd()
         {
-
+            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true /*&& x.Levels == 2)*/).ToList();
             return View("Add");
         }
         [Route("/TinTuc/Them")]
@@ -37,6 +37,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [Route("/TinTuc/ViewSua/{id}")]
         public IActionResult viewEdit(int id)
         {
+            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true /*&& x.Levels == 2)*/).ToList();
+
             TinTuc sua = context.TinTucs.Find(id);
             return View("Edit", sua);
         }

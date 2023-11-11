@@ -16,4 +16,8 @@ public partial class Voucher
     public bool? HienThi { get; set; }
 
     public bool? ApDung { get; set; }
+
+    public DateTime? NgayBd { get; set; }
+
+    public DateTime? NgayKt { get; set; }
 }
