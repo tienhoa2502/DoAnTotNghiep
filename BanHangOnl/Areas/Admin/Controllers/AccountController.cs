@@ -7,7 +7,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
     [Area("Admin")]
     public class AccountController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
         [HttpGet("/TaiKhoan")]
         public IActionResult Index()
         {

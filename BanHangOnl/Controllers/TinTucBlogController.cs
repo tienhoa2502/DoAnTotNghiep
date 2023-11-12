@@ -15,11 +15,11 @@ namespace BanHangOnl.Controllers
 {
     public class TinTucBlogController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
 		
 
-		private readonly QuanLyNhaHangContext _context;
-		//public TinTucBlogController(QuanLyNhaHangContext context)
+		private readonly QuanLyBanHangContext _context;
+		//public TinTucBlogController(QuanLyBanHangContext context)
 		//{
 		//	_context = context;
 		//}

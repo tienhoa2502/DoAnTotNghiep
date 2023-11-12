@@ -2,7 +2,7 @@
     ViewData["Title"] = "Detail";
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 
-    QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+    QuanLyBanHangContext context = new QuanLyBanHangContext();
     List<VaiTro> ListVaiTro()
     {
         return context.VaiTros.Where(x => x.Active == true).ToList();

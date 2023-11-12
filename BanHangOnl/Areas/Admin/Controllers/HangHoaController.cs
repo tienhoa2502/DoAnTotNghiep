@@ -8,7 +8,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
     [Area("Admin")]
     public class HangHoaController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
         private readonly IWebHostEnvironment _hostingEnvironment;
         public HangHoaController(IWebHostEnvironment hostingEnvironment)
         {

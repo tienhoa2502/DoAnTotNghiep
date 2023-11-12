@@ -13,5 +13,13 @@ public partial class TonKho
 
     public DateTime? NgayNhap { get; set; }
 
+    public int? Idmau { get; set; }
+
+    public int? Idsize { get; set; }
+
     public virtual ChiTietPhieuNhap? IdctpnNavigation { get; set; }
+
+    public virtual Mau? IdmauNavigation { get; set; }
+
+    public virtual Size? IdsizeNavigation { get; set; }
 }

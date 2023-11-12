@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BanHangOnl.Models;
 
-public partial class QuanLyNhaHangContext : DbContext
+public partial class QuanLyBanHangContext : DbContext
 {
-    public QuanLyNhaHangContext()
+    public QuanLyBanHangContext()
     {
     }
 
-    public QuanLyNhaHangContext(DbContextOptions<QuanLyNhaHangContext> options)
+    public QuanLyBanHangContext(DbContextOptions<QuanLyBanHangContext> options)
         : base(options)
     {
     }
@@ -37,6 +37,8 @@ public partial class QuanLyNhaHangContext : DbContext
 
     public virtual DbSet<KhachHang> KhachHangs { get; set; }
 
+    public virtual DbSet<Mau> Maus { get; set; }
+
     public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
 
     public virtual DbSet<NhanVien> NhanViens { get; set; }
@@ -51,6 +53,8 @@ public partial class QuanLyNhaHangContext : DbContext
 
     public virtual DbSet<SideQuangCao> SideQuangCaos { get; set; }
 
+    public virtual DbSet<Size> Sizes { get; set; }
+
     public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
 
     public virtual DbSet<TinTuc> TinTucs { get; set; }
@@ -63,12 +67,10 @@ public partial class QuanLyNhaHangContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-4KER1P3\\MSSQLSERVER22;Database=QuanLyNhaHang;User Id=sa;Password=123456;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-4KER1P3\\MSSQLSERVER22;Database=QuanLyBanHang;User Id=sa;Password=123456;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.UseCollation("Vietnamese_CI_AS");
-
         modelBuilder.Entity<ChiTietHoaDon>(entity =>
         {
             entity.HasKey(e => e.Idcthd);
@@ -109,7 +111,9 @@ public partial class QuanLyNhaHangContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("HSD");
             entity.Property(e => e.Idhh).HasColumnName("IDHH");
+            entity.Property(e => e.Idmau).HasColumnName("IDMau");
             entity.Property(e => e.Idpn).HasColumnName("IDPN");
+            entity.Property(e => e.Idsize).HasColumnName("IDSize");
             entity.Property(e => e.Nsx)
                 .HasColumnType("datetime")
                 .HasColumnName("NSX");
@@ -118,9 +122,17 @@ public partial class QuanLyNhaHangContext : DbContext
                 .HasForeignKey(d => d.Idhh)
                 .HasConstraintName("FK_ChiTietPhieuNhap_HangHoa");
 
+            entity.HasOne(d => d.IdmauNavigation).WithMany(p => p.ChiTietPhieuNhaps)
+                .HasForeignKey(d => d.Idmau)
+                .HasConstraintName("FK_ChiTietPhieuNhap_Mau");
+
             entity.HasOne(d => d.IdpnNavigation).WithMany(p => p.ChiTietPhieuNhaps)
                 .HasForeignKey(d => d.Idpn)
                 .HasConstraintName("FK_ChiTietPhieuNhap_PhieuNhap");
+
+            entity.HasOne(d => d.IdsizeNavigation).WithMany(p => p.ChiTietPhieuNhaps)
+                .HasForeignKey(d => d.Idsize)
+                .HasConstraintName("FK_ChiTietPhieuNhap_Size");
         });
 
         modelBuilder.Entity<ChiTietPhieuXuat>(entity =>
@@ -132,7 +144,9 @@ public partial class QuanLyNhaHangContext : DbContext
             entity.Property(e => e.Idctpx).HasColumnName("IDCTPX");
             entity.Property(e => e.Idctpn).HasColumnName("IDCTPN");
             entity.Property(e => e.Idhh).HasColumnName("IDHH");
+            entity.Property(e => e.Idmau).HasColumnName("IDMau");
             entity.Property(e => e.Idpx).HasColumnName("IDPX");
+            entity.Property(e => e.Idsize).HasColumnName("IDSize");
 
             entity.HasOne(d => d.IdctpnNavigation).WithMany(p => p.ChiTietPhieuXuats)
                 .HasForeignKey(d => d.Idctpn)
@@ -142,9 +156,17 @@ public partial class QuanLyNhaHangContext : DbContext
                 .HasForeignKey(d => d.Idhh)
                 .HasConstraintName("FK_ChiTietPhieuXuat_HangHoa");
 
+            entity.HasOne(d => d.IdmauNavigation).WithMany(p => p.ChiTietPhieuXuats)
+                .HasForeignKey(d => d.Idmau)
+                .HasConstraintName("FK_ChiTietPhieuXuat_Mau");
+
             entity.HasOne(d => d.IdpxNavigation).WithMany(p => p.ChiTietPhieuXuats)
                 .HasForeignKey(d => d.Idpx)
                 .HasConstraintName("FK_ChiTietPhieuXuat_PhieuXuat");
+
+            entity.HasOne(d => d.IdsizeNavigation).WithMany(p => p.ChiTietPhieuXuats)
+                .HasForeignKey(d => d.Idsize)
+                .HasConstraintName("FK_ChiTietPhieuXuat_Size");
         });
 
         modelBuilder.Entity<Ctkm>(entity =>
@@ -281,6 +303,18 @@ public partial class QuanLyNhaHangContext : DbContext
             entity.Property(e => e.TenKh)
                 .HasMaxLength(50)
                 .HasColumnName("TenKH");
+        });
+
+        modelBuilder.Entity<Mau>(entity =>
+        {
+            entity.HasKey(e => e.Idmau);
+
+            entity.ToTable("Mau");
+
+            entity.Property(e => e.Idmau).HasColumnName("IDMau");
+            entity.Property(e => e.Mau1)
+                .HasMaxLength(50)
+                .HasColumnName("Mau");
         });
 
         modelBuilder.Entity<NhaCungCap>(entity =>
@@ -423,6 +457,19 @@ public partial class QuanLyNhaHangContext : DbContext
             entity.Property(e => e.NguoiTao).HasMaxLength(50);
         });
 
+        modelBuilder.Entity<Size>(entity =>
+        {
+            entity.HasKey(e => e.Idsize);
+
+            entity.ToTable("Size");
+
+            entity.Property(e => e.Idsize).HasColumnName("IDSize");
+            entity.Property(e => e.Size1)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("Size");
+        });
+
         modelBuilder.Entity<TaiKhoan>(entity =>
         {
             entity.HasKey(e => e.Idtk);
@@ -470,11 +517,21 @@ public partial class QuanLyNhaHangContext : DbContext
 
             entity.Property(e => e.Idtk).HasColumnName("IDTK");
             entity.Property(e => e.Idctpn).HasColumnName("IDCTPN");
+            entity.Property(e => e.Idmau).HasColumnName("IDMau");
+            entity.Property(e => e.Idsize).HasColumnName("IDSize");
             entity.Property(e => e.NgayNhap).HasColumnType("datetime");
 
             entity.HasOne(d => d.IdctpnNavigation).WithMany(p => p.TonKhos)
                 .HasForeignKey(d => d.Idctpn)
                 .HasConstraintName("FK_TonKho_ChiTietPhieuNhap");
+
+            entity.HasOne(d => d.IdmauNavigation).WithMany(p => p.TonKhos)
+                .HasForeignKey(d => d.Idmau)
+                .HasConstraintName("FK_TonKho_Mau");
+
+            entity.HasOne(d => d.IdsizeNavigation).WithMany(p => p.TonKhos)
+                .HasForeignKey(d => d.Idsize)
+                .HasConstraintName("FK_TonKho_Size");
         });
 
         modelBuilder.Entity<VaiTro>(entity =>

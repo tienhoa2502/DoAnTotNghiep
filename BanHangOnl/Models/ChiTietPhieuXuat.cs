@@ -19,9 +19,17 @@ public partial class ChiTietPhieuXuat
 
     public bool? Active { get; set; }
 
+    public int? Idsize { get; set; }
+
+    public int? Idmau { get; set; }
+
     public virtual ChiTietPhieuNhap? IdctpnNavigation { get; set; }
 
     public virtual HangHoa? IdhhNavigation { get; set; }
 
+    public virtual Mau? IdmauNavigation { get; set; }
+
     public virtual PhieuXuat? IdpxNavigation { get; set; }
+
+    public virtual Size? IdsizeNavigation { get; set; }
 }

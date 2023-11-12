@@ -7,7 +7,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
     [Area("Admin")]
     public class TinTucController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
         [HttpGet("/TinTuc")]
         public IActionResult Index()
         {

@@ -10,7 +10,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
     [Area("Admin")]
     public class PhieuXuatController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
         private readonly IMapper _mapper;
         public PhieuXuatController(IMapper mapper)
         {
@@ -154,7 +154,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-        public static string taoSoPhieuNhap(QuanLyNhaHangContext context)
+        public static string taoSoPhieuNhap(QuanLyBanHangContext context)
         {
             DateTime now = DateTime.Now;
             string date = now.ToString("yyyyMMdd");

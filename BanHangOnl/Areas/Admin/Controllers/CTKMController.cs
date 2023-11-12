@@ -7,7 +7,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
     [Area("Admin")]
     public class CtkmController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
         [HttpGet("/ChuongTrinhKhuyenMai")]
         public IActionResult Index()
         {

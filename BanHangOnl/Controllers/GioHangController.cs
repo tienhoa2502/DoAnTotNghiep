@@ -5,7 +5,7 @@ namespace BanHangOnl.Controllers
 {
     public class GioHangController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
         // GET: Products
         public ActionResult Index()
         {

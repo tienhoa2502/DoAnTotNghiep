@@ -7,7 +7,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
     [Area("Admin")]
     public class VaiTroController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
         [HttpGet("/VaiTro")]
         public IActionResult Index()
         {

@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Nhóm tin tức";
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+    QuanLyBanHangContext context = new QuanLyBanHangContext();
     List<NhaCungCap> getListNhaCungCap()
     {
         return context.NhaCungCaps.Where(x => x.Active == true).ToList();

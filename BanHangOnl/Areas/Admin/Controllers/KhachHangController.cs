@@ -7,7 +7,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
     
     public class KhachHangController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
         [HttpGet("/KhachHang")]
         public IActionResult Index()
         {

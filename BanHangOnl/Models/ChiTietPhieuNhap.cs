@@ -19,13 +19,21 @@ public partial class ChiTietPhieuNhap
 
     public DateTime? Hsd { get; set; }
 
+    public int? Idsize { get; set; }
+
     public bool? Active { get; set; }
+
+    public int? Idmau { get; set; }
 
     public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; } = new List<ChiTietPhieuXuat>();
 
     public virtual HangHoa? IdhhNavigation { get; set; }
 
+    public virtual Mau? IdmauNavigation { get; set; }
+
     public virtual PhieuNhap? IdpnNavigation { get; set; }
+
+    public virtual Size? IdsizeNavigation { get; set; }
 
     public virtual ICollection<TonKho> TonKhos { get; set; } = new List<TonKho>();
 }

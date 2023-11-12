@@ -7,12 +7,12 @@ namespace BanHangOnl.Controllers
 {
     public class SanPhamController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
 		// GET: Products
 
-		//private readonly QuanLyNhaHangContext _context;
+		//private readonly QuanLyBanHangContext _context;
 
-		//public SanPhamController(QuanLyNhaHangContext context)
+		//public SanPhamController(QuanLyBanHangContext context)
 		//{
 		//	_context = context;
 		//}

@@ -6,7 +6,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
     [Area("Admin")]
     public class NhomHangHoaController : Controller
     {
-        QuanLyNhaHangContext context = new QuanLyNhaHangContext();
+        QuanLyBanHangContext context = new QuanLyBanHangContext();
         [HttpGet("/NhomHangHoa")]
         public IActionResult Index()
         {
