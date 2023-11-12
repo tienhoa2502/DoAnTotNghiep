@@ -11,18 +11,20 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/VaiTro")]
         public IActionResult Index()
         {
+            ViewBag.VaiTro = context.VaiTros.Where(x => x.Active == true).ToList();
+
             return View();
         }
 
-        [HttpGet("/VaiTro/ChiTiet")]
-        public IActionResult Detail()
+        [HttpGet("/VaiTro/Them")]
+        public IActionResult viewAdd()
         {
             ViewBag.VaiTro = context.VaiTros.Where(x => x.Active == true).ToList();
             return View();
         }
 
         [HttpGet("/VaiTro/ViewThem")]
-        public IActionResult viewAdd()
+        public IActionResult Add()
         {
 
             return View("Add");

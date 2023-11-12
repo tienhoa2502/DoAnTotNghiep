@@ -1,12 +1,15 @@
 ﻿using BanHangOnl.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace BanHangOnl.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+		QuanLyBanHangContext context = new QuanLyBanHangContext();
+
+		private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -15,8 +18,11 @@ namespace BanHangOnl.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
+			ViewBag.HangHoa = context.HangHoas
+				.Include(x => x.ImgHangHoas)
+				.Where(x => x.Active == true).ToList();
+			return View();
+		}
 
         public IActionResult Privacy()
         {

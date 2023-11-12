@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Size";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="card-title">Datatables</h5>
+                        </div>
+                        <div class="col-auto mt-3">
+                            <a href="/Size/ViewThem" class="btn btn-success">Thêm mới</a>
+                        </div>
+                    </div>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Size</th>
+                                <th scope="col">Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Size vt in ViewBag.Size)
+                            {
+                                <tr>
+                                    <td>@vt.Size1</td>
+                                    <td>
+                                        <a href="/Size/ViewSua/@vt.Idsize" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                        <a href="/Size/Xoa/@vt.Idsize" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

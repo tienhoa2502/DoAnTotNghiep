@@ -524,6 +524,7 @@
     <None Include="wwwroot\AdAssets\scss\utilities\_icon-size.scss" />
     <None Include="wwwroot\AdAssets\scss\variables\_theme-variables.scss" />
     <None Include="wwwroot\AdAssets\scss\variables\_variables.scss" />
+    <None Include="wwwroot\assets\script.js" />
     <None Include="wwwroot\UsAssets\js\categories_custom.js" />
     <None Include="wwwroot\UsAssets\js\contact_custom.js" />
     <None Include="wwwroot\UsAssets\js\custom.js" />
@@ -579,6 +580,21 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\HangHoa\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\Mau\Add.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Mau\Edit.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Mau\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
