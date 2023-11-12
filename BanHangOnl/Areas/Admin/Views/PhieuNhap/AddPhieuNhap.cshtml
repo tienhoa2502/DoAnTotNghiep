@@ -11,6 +11,14 @@
     {
         return context.HangHoas.Where(x => x.Active == true).ToList();
     }
+    List<Size> getListSize()
+    {
+        return context.Sizes.Where(x => x.Active == true).ToList();
+    }
+    List<Mau> getListMau()
+    {
+        return context.Maus.Where(x => x.Active == true).ToList();
+    }
 
 }
 <style>
@@ -176,11 +184,13 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Size</label>
                                 <div class="col-lg-2 col-sm-2">
-                                    <input class="form-control"
-                                           type="text"
-                                           name="ngaySanXuat"
-                                           id="ngaySanXuat"
-                                           placeholder="Size" />
+                                    <select name="size" id="size" class="form-select col-sm-4" style="width : max">
+                                        <option selected value="">-- size --</option>
+                                        @foreach (Size n in getListSize())
+                                        {
+                                            <option value="@n.Idsize">@n.Size1</option>
+                                        }
+                                    </select>
                                 </div>
 
                                 @* <div class="col-md-1 mb-2 col-lg-1 d-flex justify-content-end">
@@ -190,15 +200,13 @@
                                 </div> *@
                                 <label class="col-sm-1 col-lg-1 col-form-label">Màu</label>
                                 <div class="col-lg-2 col-sm-2">
-
-
-                                    <input class="form-control"
-                                           type="text"
-                                           name="hanSuDung"
-                                           id="hanSuDung"
-                                           placeholder="Màu" />
-
-
+                                    <select name="mau" id="mau" class="form-select col-sm-4" style="width : max">
+                                        <option selected value="">-- Màu --</option>
+                                        @foreach (Mau n in getListMau())
+                                        {
+                                            <option value="@n.Idmau">@n.Mau1</option>
+                                        }
+                                    </select>
                                 </div>
 
                                 <label class="col-sm-12 col-lg-1 col-form-label">Số lượng</label>

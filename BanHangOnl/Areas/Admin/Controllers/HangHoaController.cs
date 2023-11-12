@@ -41,9 +41,12 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
         [HttpPost("/HangHoa/updateHangHoa")]
         public dynamic addHangHoa(HangHoa hangHoa) {
+            hangHoa.Active = true;
+            context.HangHoas.Add(hangHoa);
+            context.SaveChanges();  
             return new
             {
-                id = 1,
+                id = hangHoa.Idhh,
             };
         }
         [HttpPost("/HangHoa/UpdateAnh")]

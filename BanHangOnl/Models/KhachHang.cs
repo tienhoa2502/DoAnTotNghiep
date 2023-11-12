@@ -9,7 +9,7 @@ public partial class KhachHang
 
     public string? TenKh { get; set; }
 
-    public decimal? Phone { get; set; }
+    public string? Phone { get; set; }
 
     public string? Email { get; set; }
 

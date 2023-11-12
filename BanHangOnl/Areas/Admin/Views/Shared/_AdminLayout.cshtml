@@ -26,11 +26,14 @@
     <link href="~/adassets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="~/adassets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="~/adassets/vendor/simple-datatables/style.css" rel="stylesheet">
-
+    <!-- selecttize-->
+    <link href="~/select/css/selectize.css" rel="stylesheet" />
+    <link href="~/select/css/selectize.bootstrap5.css" rel="stylesheet" />
     <!-- Template Main CSS File -->
     <link href="~/adassets/css/style.css" rel="stylesheet">
     <script src="~/js/jquery/jquery.min.js"></script>
-
+    <script src="~/select/js/selectize.js"></script>
+    <script src="~/select/js/selectize.min.js"></script>
 
     <!-- =======================================================
     * Template Name: NiceAdmin
@@ -619,6 +622,8 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
+
+
     <script src="~/adassets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="~/adassets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/adassets/vendor/chart.js/chart.umd.js"></script>
@@ -627,9 +632,27 @@
     <script src="~/adassets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="~/adassets/vendor/tinymce/tinymce.min.js"></script>
     <script src="~/adassets/vendor/php-email-form/validate.js"></script>
+    <script>
+        // $(document).ready(function () {
+        //     $('.form-select').selectize({
+        //         sortField: {
+        //             field: 'text',
+        //             direction: 'asc'
+        //         }
+        //     });
+        // })
+        $(document).ready(function () {
+            var $select = $('.form-select').selectize({
+                create: true,
+                onChange: function (value) {
 
+                }
+            });
+        });
+    </script>
     <!-- Template Main JS File -->
     <script src="~/adassets/js/main.js"></script>
 </body>
+
 <script src="~/adassets/js/app.min.js"></script>
 </html>

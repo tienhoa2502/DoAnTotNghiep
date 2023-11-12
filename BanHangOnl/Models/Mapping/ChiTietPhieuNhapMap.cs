@@ -13,6 +13,8 @@ namespace QuanLyNhaHang.Models.Mapping
         public string? Gia { get; set; }
         public string? Nsx { get; set; }
         public string? Hsd { get; set; }
+        public string? Idsize { get; set; }
+        public string? Idmau { get; set; }
         public bool? Active { get; set; }
 
     }
