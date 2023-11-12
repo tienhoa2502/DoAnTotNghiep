@@ -11,7 +11,18 @@
     {
         return context.HangHoas.Where(x => x.Active == true).ToList();
     }
-
+    List<Size> getListSize()
+    {
+        return context.Sizes.Where(x => x.Active == true).ToList();
+    }
+    List<Mau> getListMau()
+    {
+        return context.Maus.Where(x => x.Active == true).ToList();
+    }
+    List<TaiKhoan> getListTaiKhoan()
+    {
+        return context.TaiKhoans.Where(x => x.Active == true && x.Idvt == 7).ToList();
+    }
 
 
 
@@ -73,7 +84,7 @@
                     <h5>Thông tin khách hàng </h5>
 
                     <div class="form-group p-2 mb-2"
-                         id="groupTTSearchLichSu"
+                         id="groupTTKH"
                          style="border-radius: 5px; border: 1px solid black">
                         <div class="row mb-3">
                             <label class="col-sm-auto col-lg-2 col-form-label">Số phiếu xuất</label>
@@ -101,7 +112,7 @@
                             <div class="col-md-2">
                                 <input class="form-control"
                                        type="text"
-                                       name="soHD"
+                                       name="maKH"
                                        value="Auto"
                                        placeholder="Mã KH"
                                        disabled />
@@ -111,7 +122,7 @@
                             <div class="col-md-2">
                                 <input class="form-control"
                                        type="text"
-                                       name="soHD"
+                                       name="tenKH"
 
                                        placeholder="Tên khách hàng"
                                         />
@@ -119,25 +130,27 @@
 
                             <label class="col-sm-2 col-form-label">Số điện thoại</label>
                             <div class="col-md-2">
-                                <input class="form-control"
-                                       type="text"
-                                       name="soHD"
-                                       placeholder="Số điện thoại"
-                                        />
+                                <select id="sdt" name="sdt" class="form-select col-sm-4" style="width : max">
+                                    <option selected value="0">-- sđt --</option>
+                                    @foreach (TaiKhoan n in getListTaiKhoan())
+                                    {
+                                        <option value="@n.TenTk">@n.TenTk</option>
+                                    }
+                                </select>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail">
+                                <input type="email" name="email" class="form-control" id="inputEmail">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Địa chỉ</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputEmail">
+                                <input type="text" name="diaChi" class="form-control" id="inputEmail">
                             </div>
                         </div>
 
@@ -148,7 +161,7 @@
                     <div class="form-group p-2 mb-2"
                          id="groupThemHangHoa"
                          style="border-radius: 5px; border: 1px solid black">
-                        <div class="row">
+                        <div class="row" id="groupTTChiTiet">
 
 
                            
@@ -157,8 +170,8 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Tên hàng hóa</label>
                                 <div class="col-sm-6">
-                                    <select name="hangHoa" class="form-select col-sm-4" style="width : max">
-                                        <option selected value="">-- Tên hàng hóa--</option>
+                                    <select id="selectHH" name="idHangHoa" class="form-select col-sm-4" style="width : max">
+                                        <option selected value="0">-- Tên hàng hóa--</option>
                                         @foreach (HangHoa n in getListHangHoa())
                                         {
                                             <option value="@n.Idhh">@n.TenHh</option>
@@ -171,8 +184,8 @@
                                     <input class="form-control"
                                            type="text"
                                            readonly
-                                           name="donViTinh"
-                                           id="donViTinh"
+                                           id="dVT" 
+                                           name="dVT"
                                            value=""
                                            placeholder="Đơn vị tính" />
                                 </div>
@@ -183,11 +196,13 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Size</label>
                                 <div class="col-lg-2 col-sm-2">
-                                    <input class="form-control"
-                                           type="text"
-                                           name="ngaySanXuat"
-                                           id="ngaySanXuat"
-                                           placeholder="Size" />
+                                    <select name="size" id="size" class="form-select col-sm-4" style="width : max">
+                                        <option selected value="0">-- size --</option>
+                                        @foreach (Size n in getListSize())
+                                        {
+                                            <option value="@n.Idsize">@n.Size1</option>
+                                        }
+                                    </select>
                                 </div>
 
                                 @* <div class="col-md-1 mb-2 col-lg-1 d-flex justify-content-end">
@@ -197,24 +212,30 @@
                                 </div> *@
                                 <label class="col-sm-1 col-lg-1 col-form-label">Màu</label>
                                 <div class="col-lg-2 col-sm-2">
-
-
-                                    <input class="form-control"
-                                           type="text"
-                                           name="hanSuDung"
-                                           id="hanSuDung"
-                                           placeholder="Màu" />
+                                    <select name="mau" id="mau" class="form-select col-sm-4" style="width : max">
+                                        <option selected value="0">-- Màu --</option>
+                                        @foreach (Mau n in getListMau())
+                                        {
+                                            <option value="@n.Idmau">@n.Mau1</option>
+                                        }
+                                    </select>
 
 
                                 </div>
 
-                                <label class="col-sm-12 col-lg-1 col-form-label">Số lượng</label>
+                                <label class="col-sm-12 col-lg-1 col-form-label">Số lượng còn</label>
                                 <div class="col-md-2 mb-2 col-lg-2">
                                     <input class="form-control formatted-number"
                                            type="number"
-                                           name="soLuong"
-                                           id="soLuong"
+                                           name="sLCon"
+                                           id="sLCon" 
                                            placeholder="Số lượng" />
+                                </div>
+                                <label class="col-sm-12 col-lg-1 col-form-label">Số lượng mua</label>
+                                <div class="col-md-2 mb-2 col-lg-2">
+                                    <input class="form-control formatted-number"
+                                           type="number"
+                                           data-content="Không được để trống" id="SLHH" placeholder="Số lượng" />
                                 </div>
                             </div>
 
@@ -225,7 +246,7 @@
                                     <input class="form-control formatted-number"
                                            type="text"
                                            name="donGia"
-                                           id="donGia"
+                                           id="DonGia" 
                                            placeholder="Đơn giá" />
                                 </div>
                                 <label class="col-sm-auto col-lg-2 col-form-label">Thành tiền</label>
@@ -233,14 +254,14 @@
                                     <input class="form-control formatted-number"
                                            type="text"
                                            name="thanhTien"
-                                           id="thanhTien"
+                                           id="ThanhTien"
                                            placeholder="Thành tiền" />
                                 </div>
 
 
 
                                 <div class="col-md-2 mb-2 col-lg-2">
-                                    <button type="button" class="btn btn-primary" onclick="AddRowPhieuNhapKho()">
+                                    <button type="button" class="btn btn-primary" onclick="addChiTietDonDatHang()">
                                         Thêm
                                     </button>
                                 </div>
@@ -277,7 +298,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody id="tBody-ThemChiTietPhieuNhap">
+                            <tbody id="tbodyChiTietDonDatHang">
                             </tbody>
                         </table>
                     </div>
@@ -292,7 +313,7 @@
                         </div>
                         <div class="col-lg-2 col-12 mb-1">
                             <label class="form-label mb-0">Tổng cộng:</label>
-                            <input type="text" class="form-control formatted-number-float" id="tongTra" placeholder="Tổng cộng" readonly>
+                            <input type="text" class="form-control formatted-number-float" id="TienThanhToan" placeholder="Tổng cộng" readonly>
                         </div>
                         <div class="col-lg-2 col-12 mb-1">
                             <label class="form-label mb-0">Người lập phiếu:</label>
@@ -308,7 +329,7 @@
                                     </button>
                                 </div>
                                 <div class="col-auto">
-                                    <button class="btn btn-primary" onclick="ThemPhieuNhap()">
+                                    <button class="btn btn-primary" onclick="themDonDatHang()">
                                         Lưu
                                     </button>
                                 </div>
@@ -460,8 +481,7 @@
 
 
 <script src="~/jsadmin/common.js"></script>
-<script src="~/jsadmin/phieunhap.js"></script>
-
+<script src="~/jsadmin/phieuxuat.js"></script>
 
 
 

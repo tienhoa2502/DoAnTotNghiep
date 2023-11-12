@@ -9,6 +9,7 @@
         public string SoLuong { get; set; }
         public string Gia { get; set; }
         public bool? Active { get; set; }
-
+        public string? Idsize { get; set; }
+        public string? Idmau { get; set; }
     }
 }

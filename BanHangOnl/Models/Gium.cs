@@ -18,6 +18,4 @@ public partial class Gium
     public double? GiaSale { get; set; }
 
     public double? GiaBan { get; set; }
-
-    public virtual ICollection<HangHoa> HangHoas { get; set; } = new List<HangHoa>();
 }

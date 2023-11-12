@@ -67,7 +67,7 @@ public partial class QuanLyBanHangContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-4KER1P3\\MSSQLSERVER22;Database=QuanLyBanHang;User Id=sa;Password=123456;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Server=TRAN-UY\\MSSQLSERVER22;Database=QuanLyBanHang;User Id=sa;Password=123456;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -229,14 +229,17 @@ public partial class QuanLyBanHangContext : DbContext
             entity.ToTable("HangHoa");
 
             entity.Property(e => e.Idhh).HasColumnName("IDHH");
-            entity.Property(e => e.Color).HasMaxLength(10);
             entity.Property(e => e.Iddvt).HasColumnName("IDDVT");
-            entity.Property(e => e.Idgia).HasColumnName("IDGia");
+            entity.Property(e => e.Idmau)
+                .HasMaxLength(50)
+                .HasColumnName("IDMau");
             entity.Property(e => e.Idnhh).HasColumnName("IDNHH");
+            entity.Property(e => e.Idsize)
+                .HasMaxLength(50)
+                .HasColumnName("IDSize");
             entity.Property(e => e.MaHh)
                 .HasMaxLength(100)
                 .HasColumnName("MaHH");
-            entity.Property(e => e.Size).HasMaxLength(3);
             entity.Property(e => e.TenHh)
                 .HasMaxLength(100)
                 .HasColumnName("TenHH");
@@ -244,10 +247,6 @@ public partial class QuanLyBanHangContext : DbContext
             entity.HasOne(d => d.IddvtNavigation).WithMany(p => p.HangHoas)
                 .HasForeignKey(d => d.Iddvt)
                 .HasConstraintName("FK_HangHoa_DonViTinh");
-
-            entity.HasOne(d => d.IdgiaNavigation).WithMany(p => p.HangHoas)
-                .HasForeignKey(d => d.Idgia)
-                .HasConstraintName("FK_HangHoa_Gia");
 
             entity.HasOne(d => d.IdnhhNavigation).WithMany(p => p.HangHoas)
                 .HasForeignKey(d => d.Idnhh)
@@ -296,13 +295,18 @@ public partial class QuanLyBanHangContext : DbContext
 
             entity.Property(e => e.Idkh).HasColumnName("IDKH");
             entity.Property(e => e.Email).HasMaxLength(150);
+            entity.Property(e => e.Idtk).HasColumnName("IDTK");
             entity.Property(e => e.MaKh)
                 .HasMaxLength(100)
                 .HasColumnName("MaKH");
-            entity.Property(e => e.Phone).HasColumnType("decimal(12, 0)");
+            entity.Property(e => e.Phone).HasMaxLength(50);
             entity.Property(e => e.TenKh)
                 .HasMaxLength(50)
                 .HasColumnName("TenKH");
+
+            entity.HasOne(d => d.IdtkNavigation).WithMany(p => p.KhachHangs)
+                .HasForeignKey(d => d.Idtk)
+                .HasConstraintName("FK_KhachHang_TaiKhoan");
         });
 
         modelBuilder.Entity<Mau>(entity =>

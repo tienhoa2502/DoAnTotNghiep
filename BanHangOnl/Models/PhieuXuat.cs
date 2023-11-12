@@ -23,6 +23,10 @@ public partial class PhieuXuat
 
     public bool? Active { get; set; }
 
+    public bool? DonTra { get; set; }
+
+    public bool? DaGiao { get; set; }
+
     public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; } = new List<ChiTietPhieuXuat>();
 
     public virtual NhanVien? IdnvNavigation { get; set; }

@@ -3,6 +3,7 @@
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 
     QuanLyBanHangContext context = new QuanLyBanHangContext();
+    PhieuXuat px = ViewBag.DDH;
 
 }
 
@@ -39,24 +40,39 @@
                     <h5 class="card-title">Thông tin chi tiết</h5>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 label ">Số phiếu nhập</div>
-                        <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                        <div class="col-lg-3 col-md-4 label ">Số phiếu xuất</div>
+                        <div class="col-lg-9 col-md-8">@px.SoPx</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 label">Ngày nhập</div>
-                        <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                        <div class="col-lg-3 col-md-4 label">Ngày xuất</div>
+                        <div class="col-lg-9 col-md-8">@px.NgayTao</div>
                     </div>
 
                     <div class="row">
                         <div class="col-lg-3 col-md-4 label">Người nhập</div>
-                        <div class="col-lg-9 col-md-8">Web Designer</div>
+                        <div class="col-lg-9 col-md-8">@px?.IdnvNavigation?.Ten</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 label">Nhà cung cấp</div>
-                        <div class="col-lg-9 col-md-8">USA</div>
+                        <div class="col-lg-3 col-md-4 label">Khách hàng</div>
+                        <div class="col-lg-9 col-md-8"></div>
                     </div>
+                    <div class="row">
+                        @if (px.DonTra != true) {
+
+
+                            <button id="traHang" class="btn btn-success" onclick="traHang(@px.Idpx)">Trả hàng</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-success" disabled>Trả hàng</button>
+
+                        }
+
+                            
+                            
+                        </div>
                 </div>
             </div><!-- End Bordered Tabs -->
 
@@ -66,8 +82,8 @@
                         <tr class="text-wrap">
                             <th class="text-center p-1 first-th-column text-wrap" style="width:32px;">TT</th>
                             <th class="text-center p-1 w-25 text-wrap" style="position: sticky;left: 33px;z-index: 4 !important;">Tên hàng hóa</th>
-                            <th class="text-center p-1 text-wrap">SL nhập</th>
-                            <th class="text-center p-1 text-wrap">Giá nhập</th>
+                            <th class="text-center p-1 text-wrap">SL</th>
+                            <th class="text-center p-1 text-wrap">Giá</th>
                             <th class="text-center p-1 text-wrap">Size</th>
                             <th class="text-center p-1 text-wrap">Màu</th>
                             <th class="text-center p-1 text-wrap">Thành tiền</th>
@@ -85,7 +101,23 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="tBody-ThemChiTietPhieuNhap">
+                    <tbody id="tBody-ChiTietPhieuXuat">
+                        @{
+                            int i = 1;
+                        }
+                        @foreach (ChiTietPhieuXuat ct in px.ChiTietPhieuXuats)
+                        {
+                            <tr>
+                                <td class="text-center p-1 text-wrap">@i</td>
+                                <td class="text-center p-1 text-wrap">@ct?.IdhhNavigation?.TenHh</td>
+                                <td class="text-center p-1 text-wrap">@ct?.SoLuong</td>
+                                <td class="text-center p-1 text-wrap">@ct?.Gia</td>
+                                <td class="text-center p-1 text-wrap">@ct?.IdsizeNavigation?.Size1</td>
+                                <td class="text-center p-1 text-wrap">@ct?.IdmauNavigation?.Mau1</td>
+                                <td class="text-center p-1 text-wrap">@(ct?.SoLuong * ct?.Gia)</td>
+                            </tr>
+                            i++;
+                        }
                     </tbody>
                 </table>
             </div>
@@ -95,5 +127,6 @@
 
 
 </section>
-
+<script src="~/jsadmin/common.js"></script>
+<script src="~/jsadmin/phieuxuat.js"></script>
 

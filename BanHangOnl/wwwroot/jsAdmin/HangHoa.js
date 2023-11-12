@@ -1,10 +1,12 @@
 ﻿function UpdateHangHoa() {
     var form = $('#formThemHH');
-    var formData = form.serialize();
+    var hangHoa = form.serialize();
     $.ajax({
         url: "/HangHoa/updateHangHoa",
         type: "POST",
-        data: formData,
+        data: {
+            hangHoa: hangHoa
+        },
         success: function (response) {
             const files = $("#fileInput")[0].files;
             const fileFormData = new FormData(); // Đặt tên biến khác
@@ -32,4 +34,5 @@
             console.error("Lỗi khi cập nhật hàng hóa: " + error);
         }
     });
+
 }

@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    formatNumberInput()
+    /*formatNumberInput()*/
 });
 $('#groupThemHangHoa').on('input', 'input[name="soLuong"], input[name="donGia"]', function () {
     var soLuong = parseInt($('#groupThemHangHoa input[name="soLuong"]').val().replace(/,/g, ''));
@@ -41,8 +41,10 @@ function AddRowPhieuNhapKho() {
     var soLuong = $('#groupThemHangHoa #soLuong').val();
     var donGia = $('#groupThemHangHoa #donGia').val();
     var thanhTien = $('#groupThemHangHoa #thanhTien').val();
-    var ngaySanXuat = $('#groupThemHangHoa #ngaySanXuat').val();
-    var hanSuDung = $('#groupThemHangHoa #hanSuDung').val();
+    var size = $('#groupThemHangHoa #size').val();
+    var mau = $('#groupThemHangHoa #mau').val();
+    var tensize = $('#groupThemHangHoa #size').text();
+    var tenmau = $('#groupThemHangHoa #mau').text();
     if (idHangHoa == '') {
         showToast("Vui lòng chọn hàng hóa", 500);
         return;
@@ -55,11 +57,11 @@ function AddRowPhieuNhapKho() {
         showToast("Vui lòng chọn đơn giá", 500);
         return;
     }
-    if (ngaySanXuat == '') {
+    if (size == '') {
         showToast("Vui lòng chọn ngày sản xuất", 500);
         return;
     }
-    if (hanSuDung == '') {
+    if (mau == '') {
         showToast("Vui lòng chọn hạn sử dụng", 500);
         return;
     }
@@ -80,11 +82,11 @@ function AddRowPhieuNhapKho() {
         <td class="p-1">
             <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:100px;" value="${thanhTien}" name="thanhTien" />
         </td>
-        <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${hanSuDung}" id="hanSuDung1" name="hanSuDung" />
+        <td class="p-1">${tenmau}
+            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${mau}" id="mau1" name="mau" />
         </td>
-        <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${ngaySanXuat}" id="ngaySanXuat1" name="ngaySanXuat" />
+        <td class="p-1">${tensize}
+            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${size}" id="size1" name="size" />
         </td>
         <td class="text-center p-1 last-td-column">
             <button type="button" class="btn btn-icon btn-sm text-red remove-phieuNhapCt">
@@ -110,8 +112,8 @@ function clearFormThem() {
     var soLuong = $('#groupThemHangHoa #soLuong').val('');
     var donGia = $('#groupThemHangHoa #donGia').val('');
     var thanhTien = $('#groupThemHangHoa #thanhTien').val('');
-    var ngaySanXuat = $('#groupThemHangHoa #ngaySanXuat').val('');
-    var hanSuDung = $('#groupThemHangHoa #hanSuDung').val('');
+    var size = $('#groupThemHangHoa #size').val('');
+    var mau = $('#groupThemHangHoa #mau').val('');
 }
 $('#tBody-ThemChiTietPhieuNhap').on("click", ".remove-phieuNhapCt", function (event) {
     event.preventDefault();
@@ -138,8 +140,8 @@ function ThemPhieuNhap() {
         rowData.Idhh = row.find('input[name="idHangHoa"]').val();
         rowData.SoLuong = row.find('input[name="soLuong"]').val();
         rowData.Gia = row.find('input[name="donGia"]').val();
-        rowData.Nsx = row.find('input[name="ngaySanXuat"]').val();
-        rowData.Hsd = row.find('input[name="hanSuDung"]').val();
+        rowData.Idsize = row.find('input[name="size"]').val();
+        rowData.Idmau = row.find('input[name="mau"]').val();
         tableData.push(rowData);
     });
     var idNCC = $('select[name="nhaCungCap"]').val();

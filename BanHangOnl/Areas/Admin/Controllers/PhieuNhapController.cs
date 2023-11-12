@@ -20,13 +20,24 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult Index()
         {
             ViewBag.PhieuNhap = context.PhieuNhaps
+                .Include(x => x.IdnccNavigation)
                 .Include(x => x.ChiTietPhieuNhaps)
                 .Include(x => x.IdnvNavigation).Where(x => x.Active == true).ToList();
             return View();
         }
-        [HttpGet("/PhieuNhap/ChiTietPhieuNhap")]
-        public IActionResult Info()
+        [HttpGet("/PhieuNhap/ChiTietPhieuNhap/{id}")]
+        public IActionResult Info(int id)
         {
+            ViewBag.PhieuNhap = context.PhieuNhaps
+                .Include(x => x.IdnccNavigation)
+                .Include(x => x.ChiTietPhieuNhaps)
+                    .ThenInclude(x => x.IdhhNavigation)
+                    .Include(x => x.ChiTietPhieuNhaps)
+                        .ThenInclude(x => x.IdmauNavigation) 
+                    .Include(x => x.ChiTietPhieuNhaps)
+                        .ThenInclude(x => x.IdsizeNavigation)
+                .FirstOrDefault(x => x.Idpn == id);
+
 
             return View();
         }
@@ -121,12 +132,12 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        //[Route("/PhieuNhap/ViewSua/{id}")]
-        //public IActionResult viewEdit(int id)
-        //{
-        //    PhieuNhap sua = context.PhieuNhaps.Find(id);
-        //    return View("Edit", sua);
-        //}
+        [Route("/PhieuNhap/ViewSua/{id}")]
+        public IActionResult viewEdit(int id)
+        {
+            PhieuNhap sua = context.PhieuNhaps.Find(id);
+            return View("Edit", sua);
+        }
 
         //[Route("/PhieuNhap/Sua")]
 
@@ -137,7 +148,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         //    //tt.TenTt = vaiTro.TenTt;
         //    //tt.ChiTiet = vaiTro.ChiTiet;
 
-            
+
 
         //    context.PhieuNhaps.Update(tt);
         //    context.SaveChanges();

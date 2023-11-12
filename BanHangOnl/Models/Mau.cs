@@ -9,6 +9,8 @@ public partial class Mau
 
     public string? Mau1 { get; set; }
 
+    public bool? Active { get; set; }
+
     public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; } = new List<ChiTietPhieuNhap>();
 
     public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; } = new List<ChiTietPhieuXuat>();

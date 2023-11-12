@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Nhóm tin tức";
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-
+    QuanLyBanHangContext context = new QuanLyBanHangContext();
+    List<DonViTinh> donViTinhs = context.DonViTinhs.Where(x => x.Active == true).ToList();
 
 }
 
@@ -15,7 +16,7 @@
         
 
         <!-- Horizontal Form -->
-        <form action="/HangHoa/Them" method="post">
+        <form method="get">
 
 
             <div class="row mb-3">
@@ -23,10 +24,13 @@
                 <div class="col-sm-10">
                     @*<input asp-for="@Model.ImgHangHoas" type="image" class="form-control" id="inputText">*@
                     <div class="col-md-8 col-lg-9">
-                        <input type="file" id="fileInput" class="custom-file-input" name="file" style="display: none">
+                        <input type="file" id="fileInput" class="custom-file-input" name="file" multiple>
                         <label class="custom-file-upload btn btn-primary btn-sm" for="fileInput">
                             <i class="bi bi-upload"></i> Tải lên tệp
                         </label>
+                        @* <input type="file" id="fileInput" class="file-upload" multiple>
+                        <label for="fileInput" class="custom-file-upload">Chọn Ảnh</label>
+                        <button id="saveButton" onclick="UpdateHangHoa()">Lưu Ảnh</button> *@
                     </div>
                     
                     <div class="form-check">
@@ -64,7 +68,7 @@
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Thuộc nhóm</label>
                 <div class="col-sm-10">
-                    <select asp-for="@Model.TenHh" id="selectCap" class="form-select">
+                    <select asp-for="@Model.Idnhh" id="selectCap" class="form-select" >
                         <option selected="">--Thuộc nhóm--</option>
                         @foreach (NhomHangHoa item in ViewBag.NhomHangHoa)
                         {
@@ -79,31 +83,30 @@
            
             
             <div class="row mb-3">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Sizes</label>
-                <div class="col-md-2">
-                    <input asp-for="@Model.Size" type="text" class="form-control" id="inputText">
-                </div>
-
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Màu</label>
-                <div class="col-md-2">
-                    <input asp-for="@Model.Color" type="text" class="form-control" id="inputText">
-                </div>
-
                 <label for="inputEmail3" class="col-sm-2 col-form-label">ĐVT</label>
                 <div class="col-md-2">
-                    <input asp-for="@Model.IddvtNavigation.TenDvt" type="text" class="form-control" id="inputText">
+                    <select asp-for="@Model.Iddvt" class="form-select">
+                        <option selected="">--Đơn vị tính--</option>
+                        @foreach (DonViTinh item in donViTinhs)
+                        {
+                            <option value="@item.Iddvt">@item.TenDvt</option>
+
+                        }
+
+
+                    </select>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Giá bán</label>
                 <div class="col-md-4">
-                    <input asp-for="@Model.IdgiaNavigation.GiaBan" type="text" class="form-control" id="inputText">
+                    <input asp-for="@Model.GiaBan" type="text"  class="form-control" id="inputText">
                 </div>
 
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Giá sale</label>
                 <div class="col-md-4">
-                    <input asp-for="@Model.IdgiaNavigation.GiaSale" type="text" class="form-control" id="inputText">
+                    <input asp-for="@Model.GiaSale" type="text" class="form-control" id="inputText">
                 </div>
             </div>
 
@@ -113,7 +116,7 @@
 
 
             <div class="text-center">
-                <button id="saveButton" onclick="UpdateHangHoa()" type="submit" class="btn btn-primary">Lưu</button>
+                <button id="saveButton" onclick="UpdateHangHoa()" class="btn btn-primary">Lưu</button>
                 <button type="reset" class="btn btn-secondary">Hủy</button>
             </div>
         </form><!-- End Horizontal Form -->

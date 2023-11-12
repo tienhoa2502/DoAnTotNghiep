@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BanHangOnl.Models;
+using BanHangOnl.Models.Mapping;
 using System;
 using System.Globalization;
 
@@ -21,6 +22,8 @@ namespace QuanLyNhaHang.Models.Mapping
             .ForMember(dest => dest.NgayHd, opt => opt.MapFrom(src => src.NgayHd != "" ? DateTime.ParseExact(src.NgayHd, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null));
             CreateMap<ChiTietPhieuNhap, ChiTietPhieuNhapMap>()
             .ForMember(dest => dest.Idpn, opt => opt.MapFrom(src => src.Idpn.ToString()))
+            .ForMember(dest => dest.Idmau, opt => opt.MapFrom(src => src.Idmau.ToString()))
+            .ForMember(dest => dest.Idsize, opt => opt.MapFrom(src => src.Idsize.ToString()))
             .ForMember(dest => dest.Idhh, opt => opt.MapFrom(src => src.Idhh.ToString()))
             .ForMember(dest => dest.SoLuong, opt => opt.MapFrom(src => src.SoLuong.ToString()))
             .ForMember(dest => dest.Hsd, opt => opt.MapFrom(src => src.Hsd.ToString()))
@@ -29,6 +32,8 @@ namespace QuanLyNhaHang.Models.Mapping
             CreateMap<ChiTietPhieuNhapMap, ChiTietPhieuNhap>()
             .ForMember(dest => dest.Idpn, opt => opt.MapFrom(src => src.Idpn != null ? long.Parse(src.Idpn) : (long?)null))
             .ForMember(dest => dest.Idhh, opt => opt.MapFrom(src => src.Idhh != null ? long.Parse(src.Idhh) : (long?)null))
+            .ForMember(dest => dest.Idsize, opt => opt.MapFrom(src => src.Idsize != null ? long.Parse(src.Idsize) : (long?)null))
+            .ForMember(dest => dest.Idmau, opt => opt.MapFrom(src => src.Idmau != null ? long.Parse(src.Idmau) : (long?)null))
             .ForMember(dest => dest.SoLuong, opt => opt.MapFrom(src => src.SoLuong != "" ? double.Parse(src.SoLuong.Replace(",", "")) : (double?)null))
             .ForMember(dest => dest.Gia, opt => opt.MapFrom(src => src.Gia != "" ? double.Parse(src.Gia.Replace(",", "")) : (double?)null))
             .ForMember(dest => dest.Hsd, opt => opt.MapFrom(src => src.Hsd != "" ? DateTime.ParseExact(src.Hsd, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null))
@@ -42,6 +47,9 @@ namespace QuanLyNhaHang.Models.Mapping
             .ForMember(dest => dest.NgayHd, opt => opt.MapFrom(src => src.NgayHd != "" ? DateTime.ParseExact(src.NgayHd, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null))
 
             .ForMember(dest => dest.NgayTao, opt => opt.MapFrom(src => src.NgayHd != "" ? DateTime.ParseExact(src.NgayTao, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null));
+            CreateMap<KhachHangMap, KhachHang>();
+            CreateMap<KhachHang, KhachHangMap>();
+
 
         }
     }

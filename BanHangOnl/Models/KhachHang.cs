@@ -9,7 +9,7 @@ public partial class KhachHang
 
     public string? TenKh { get; set; }
 
-    public decimal? Phone { get; set; }
+    public string? Phone { get; set; }
 
     public string? Email { get; set; }
 
@@ -18,4 +18,8 @@ public partial class KhachHang
     public bool? Active { get; set; }
 
     public string? MaKh { get; set; }
+
+    public int? Idtk { get; set; }
+
+    public virtual TaiKhoan? IdtkNavigation { get; set; }
 }
