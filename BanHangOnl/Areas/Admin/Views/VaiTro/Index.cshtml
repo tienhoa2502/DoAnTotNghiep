@@ -36,7 +36,6 @@
                             <tr>
                                 <th scope="col">Mã vai trò</th>
                                 <th scope="col">Tên vai trò</th>
-                                <th scope="col">Trạng thái</th>
                                 <th scope="col">Tùy chọn</th>
                             </tr>
                         </thead>
@@ -46,12 +45,10 @@
                                 <tr>
                                     <td>@vt.MaVt</td>
                                     <td>@vt.TenVt</td>
-                                    <td>@vt.Active</td>
                                     <td>
                                         <a href="/VaiTro/ViewSua/@vt.Idvt" type="button" class="btn btn-primary btn-sm">Sửa</a>
                                         <a href="/VaiTro/Xoa/@vt.Idvt" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
-                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
                                 </tr>
                             }
 
