@@ -131,7 +131,7 @@
                             <label class="col-sm-2 col-form-label">Số điện thoại</label>
                             <div class="col-md-2">
                                 <select id="sdt" name="sdt" class="form-select col-sm-4" style="width : max">
-                                    <option selected value="0">-- sđt --</option>
+                                    <option selected value="0">-- SĐT --</option>
                                     @foreach (TaiKhoan n in getListTaiKhoan())
                                     {
                                         <option value="@n.TenTk">@n.TenTk</option>
@@ -171,7 +171,7 @@
                                 <label class="col-sm-2 col-form-label">Tên hàng hóa</label>
                                 <div class="col-sm-6">
                                     <select id="selectHH" name="idHangHoa" class="form-select col-sm-4" style="width : max">
-                                        <option selected value="0">-- Tên hàng hóa--</option>
+                                        <option selected value="0">-- Tên hàng hóa --</option>
                                         @foreach (HangHoa n in getListHangHoa())
                                         {
                                             <option value="@n.Idhh">@n.TenHh</option>
@@ -223,49 +223,54 @@
 
                                 </div>
 
-                                <label class="col-sm-12 col-lg-1 col-form-label">Số lượng còn</label>
+                                <label class="col-sm-auto col-form-label">Số lượng còn</label>
                                 <div class="col-md-2 mb-2 col-lg-2">
                                     <input class="form-control formatted-number"
                                            type="number"
                                            name="sLCon"
                                            id="sLCon" 
-                                           placeholder="Số lượng" />
+                                           placeholder="Số lượng" readonly />
                                 </div>
-                                <label class="col-sm-12 col-lg-1 col-form-label">Số lượng mua</label>
-                                <div class="col-md-2 mb-2 col-lg-2">
-                                    <input class="form-control formatted-number"
-                                           type="number"
-                                           data-content="Không được để trống" id="SLHH" placeholder="Số lượng" />
-                                </div>
+                                
                             </div>
 
                             <div class="row mb-3">
 
-                                <label class="col-sm-auto col-lg-2 col-form-label">Đơn giá</label>
-                                <div class="col-sm-3">
+                                <label class="col-sm-2 col-form-label">Số lượng mua</label>
+                                <div class="col-md-2">
+                                    <input class="form-control formatted-number"
+                                           type="number"
+                                           min= "1"
+                                           data-content="Không được để trống" id="SLHH" placeholder="Số lượng" />
+                                </div>
+
+                                <label class="col-sm-1 col-form-label">Đơn giá</label>
+                                <div class="col-md-2">
                                     <input class="form-control formatted-number"
                                            type="text"
                                            name="donGia"
                                            id="DonGia" 
                                            placeholder="Đơn giá" />
                                 </div>
-                                <label class="col-sm-auto col-lg-2 col-form-label">Thành tiền</label>
-                                <div class="col-sm-3">
+                                <label class="col-sm-auto col-form-label">Thành tiền</label>
+                                <div class="col-md-2">
                                     <input class="form-control formatted-number"
                                            type="text"
                                            name="thanhTien"
                                            id="ThanhTien"
                                            placeholder="Thành tiền" />
                                 </div>
-
-
-
-                                <div class="col-md-2 mb-2 col-lg-2">
+                                <div class="col-lg-1 col-sm-2">
                                     <button type="button" class="btn btn-primary" onclick="addChiTietDonDatHang()">
                                         Thêm
                                     </button>
                                 </div>
+
+                                                       
+
                             </div>
+
+                            
                         </div>
 
                         </div>

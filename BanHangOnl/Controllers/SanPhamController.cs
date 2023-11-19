@@ -22,7 +22,8 @@ namespace BanHangOnl.Controllers
 			ViewBag.HangHoa = context.HangHoas
 				.Include(x => x.ImgHangHoas)
 				.Where(x => x.Active == true).ToList();
-			return View();
+            ViewBag.Voucher = context.Vouchers.Where(x => x.Active == true).ToList();
+            return View();
 		}
 	}
 }

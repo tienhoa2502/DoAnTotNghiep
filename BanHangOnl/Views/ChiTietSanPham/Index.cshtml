@@ -2,7 +2,14 @@
 @{
     ViewData["Title"] = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+	QuanLyBanHangContext context = new QuanLyBanHangContext();
+
 }
+
+
+
+
 
 <div class="container single_product_container">
 	<div class="row">
@@ -47,30 +54,23 @@
 				<div class="product_details_title">
 					<h2>Pocket cotton sweatshirt</h2>
 
-					<div class="d-flex justify-content-between">
+					@*<div class="d-flex justify-content-between">
 						<h2 class="title-product">Áo Thun Nam Tay Dài B1220BB256</h2>						
-					</div>
+					</div>*@
 
-					<div class="group-status">
-						<span class="first_status mr-2">Thương hiệu:
-							<span class="status_name">
-								<a href="/collections/all?q=vendor.filter_key:(%22Ben &amp; Tod%22)&amp;page=1&amp;view=grid" target="_blank" class="text-primary" title="Ben &amp; Tod">Ben &amp; Tod
-								</a>
-							</span>
-						</span>
+					<div class="group-status">						
 						<span class="first_status product_sku">Mã sản phẩm:
 							<span class="status_name product-sku" itemprop="sku" content="SP02715">SP027156</span>
 						</span>
 					</div>
-
-
+					<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
+						<span class="ti-truck"></span><span>Miễn phí giao hàng</span>
+					</div>
 @*					<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
 *@				</div>
-				<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
-					<span class="ti-truck"></span><span>Miễn phí giao hàng</span>
-				</div>
-				<div class="original_price">$629.99</div>
-				<div class="product_price">$495.00</div>
+				
+				<div class="original_price">629.99 VND</div>
+				<div class="product_price">495.00 VND</div>
 				<ul class="star_rating">
 					<li><i class="fa fa-star" aria-hidden="true"></i></li>
 					<li><i class="fa fa-star" aria-hidden="true"></i></li>
@@ -87,7 +87,7 @@
 					</ul>
 					<span>Sizes:</span>
 					<ul>
-						<li  S</li>
+						<li >S</li>
 						<li >M</li>
 						<li >L</li>
 					</ul>
@@ -102,6 +102,8 @@
 					<div class="red_button add_to_cart_button"><a href="#">Thêm vào giỏ hàng</a></div>
 					<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
 				</div>
+				<div class="red_button add_to_cart_button"><a href="#">Mua ngay</a></div>
+
 			</div>
 		</div>
 	</div>
@@ -272,3 +274,7 @@
 	</div>
 
 </div>
+
+
+
+

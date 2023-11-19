@@ -11,7 +11,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/TinTuc")]
         public IActionResult Index()
         {
-            ViewBag.TinTuc = context.TinTucs.Include(x => x.IdnttNavigation).Where(x => x.Active == true).ToList();
+            ViewBag.TinTuc = context.TinTucs.Include(x => x.IdnttNavigation).ToList();
 
             return View();
         }
@@ -21,8 +21,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
             ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true /*&& x.Levels == 2)*/).ToList();
             return View("Add");
         }
-        [Route("/TinTuc/Them")]
 
+        [Route("/TinTuc/Them")]
         public IActionResult Add(TinTuc vaiTro)
         {
             vaiTro.Active = true;
@@ -31,6 +31,14 @@ namespace BanHangOnl.Areas.Admin.Controllers
             context.TinTucs.Add(vaiTro);
             context.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [HttpPost("/TinTuc/UpdateAcTive")]
+        public void UpdateActive(int idTT)
+        {
+            TinTuc tin = context.TinTucs.Find(idTT);
+            tin.Active = !tin.Active;
+            context.TinTucs.Update(tin);
+            context.SaveChanges();  
         }
 
 

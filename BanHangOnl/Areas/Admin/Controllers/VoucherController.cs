@@ -10,7 +10,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/Voucher")]
         public IActionResult Index()
         {
-            ViewBag.Voucher = context.Vouchers.Where(x => x.Active == true).ToList();
+            ViewBag.Voucher = context.Vouchers.ToList();
 
             return View();
         }
@@ -29,6 +29,16 @@ namespace BanHangOnl.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpPost("/Voucher/UpdateAcTive")]
+        public void UpdateActive(int idVC)
+        {
+            Voucher vc = context.Vouchers.Find(idVC);
+            vc.Active = !vc.Active;
+            context.Vouchers.Update(vc);
+            context.SaveChanges();
+        }
+
 
 
         [Route("/Voucher/ViewSua/{id}")]

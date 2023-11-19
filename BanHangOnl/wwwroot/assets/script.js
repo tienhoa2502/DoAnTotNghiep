@@ -1,4 +1,6 @@
-
+var imgList = [];
+var imgAvt = null;
+var imgTemp = [];
 
 $(document).ready(function(){
     $(".upload-area").click(function(){
@@ -16,12 +18,11 @@ $(document).ready(function(){
                     let html = `
                         <div class = "uploaded-img">
                             <img src = "${event.target.result}">
-                            <button type = "button" class = "remove-btn">
-                                <i class = "fas fa-times"></i>
-                            </button>
+                            <input type="radio" class="form-input-check checkAvt remove-btn" name="checkAvt" ${i == 0 ? "checked" : ""}>
                         </div>
                     `;
                     $(".upload-img").append(html);
+                    imgList.push(event.target.result);
                 }
                 reader.readAsDataURL(event.target.files[i]);
             }
@@ -31,11 +32,48 @@ $(document).ready(function(){
         }
     });
 
-    $(window).click(function(event){
-        if($(event.target).hasClass('remove-btn')){
-            $(event.target).parent().remove();
-        } else if($(event.target).parent().hasClass('remove-btn')){
-            $(event.target).parent().parent().remove();
+    // $(window).click(function(event){
+    //     if($(event.target).hasClass('remove-btn')){
+    //         $(event.target).parent().remove();
+    //     } else if($(event.target).parent().hasClass('remove-btn')){
+    //         $(event.target).parent().parent().remove();
+    //     }
+    // })
+
+     // <button type = "button" class = "remove-btn">
+     //                            <i class = "fas fa-times"></i>
+     //                        </button>
+
+    // $(window).click(function (event) {
+    //     if ($(event.target).hasClass('checkAvt')) {
+    //         let removedFileSrc = $(event.target).parent().find('img').attr('src');
+    //         imgAvt = imgList.filter(file => file === removedFileSrc);
+    //         imgList = imgList.filter(file => file !== removedFileSrc);
+    //     } else if ($(event.target).parent().hasClass('checkAvt')) {
+    //         let removedFileSrc = $(event.target).parent().parent().find('img').attr('src');
+    //         imgAvt = imgList.filter(file => file === removedFileSrc);
+    //         imgList = imgList.filter(file => file !== removedFileSrc);
+    //     }
+    //  //   $('.upload-info-value').text(imgList.length);
+    // });
+
+
+    $(document).on('click', 'input[name=checkAvt]', function () {
+        console.log('1233');
+        if ($(event.target).hasClass('checkAvt')) {
+            let removedFileSrc = $(event.target).parent().find('img').attr('src');
+            imgAvt = imgList.filter(file => file === removedFileSrc);
+            imgTemp = imgList.filter(file => file !== removedFileSrc);
+        } else if ($(event.target).parent().hasClass('checkAvt')) {
+            let removedFileSrc = $(event.target).parent().parent().find('img').attr('src');
+            imgAvt = imgList.filter(file => file === removedFileSrc);
+            imgTemp = imgList.filter(file => file !== removedFileSrc);
         }
-    })
+    });
+
+
+
 });
+
+
+

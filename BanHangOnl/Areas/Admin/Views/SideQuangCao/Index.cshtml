@@ -34,36 +34,31 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Hình ảnh</th>
                                 <th scope="col">Ngày tạo</th>
                                 <th scope="col">Người tạo</th>
                                 <th scope="col">Hiển thị</th>
                                 <th scope="col">Tùy chọn</th>
-
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbodyTT">
                             @foreach (SideQuangCao tk in ViewBag.SideQuangCao)
                             {
                                 <tr>
-                                    <td>@tk.Id</td>
-                                    <td>@tk.Img</td>
+                             
+                                    <td><img src="@tk?.Img.(x => x.IsDefault == true)?.Img" width="300" height="150" /> </td>
                                     <td>@tk.NgayTao</td>
                                     <td>@tk.NguoiTao</td>
                                     <td>
                                         <div class="form-check form-switch">
-                                            <input @tk.HienThi class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                            <input @tk.HienThi class="form-check-input" type="checkbox"  id="flexSwitchCheckDefault">
                                         </div>
                                     </td>
                                     <td>
                                         <a href="/SideQuangCao/Xoa/@tk.Id" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
-                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
                                 </tr>
                             }
-
-
                         </tbody>
                     </table>
                     <!-- End Table with stripped rows -->

@@ -17,8 +17,9 @@
         }
     }
 
+
 }
-}
+
 
 
 
@@ -64,20 +65,33 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbodyTT"> 
                             @foreach (TinTuc tk in ViewBag.TinTuc)
                             {
-                                <tr>
-                                    <td>@tk.Img</td>
+                                <tr data-id="@tk.Idtt">
+                                    <td>@tk.Img
+                                        <input type="hidden" name="idTT" value="@tk.Idtt"/>
+                                    </td>
                                     <td>@tk.TenTt</td>
                                     <td>@tk.ChiTiet</td>
                                     <td>@tk.NgayTao</td>
                                     <td>@getTenNhom(@tk.Idntt)</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                        </div>
-                                    </td>
+                                    @if(tk.Active == true){
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active"  id="flexSwitchCheckDefault" checked>
+                                            </div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active" id="flexSwitchCheckDefault">
+                                            </div>
+                                        </td>
+                                    }
+
                                     <td>
                                         <a href="/TinTuc/ViewSua/@tk.Idtt" type="button" class="btn btn-primary btn-sm">Sửa</a>
                                         <a href="/TinTuc/Xoa/@tk.Idtt" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
@@ -97,5 +111,5 @@
         </div>
     </div>
 </section>
-
+<script src="~/jsadmin/tintuc.js"></script>
 

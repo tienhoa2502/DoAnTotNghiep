@@ -41,17 +41,30 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbodyNTT">
                             @foreach (NhomTinTuc tk in ViewBag.NhomTinTuc)
                             {
                                 <tr>
-                                    <td>@tk.Idntt</td>
-                                    <td>@tk.TenNtt</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">                                          
-                                        </div>
+                                    <td>@tk.Idntt
+                                        <input type="hidden" name="idNTT" value="@tk.Idntt" />
                                     </td>
+                                    <td>@tk.TenNtt</td>
+                                    @if (@tk.Active==true)
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active" checked id="flexSwitchCheckDefault">
+                                            </div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active" id="flexSwitchCheckDefault">
+                                            </div>
+                                        </td>
+                                    }
                                     <td>
                                         <a href="/NhomTinTuc/ViewSua/@tk.Idntt" type="button" class="btn btn-primary btn-sm">Sửa</a>
                                         <a href="/NhomTinTuc/Xoa/@tk.Idntt" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
@@ -72,4 +85,16 @@
     </div>
 </section>
 
+<script>
+    $('#tbodyNTT').on('click', 'input[name="active"]', function () {
+        var idNTT = $(this).closest('tr').find('input[name="idNTT"]').val();
+        $.ajax({
+            url: '/NhomTinTuc/UpdateAcTive', // Đường dẫn đến action xử lý form
+            method: 'POST',
+            data: {
+                idNTT: idNTT,
+            },
+        });
+    });
+</script>
 

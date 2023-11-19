@@ -45,11 +45,13 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbodyVC">
                             @foreach (Voucher tk in ViewBag.Voucher)
                             {
                                 <tr>
-                                    <td>@tk.MaVoucher</td>
+                                    <td>@tk.MaVoucher
+                                        <input type="hidden" name="idVC" value="@tk.Id" />
+                                    </td>
                                     <td>@tk.TenVoucher</td>
                               
                                     <td>@tk.NgayBd</td>
@@ -59,11 +61,22 @@
                                             <input @tk.ApDung class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input @tk.HienThi class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                        </div>
-                                    </td>
+                                    @if (tk.Active == true)
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active" id="flexSwitchCheckDefault" checked>
+                                            </div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active" id="flexSwitchCheckDefault">
+                                            </div>
+                                        </td>
+                                    }
                                     <td>
                                         <a href="/Voucher/ViewSua/@tk.Id" type="button" class="btn btn-primary btn-sm">Sửa</a>
                                         <a href="/Voucher/Xoa/@tk.Id" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
@@ -84,3 +97,15 @@
 </section>
 
 
+<script>
+    $('#tbodyVC').on('click', 'input[name="active"]', function () {
+        var idVC = $(this).closest('tr').find('input[name="idVC"]').val();
+        $.ajax({
+            url: '/Voucher/UpdateAcTive', // Đường dẫn đến action xử lý form
+            method: 'POST',
+            data: {
+                idVC: idVC,
+            },
+        });
+    });
+</script>
