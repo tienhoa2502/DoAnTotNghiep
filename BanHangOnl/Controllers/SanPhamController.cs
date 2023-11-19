@@ -1,7 +1,7 @@
 ﻿using BanHangOnl.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace BanHangOnl.Controllers
 {
@@ -16,10 +16,12 @@ namespace BanHangOnl.Controllers
 		//{
 		//	_context = context;
 		//}
+		[HttpGet("/SanPham")]
 		public IActionResult Index()
 		{
-			//var angHoa = context.HangHoas.ToList();
-
+			ViewBag.HangHoa = context.HangHoas
+				.Include(x => x.ImgHangHoas)
+				.Where(x => x.Active == true).ToList();
 			return View();
 		}
 	}
