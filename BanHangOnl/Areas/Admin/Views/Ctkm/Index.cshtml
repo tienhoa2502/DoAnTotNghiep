@@ -34,7 +34,6 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Mã CTKM</th>
                                 <th scope="col">Tên CTKM</th>
                                 <th scope="col">Mô tả</th>
@@ -47,7 +46,6 @@
                             @foreach (Ctkm tk in ViewBag.Ctkm)
                             {
                                 <tr>
-                                    <td>@tk.Id</td>
                                     <td>@tk.MaCtkm</td>
                                     <td>@tk.TenCtkm</td>
                                     <td>@tk.MoTa</td>
@@ -58,9 +56,8 @@
                                     </td>
                                     <td>
                                         <a href="/ChuongTrinhKhuyenMai/ViewSua/@tk.Id" type="button" class="btn btn-primary btn-sm">Sửa</a>
-                                        <a href="/ChuongTrinhKhuyenMai/Xoa/@tk.Id" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                        <a href="/ChuongTrinhKhuyenMai/Xoa/@tk.Id" onclick="return confirm('Bạn có muốn xóa thông tin?')" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
-                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
                                 </tr>
                             }
 

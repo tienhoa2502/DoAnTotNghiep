@@ -27,5 +27,7 @@ public partial class TinTuc
 
     public int? Idntt { get; set; }
 
+    public bool? HienThi { get; set; }
+
     public virtual NhomTinTuc? IdnttNavigation { get; set; }
 }

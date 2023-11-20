@@ -71,5 +71,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+       
+        
     }
 }

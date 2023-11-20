@@ -21,8 +21,12 @@ namespace BanHangOnl.Controllers
 		{
 			ViewBag.HangHoa = context.HangHoas
 				.Include(x => x.ImgHangHoas)
-				.Where(x => x.Active == true).ToList();
-			return View();
+				.Where(x => x.HienThi == true && x.Active == true).ToList();
+            ViewBag.Voucher = context.Vouchers.Where(x => x.Active == true && x.HienThi == true).ToList();
+            ViewBag.NhomHangHoaCap1 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 1).ToList();
+            ViewBag.NhomHangHoaCap2 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 2).ToList();
+
+            return View();
 		}
 	}
 }

@@ -36,7 +36,7 @@
                             <tr>
                                 <th scope="col">Tài khoản</th>
                                 <th scope="col">Mật khẩu</th>
-                                <th scope="col">Họ tên người dùng</th>
+                                <th scope="col">Tên người dùng</th>
                                 <th scope="col">Vai trò</th>
                                 <th scope="col">Tùy chọn</th>
                             </tr>
@@ -52,7 +52,7 @@
                                     <td>
                                         <a href="/TaiKhoan/ThongTinCaNhan/@tk.Idtk" type="button" class="btn btn-primary btn-sm">Xem</a>
                                         <a href="/TaiKhoan/ViewSua/@tk.Idtk" type="button" class="btn btn-primary btn-sm">Sửa</a>
-                                        <a href="/TaiKhoan/Xoa/@tk.Idtk" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                        <a href="/TaiKhoan/Xoa/@tk.Idtk" onclick="return confirm('Bạn có muốn xóa thông tin?')" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
                                 </tr>
                             }

@@ -1,12 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Thông tin tài khoản";
     Layout = "/Views/Shared/_Layout.cshtml";
+
+    QuanLyBanHangContext context = new QuanLyBanHangContext();
+
+
+
 }
-
-
-
-@model BanHangOnl.Models.TinTuc
-
 
 
 <link rel="stylesheet" type="text/css" href="~/usassets/styles/main_styles.css">
@@ -67,3 +67,152 @@
     }*@
 
 </div>
+
+<section class="blogpage section">
+	<div class="containers" itemscope="" itemtype="https://schema.org/Blog">
+		<meta itemprop="name" content="Tất cả bài viết">
+		<meta itemprop="description" content="">
+		<div class="wrap_background_aside margin-bottom-0">
+			<div class="container">
+				<h3 class="title_page text-center">Tất cả bài viết</h3>
+
+				<div class="row blog-list">
+					<div class="col-lg-9 col-12 content-blog">
+
+                            @foreach (TinTuc tt in ViewBag.TinTuc)
+                            {
+
+                            <div class="row mb-2" style="background-color: #f8f8f8;">
+                                <div class="col-md-4">
+                                    <div class="blogwp">
+                                        <!-- Hình ảnh nằm ở bên trái -->
+                                        <a class="image-blog card-img-top text-center position-relative d-flex align-items-center justify-content-center aspect-ratio rounded overflow-hidden" 
+                                        href="/blogs/tuyen-dung/ben-tod-tuyen-dung-photographer" 
+                                        title="[Ben & Tod Tuyển Dụng] PHOTOGRAPHER" 
+                                        style="--width: 433; --height: 231;">
+                                            <img class="img-fluid m-auto mh-100 w-auto" src="https://file.hstatic.net/1000378223/article/1_600cdb7775b047a3a96588a0b1f85dce.jpg" alt="[Ben & Tod Tuyển Dụng] PHOTOGRAPHER">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="content_blog clearfix card-body px-0 py-2">
+                                        <!-- Phần còn lại nằm ở bên phải -->
+                                        <h3 class="" >
+                                            <a class="link" href="/ChiTietTinTuc"  title="[Ben & Tod Tuyển Dụng] PHOTOGRAPHER">@tt.TenTt</a>
+                                        </h3>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <div class="art-info text-muted ">
+                                                    <span>
+                                                       @tt.NgayTao
+                                                    </span>                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="justify">
+                                            <span class="art-summary">
+                                                @tt.ChiTiet
+                                            </span>
+                                        </p>
+                                        <div>
+                                            <a class="button_custome_35 link" href="/blogs/tuyen-dung/ben-tod-tuyen-dung-photographer" title="Đọc tiếp">Đọc tiếp</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            }
+
+							<div class="text-center pageinate-page-blog col-12">
+								<nav class="clearfix relative nav_pagi w_100">
+									<ul class="pagination clearfix float-right">
+
+										<li class="page-item disabled"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
+
+
+
+
+
+										<li class="active page-item disabled">
+											<a class="page-link" href="#">1</a>
+										</li>
+
+
+
+
+										<li class="page-item">
+											<a class="page-link" href="/blogs/all?page=2" data-page="2">2</a>
+										</li>
+
+
+
+										<li class="page-item">
+											<a class="page-link" href="/blogs/all?page=3" data-page="3">3</a>
+										</li>
+
+
+
+
+										<li class="page-item">
+											<a class="page-link" href="" data-page="…">…</a>
+										</li>
+
+
+
+
+										<li class="page-item">
+											<a class="page-link" href="/blogs/all?page=35" data-page="35">35</a>
+										</li>
+
+
+
+
+										<li class="page-item hidden-xs">
+											<a class="page-link" href="/blogs/all?page=2" data-page="2">
+												<i class="fa fa-angle-right" aria-hidden="true"></i>
+											</a>
+										</li>
+
+									</ul>
+								</nav>
+							</div>
+						
+					</div>
+
+
+					<div class="col-lg-3 col-12 left-content sidebar">
+						<aside class="aside-item blog-sidebar sidebar-category collection-category margin-bottom-25">
+							<div class="aside-title">
+								<h5 class="title-head margin-top-0 cate"><span>Danh mục tin tức</span></h5>
+							</div>
+							<div class="aside-content">
+								<nav class="nav-category navbar-toggleable-md">
+									<ul class="nav navbar-pills flex-column">
+
+                                        @foreach (NhomTinTuc ntt in ViewBag.NhomTinTuc)
+                                        {
+										<li class="nav-item">
+											<a class="nav-link link" href="#">@ntt.TenNtt
+											</a>
+
+										</li>
+
+                                        }
+
+
+										
+
+
+									</ul>
+								</nav>
+							</div>
+						</aside>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

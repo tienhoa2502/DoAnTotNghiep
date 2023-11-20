@@ -46,6 +46,19 @@ COLOR PALETTE
 2. Body and some general stuff
 *********************************/
 
+
+.submenu {
+	display: none; /* Hide the submenu by default */
+	position: absolute;
+	/* Add additional styling as needed */
+}
+
+/* Show the submenu when the parent li is hovered */
+.navbar_menu li:hover .submenu {
+	display: block;
+}
+
+
 *
 {
 	margin: 0;

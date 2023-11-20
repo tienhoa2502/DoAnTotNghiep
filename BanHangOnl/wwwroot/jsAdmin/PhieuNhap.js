@@ -77,7 +77,7 @@ function AddRowPhieuNhapKho() {
             <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuong}" name="soLuong" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" t type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${donGia}" name="donGia" />
+            <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${donGia}" name="donGia" />
         </td>
         <td class="p-1">
             <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:100px;" value="${thanhTien}" name="thanhTien" />

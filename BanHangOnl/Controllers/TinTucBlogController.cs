@@ -26,12 +26,21 @@ namespace BanHangOnl.Controllers
 
 		public ActionResult Index()
         {
-            var items = context.TinTucs.ToList();
+            ViewBag.TinTuc = context.TinTucs.Where(x => x.Active == true && x.HienThi == true).ToList();
+            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true && x.HienThi == true).ToList();
 
             return View();
         }
 
 
-	}
+        [HttpGet("/ChiTietTinTuc")]
+        public ActionResult Info()
+        {
+            
+            return View();
+        }
+
+
+    }
 }
 

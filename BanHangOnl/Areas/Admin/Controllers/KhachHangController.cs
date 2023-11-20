@@ -1,5 +1,6 @@
 ﻿using BanHangOnl.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BanHangOnl.Areas.Admin.Controllers
 {
@@ -15,11 +16,14 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpGet("/KhachHang/ThongTinKhachHang")]
-        public IActionResult Info()
+        [Route("/KhachHang/ThongTinKhachHang/{id}")]
+        public IActionResult Info(int id)
         {
+            KhachHang xem = context.KhachHangs.Find(id);
+
             ViewBag.KhachHang = context.KhachHangs.Where(x => x.Active == true).ToList();
             return View();
         }
+
     }
 }

@@ -107,6 +107,7 @@ function addChiTietDonDatHang() {
         return;
     }
     var newRow = $(`<tr data-idhh = "${idHangHoa}" data-idSize="${idSize}" data-idMau="${idMau}">
+
         <td class="first-td-column text-center p-1 td-sticky">
             <input autocomplete="off" type="text" class="form-control form-table text-center stt" readonly value="${GanSTT()}" style="width:32px;z-index:2;" />
             <input type="hidden" name="idHangHoa" value="${idHangHoa}" />
