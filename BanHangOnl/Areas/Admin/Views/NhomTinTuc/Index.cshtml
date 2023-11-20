@@ -34,7 +34,6 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Tên nhóm</th>
                                 <th scope="col">Hiển thị</th>                              
                                 <th scope="col">Tùy chọn</th>
@@ -45,11 +44,11 @@
                             @foreach (NhomTinTuc tk in ViewBag.NhomTinTuc)
                             {
                                 <tr>
-                                    <td>@tk.Idntt
+                                    
+                                    <td>@tk.TenNtt
                                         <input type="hidden" name="idNTT" value="@tk.Idntt" />
                                     </td>
-                                    <td>@tk.TenNtt</td>
-                                    @if (@tk.Active==true)
+                                    @if (@tk.HienThi==true)
                                     {
                                         <td>
                                             <div class="form-check form-switch">
@@ -67,7 +66,7 @@
                                     }
                                     <td>
                                         <a href="/NhomTinTuc/ViewSua/@tk.Idntt" type="button" class="btn btn-primary btn-sm">Sửa</a>
-                                        <a href="/NhomTinTuc/Xoa/@tk.Idntt" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                        <a href="/NhomTinTuc/Xoa/@tk.Idntt" onclick="return confirm('Bạn có muốn xóa thông tin?')" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
                                     @*<td>@tk.IdvtNavigation.TenVt</td>*@
                                 </tr>

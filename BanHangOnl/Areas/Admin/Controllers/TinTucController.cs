@@ -11,7 +11,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/TinTuc")]
         public IActionResult Index()
         {
-            ViewBag.TinTuc = context.TinTucs.Include(x => x.IdnttNavigation).ToList();
+            ViewBag.TinTuc = context.TinTucs.Include(x => x.IdnttNavigation).Where(x => x.Active == true).ToList();
 
             return View();
         }
@@ -26,6 +26,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult Add(TinTuc vaiTro)
         {
             vaiTro.Active = true;
+            vaiTro.HienThi = true;
+
             vaiTro.NgayTao = DateTime.Now;
             vaiTro.NgaySua = DateTime.Now;
             context.TinTucs.Add(vaiTro);
@@ -36,7 +38,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public void UpdateActive(int idTT)
         {
             TinTuc tin = context.TinTucs.Find(idTT);
-            tin.Active = !tin.Active;
+            tin.HienThi = !tin.HienThi;
             context.TinTucs.Update(tin);
             context.SaveChanges();  
         }
@@ -45,7 +47,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [Route("/TinTuc/ViewSua/{id}")]
         public IActionResult viewEdit(int id)
         {
-            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true /*&& x.Levels == 2)*/).ToList();
+            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true).ToList();
 
             TinTuc sua = context.TinTucs.Find(id);
             return View("Edit", sua);

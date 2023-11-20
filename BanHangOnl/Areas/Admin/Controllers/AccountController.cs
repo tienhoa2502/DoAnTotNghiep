@@ -74,24 +74,24 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
 
 
-
-
-        //[Route("/TaiKhoan/ThongTinCaNhan/{id}")]
-        //public IActionResult viewInfo(int id)
-        //{
-        //    NhanVien xem = context.NhanViens.Find(id);
-
-        //    ViewBag.NhanVien = context.NhanViens.Include(x => x.IdtkNavigation).Where(x => x.Active == true).ToList();
-        //    return View("ThongTinCaNhan", xem);
-
-        [HttpGet("/TaiKhoan/ThongTinCaNhan")]
-        public IActionResult Info()
+        [Route("/TaiKhoan/ThongTinCaNhan/{id}")]
+        public IActionResult Info(int id)
         {
-             ViewBag.NhanVien = context.NhanViens.Include(x => x.IdtkNavigation).Where(x => x.Active == true).ToList();
+            TaiKhoan xem = context.TaiKhoans.Find(id);
 
-             return View();
+
+            ViewBag.NhanVien = context.NhanViens.Include(x => x.IdtkNavigation).Where(x => x.Active == true).ToList();
+            return View();
         }
 
-        }
+        //[HttpGet("/TaiKhoan/ThongTinCaNhan")]
+        //public IActionResult Info()
+        //{
+        //     ViewBag.NhanVien = context.NhanViens.Include(x => x.IdtkNavigation).Where(x => x.Active == true).ToList();
+
+        //     return View();
+        //}
+
     }
+}
 

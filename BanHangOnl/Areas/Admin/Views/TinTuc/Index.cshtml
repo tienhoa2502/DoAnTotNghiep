@@ -76,7 +76,7 @@
                                     <td>@tk.ChiTiet</td>
                                     <td>@tk.NgayTao</td>
                                     <td>@getTenNhom(@tk.Idntt)</td>
-                                    @if(tk.Active == true){
+                                    @if(tk.HienThi == true){
                                         <td>
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" name="active"  id="flexSwitchCheckDefault" checked>
@@ -94,7 +94,7 @@
 
                                     <td>
                                         <a href="/TinTuc/ViewSua/@tk.Idtt" type="button" class="btn btn-primary btn-sm">Sửa</a>
-                                        <a href="/TinTuc/Xoa/@tk.Idtt" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                        <a href="/TinTuc/Xoa/@tk.Idtt" onclick="return confirm('Bạn có muốn xóa thông tin?')" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
                                     
                                 </tr>

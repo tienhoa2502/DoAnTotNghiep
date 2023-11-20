@@ -2,8 +2,24 @@
 	ViewData["Title"] = "Thông tin tài khoản";
 	Layout = "/Views/Shared/_Layout.cshtml";
 
-   
+    QuanLyBanHangContext context = new QuanLyBanHangContext();
+
 }
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Colo Shop Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="~/usassets/styles/bootstrap4/bootstrap.min.css">
+<link href="~/usassets/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="~/usassets/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="~/usassets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="~/usassets/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="~/usassets/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/usassets/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/usassets/styles/categories_responsive.css">
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -130,13 +146,33 @@
             <div class="sidebar">
                 <div class="sidebar_section">
                     <div class="sidebar_title">
-                        <h5>Danh mục hàng hóa</h5>
+                        <h5>DANH MỤC</h5>
                     </div>
-@*                    @Html.Action("MenuLeft", "Menu")
-*@              </div>
+
+                    @foreach (NhomHangHoa hh in ViewBag.NhomHangHoaCap1)
+                    {
+                        <ul class="sidebar_categories">
+                            <li class="category-item">
+                                <a href="#" onmouseover="showSubCategories(this)" onmouseout="hideSubCategories(this)">
+                                    <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>@hh.TenNhh
+                                </a>
+                                @foreach (NhomHangHoa hh2 in ViewBag.NhomHangHoaCap2)
+                                {
+                                    if (hh2.Thuoc == hh.Idnhh)
+                                    {
+                                        <ul class="sub-categories">
+                                            <li><a href="#" style="color: black">@hh2.TenNhh</a></li>
+                                        </ul>
+                                    }
+                                }
+                                
+                            </li>
+                        </ul>
+                    }
+                </div>
 
                 <!-- Price Range Filtering -->
-                <div class="sidebar_section">
+                @*<div class="sidebar_section">
                     <div class="sidebar_title">
                         <h5>Lọc theo giá</h5>
                     </div>
@@ -147,10 +183,19 @@
                     <div class="filter_button"><span>Lọc</span></div>
 
                     <hr />
-            @*        @Html.Action("Refresh", "Home")*@
-                </div>
+                   @Html.Action("Refresh", "Home")
+                </div>*@
 
-                
+                <div class="sidebar_section">
+                    <div class="sidebar_title">
+                        <h5>Filter by Price</h5>
+                    </div>
+                    <p>
+                        <input type="text" id="amount" readonly="" style="border:0; color:#f6931f; font-weight:bold;">
+                    </p>
+                    <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 58%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 58%;"></span></div>
+                    <div class="filter_button"><span>filter</span></div>
+                </div>
 
             </div>
 
@@ -276,3 +321,55 @@
         parent.classList.toggle('expanded');
     }
 </script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Lấy danh sách các thẻ chứa các nhóm hàng hóa
+        var categoryItems = document.querySelectorAll('.category-item');
+
+        // Lặp qua từng thẻ và thêm sự kiện mouseover và mouseout
+        categoryItems.forEach(function (item) {
+            item.addEventListener('mouseover', function () {
+                // Khi di chuột vào, thêm lớp 'active' cho thẻ con chứa các thẻ nhỏ
+                var subCategories = this.querySelector('.sub-categories');
+                if (subCategories) {
+                    subCategories.classList.add('active');
+                }
+            });
+
+            item.addEventListener('mouseout', function () {
+                // Khi di chuột ra, xóa lớp 'active' cho thẻ con chứa các thẻ nhỏ
+                var subCategories = this.querySelector('.sub-categories');
+                if (subCategories) {
+                    subCategories.classList.remove('active');
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    /* Ẩn các thẻ nhỏ ban đầu */
+    .sub-categories {
+        display: none;
+    }
+
+        /* Hiển thị các thẻ nhỏ khi có lớp 'active' */
+        .sub-categories.active {
+            display: block;
+        }
+</style>
+
+
+
+
+<script src="~/usassets/js/jquery-3.2.1.min.js"></script>
+<script src="~/usassets/styles/bootstrap4/popper.js"></script>
+<script src="~/usassets/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="~/usassets/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="~/usassets/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="~/usassets/plugins/easing/easing.js"></script>
+<script src="~/usassets/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="~/usassets/js/categories_custom.js"></script>

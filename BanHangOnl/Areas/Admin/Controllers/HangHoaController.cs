@@ -18,9 +18,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/HangHoa")]
         public IActionResult Index()
         {
-            ViewBag.HangHoa = context.HangHoas
-                .Include(x => x.ImgHangHoas)
-                .Where(x => x.Active == true).ToList();
+            ViewBag.HangHoa = context.HangHoas.Include(x => x.ImgHangHoas).Where(x => x.Active == true).ToList();
             return View();
         }
         [HttpGet("/HangHoa/Them")]
@@ -37,6 +35,16 @@ namespace BanHangOnl.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpPost("/HangHoa/UpdateHienThi")]
+        public void UpdateActive(int idHH)
+        {
+            HangHoa hh = context.HangHoas.Find(idHH);
+            hh.HienThi = !hh.HienThi;
+            context.HangHoas.Update(hh);
+            context.SaveChanges();
+        }
+
 
 
         [HttpPost("/HangHoa/updateHangHoa")]
@@ -94,6 +102,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return View("Edit", sua);
         }
 
+
+
         [Route("/HangHoa/Sua")]
 
         public IActionResult Edit(HangHoa vaiTro)
@@ -107,8 +117,6 @@ namespace BanHangOnl.Areas.Admin.Controllers
             tt.MaHh = vaiTro.MaHh;
             tt.TenHh = vaiTro.TenHh;
             //tt.Levels = vaiTro.Levels;
-
-
 
             context.HangHoas.Update(tt);
             context.SaveChanges();
@@ -128,6 +136,11 @@ namespace BanHangOnl.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
+        
+                   
 
     }
 }

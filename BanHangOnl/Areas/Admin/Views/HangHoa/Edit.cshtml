@@ -1,11 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Nhóm tin tức";
+﻿@model BanHangOnl.Models.HangHoa
+@{
+    ViewData["Title"] = "Hàng hóa";
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 
 
 }
 
-@model BanHangOnl.Models.HangHoa
 
 
 <div class="card">
@@ -69,10 +69,9 @@
                         <option selected="">Chọn cấp</option>
                         @*@foreach (NhomHangHoa item in ViewBag.NhomHangHoa)
                         {
-                            <option value="@item.Idnhh">@item.TenNhh</option>
-
-                        }*@
-
+                        <option value="@item.Idnhh">@item.TenNhh</option>
+                        *@
+                        }
 
                     </select>
                 </div>
@@ -82,24 +81,27 @@
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Sizes</label>
                 <div class="col-md-4">
-                    <input asp-for="@Model.Size" type="text" class="form-control" id="inputText">
+                    @*                    <input asp-for="@Model.Size" type="text" class="form-control" id="inputText">
+                    *@
                 </div>
 
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Màu</label>
                 <div class="col-md-4">
-                    <input asp-for="@Model.Color" type="text" class="form-control" id="inputText">
+                    @*                    <input asp-for="@Model.Color" type="text" class="form-control" id="inputText">
+                    *@
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Giá bán</label>
                 <div class="col-md-4">
-                    <input asp-for="@Model.IdgiaNavigation.GiaBan" type="text" class="form-control" id="inputText">
+                    @*                    <input asp-for="@Model.IdgiaNavigation.GiaBan" type="text" class="form-control" id="inputText">
+                    *@
                 </div>
 
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Giá sale</label>
                 <div class="col-md-4">
-                    <input asp-for="@Model.IdgiaNavigation.GiaSale" type="text" class="form-control" id="inputText">
+                    @*<input asp-for="@Model.IdgiaNavigation.GiaSale" type="text" class="form-control" id="inputText">*@
                 </div>
             </div>
 
@@ -110,7 +112,7 @@
 
             <div class="text-center">
                 <button id="saveButton" onclick="UpdateHangHoa()" type="submit" class="btn btn-primary">Lưu</button>
-                <button type="reset" class="btn btn-secondary">Hủy</button>
+                <button type="reset" class="btn btn-secondary" onclick="window.history.go(-1);">Hủy</button>
             </div>
         </form><!-- End Horizontal Form -->
 

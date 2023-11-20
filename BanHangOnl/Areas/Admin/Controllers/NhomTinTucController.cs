@@ -11,7 +11,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/NhomTinTuc")]
         public IActionResult Index()
         {
-            ViewBag.NhomTinTuc = context.NhomTinTucs.ToList();
+            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true).ToList();
 
             return View();
         }
@@ -26,6 +26,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult Add(NhomTinTuc vaiTro)
         {
             vaiTro.Active = true;
+            vaiTro.HienThi = true;
+
             context.NhomTinTucs.Add(vaiTro);
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -36,7 +38,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public void UpdateActive(int idNTT)
         {
             NhomTinTuc nhomtin = context.NhomTinTucs.Find(idNTT);
-            nhomtin.Active = !nhomtin.Active;
+            nhomtin.HienThi = !nhomtin.HienThi;
             context.NhomTinTucs.Update(nhomtin);
             context.SaveChanges();
         }
@@ -57,10 +59,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         {
             NhomTinTuc tt = context.NhomTinTucs.Find(vaiTro.Idntt);
             tt.TenNtt = vaiTro.TenNtt;
-            //ncc.DienThoai = vaiTro.DienThoai;
-            //ncc.Mail = vaiTro.Mail;
-            //ncc.GhiChu = vaiTro.GhiChu;
-
+           
 
             context.NhomTinTucs.Update(tt);
             context.SaveChanges();

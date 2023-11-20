@@ -26,8 +26,8 @@ namespace BanHangOnl.Controllers
 
 		public ActionResult Index()
         {
-            ViewBag.TinTuc = context.TinTucs.Where(x => x.Active == true).ToList();
-            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true).ToList();
+            ViewBag.TinTuc = context.TinTucs.Where(x => x.Active == true && x.HienThi == true).ToList();
+            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true && x.HienThi == true).ToList();
 
             return View();
         }

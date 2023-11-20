@@ -49,7 +49,7 @@
                     </div>
 
                     <!-- Table with stripped rows -->
-                    <table class="table datatable">
+                    <table class="table datatable hh">
                         <thead>
                             <tr>
                                 <th scope="col">Hình ảnh</th>
@@ -64,26 +64,40 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbodyHH">
                             @foreach (HangHoa tk in ViewBag.HangHoa)
                             {
                                 <tr>
                                     <td><img src="@tk?.ImgHangHoas.FirstOrDefault(x => x.IsDefault == true)?.Img" width="50" height="50"/> </td> 
-                                    <td>@tk.MaHh</td>
+                                    <td>@tk.MaHh
+                                        <input type="hidden" name="idHH" value="@tk.Idhh"/>
+                                    </td>
                                     <td>@tk.TenHh</td>
                                     <td>@tk?.IddvtNavigation?.TenDvt</td>
                                     <td>@tk?.GiaBan</td>
                                     <td>@tk?.GiaSale</td>
                                     <td>@getTenNhom(@tk.Idnhh)</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input @tk.HienThi class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                        </div>
-                                    </td>
+
+                                    @if (tk.HienThi == true)
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="hienthi" id="flexSwitchCheckDefault" checked>
+                                            </div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="hienthi" id="flexSwitchCheckDefault">
+                                            </div>
+                                        </td>
+                                    }
                                     <td>
                                         <a href="/HangHoa/ViewSua/@tk.Idhh" type="button" class="btn btn-primary btn-sm">Sửa</a>
                                         <a href="/HangHoa/Xoa/@tk.Idhh" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
-                                    </td>s
+                                    </td>
                                 </tr>
                             }
 
@@ -100,3 +114,16 @@
 </section>
 
 
+<script>
+    $('.hh').on('click', 'input[name="hienthi"]', function () {
+        console.log(123);
+        var idHH = $(this).closest('tr').find('input[name="idHH"]').val();
+        $.ajax({
+            url: '/HangHoa/UpdateHienThi', // Đường dẫn đến action xử lý form
+            method: 'POST',
+            data: {
+                idHH: idHH,
+            },
+        });
+    });
+</script>
