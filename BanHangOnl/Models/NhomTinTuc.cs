@@ -11,5 +11,7 @@ public partial class NhomTinTuc
 
     public bool? Active { get; set; }
 
+    public bool? HienThi { get; set; }
+
     public virtual ICollection<TinTuc> TinTucs { get; set; } = new List<TinTuc>();
 }

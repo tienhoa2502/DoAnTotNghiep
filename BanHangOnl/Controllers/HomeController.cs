@@ -20,8 +20,8 @@ namespace BanHangOnl.Controllers
         {
 			ViewBag.HangHoa = context.HangHoas
 				.Include(x => x.ImgHangHoas)
-				.Where(x => x.Active == true).ToList();
-			return View();
+				.Where(x => x.HienThi == true && x.Active == true ).ToList();
+            return View();
 		}
 
         public IActionResult Privacy()

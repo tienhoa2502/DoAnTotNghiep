@@ -21,23 +21,33 @@ namespace BanHangOnl.Areas.Admin.Controllers
             ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true /*&& x.Levels == 2)*/).ToList();
             return View("Add");
         }
-        [Route("/TinTuc/Them")]
 
+        [Route("/TinTuc/Them")]
         public IActionResult Add(TinTuc vaiTro)
         {
             vaiTro.Active = true;
+            vaiTro.HienThi = true;
+
             vaiTro.NgayTao = DateTime.Now;
             vaiTro.NgaySua = DateTime.Now;
             context.TinTucs.Add(vaiTro);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost("/TinTuc/UpdateAcTive")]
+        public void UpdateActive(int idTT)
+        {
+            TinTuc tin = context.TinTucs.Find(idTT);
+            tin.HienThi = !tin.HienThi;
+            context.TinTucs.Update(tin);
+            context.SaveChanges();  
+        }
 
 
         [Route("/TinTuc/ViewSua/{id}")]
         public IActionResult viewEdit(int id)
         {
-            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true /*&& x.Levels == 2)*/).ToList();
+            ViewBag.NhomTinTuc = context.NhomTinTucs.Where(x => x.Active == true).ToList();
 
             TinTuc sua = context.TinTucs.Find(id);
             return View("Edit", sua);

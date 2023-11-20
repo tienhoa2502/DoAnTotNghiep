@@ -15,9 +15,17 @@ namespace BanHangOnl.Controllers
 		//	_context = context;
 		//}
 		[HttpGet("/SanPham/ChiTietSanPham")]
-		public IActionResult Index()
+		public IActionResult Index( int id)
         {
-            return View();
+			HangHoa xem = context.HangHoas.Find(id);
+
+			return View("Index" , xem);
         }
-    }
+		//[Route("/TaiKhoan/ViewSua/{id}")]
+		//public IActionResult viewEdit(int id)
+		//{
+		//	TaiKhoan sua = context.TaiKhoans.Find(id);
+		//	return View("Edit", sua);
+		//}
+	}
 }

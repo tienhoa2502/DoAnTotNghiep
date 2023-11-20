@@ -7,22 +7,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="row">
-        <label class="col-sm-1 col-lg-1 col-form-label">Từ ngày</label>
-        <div class="col-sm-2 col-lg-2">
-            <input type="text" name="tuNgay" class="form-control" value="@DateTime.Now.ToString("dd-MM-yyyy")" placeholder="dd-MM-yyyy" id="tuNgay">
-        </div>
-        <label class="col-sm-1 col-lg-1 col-form-label">Đến ngày</label>
-        <div class="col-sm-2 col-lg-2">
-            <input type="text" name="denNgay" class="form-control" value="@DateTime.Now.ToString("dd-MM-yyyy")" placeholder="dd-MM-yyyy" id="denNgay">
-        </div>
-        <div class="col-md-1 mb-2 col-lg-1 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary" onclick="baoCaoLoiNhuan()">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
-    </div>
 
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Thông kê lợi nhuận</li>
+            </ol>
+        </nav>
+    </div>
 
     <div class="col-md-16 mb-12">
         <div class="card shadow">
@@ -30,15 +24,29 @@
                 <!-- Default Tabs -->
                 <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
                     <li class="nav-item flex-fill" role="presentation">
-                        <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-justified" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                        <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-justified" type="button" role="tab" aria-controls="home" aria-selected="true">Đồ thị</button>
                     </li>
                     <li class="nav-item flex-fill" role="presentation">
-                        <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-justified" type="button" role="tab" aria-controls="profile" aria-selected="false" tabindex="-1">Profile</button>
+                        <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-justified" type="button" role="tab" aria-controls="profile" aria-selected="false" tabindex="-1">Số liệu</button>
                     </li>
-@*                     <li class="nav-item flex-fill" role="presentation">
-                        <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-justified" type="button" role="tab" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</button>
-                    </li> *@
                 </ul>
+
+                <div class="row" style="padding: 20px;justify-content: center;">
+                    <label class="col-sm-auto col-form-label">Từ ngày</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="tuNgay" class="form-control" value="20-11-2023" placeholder="dd-MM-yyyy" id="tuNgay">
+                    </div>
+                    <label class="col-sm-auto col-form-label">Đến ngày</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="denNgay" class="form-control" value="20-11-2023" placeholder="dd-MM-yyyy" id="denNgay">
+                    </div>
+                    <div class="col-md-1 mb-2 col-lg-1 d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary" onclick="baoCaoLoiNhuan()">
+                            <i class="bi bi-box-arrow-in-down"></i>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="tab-content pt-2" id="myTabjustifiedContent">
                     <div class="tab-pane fade active show" id="home-justified" role="tabpanel" aria-labelledby="home-tab">
                         <div style="width: 80%; margin: auto;">
@@ -59,9 +67,8 @@
                             <tbody id="tbodyBaoCaoLoiNhuan">
                             </tbody>
                             <tfoot>
-                                <tr id="tongTien">
-                                    <td></td>
-                                    <td>Tổng</td>
+                                <tr id="tongTien">                               
+                                    <td colspan="2">Tổng</td>
                                     <td><input type="text" readonly class="form-control formatted-number" id="doanhThu" value="" /></td>
                                     <td><input type="text" readonly class="form-control formatted-number" id="giaVon" value="" /></td>
                                     <td><input type="text" readonly class="form-control formatted-number" id="loiNhuan" value="" /></td>

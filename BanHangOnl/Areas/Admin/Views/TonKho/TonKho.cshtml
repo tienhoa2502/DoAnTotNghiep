@@ -16,35 +16,30 @@
     }
 
 </style>
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+
 <div class="card">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs nav-fill p-0" id="myTab" data-bs-toggle="tabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <a href="#tabs-lapPhieu" id="tab-lapphieu" class="nav-link text-dark active" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1" onclick="offTab2()">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M19 12h2l-9 -9l-9 9h2v7a2 2 0 0 0 2 2h5.5"></path>
-                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2"></path>
-                        <path d="M16 19h6"></path>
-                        <path d="M19 16v6"></path>
-                    </svg>
+                <a href="#tabs-lapPhieu" id="tab-lapphieu" class="nav-link text-dark active" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1" onclick="offTab2()">                   
                     Báo cáo tổng hợp
                 </a>
             </li>
             <li class="nav-item" role="presentation">
                 <a href="#tabs-dsPhieu" class="nav-link text-dark" data-bs-toggle="tab" aria-selected="false" role="tab" tabindex="-1" onclick="offTab1()">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/user -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M9 6l11 0"></path>
-                        <path d="M9 12l11 0"></path>
-                        <path d="M9 18l11 0"></path>
-                        <path d="M5 6l0 .01"></path>
-                        <path d="M5 12l0 .01"></path>
-                        <path d="M5 18l0 .01"></path>
-                    </svg>
-                    Báo cáo chi tiết
+                   Báo cáo chi tiết
                 </a>
             </li>
         </ul>
@@ -61,55 +56,66 @@
                 <form action="/download/BaoCaoHoaDon" method="post">
 
                     <div class="form-group p-2 mb-2"
-                         id="groupTTSearchLichSu"
-                         style="border-radius: 5px; border: 1px solid black">
-                        <div class="row">
-                            <label class="col-sm-1 col-lg-1 col-form-label">Nhóm hàng</label>
-                            <div class="col-sm-4 col-lg-2">
-                                <select name="nhomHang" class="form-select" style="width : 150px">
-                                    <option selected value="0">-- Nhóm hàng--</option>
-                                    @foreach (NhomHangHoa n in nhomHangHoas)
-                                    {
-                                        <option value="@n.Idnhh">@n.TenNhh</option>
-                                    }
-                                </select>
-                            </div>
-                            <label class="col-sm-1 col-lg-1 col-form-label">Tên hàng hóa</label>
-                            <div class="col-sm-4 col-lg-2">
-                                <select name="hangHoa" class="form-select" style="width : 150px">
-                                    <option selected value="0">-- Tên hàng hóa--</option>
-                                    @foreach (HangHoa n in hangHoas)
-                                    {
-                                        <option value="@n.Idhh">@n.TenHh</option>
-                                    }
-                                </select>
-                            </div>
-                            <label class="col-sm-1 col-lg-1 col-form-label">Từ ngày</label>
-                            <div class="col-lg-2 col-sm-2">
-                                <input class="form-control"
-                                       type="text"
-                                       name="tuNgay"
-                                       id ="tuNgay"
-                                       value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                       placeholder="Ngày nhập" />
-                            </div>
-                            <label class="col-sm-1 col-lg-1 col-form-label">Đến ngày</label>
-                            <div class="col-lg-2 col-sm-2">
-                                <input class="form-control"
-                                       type="text"
-                                       name="denNgay"
-                                       id="denNgay"
-                                       value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                       placeholder="Ngày nhập" />
-                            </div>
+                         id="groupTTSearchLichSu">
+                        <div class="row" style=" justify-content: center; margin: 0 50px;">
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Từ ngày</label>
+                                <div class="col-lg-3 col-sm-2">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="tuNgay"
+                                           id="tuNgay"
+                                           value="@DateTime.Now.ToString("dd-MM-yyyy")"
+                                           placeholder="Ngày nhập" />
+                                </div>
 
-                            <div class="col-md-1 mb-2 col-lg-1 d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary" onclick="loadBaoCaoTH()">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
+                                <label class="col-sm-auto col-form-label">Đến ngày</label>
+                                <div class="col-lg-3 col-sm-2">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="denNgay"
+                                           id="denNgay"
+                                           value="@DateTime.Now.ToString("dd-MM-yyyy")"
+                                           placeholder="Ngày nhập" />
+                                </div>
+
+
+
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Nhóm hàng</label>
+                                <div class="col-sm-3 col-sm-2">
+                                    <select name="nhomHang" class="form-select">
+                                        <option selected value="0">-- Nhóm hàng--</option>
+                                        @foreach (NhomHangHoa n in nhomHangHoas)
+                                        {
+                                            <option value="@n.Idnhh">@n.TenNhh</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <label class="col-sm-auto col-form-label">Tên hàng hóa</label>
+                                <div class="col-sm-3 col-sm-2">
+                                    <select name="hangHoa" class="form-select">
+                                        <option selected value="0">-- Tên hàng hóa--</option>
+                                        @foreach (HangHoa n in hangHoas)
+                                        {
+                                            <option value="@n.Idhh">@n.TenHh</option>
+                                        }
+                                    </select>
+                                </div>
+
+
+                                <div class="col-sm-auto">
+                                    <button type="button" class="btn btn-primary" onclick="loadBaoCaoTH()">
+                                        <i class="bi bi-box-arrow-in-down"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                        
+
                     <div id="table-BaoCaoTH" class="table-responsive" style="min-height:47vh;height:47vh;">
                         <table class="table table-bordered table-vcenter table-input" id="tableTaoChiTietPhieuNhap">
                             <thead>
@@ -153,92 +159,85 @@
                 </div>
 
             </div>
+
             <div class="tab-pane fade active hide" id="tabs-dsPhieu" role="tabpanel">
                 <div class="card mb-2">
-                    <div class="card-status-top bg-blue"></div>
                     <div class="card-header p-2">
-                        <div class="container px-0">
-                                <div class="col-12 mb-1">
+                       
                                     <div class="row">
-                                        <div class="col-12 col-lg-3 mb-1">
-                                            <div class="row">
+                                     
+                                        <div class="row mb-3">
+
                                             <label class="col-sm-auto col-lg-auto col-form-label">Từ ngày</label>
-                                                <div class="col-lg-8 col-sm-8">
-                                                    <input class="form-control"
-                                                           type="text"
-                                                           name="tuNgayCT"
-                                                           id="tuNgayCT"
-                                                           value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                                           placeholder="Từ Ngày" />
-                                                </div>
+                                            <div class="col-lg-8 col-sm-8">
+                                                <input class="form-control"
+                                                        type="text"
+                                                        name="tuNgayCT"
+                                                        id="tuNgayCT"
+                                                        value="@DateTime.Now.ToString("dd-MM-yyyy")"
+                                                        placeholder="Từ Ngày" />
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-lg-3 mb-1">
-                                            <div class="row">
+                                            
                                             <label class="col-sm-auto col-lg-auto col-form-label">Đến ngày</label>
-                                                <div class="col-lg-8 col-sm-8">
-                                                    <input class="form-control"
-                                                           type="text"
-                                                           name="denNgayCT"
-                                                           id="denNgayCT"
-                                                           value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                                           placeholder="Đến ngày" />
+                                            <div class="col-lg-8 col-sm-8">
+                                                <input class="form-control"
+                                                        type="text"
+                                                        name="denNgayCT"
+                                                        id="denNgayCT"
+                                                        value="@DateTime.Now.ToString("dd-MM-yyyy")"
+                                                        placeholder="Đến ngày" />
+                                            </div>
+                                        
+                                            <label class="col-form-label col-3">Nơi cung cấp:</label>
+                                            <div class="col-9">
+                                                <select class="form-select cbNhaCungCap" name="nhaCungCap">
+                                                    <option selected value="0">-- nhà cung cấp--</option>
+                                                    @foreach (NhaCungCap n in nhaCungCaps)
+                                                    {
+                                                        <option value="@n.Idncc">@n.TenNcc</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                           
+                                        </div>
+                                  
+                                
+                                        <div class="row mb-3">
+                                            <label class="col-sm-1 col-lg-1 col-form-label">Nhóm hàng</label>
+                                            <div class="col-sm-4 col-lg-2">
+                                                <select name="nhomHangCT" class="form-select" style="width : 150px">
+                                                    <option selected value="0">-- Nhóm hàng--</option>
+                                                    @foreach (NhomHangHoa n in nhomHangHoas)
+                                                    {
+                                                        <option value="@n.Idnhh">@n.TenNhh</option>
+                                                    }
+                                                </select>
+                                            </div>
+
+                                            <label class="col-sm-1 col-lg-1 col-form-label">Tên hàng hóa</label>
+                                            <div class="col-sm-4 col-lg-2">
+                                                <select name="hangHoaCT" class="form-select" style="width : 150px">
+                                                    <option selected value="0">-- Tên hàng hóa--</option>
+                                                    @foreach (HangHoa n in hangHoas)
+                                                    {
+                                                        <option value="@n.Idhh">@n.TenHh</option>
+                                                    }
+                                                </select>
+                                            </div>
+
+                                            <div class="col-12 col-lg-1 mb-1">
+                                                <div class="row justify-content-end">
+                                                    <div class="col-auto">
+                                                        <button class="btn btn-icon" onclick="loadBaoCaoCT()">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6 mb-1">
-                                            <div class="row">
-                                                <label class="col-form-label col-3">
-                                                    Nơi cung cấp:
-                                                </label>
-                                                <div class="col-9">
-                                                    <select class="form-select cbNhaCungCap" name="nhaCungCap">
-                                                        <option selected value="0">-- nhà cung cấp--</option>
-                                                        @foreach (NhaCungCap n in nhaCungCaps)
-                                                        {
-                                                            <option value="@n.Idncc">@n.TenNcc</option>
-                                                        }
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12 mb-1">
-                                    <div class="row">
-                                        <label class="col-sm-1 col-lg-1 col-form-label">Nhóm hàng</label>
-                                        <div class="col-sm-4 col-lg-2">
-                                            <select name="nhomHangCT" class="form-select" style="width : 150px">
-                                                <option selected value="0">-- Nhóm hàng--</option>
-                                                @foreach (NhomHangHoa n in nhomHangHoas)
-                                                {
-                                                    <option value="@n.Idnhh">@n.TenNhh</option>
-                                                }
-                                            </select>
-                                        </div>
-                                        <label class="col-sm-1 col-lg-1 col-form-label">Tên hàng hóa</label>
-                                        <div class="col-sm-4 col-lg-2">
-                                            <select name="hangHoaCT" class="form-select" style="width : 150px">
-                                                <option selected value="0">-- Tên hàng hóa--</option>
-                                                @foreach (HangHoa n in hangHoas)
-                                                {
-                                                    <option value="@n.Idhh">@n.TenHh</option>
-                                                }
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-lg-1 mb-1">
-                                            <div class="row justify-content-end">
-                                                <div class="col-auto">
-                                                    <button class="btn btn-icon" onclick="loadBaoCaoCT()">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                </div>
-                        </div>
                     </div>
+                </div>
                     <div class="card-body p-2">
                         <div style="display: none;" id="progress">
                             <div class="progress">
@@ -268,10 +267,6 @@
                             </table>
                         </div>
                     </div>
-                </div>
             </div>
 
-        </div>
-    </div>
-</div>
 <script src="~/jsadmin/tonkho.js" defer asp-append-version="true"></script>

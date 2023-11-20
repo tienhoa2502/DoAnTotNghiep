@@ -26,10 +26,24 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult Add(NhomTinTuc vaiTro)
         {
             vaiTro.Active = true;
+            vaiTro.HienThi = true;
+
             context.NhomTinTucs.Add(vaiTro);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        [HttpPost("/NhomTinTuc/UpdateAcTive")]
+        public void UpdateActive(int idNTT)
+        {
+            NhomTinTuc nhomtin = context.NhomTinTucs.Find(idNTT);
+            nhomtin.HienThi = !nhomtin.HienThi;
+            context.NhomTinTucs.Update(nhomtin);
+            context.SaveChanges();
+        }
+      
+
 
 
         [Route("/NhomTinTuc/ViewSua/{id}")]
@@ -45,10 +59,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         {
             NhomTinTuc tt = context.NhomTinTucs.Find(vaiTro.Idntt);
             tt.TenNtt = vaiTro.TenNtt;
-            //ncc.DienThoai = vaiTro.DienThoai;
-            //ncc.Mail = vaiTro.Mail;
-            //ncc.GhiChu = vaiTro.GhiChu;
-
+           
 
             context.NhomTinTucs.Update(tt);
             context.SaveChanges();

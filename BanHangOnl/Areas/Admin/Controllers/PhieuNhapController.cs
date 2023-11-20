@@ -45,8 +45,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/PhieuNhap/Them")]
         public IActionResult viewAdd()
         {
-            ViewBag.NhaCungCap = context.NhaCungCaps.Where(x => x.Active == true /*&& x.Levels == 2*/).ToList();
-            ViewBag.NhanVien = context.NhanViens.Where(x => x.Active == true /*&& x.Levels == 2*/).ToList();
+            ViewBag.NhaCungCap = context.NhaCungCaps.Where(x => x.Active == true ).ToList();
+            ViewBag.NhanVien = context.NhanViens.Where(x => x.Active == true ).ToList();
             return View("AddPhieuNhap");
         }
         [HttpPost("/NhapKho/getDonViTinh")]
@@ -155,16 +155,16 @@ namespace BanHangOnl.Areas.Admin.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        [Route("/PhieuNhap/Xoa/{id}")]
-        public IActionResult Xoa(int id)
-        {
-            PhieuNhap tt = context.PhieuNhaps.Find(id);
-            tt.Active = false;
+        //[Route("/PhieuNhap/Xoa/{id}")]
+        //public IActionResult Xoa(int id)
+        //{
+        //    PhieuNhap tt = context.PhieuNhaps.Find(id);
+        //    tt.Active = false;
 
-            context.PhieuNhaps.Update(tt);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //    context.PhieuNhaps.Update(tt);
+        //    context.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
         public static string taoSoPhieuNhap(QuanLyBanHangContext context)
         {
             DateTime now = DateTime.Now;

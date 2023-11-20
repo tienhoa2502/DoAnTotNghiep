@@ -36,7 +36,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             vaiTro.Active = true;
             context.VaiTros.Add(vaiTro);
             context.SaveChanges();
-            return RedirectToAction("Detail");
+            return RedirectToAction("Index");
         }
 
 
@@ -59,7 +59,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
             context.VaiTros.Update(ncc);
             context.SaveChanges();
-            return RedirectToAction("Detail");
+            return RedirectToAction("Index");
         }
 
         [Route("/VaiTro/Xoa/{id}")]
@@ -70,7 +70,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
             context.VaiTros.Update(ncc);
             context.SaveChanges();
-            return RedirectToAction("Detail");
+            return RedirectToAction("Index");
         }
     }
 }
