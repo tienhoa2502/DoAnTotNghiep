@@ -83,16 +83,6 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 }
                 await context.ChiTietPhieuNhaps.AddRangeAsync(chiTietPhieuNhaps);
                 await context.SaveChangesAsync();
-                List<TonKho> tonKhos = new List<TonKho>();
-                foreach (ChiTietPhieuNhap chiTiet1 in chiTietPhieuNhaps)
-                {
-                    TonKho tonKho = new TonKho();
-                    tonKho.Idctpn = chiTiet1.Idctpn;
-                    tonKho.SoLuong = chiTiet1.SoLuong;
-                    tonKho.NgayNhap = phieuNhap.NgayNhap;
-                    tonKhos.Add(tonKho);
-                }
-                await context.TonKhos.AddRangeAsync(tonKhos);
                 await context.SaveChangesAsync();
                 tran.Commit();
                 return new
