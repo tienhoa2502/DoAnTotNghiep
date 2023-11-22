@@ -31,6 +31,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult Add(HangHoa vaiTro)
         {
             vaiTro.Active = true;
+            vaiTro.HienThi = false;
             context.HangHoas.Add(vaiTro);
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -49,12 +50,12 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
         [HttpPost("/HangHoa/updateHangHoa")]
         public dynamic addHangHoa(HangHoa hangHoa) {
-            hangHoa.Active = true;
-            context.HangHoas.Add(hangHoa);
-            context.SaveChanges();  
+            //hangHoa.Active = true;
+            //context.HangHoas.Add(hangHoa);
+            //context.SaveChanges();  
             return new
             {
-                id = hangHoa.Idhh,
+                id = 1,
             };
         }
         [HttpPost("/HangHoa/UpdateAnh")]

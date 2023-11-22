@@ -7,6 +7,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
     [Area("Admin")]
     public class SideQuangCaoController : Controller
     {
+        
         QuanLyBanHangContext context = new QuanLyBanHangContext();
         [HttpGet("/SideQuangCao")]
         public IActionResult Index()
@@ -31,6 +32,9 @@ namespace BanHangOnl.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+    
+
 
         [Route("/SideQuangCao/Xoa/{id}")]
         public IActionResult Xoa(int id)

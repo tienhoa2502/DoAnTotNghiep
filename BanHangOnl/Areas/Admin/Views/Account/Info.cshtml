@@ -3,8 +3,10 @@
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 
     QuanLyBanHangContext context = new QuanLyBanHangContext();
-
+    TaiKhoan tk = ViewBag.TaiKhoan;
 }
+
+@model BanHangOnl.Models.TaiKhoan
 
 
 <div class="pagetitle">
@@ -25,8 +27,9 @@
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                     <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                    <h2>Kevin Anderson</h2>
-                    <h3>Web Designer</h3>
+                    <h2></h2>
+                    <h3></h3>
+
                     <div class="social-links mt-2">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -64,48 +67,43 @@
 
                             <h5 class="card-title">Thông tin chi tiết</h5>
 
-
-                            @foreach (NhanVien tk in ViewBag.NhanVien)
-                            {
-
+                            
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label ">Họ tên</div>
-                                <div class="col-lg-9 col-md-8">@tk.Ten</div>
-                            </div>
+@*                                <div class="col-lg-9 col-md-8">@tk.NhanViens.Ten</div>                                 
+*@                            </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Tuổi</div>
-                                    <div class="col-lg-9 col-md-8">@tk.Tuoi</div>
+                                    @*<div class="col-lg-9 col-md-8">@tk.Tuoi</div>*@
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Giới tính</div>
-                                    <div class="col-lg-9 col-md-8">@tk.GioiTinh</div>
+                                    @*<div class="col-lg-9 col-md-8">@tk.GioiTinh</div>*@
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Quê quán</div>
-                                    <div class="col-lg-9 col-md-8">@tk.QueQuan</div>
+                                    @*<div class="col-lg-9 col-md-8">@tk.QueQuan</div>*@
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Địa chỉ</div>
-                                    <div class="col-lg-9 col-md-8">@tk.DiaChi</div>
+                                    @*<div class="col-lg-9 col-md-8">@tk.DiaChi</div>*@
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Số điện thoại</div>
-                                    <div class="col-lg-9 col-md-8">@tk.Sdt</div>
+                                    @*<div class="col-lg-9 col-md-8">@tk.Sdt</div>*@
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Email</div>
-                                    <div class="col-lg-9 col-md-8">@tk.Email</div>
+                                    @*<div class="col-lg-9 col-md-8">@tk.Email</div>*@
                             </div>
 
-
-                            }
-
+                          
                         </div>
 
                         <div class="tab-pane fade profile-edit pt-3" id="profile-edit" role="tabpanel">

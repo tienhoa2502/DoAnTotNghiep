@@ -49,7 +49,7 @@
                     </div>
 
                     <!-- Table with stripped rows -->
-                    <table class="table datatable">
+                    <table class="table datatable nhh">
                         <thead>
                             <tr>                            
                                 <th scope="col">Mã nhóm</th>
@@ -61,24 +61,38 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbodyNHH">
                             @foreach (NhomHangHoa tk in ViewBag.NhomHangHoa)
                             {
                                 <tr>
-                                    <td>@tk.MaNhh</td>
+                                    <td>@tk.MaNhh
+                                        <input type="hidden" name="idNHH" value="@tk.Idnhh"/>
+                                    </td>
                                     <td>@tk.TenNhh</td>
                                     <td>Cấp @tk.Levels</td>
                                     <td>@getTenNhom(@tk.Thuoc)</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input @tk.HienThi class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                        </div>
-                                    </td>
+
+                                    @if (tk.HienThi == true)
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active" id="flexSwitchCheckDefault" checked>
+                                            </div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active" id="flexSwitchCheckDefault">
+                                            </div>
+                                        </td>
+                                    }
+
                                     <td>
                                         <a href="/NhomHangHoa/ViewSua/@tk.Idnhh" type="button" class="btn btn-primary btn-sm">Sửa</a>
                                         <a href="/NhomHangHoa/Xoa/@tk.Idnhh" onclick="return confirm('Bạn có muốn xóa thông tin?')" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
-                                    @*<td>@tk.IdvtNavigation.TenVt</td>*@
                                 </tr>
                             }
 
@@ -95,3 +109,15 @@
 </section>
 
 
+<script>
+    $('.nhh').on('click', 'input[name="active"]', function () {
+        var idNHH = $(this).closest('tr').find('input[name="idNHH"]').val();
+        $.ajax({
+            url: '/NhomHangHoa/UpdateHienThi', // Đường dẫn đến action xử lý form
+            method: 'POST',
+            data: {
+                idNHH: idNHH,
+            },
+        });
+    });
+</script>

@@ -22,11 +22,33 @@ namespace BanHangOnl.Controllers
 			ViewBag.HangHoa = context.HangHoas
 				.Include(x => x.ImgHangHoas)
 				.Where(x => x.HienThi == true && x.Active == true).ToList();
+
+            ViewBag.NhomHangHoa = context.NhomHangHoas.Where(x => x.Active == true && x.HienThi == true).ToList();
             ViewBag.Voucher = context.Vouchers.Where(x => x.Active == true && x.HienThi == true).ToList();
-            ViewBag.NhomHangHoaCap1 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 1).ToList();
-            ViewBag.NhomHangHoaCap2 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 2).ToList();
+
+            ViewBag.NhomHangHoaCap1 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 1 && x.HienThi == true).ToList();
+            ViewBag.NhomHangHoaCap2 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 2 && x.HienThi == true).ToList();
 
             return View();
 		}
+
+		[HttpGet("/SanPham/{string}")]
+		public IActionResult Index(string TenNhh)
+		{
+			HangHoa xem = context.HangHoas.Find(TenNhh);
+			ViewBag.HangHoa = context.HangHoas
+							.Include(x => x.ImgHangHoas)
+							.Where(x => x.HienThi == true && x.Active == true).ToList();
+
+
+			ViewBag.NhomHangHoa = context.NhomHangHoas.Where(x => x.Active == true && x.HienThi == true).ToList();
+			ViewBag.Voucher = context.Vouchers.Where(x => x.Active == true && x.HienThi == true).ToList();
+
+			ViewBag.NhomHangHoaCap1 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 1 && x.HienThi == true).ToList();
+			ViewBag.NhomHangHoaCap2 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 2 && x.HienThi == true).ToList();
+			return View("Index", xem);
+		}
+
+
 	}
 }

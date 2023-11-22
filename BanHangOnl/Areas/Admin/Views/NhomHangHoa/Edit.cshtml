@@ -1,11 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "Nhóm hàng hóa";
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 
+    @model BanHangOnl.Models.NhomHangHoa
 
 }
 
-@model BanHangOnl.Models.NhomHangHoa
 
 
 <div class="card">
@@ -68,7 +68,7 @@
     </div>
 </div>
 
-<script>
+@*<script>
     // Lấy thẻ select với id 'selectCap'
     var selectCap = document.getElementById('selectCap');
 
@@ -85,6 +85,26 @@
             // Nếu giá trị khác 2, thì thêm lớp 'd-none' vào 'selectNhom'
             selectNhom.classList.add('d-none');
         }
+    });
+</script>*@
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Bắt sự kiện khi giá trị của select "Cấp nhóm" thay đổi
+        $("#selectCap").change(function () {
+            // Lấy giá trị được chọn
+            var selectedValue = $(this).val();
+
+            // Ẩn hoặc hiển thị select "Thuộc nhóm" tùy thuộc vào giá trị được chọn
+            if (selectedValue === "2") {
+                $("#selectNhom").removeClass("d-none");
+            } else {
+                $("#selectNhom").addClass("d-none");
+            }
+        });
     });
 </script>
 

@@ -25,15 +25,28 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult Add(NhomHangHoa vaiTro)
         {
             vaiTro.Active = true;
+            vaiTro.HienThi = true;
             context.NhomHangHoas.Add(vaiTro);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
 
+        [HttpPost("/NhomHangHoa/UpdateHienThi")]
+        public void UpdateActive(int idNHH)
+        {
+            NhomHangHoa nhh = context.NhomHangHoas.Find(idNHH);
+            nhh.HienThi = !nhh.HienThi;
+            context.NhomHangHoas.Update(nhh);
+            context.SaveChanges();
+        }
+
+
+
         [Route("/NhomHangHoa/ViewSua/{id}")]
         public IActionResult viewEdit(int id)
         {
             NhomHangHoa sua = context.NhomHangHoas.Find(id);
+
             ViewBag.NhomHHCap1 = context.NhomHangHoas.Where(x => x.Levels == 1 && x.Active == true).ToList();
             return View("Edit", sua);
         }

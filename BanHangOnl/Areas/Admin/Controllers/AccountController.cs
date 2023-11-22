@@ -79,8 +79,28 @@ namespace BanHangOnl.Areas.Admin.Controllers
         {
             TaiKhoan xem = context.TaiKhoans.Find(id);
 
+            var taiKhoan = context.TaiKhoans
+             .Include(t => t.KhachHangs)
+             .Include(t => t.NhanViens)
+             .FirstOrDefault(t => t.Idtk == id);
 
-            ViewBag.NhanVien = context.NhanViens.Include(x => x.IdtkNavigation).Where(x => x.Active == true).ToList();
+            // Kiểm tra nếu không tìm thấy tài khoản
+            if (taiKhoan == null)
+            {
+                return NotFound();
+            }
+
+            // Tạo đối tượng ViewModel
+            //var viewModel = new TaiKhoanViewModel
+            //{
+            //    Id = taiKhoan.Idtk,
+            //    Ten = taiKhoan.NhanViens.t,
+            //    Tuoi = taiKhoan.Tuoi,
+            //    Phone = taiKhoan.Phone,
+            //    DiaChi = taiKhoan.DiaChi,
+            //    // Thêm các thông tin khác từ các bảng liên quan nếu cần
+            //};
+
             return View();
         }
 

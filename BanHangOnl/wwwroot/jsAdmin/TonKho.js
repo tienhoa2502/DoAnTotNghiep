@@ -39,10 +39,10 @@ function addRowBaoCaoTongHop(data) {
         ${data.tenHang}
         </td>
         <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.tongSL)}" name="soLuong" />
+            <input readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.tongSL)}" name="soLuong" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" t type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${formatTotal(data.tongTien)}" name="donGia" />
+            <input readonly autocomplete="off" t type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${formatTotal(data.tongTien)}" name="donGia" />
         </td>
     </tr>`;
     $('#tBody-BaoCaoTongHop').append(newRow);
@@ -101,22 +101,22 @@ function addRowBaoCaoChiTiet(data) {
         ${data.tenHang}
         </td>  
         <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.soLuongNhap)}" name="soLuong" />
+            <input readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.soLuongNhap)}" name="soLuong" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.soLuongXuat)}" name="soLuong" />
+            <input readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.soLuongXuat)}" name="soLuong" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.soLuongTon)}" name="soLuong" />
+            <input  readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.soLuongTon)}" name="soLuong" />
         </td>
             <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${data.donViTinh}
         </td>
         <td class="p-1">
-            <input autocomplete="off" t type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${formatTotal(data.giaNhap)}" name="donGia" />
+            <input readonly autocomplete="off" t type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${formatTotal(data.giaNhap)}" name="donGia" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" t type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${formatTotal(data.thanhTien)}" name="donGia" />
+            <input readonly autocomplete="off" t type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${formatTotal(data.thanhTien)}" name="donGia" />
         </td>
     </tr>`;
     $('#tBody-BaoCaoChiTiet').append(newRow);

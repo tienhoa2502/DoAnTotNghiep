@@ -52,29 +52,7 @@
                     </select>
                 </div>
             </div>
-
-            @*<div class="row mb-3">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Cấp</label>
-                <div class="col-md-6">
-                    <select asp-for="@Model.Levels" id="selectCap" class="form-select">
-                        <option selected="">Chọn cấp</option>
-                        <option value="1">Cấp 1</option>
-                        <option value="2">Cấp 2</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <select asp-for="@Model.Levels" id="selectNhom" class="form-select d-none">
-                        <option selected="">Thuộc nhóm</option>
-                        <option value="1">Áo</option>
-                        <option value="2">Quần 2</option>
-                        <option value="3">Đùi 3</option>
-                    </select>
-                </div>
-                
-            </div>*@
             
-
-           
           
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Lưu</button>
@@ -85,7 +63,7 @@
     </div>
 </div>
 
-<script>
+@*<script>
     // Lấy thẻ select với id 'selectCap'
     var selectCap = document.getElementById('selectCap');
 
@@ -94,6 +72,7 @@
 
     // Thêm sự kiện 'change' cho thẻ select 'selectCap'
     selectCap.addEventListener('change', function () {
+        console.log(123)
         // Kiểm tra giá trị được chọn trong 'selectCap'
         if (selectCap.value == '2') {
             // Nếu giá trị là 2, thì loại bỏ lớp 'd-none' khỏi 'selectNhom'
@@ -103,7 +82,25 @@
             selectNhom.classList.add('d-none');
         }
     });
+</script>*@
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Bắt sự kiện khi giá trị của select "Cấp nhóm" thay đổi
+        $("#selectCap").change(function () {
+            // Lấy giá trị được chọn
+            var selectedValue = $(this).val();
+
+            // Ẩn hoặc hiển thị select "Thuộc nhóm" tùy thuộc vào giá trị được chọn
+            if (selectedValue === "2") {
+                $("#selectNhom").removeClass("d-none");
+            } else {
+                $("#selectNhom").addClass("d-none");
+            }
+        });
+    });
 </script>
-
-
-
