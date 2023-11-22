@@ -27,8 +27,7 @@
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item">Tables</li>
-            <li class="breadcrumb-item active">Data</li>
+            <li class="breadcrumb-item active">Phiếu nhập</li>
         </ol>
     </nav>
 </div><!-- End Page Title -->
@@ -52,7 +51,6 @@
                         <thead>
                             <tr>
                                 <th scope="col">Số phiếu nhập</th>
-                                <th scope="col">Số hóa đơn</th>
                                 <th scope="col">Nhà cung cấp</th>
                                 <th scope="col">Tổng tiền</th>
                                 <th scope="col">Ngày nhập</th>
@@ -67,7 +65,6 @@
                             {
                                 <tr>
                                     <td>@tk.SoPn</td>
-                                    <td>@tk.SoHd</td>
                                     <td>@tk?.IdnccNavigation?.TenNcc</td>
                                     <td>@tk?.ChiTietPhieuNhaps?.Sum(x => x.Gia)</td>
                                     <td>@tk.NgayNhap</td>                                 

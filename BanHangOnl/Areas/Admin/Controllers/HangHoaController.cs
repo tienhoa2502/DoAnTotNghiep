@@ -31,6 +31,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult Add(HangHoa vaiTro)
         {
             vaiTro.Active = true;
+            vaiTro.HienThi = false;
             context.HangHoas.Add(vaiTro);
             context.SaveChanges();
             return RedirectToAction("Index");

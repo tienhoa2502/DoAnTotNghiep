@@ -66,17 +66,17 @@
                                            name="tuNgay"
                                            id="tuNgay"
                                            value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                           placeholder="Ngày nhập" />
+                                           placeholder="Ngày nhập"/>
                                 </div>
 
-                                <label class="col-sm-auto col-form-label">Đến ngày</label>
+                                <label class="col-sm-2 col-form-label">Đến ngày</label>
                                 <div class="col-lg-3 col-sm-2">
                                     <input class="form-control"
                                            type="text"
                                            name="denNgay"
                                            id="denNgay"
                                            value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                           placeholder="Ngày nhập" />
+                                           placeholder="Ngày nhập"/>
                                 </div>
 
 
@@ -86,7 +86,7 @@
                                 <label class="col-sm-2 col-form-label">Nhóm hàng</label>
                                 <div class="col-sm-3 col-sm-2">
                                     <select name="nhomHang" class="form-select">
-                                        <option selected value="0">-- Nhóm hàng--</option>
+                                        <option selected value="0">-- Nhóm hàng --</option>
                                         @foreach (NhomHangHoa n in nhomHangHoas)
                                         {
                                             <option value="@n.Idnhh">@n.TenNhh</option>
@@ -94,10 +94,10 @@
                                     </select>
                                 </div>
 
-                                <label class="col-sm-auto col-form-label">Tên hàng hóa</label>
+                                <label class="col-sm-2 col-form-label">Tên hàng hóa</label>
                                 <div class="col-sm-3 col-sm-2">
                                     <select name="hangHoa" class="form-select">
-                                        <option selected value="0">-- Tên hàng hóa--</option>
+                                        <option selected value="0">-- Tên hàng hóa --</option>
                                         @foreach (HangHoa n in hangHoas)
                                         {
                                             <option value="@n.Idhh">@n.TenHh</option>
@@ -162,80 +162,76 @@
 
             <div class="tab-pane fade active hide" id="tabs-dsPhieu" role="tabpanel">
                 <div class="card mb-2">
-                    <div class="card-header p-2">
-                       
-                                    <div class="row">
-                                     
-                                        <div class="row mb-3">
-
-                                            <label class="col-sm-auto col-lg-auto col-form-label">Từ ngày</label>
-                                            <div class="col-lg-8 col-sm-8">
-                                                <input class="form-control"
-                                                        type="text"
-                                                        name="tuNgayCT"
-                                                        id="tuNgayCT"
-                                                        value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                                        placeholder="Từ Ngày" />
-                                            </div>
+                    <div class="card-header p-2">                     
+                        <div class="row">                                    
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Từ ngày</label>
+                                <div class="col-lg-2 col-sm-2">
+                                    <input class="form-control"
+                                            type="text"
+                                            name="tuNgayCT"
+                                            id="tuNgayCT"
+                                            value="@DateTime.Now.ToString("dd-MM-yyyy")"
+                                            placeholder="Từ Ngày"/>
+                                </div>
                                             
-                                            <label class="col-sm-auto col-lg-auto col-form-label">Đến ngày</label>
-                                            <div class="col-lg-8 col-sm-8">
-                                                <input class="form-control"
-                                                        type="text"
-                                                        name="denNgayCT"
-                                                        id="denNgayCT"
-                                                        value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                                        placeholder="Đến ngày" />
-                                            </div>
+                                <label class="col-sm-auto col-form-label">Đến ngày</label>
+                                <div class="col-lg-2 col-sm-2">
+                                    <input class="form-control"
+                                            type="text"
+                                            name="denNgayCT"
+                                            id="denNgayCT"
+                                            value="@DateTime.Now.ToString("dd-MM-yyyy")"
+                                            placeholder="Đến ngày"/>
+                                </div>
                                         
-                                            <label class="col-form-label col-3">Nơi cung cấp:</label>
-                                            <div class="col-9">
-                                                <select class="form-select cbNhaCungCap" name="nhaCungCap">
-                                                    <option selected value="0">-- nhà cung cấp--</option>
-                                                    @foreach (NhaCungCap n in nhaCungCaps)
-                                                    {
-                                                        <option value="@n.Idncc">@n.TenNcc</option>
-                                                    }
-                                                </select>
-                                            </div>
-                                           
-                                        </div>
+                                <label class="col-sm-auto col-form-label">Nhà cung cấp:</label>
+                                <div class="col-lg-3 col-sm-2">
+                                    <select class="form-select cbNhaCungCap" name="nhaCungCap">
+                                        <option selected value="0">-- Nhà cung cấp --</option>
+                                        @foreach (NhaCungCap n in nhaCungCaps)
+                                        {
+                                            <option value="@n.Idncc">@n.TenNcc</option>
+                                        }
+                                    </select>
+                                </div>                                           
+                            </div>
                                   
                                 
-                                        <div class="row mb-3">
-                                            <label class="col-sm-1 col-lg-1 col-form-label">Nhóm hàng</label>
-                                            <div class="col-sm-4 col-lg-2">
-                                                <select name="nhomHangCT" class="form-select" style="width : 150px">
-                                                    <option selected value="0">-- Nhóm hàng--</option>
-                                                    @foreach (NhomHangHoa n in nhomHangHoas)
-                                                    {
-                                                        <option value="@n.Idnhh">@n.TenNhh</option>
-                                                    }
-                                                </select>
-                                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2  col-form-label">Nhóm hàng</label>
+                                <div class="col-lg-3 col-sm-2">
+                                    <select name="nhomHangCT" class="form-select">
+                                        <option selected value="0">-- Nhóm hàng --</option>
+                                        @foreach (NhomHangHoa n in nhomHangHoas)
+                                        {
+                                            <option value="@n.Idnhh">@n.TenNhh</option>
+                                        }
+                                    </select>
+                                </div>
 
-                                            <label class="col-sm-1 col-lg-1 col-form-label">Tên hàng hóa</label>
-                                            <div class="col-sm-4 col-lg-2">
-                                                <select name="hangHoaCT" class="form-select" style="width : 150px">
-                                                    <option selected value="0">-- Tên hàng hóa--</option>
-                                                    @foreach (HangHoa n in hangHoas)
-                                                    {
-                                                        <option value="@n.Idhh">@n.TenHh</option>
-                                                    }
-                                                </select>
-                                            </div>
+                                <label class="col-sm-auto  col-form-label">Tên hàng hóa</label>
+                                <div class="col-lg-4 col-sm-2">
+                                    <select name="hangHoaCT" class="form-select">
+                                        <option selected value="0">-- Tên hàng hóa --</option>
+                                        @foreach (HangHoa n in hangHoas)
+                                        {
+                                            <option value="@n.Idhh">@n.TenHh</option>
+                                        }
+                                    </select>
+                                </div>
 
-                                            <div class="col-12 col-lg-1 mb-1">
-                                                <div class="row justify-content-end">
-                                                    <div class="col-auto">
-                                                        <button class="btn btn-icon" onclick="loadBaoCaoCT()">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    </div>
+
+                                  
+                                <div class="col-sm-auto">
+                                    <button type="button" class="btn btn-primary" onclick="loadBaoCaoCT()">
+                                        <i class="bi bi-box-arrow-in-down"></i>
+                                    </button>
+                                </div>
+
+                           
+                        </div>
+                        </div>
                     </div>
                 </div>
                     <div class="card-body p-2">

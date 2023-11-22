@@ -23,6 +23,11 @@ $(document).ready(function(){
                     `;
                     $(".upload-img").append(html);
                     imgList.push(event.target.result);
+                    if (i == 0) {
+                        imgAvt = event.target.result
+                    } else {
+                        imgTemp.push(event.target.result);
+                    }
                 }
                 reader.readAsDataURL(event.target.files[i]);
             }
@@ -58,7 +63,7 @@ $(document).ready(function(){
     // });
 
 
-    $(document).on('click', 'input[name=checkAvt]', function () {
+    $(document).on('click', 'input[name=checkAvt]', function (event) {
         console.log('1233');
         if ($(event.target).hasClass('checkAvt')) {
             let removedFileSrc = $(event.target).parent().find('img').attr('src');

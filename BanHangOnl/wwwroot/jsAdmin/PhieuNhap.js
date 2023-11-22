@@ -73,6 +73,12 @@ function AddRowPhieuNhapKho() {
         <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${tenHangHoa}
         </td>
+         <td class="p-1">${tenmau}
+            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${mau}" id="mau1" name="mau" />
+        </td>
+        <td class="p-1">${tensize}
+            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${size}" id="size1" name="size" />
+        </td>
         <td class="p-1">
             <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuong}" name="soLuong" />
         </td>
@@ -80,14 +86,9 @@ function AddRowPhieuNhapKho() {
             <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${donGia}" name="donGia" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:100px;" value="${thanhTien}" name="thanhTien" />
+            <input readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:100px;" value="${thanhTien}" name="thanhTien" />
         </td>
-        <td class="p-1">${tenmau}
-            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${mau}" id="mau1" name="mau" />
-        </td>
-        <td class="p-1">${tensize}
-            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${size}" id="size1" name="size" />
-        </td>
+       
         <td class="text-center p-1 last-td-column">
             <button type="button" class="btn btn-icon btn-sm text-red remove-phieuNhapCt">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
