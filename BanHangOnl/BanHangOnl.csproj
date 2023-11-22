@@ -28,7 +28,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="wwwroot\img\Slide\" />
-    <Folder Include="wwwroot\jsAdmin\" />
   </ItemGroup>
 
   <ItemGroup>

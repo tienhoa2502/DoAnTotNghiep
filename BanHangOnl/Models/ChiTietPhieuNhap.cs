@@ -21,6 +21,8 @@ public partial class ChiTietPhieuNhap
 
     public int? Idsize { get; set; }
 
+    public int? SoLuongXuat { get; set; }
+
     public bool? Active { get; set; }
 
     public int? Idmau { get; set; }
@@ -34,6 +36,4 @@ public partial class ChiTietPhieuNhap
     public virtual PhieuNhap? IdpnNavigation { get; set; }
 
     public virtual Size? IdsizeNavigation { get; set; }
-
-    public virtual ICollection<TonKho> TonKhos { get; set; } = new List<TonKho>();
 }

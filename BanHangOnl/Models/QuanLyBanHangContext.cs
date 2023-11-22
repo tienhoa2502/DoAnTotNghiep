@@ -59,15 +59,13 @@ public partial class QuanLyBanHangContext : DbContext
 
     public virtual DbSet<TinTuc> TinTucs { get; set; }
 
-    public virtual DbSet<TonKho> TonKhos { get; set; }
-
     public virtual DbSet<VaiTro> VaiTros { get; set; }
 
     public virtual DbSet<Voucher> Vouchers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-4KER1P3\\MSSQLSERVER22;Database=QuanLyBanHang;User Id=sa;Password=123456;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Server=TRAN-UY\\MSSQLSERVER22;Database=QuanLyBanHang;User Id=sa;Password=123456;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -510,31 +508,6 @@ public partial class QuanLyBanHangContext : DbContext
             entity.HasOne(d => d.IdnttNavigation).WithMany(p => p.TinTucs)
                 .HasForeignKey(d => d.Idntt)
                 .HasConstraintName("FK_TinTuc_NhomTinTuc");
-        });
-
-        modelBuilder.Entity<TonKho>(entity =>
-        {
-            entity.HasKey(e => e.Idtk);
-
-            entity.ToTable("TonKho");
-
-            entity.Property(e => e.Idtk).HasColumnName("IDTK");
-            entity.Property(e => e.Idctpn).HasColumnName("IDCTPN");
-            entity.Property(e => e.Idmau).HasColumnName("IDMau");
-            entity.Property(e => e.Idsize).HasColumnName("IDSize");
-            entity.Property(e => e.NgayNhap).HasColumnType("datetime");
-
-            entity.HasOne(d => d.IdctpnNavigation).WithMany(p => p.TonKhos)
-                .HasForeignKey(d => d.Idctpn)
-                .HasConstraintName("FK_TonKho_ChiTietPhieuNhap");
-
-            entity.HasOne(d => d.IdmauNavigation).WithMany(p => p.TonKhos)
-                .HasForeignKey(d => d.Idmau)
-                .HasConstraintName("FK_TonKho_Mau");
-
-            entity.HasOne(d => d.IdsizeNavigation).WithMany(p => p.TonKhos)
-                .HasForeignKey(d => d.Idsize)
-                .HasConstraintName("FK_TonKho_Size");
         });
 
         modelBuilder.Entity<VaiTro>(entity =>

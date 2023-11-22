@@ -14,6 +14,4 @@ public partial class Mau
     public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; } = new List<ChiTietPhieuNhap>();
 
     public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; } = new List<ChiTietPhieuXuat>();
-
-    public virtual ICollection<TonKho> TonKhos { get; set; } = new List<TonKho>();
 }

@@ -30,16 +30,15 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpPost("/DonDatHang/getDonViTinhVaSL")]
         public async Task<dynamic> getDonViTinhVaSL(int idHH, int idMau, int idSize)
         {
-            var tonKho = context.TonKhos
-                .Include(x => x.IdctpnNavigation)
-                .ThenInclude(x => x.IdhhNavigation)
-                .Where(x => x.IdctpnNavigation.Idhh == idHH && x.IdctpnNavigation.Idmau == idMau && x.IdctpnNavigation.Idsize == idSize)
+            var tonKho = context.ChiTietPhieuNhaps
+                .Include(x => x.IdhhNavigation)
+                .Where(x => x.Idhh == idHH && x.Idmau == idMau && x.Idsize == idSize)
                 .ToList();
             var ton = new
             {
-                DonViTinh = getDonViTinh(tonKho.Count() != 0 ?(int)tonKho.First().IdctpnNavigation.Idhh : idHH),
+                DonViTinh = getDonViTinh(tonKho.Count() != 0 ?(int)tonKho.First().Idhh : idHH),
                 SoLuong = tonKho.Count() != 0 ? tonKho.Sum(x => x.SoLuong) : 0,
-                DonGia = tonKho.Count() != 0 ? tonKho?.First().IdctpnNavigation.IdhhNavigation.GiaBan : 0,
+                DonGia = tonKho.Count() != 0 ? tonKho?.First().IdhhNavigation.GiaBan : 0,
             };
 
             return ton;
@@ -83,9 +82,10 @@ namespace BanHangOnl.Areas.Admin.Controllers
             khachHang.Phone = GetPhoneNumber(cleanedInput); 
             PhieuXuat phieuXuat = _mapper.Map<PhieuXuat>(ph);
             List<ChiTietPhieuXuatMap> chiTietPhieuXuatMaps = data.ChiTietDonDatHang;
-            List<TonKho> soLuongHhcon = await context.TonKhos
-                .Include(x => x.IdctpnNavigation)
-                .OrderBy(x => x.NgayNhap).ToListAsync();
+            List<ChiTietPhieuNhap> soLuongHhcon = await context.ChiTietPhieuNhaps
+                .Include(x => x.IdpnNavigation)
+                .Include(x => x.IdhhNavigation)
+                .OrderBy(x => x.IdpnNavigation.NgayNhap).ToListAsync();
             var tran = context.Database.BeginTransaction();
             try
             {
@@ -118,7 +118,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 foreach (ChiTietPhieuXuatMap t in chiTietPhieuXuatMaps.ToList())
                 {
                     double slq = double.Parse(t.SoLuong);
-                    foreach (TonKho slhhc in soLuongHhcon.Where(x => x.IdctpnNavigation.Idhh == int.Parse(t.Idhh) && x.IdctpnNavigation.Idmau == int.Parse(t.Idmau) && x.IdctpnNavigation.Idsize == int.Parse(t.Idsize)))
+                    foreach (ChiTietPhieuNhap slhhc in soLuongHhcon.Where(x => x.Idhh == int.Parse(t.Idhh) && x.Idmau == int.Parse(t.Idmau) && x.Idsize == int.Parse(t.Idsize)))
                     {
                         ChiTietPhieuXuat ct = new ChiTietPhieuXuat();
                         ct.Idhh = int.Parse(t.Idhh);
@@ -133,7 +133,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                         {
                             ct.SoLuong = double.Parse(t.SoLuong);
                             slhhc.SoLuong -= slq;
-                            context.TonKhos.Update(slhhc);
+                            slhhc.SoLuongXuat += Convert.ToInt32(slq);
                             context.ChiTietPhieuXuats.Add(ct);
                             context.SaveChanges();
                             break;
@@ -142,7 +142,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                         if (slhhc.SoLuong == slq)
                         {
                             ct.SoLuong = double.Parse(t.SoLuong);
-                            context.TonKhos.Remove(slhhc);
+                            slhhc.SoLuongXuat += Convert.ToInt32(slq);
                             context.ChiTietPhieuXuats.Add(ct);
                             context.SaveChanges();
                             break;
@@ -152,12 +152,13 @@ namespace BanHangOnl.Areas.Admin.Controllers
                         {
                             ct.SoLuong = (double)slhhc.SoLuong;
                             slq = (double)(slq - slhhc.SoLuong);
-
+                            slhhc.SoLuongXuat += Convert.ToInt32(slq);
                             t.SoLuong = slq.ToString();
-                            context.TonKhos.Remove(slhhc);
                             context.ChiTietPhieuXuats.Add(ct);
                             context.SaveChanges();
                         }
+                        context.ChiTietPhieuNhaps.Update(slhhc);
+
                     }
                     chiTietPhieuXuatMaps.Remove(t);
                     context.SaveChanges();
@@ -211,24 +212,11 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 foreach (ChiTietPhieuXuat chiTietPhieu in chiTietPhieuXuats)
                 {
                     ChiTietPhieuNhap chiTietPhieuNhap = context.ChiTietPhieuNhaps.Include(x => x.IdpnNavigation).FirstOrDefault(x => x.Idctpn == chiTietPhieu.Idctpn);
-                    TonKho tonKho = context.TonKhos.FirstOrDefault(x => x.Idctpn == chiTietPhieu.Idctpn);
-                    if (tonKho != null)
-                    {
-                        tonKho.SoLuong += chiTietPhieu.SoLuong;
-                        context.TonKhos.Update(tonKho);
-                        context.SaveChanges();
-                    }
-                    else
-                    {
-                        TonKho ton = new TonKho();
-                        ton.SoLuong = chiTietPhieu.SoLuong;
-                        ton.Idctpn = chiTietPhieu.Idctpn;
-                        ton.Idmau = chiTietPhieu.Idmau;
-                        ton.Idsize = chiTietPhieu.Idsize;
-                        ton.NgayNhap = chiTietPhieuNhap.IdpnNavigation.NgayNhap;
-                        context.TonKhos.Add(ton);
-                        context.SaveChanges();
-                    }
+                    chiTietPhieuNhap.SoLuong += chiTietPhieu.SoLuong;
+                    chiTietPhieuNhap.SoLuongXuat -= Convert.ToInt32(chiTietPhieu.SoLuong);
+                    context.ChiTietPhieuNhaps.Update(chiTietPhieuNhap);
+                    context.SaveChanges();
+                    
                 }
                 px.DonTra = true;
                 context.PhieuXuats.Update(px);

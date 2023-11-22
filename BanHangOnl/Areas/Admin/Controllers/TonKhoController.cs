@@ -23,21 +23,20 @@ namespace BanHangOnl.Areas.Admin.Controllers
             {
                 DateTime FromDay = DateTime.ParseExact(tuNgay, "dd-MM-yyyy", CultureInfo.InvariantCulture);
                 DateTime ToDay = DateTime.ParseExact(denNgay, "dd-MM-yyyy", CultureInfo.InvariantCulture);
-                var tonKho = await context.TonKhos
-                    .Include(x => x.IdctpnNavigation)
-                    .ThenInclude(x => x.IdhhNavigation)
-                    .Where(x => (x.NgayNhap.Value.Date >= FromDay.Date && x.NgayNhap.Value.Date <= ToDay)
-                                && (idNhomHang == 0 || x.IdctpnNavigation.IdhhNavigation.Idnhh == idNhomHang)
-                                && (idHangHoa == 0 || x.IdctpnNavigation.Idhh == idHangHoa))
+                var tonKho = await context.ChiTietPhieuNhaps
+                    .Include(x => x.IdhhNavigation)
+                    .Where(x => (x.IdpnNavigation.NgayNhap.Value.Date >= FromDay.Date && x.IdpnNavigation.NgayNhap.Value.Date <= ToDay)
+                                && (idNhomHang == 0 || x.IdhhNavigation.Idnhh == idNhomHang)
+                                && (idHangHoa == 0 || x.Idhh == idHangHoa))
                     .ToListAsync();
-                var tonkho1 = tonKho.GroupBy(x => x.IdctpnNavigation.Idhh)
+                var tonkho1 = tonKho.GroupBy(x => x.Idhh)
                     .Select(x => new
                     {
                         Id = x.Key,
                         MaHang = getMaHang((int)x.Key),
                         TenHang = getTenHang((int)x.Key),
                         TongSL = x.Sum(x => x.SoLuong),
-                        TongTien = x.Sum(x => x.IdctpnNavigation.Gia * x.SoLuong)
+                        TongTien = x.Sum(x => x.Gia * x.SoLuong)
 
                     })
                     .ToList();
@@ -63,29 +62,28 @@ namespace BanHangOnl.Areas.Admin.Controllers
         {
             DateTime FromDay = DateTime.ParseExact(tuNgay, "dd-MM-yyyy", CultureInfo.InvariantCulture);
             DateTime ToDay = DateTime.ParseExact(denNgay, "dd-MM-yyyy", CultureInfo.InvariantCulture);
-            var tonKho = await context.TonKhos
-                .Include(x => x.IdctpnNavigation.IdpnNavigation.IdnccNavigation)
-                .Include(x => x.IdctpnNavigation)
-                .ThenInclude(x => x.IdhhNavigation.IddvtNavigation)
-                .Where(x => (x.NgayNhap.Value.Date >= FromDay.Date && x.NgayNhap.Value.Date <= ToDay)
-                            && (idNhomHang == 0 || x.IdctpnNavigation.IdhhNavigation.Idnhh == idNhomHang)
-                            && (idHangHoa == 0 || x.IdctpnNavigation.Idhh == idHangHoa)
-                            && (idNCC == 0 || x.IdctpnNavigation.IdpnNavigation.Idncc == idNCC))
+            var tonKho = await context.ChiTietPhieuNhaps
+                .Include(x => x.IdpnNavigation.IdnccNavigation)
+                .Include(x => x.IdhhNavigation.IddvtNavigation)
+                .Where(x => (x.IdpnNavigation.NgayNhap.Value.Date >= FromDay.Date && x.IdpnNavigation.NgayNhap.Value.Date <= ToDay)
+                            && (idNhomHang == 0 || x.IdhhNavigation.Idnhh == idNhomHang)
+                            && (idHangHoa == 0 || x.Idhh == idHangHoa)
+                            && (idNCC == 0 || x.IdpnNavigation.Idncc == idNCC))
                 .ToListAsync();
             var tonkho1 = tonKho;
             return tonkho1.Select(x => new
             {
                 Id = x.Idctpn,
-                NgayNhap = x.NgayNhap.Value.ToString("dd-MM-yyyy"),
-                NhaCungCap = x.IdctpnNavigation?.IdpnNavigation?.IdnccNavigation?.TenNcc,
-                MaHang = x?.IdctpnNavigation?.IdhhNavigation?.MaHh,
-                TenHang = x?.IdctpnNavigation?.IdhhNavigation?.TenHh,
-                SoLuongNhap = x?.IdctpnNavigation?.SoLuong,
+                NgayNhap = x.IdpnNavigation.NgayNhap.Value.ToString("dd-MM-yyyy"),
+                NhaCungCap = x?.IdpnNavigation?.IdnccNavigation?.TenNcc,
+                MaHang = x.IdhhNavigation?.MaHh,
+                TenHang = x.IdhhNavigation?.TenHh,
+                SoLuongNhap = x.SoLuong,
                 SoLuongXuat = getSoLuongXuat((int)x.Idctpn),
                 SoLuongTon = x.SoLuong,
-                DonViTinh = x?.IdctpnNavigation?.IdhhNavigation?.IddvtNavigation?.TenDvt,
-                GiaNhap = x?.IdctpnNavigation?.Gia,
-                ThanhTien = x.IdctpnNavigation.Gia * x.SoLuong,
+                DonViTinh = x?.IdhhNavigation?.IddvtNavigation?.TenDvt,
+                GiaNhap = x?.Gia,
+                ThanhTien = x.Gia * x.SoLuong,
             });
         }
         public double getSoLuongXuat(int idCTPN)

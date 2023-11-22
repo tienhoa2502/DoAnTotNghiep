@@ -49,13 +49,14 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
 
         [HttpPost("/HangHoa/updateHangHoa")]
-        public dynamic addHangHoa(HangHoa hangHoa) {
-            //hangHoa.Active = true;
-            //context.HangHoas.Add(hangHoa);
-            //context.SaveChanges();  
+        public dynamic addHangHoa(HangHoa hangHoa) 
+        {
+            hangHoa.Active = true;
+            context.HangHoas.Add(hangHoa);
+            context.SaveChanges();
             return new
             {
-                id = 1,
+                id =hangHoa.Idhh,
             };
         }
         [HttpPost("/HangHoa/UpdateAnh")]
@@ -85,9 +86,9 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 i++;
                 img.Img = "/img/HangHoa/" + uniqueFileName;
                 img.Idhh = idHangHoa;
-                img.IsDefault = true;
                 imgHangHoas.Add(img);
             }
+            imgHangHoas[0].IsDefault = true;
             context.ImgHangHoas.AddRange(imgHangHoas);
 
             context.SaveChanges();
