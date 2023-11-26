@@ -7,21 +7,44 @@
     QuanLyBanHangContext context = new QuanLyBanHangContext();
 
 }
+@model BanHangOnl.Models.TinTuc
 
 <link rel="stylesheet" type="text/css" href="~/usassets/styles/main_styles.css">
+
+<style>
+	.news_section_container {
+		margin-top: 180px;
+	}
+
+	.row-item-new {
+		margin-bottom: 20px;
+	}
+
+	.title-news {
+		font-size: 24px;
+		border-bottom: 1px solid;
+		padding: 15px 0;
+		margin-bottom: 25px;
+	}
+
+	.img-box img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+</style>
 
 <div class="row">
     <section class="right-content col-lg-9 col-12 mx-auto">
 		<article class="article-main">
 			<div class="article-details">
-				<h1 class="article-title title_page">[Ben &amp; Tod Tuyển Dụng] PHOTOGRAPHER</h1>
+				<h1 class="article-title title_page">@Model.TenTt</h1>
 				<div class="media ">
 					<div class="media-body text-right">
-						<div class="mt-0 ">Đinh Hoàng Phi</div>
+						<div class="mt-0 ">@Model.NguoiTao</div>
 						<div class="art-info text-muted font-weight-light justify-content-end ">
 										
 							<span>
-								<svg class="icon"><use xlink:href="#icon-calendar"></use></svg>Th 6 27/10/2023  
+								<svg class="icon"><use xlink:href="#icon-calendar"></use></svg>@Model.NgayTao 
 							</span>
 							<span class="reading-time">
 								<svg class="icon"><use xlink:href="#icon-clock"></use></svg>1 phút đọc

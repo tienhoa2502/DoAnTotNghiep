@@ -34,11 +34,11 @@
                 <div class="row" style="padding: 20px;justify-content: center;">
                     <label class="col-sm-auto col-form-label">Từ ngày</label>
                     <div class="col-sm-3">
-                        <input type="text" name="tuNgay" class="form-control" value="20-11-2023" placeholder="dd-MM-yyyy" id="tuNgay">
+                        <input type="text" name="tuNgay" class="form-control" value="@DateTime.Now.ToString("dd-MM-yyyy")" placeholder="dd-MM-yyyy" id="tuNgay">
                     </div>
                     <label class="col-sm-auto col-form-label">Đến ngày</label>
                     <div class="col-sm-3">
-                        <input type="text" name="denNgay" class="form-control" value="20-11-2023" placeholder="dd-MM-yyyy" id="denNgay">
+                        <input type="text" name="denNgay" class="form-control" value="@DateTime.Now.ToString("dd-MM-yyyy")" placeholder="dd-MM-yyyy" id="denNgay">
                     </div>
                     <div class="col-md-1 mb-2 col-lg-1 d-flex justify-content-end">
                         <button type="button" class="btn btn-primary" onclick="baoCaoLoiNhuan()">

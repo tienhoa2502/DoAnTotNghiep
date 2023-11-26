@@ -33,7 +33,7 @@ namespace BanHangOnl.Controllers
 		}
 
 		[HttpGet("/SanPham/{string}")]
-		public IActionResult Index(string TenNhh)
+		public IActionResult NhomSP(string TenNhh)
 		{
 			HangHoa xem = context.HangHoas.Find(TenNhh);
 			ViewBag.HangHoa = context.HangHoas

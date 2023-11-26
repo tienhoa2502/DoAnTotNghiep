@@ -29,33 +29,80 @@
 
             <!-- Sidebar -->
             <!-- Main Content -->
-            <div class="row">
+            <div class="row" style="justify-content:center">
 
-                <div class="col-md-12 text-center">
-                    <h1 class="">Thanh toán</h1>
-                    <p>Bạn hãy kiểm tra lại thông tin đơn hàng cho chính xác!</p>
+                
+                <div class="col-md-6">
+                    
+                    <div class="form-group">
+                        <label for="hoTen">Họ tên:</label>
+                        <input type="text" class="form-control" id="hoTen" name="hoTen">
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-8">
+                                <label for="hoTen">Email</label>
+                                <input type="text" class="form-control" id="email" name="email">
+                            </div>
+                            
+                            <div class="col-4">
+                                <label for="hoTen">SĐT</label>
+                                <input type="text" class="form-control" id="email" name="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hoTen">Địa chỉ:</label>
+                        <input type="text" class="form-control" id="add" name="add">
+                    </div>
+                    <!-- Thêm các trường thông tin khác cần nhập -->
+
+                </div>
+                <div class="col-md-4">
+
+
+                        <tr class="product" data-product-id="1041247610" data-variant-id="1090004378">
+                            <td class="product-image">
+                                <div class="product-thumbnail">
+                                    <div class="product-thumbnail-wrapper">
+                                        <img class="product-thumbnail-image" alt="Áo Khoác Nam Bomber R1111BB143" src="//product.hstatic.net/1000378223/product/3_29fb73367cfc4a91bfd66447a333156b_small.jpg">
+                                    </div>
+                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
+                                </div>
+                            </td>
+                            <td class="product-description">
+                                <span class="product-description-name order-summary-emphasis">Áo Khoác Nam Bomber R1111BB143</span>
+
+                                <span class="product-description-variant order-summary-small-text">
+                                    Trắng / M
+                                </span>
+
+                            </td>
+                            <td class="product-quantity visually-hidden">1</td>
+                            <td class="product-price">
+                                <span class="order-summary-emphasis">399,000₫</span>
+                            </td>
+                        </tr>
+
+                        <hr class="my-4">
+
+                        <div class="d-flex justify-content-between mb-5">
+                            <h5 class="text-uppercase">Tổng cộng: </h5>
+                            <h5>€ 137.00</h5>
+                        </div>
+
+                        <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">
+                            <a href="/ThanhToan">THANH TOÁN</a>
+                        </button>             
+
                 </div>
 
             </div>
-            <hr />
-            @if (ViewBag.CheckCart != null)
-            {
-                <div class="row">
-                    <div id="show_success"></div>
-                    <div class="col-md-9">
-                       @*@Html.Action("Partial_CheckOut", "Shoppingcart")*@
-                    </div>
-                    <div class="col-md-3">
-        @*                        @Html.Action("Partial_Item_ThanhToan", "ShoppingCart")*@
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div>
-                    Bạn chưa có sản phẩm nào. Vui long quay lại trang <a href="/san-pham">sản phẩm</a> để mua hàng.
-                </div>
-            }
+           
+           
+
+
+
         </div>
     </div>
 </div>

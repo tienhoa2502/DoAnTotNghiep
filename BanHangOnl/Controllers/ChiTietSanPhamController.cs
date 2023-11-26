@@ -29,8 +29,13 @@ namespace BanHangOnl.Controllers
                              .Include(hh => hh.IddvtNavigation) // Đảm bảo navigation properties được load
                              .Include(hh => hh.IdnhhNavigation)
                              .FirstOrDefault(hh => hh.Idhh == id);
-            //ViewBag.Mau = context.ChiTietPhieuNhaps.Where(x => x.Idhh == id && x.SoLuong != x.so)
-
+            var chiTietPhieuNhaps = context.ChiTietPhieuNhaps
+                .Include(x => x.IdmauNavigation)
+                .Include(x => x.IdsizeNavigation)
+                .Where(x => x.Idhh == id && x.SoLuong != x.SoLuongXuat).ToList();
+            ViewBag.Mau = chiTietPhieuNhaps.GroupBy(x => x.IdmauNavigation.Mau1).ToList();
+            ViewBag.Size = chiTietPhieuNhaps.GroupBy(x => x.IdsizeNavigation.Size1).ToList();
+            ViewBag.SLCon = chiTietPhieuNhaps.Sum(x => x.SoLuong);
             if (hangHoa == null)
             {
                 return NotFound(); // Trả về 404 nếu không tìm thấy sản phẩm

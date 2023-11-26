@@ -1,12 +1,49 @@
-﻿@{
+﻿@using Microsoft.CodeAnalysis.Differencing;
+@{
     ViewData["Title"] = "Giỏ hàng";
     Layout = "/Views/Shared/_Layout.cshtml";
 }
+<style>
+       media (min-width: 1025px) {
+    .h-custom {
+    height: 100vh !important;
+    }
+    }
 
-@*
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+
+    .bg-grey {
+    background-color: #eae8e8;
+    }
+
+    media (min-width: 992px) {
+    .card-registration-2 .bg-grey {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    }
+    }
+
+    media (max-width: 991px) {
+    .card-registration-2 .bg-grey {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    }
+    }
+</style>
+
+
 <link rel="stylesheet" type="text/css" href="~/usassets/assets/styles/categories_styles.css">
 <link rel="stylesheet" type="text/css" href="~/usassets/assets/styles/categories_responsive.css">
-<div class="container product_section_container">
+@*<div class="container product_section_container">
     <div class="row">
         <div class="col product_section clearfix">
 
@@ -26,7 +63,7 @@
                 <div class="col-md-12" id="load_data">
                 </div>
                 <div class="col-md-12">
-                    @if (ViewBag.CheckCart != null)
+                    if (ViewBag.CheckCart != null)
                     {
                         <div class="text-right">
                             <a href="#" class="btn btn-danger btnDeleteAll">Xóa</a>
@@ -38,195 +75,162 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
+
+
+<section class="h-100 h-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-8">
+
+                               
+                                <div class="p-5">
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
+                                                 class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-xl-3">
+                                            <h6 class="text-muted">Shirt</h6>
+                                            <h6 class="text-black mb-0">Cotton T-shirt</h6>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                            <button class="btn btn-link px-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+
+                                            <input id="form1" min="0" name="quantity" value="1" type="number"
+                                                   class="form-control form-control-sm" />
+
+                                            <button class="btn btn-link px-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                            <h6 class="mb-0">€ 44.00</h6>
+                                        </div>
+                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                            <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img6.webp"
+                                                 class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-xl-3">
+                                            <h6 class="text-muted">Shirt</h6>
+                                            <h6 class="text-black mb-0">Cotton T-shirt</h6>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                            <button class="btn btn-link px-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+
+                                            <input id="form1" min="0" name="quantity" value="1" type="number"
+                                                   class="form-control form-control-sm" />
+
+                                            <button class="btn btn-link px-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                            <h6 class="mb-0">€ 44.00</h6>
+                                        </div>
+                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                            <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img7.webp"
+                                                 class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-xl-3">
+                                            <h6 class="text-muted">Shirt</h6>
+                                            <h6 class="text-black mb-0">Cotton T-shirt</h6>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                            <button class="btn btn-link px-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+
+                                            <input id="form1" min="0" name="quantity" value="1" type="number"
+                                                   class="form-control form-control-sm" />
+
+                                            <button class="btn btn-link px-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                            <h6 class="mb-0">€ 44.00</h6>
+                                        </div>
+                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                            <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-4 bg-grey">
+                                <div class="p-5">
+                                    <h3 class="fw-bold mb-5 mt-2 pt-1">BEdward</h3>
+                                    <hr class="my-4">
+
+                                    
+                                    <h5 class="text-uppercase mb-3">Mã Voucher</h5>
+
+                                    <div class="mb-5">
+                                        <div class="form-outline">
+                                            <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                                            <label class="form-label" for="form3Examplea2">Enter your code</label>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <h5 class="text-uppercase">Tổng cộng: </h5>
+                                        <h5>€ 137.00</h5>
+                                    </div>
+
+                                    <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">
+                                        <a href="/ThanhToan">THANH TOÁN</a>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <script src="~/usassets/js/categories_custom.js"></script>
-*@
 
 
-<form action="/cart" method="post" novalidate="" class="margin-bottom-0" data-gtm-form-interact-id="0">
-	<div class="header-cart">
-		<div class=" title_cart_mobile heading-bar">
-			<h1 class="heading-bar__title text-left">Giỏ hàng</h1>
-		</div>
-	</div>
 
-	<div class="cart-upsell__empty-wrapper" style="display: none;">
-		<div class="cart-upsell__empty" style="color: #5bb72e;
-								background-color: #f4f1f1;
-								border-width: 1px;
-								border-style: dashed;
-								border-color: #5bb72e;">
-			<img src="//theme.hstatic.net/1000378223/1001167600/14/cart_upsell_empty.png?v=10" alt="cart-upsell-empty">
-			Freeship với đơn hàng trên 699.000đ. Mua sắm ngay nào!!!
-		</div>
-	</div>
-
-	<div class="header-cart-content">
-		<div class="cart_page_mobile content-product-list">
-			<div class="item-product item productid-1090004378 " line="1">
-				<div class="text-center">
-					<a class="remove-itemx remove-item-cart " title="Xóa" href="javascript:;" data-id="1090004378">
-						<svg class="icon" viewBox="0 0 12 12" fill="none">
-							<g clip-path="url(#clip0)">
-								<path d="M0.620965 12C0.462896 12 0.304826 11.9399 0.184729 11.8189C-0.0563681 11.5778 -0.0563681 11.1869 0.184729 10.9458L10.9497 0.180823C11.1908 -0.0602744 11.5817 -0.0602744 11.8228 0.180823C12.0639 0.421921 12.0639 0.8128 11.8228 1.05405L1.05795 11.8189C0.936954 11.9392 0.778884 12 0.620965 12Z" fill="#8C9196"></path>
-								<path d="M11.3867 12C11.2287 12 11.0707 11.9399 10.9505 11.8189L0.184729 1.05405C-0.0563681 0.8128 -0.0563681 0.421921 0.184729 0.180823C0.425827 -0.0602744 0.816706 -0.0602744 1.05795 0.180823L11.8228 10.9458C12.0639 11.1869 12.0639 11.5778 11.8228 11.8189C11.7018 11.9392 11.5439 12 11.3867 12Z" fill="#8C9196"></path>
-							</g>
-							<defs>
-								<clipPath id="clip0">
-									<rect width="12" height="12" fill="white"></rect>
-								</clipPath>
-							</defs>
-						</svg>
-					</a>
-				</div>
-				<div class="item-product-cart-mobile">
-					<a href="/products/ao-khoac-nam-bomber-r1111bb143">
-					</a><a class="product-images1  pos-relative embed-responsive embed-responsive-1by1" href="" title="Áo Khoác Nam Bomber R1111BB143">
-						<img class="img-fluid" src="//product.hstatic.net/1000378223/product/3_29fb73367cfc4a91bfd66447a333156b_compact.jpg" alt="Áo Khoác Nam Bomber R1111BB143">
-						<div class="label_product product_gift_label hidden" data-id="1041247610">
-							<img src="//theme.hstatic.net/1000378223/1001167600/14/ega-product-gift.png?v=10" alt="product gift">
-						</div>
-					</a>
-
-				</div>
-				<div class="product-cart-infor">
-					<div class="title-product-cart-mobile">
-						<h3 class="product-name">
-							<a class="text2line link" href="/products/ao-khoac-nam-bomber-r1111bb143" title="Áo Khoác Nam Bomber R1111BB143">
-								Áo Khoác Nam Bomber R1111BB143
-							</a>
-						</h3>
-						<span class="variant-title">Trắng / M</span>
-					</div>
-
-					<div class="cart-price">
-						<span class="product-price price">399,000₫</span>
-					</div>
-					<div class="select-item-qty-mobile">
-						<div class="txt_center">
-							<input class="variantID" type="hidden" name="id" value="1090004378">
-							<button onclick="var result = this.parentElement.children[2]; var _result = document.getElementById('qtyMobile1090004378'); var qtyMobile1090004378 = result.value; if( !isNaN( qtyMobile1090004378 ) &amp;&amp; qtyMobile1090004378 > 1 ) result.value--;return false;" class="reduced items-count btn-minus btn" type="button">
-								<svg class="icon">
-									<use xlink:href="#icon-minus"></use>
-								</svg>
-							</button>
-							<input type="text" maxlength="3" min="1" class="form-control input-text number-sidebar qtyMobile1090004378" id="qtyMobile1090004378" name="updates[]" size="4" value="1">
-							<button onclick="var result = this.parentElement.children[2]; var _result = document.getElementById('qtyMobile1090004378'); var qtyMobile1090004378 = result.value; if( !isNaN( qtyMobile1090004378 )) result.value++;return false;" class="increase items-count btn-plus btn" type="button" style="pointer-events: auto;">
-								<svg class="icon">
-									<use xlink:href="#icon-plus"></use>
-								</svg>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="cart-note">
-				<label for="note" class="note-label">Ghi chú đơn hàng</label>
-				<textarea id="note" name="note" rows="8"></textarea>
-			</div>
-		</div>
-		<div class="cart-upsell">
-			<div class="cart-upsell__progress-wrapper" style="display: block;">
-				<div class="cart-upsell__progress">
-					<div class="cart-upsell__progress-bar" style="background-color: #dae1e8">
-						<div class="cart-upsell__percent" style="width: 57%; background-color: rgb(91, 183, 46);">
-						</div>
-					</div>
-					<span style="color: #2EB346;">57%</span>
-				</div>
-			</div>
-
-			<div class="cart-upsell__promotion-wrapper" style="display: none;">
-				<div class="cart-upsell__promotion" style="border-width: 1px;
-					border-style: solid;
-					border-color: #f88b38;
-					color: #dc7322;
-					background: #feeee2;">
-					<img src="//theme.hstatic.net/1000378223/1001167600/14/cart_upsell_coupon.png?v=10" alt="cart-upsell">
-					<strong></strong>
-					<button style="background-color: #f88b38;
-						   color: #ffffff;
-						   border-radius: 99999px;
-						   border-color: rgb(255, 140, 0);">
-						Sao chép
-					</button>
-				</div>
-			</div>
-
-			<div class="cart-upsell__content incomplete" style="--incomplete-color: #202223; --incomplete-price: #d22d00; --complete-color: #202223; display: block;">Bạn cần mua thêm <span class="cart-upsell__price">300,000₫</span> nữa để được Freeship</div>
-		</div>					  <div class="header-cart-price">
-			<div class="timedeli-modal">
-				<div class="timedeli-modal-content">
-					<button type="button" class="close window-close d-sm-none" aria-label="Close" style="z-index: 9;"><span aria-hidden="true">×</span></button>
-					<div class="timedeli d-sm-block"></div>
-					<div class="timedeli-cta">
-						<button class="btn btn-block timedeli-btn  d-sm-none" type="button">
-							<span>Xong</span>
-						</button>
-					</div>
-				</div>
-				<div class="timedeli-overaly">
-				</div>
-			</div>
-
-			<div class="r-bill">
-				<div class="checkbox">
-					<input type="hidden" name="attributes[invoice]" id="re-checkbox-bill" value="không">
-					<input type="checkbox" id="checkbox-bill" value="có" class="regular-checkbox" data-gtm-form-interact-field-id="0">
-					<label for="checkbox-bill" class="box"></label>
-					<label for="checkbox-bill" class="title">Xuất hóa đơn công ty</label>
-				</div>
-				<div class="bill-field" style="display: none;">
-					<div class="form-group">
-						<label>Tên công ty</label>
-						<input type="text" class="form-control val-f" name="attributes[company_name]" value="" placeholder="Tên công ty">
-					</div>
-					<div class="form-group">
-						<label>Mã số thuế</label>
-						<input type="number" pattern=".{10,}" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)" class="form-control val-f val-n" name="attributes[tax_code]" value="" placeholder="Mã số thuế">
-					</div>
-					<div class="form-group">
-						<label>Địa chỉ công ty</label>
-						<textarea type="text" class="form-control val-f" name="attributes[company_address]" placeholder="Nhập địa chỉ công ty (bao gồm Phường/Xã, Quận/Huyện, Tỉnh/Thành phố nếu có)"></textarea>
-					</div>
-					<div class="form-group">
-						<label>Email nhận hoá đơn</label>
-						<input type="email" class="form-control val-f val-email" name="attributes[invoice_email]" value="" placeholder="Email nhận hoá đơn">
-					</div>
-				</div>
-			</div>
-
-
-			<div class="title-cart d-none d-sm-flex ">
-				<h3 class="text-xs-left">TỔNG CỘNG</h3>
-				<span class="text-xs-right  totals_price_mobile">399,000₫</span>
-				<i class="text-xs-right price_vat ">(Đã bao gồm VAT nếu có)</i>
-			</div>
-
-			<div class="coupon-toggle d-flex justify-content-between align-items-center">
-				<div>
-					<img class="mr-1" src="//theme.hstatic.net/1000378223/1001167600/14/coupon-icon.png?v=10" alt="delivery" -="">
-					<span>Mã giảm giá</span>
-				</div>
-
-				<div class="coupon-toggle-btn">
-					<span class="mr-1">Chọn mã giảm giá</span>
-
-
-					<svg class="icon">
-						<use xlink:href="#icon-arrow"></use>
-					</svg>
-				</div>
-			</div>
-
-
-			<div class="checkout mt-2">
-				<button class="btn btn-block btn-proceed-checkout-mobile" title="Tiến hành thanh toán" type="button" onclick="goToCheckout(event)">
-					<span>Thanh Toán</span>
-				</button>
-			</div>
-		</div>
-
-	</div>
-</form>
