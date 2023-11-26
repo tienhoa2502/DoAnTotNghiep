@@ -23,7 +23,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             _signInManager = signInManager;
         }
 
-        [HttpGet("/Login")]
+        [HttpGet("/DangNhap")]
         public IActionResult Login()
         {
             return View();
@@ -84,7 +84,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
 
 
-        [HttpGet("/Register")]
+        [HttpGet("/DangKy")]
         public IActionResult Register()
         {
             return View();

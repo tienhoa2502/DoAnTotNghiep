@@ -2677,6 +2677,10 @@
       "PackagePath": "staticwebassets\\AdAssets\\vendor\\apexcharts\\apexcharts.css"
     },
     {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\AdAssets\\vendor\\apexcharts\\apexcharts.custom.js",
+      "PackagePath": "staticwebassets\\AdAssets\\vendor\\apexcharts\\apexcharts.custom.js"
+    },
+    {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\AdAssets\\vendor\\apexcharts\\apexcharts.esm.js",
       "PackagePath": "staticwebassets\\AdAssets\\vendor\\apexcharts\\apexcharts.esm.js"
     },
@@ -4425,12 +4429,488 @@
       "PackagePath": "staticwebassets\\AdAssets\\vendor\\tinymce\\tinymce.min.js"
     },
     {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\banner_1.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\banner_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\banner_2.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\banner_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\banner_3.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\banner_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\blog_1.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\blog_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\blog_2.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\blog_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\blog_3.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\blog_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\deal_ofthe_week.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\deal_ofthe_week.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\desc_1.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\desc_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\desc_2.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\desc_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\desc_3.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\desc_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\map_marker.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\map_marker.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_1.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_1.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_10.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_10.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_2.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_2.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_3.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_3.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_4.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_4.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_5.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_5.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_6.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_6.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_7.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_7.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_8.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_8.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\product_9.png",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\product_9.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\single_1.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\single_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\single_1_thumb.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\single_1_thumb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\single_2.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\single_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\single_2_thumb.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\single_2_thumb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\single_3.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\single_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\single_3_thumb.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\single_3_thumb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\images\\slider_1.jpg",
+      "PackagePath": "staticwebassets\\UsAssets\\images\\slider_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\js\\categories_custom.js",
+      "PackagePath": "staticwebassets\\UsAssets\\js\\categories_custom.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\js\\contact_custom.js",
+      "PackagePath": "staticwebassets\\UsAssets\\js\\contact_custom.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\js\\custom.js",
+      "PackagePath": "staticwebassets\\UsAssets\\js\\custom.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\js\\jquery-3.2.1.min.js",
+      "PackagePath": "staticwebassets\\UsAssets\\js\\jquery-3.2.1.min.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\js\\single_custom.js",
+      "PackagePath": "staticwebassets\\UsAssets\\js\\single_custom.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\Isotope\\isotope.pkgd.min.js",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\Isotope\\isotope.pkgd.min.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\ajax-loader.gif",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\ajax-loader.gif"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\animate.css",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\animate.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.css",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.js",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\owl.theme.default.css",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\owl.theme.default.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\owl.video.play.png",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\OwlCarousel2-2.2.1\\owl.video.play.png"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\easing\\easing.js",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\easing\\easing.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\HELP-US-OUT.txt",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\HELP-US-OUT.txt"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.css",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\animated.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\animated.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\bordered-pulled.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\bordered-pulled.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\core.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\core.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\fixed-width.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\fixed-width.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\font-awesome.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\font-awesome.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\icons.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\icons.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\larger.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\larger.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\list.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\list.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\mixins.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\mixins.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\path.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\path.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\rotated-flipped.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\rotated-flipped.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\screen-reader.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\screen-reader.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\stacked.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\stacked.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\variables.less",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\less\\variables.less"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_animated.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_animated.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_bordered-pulled.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_bordered-pulled.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_core.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_core.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_fixed-width.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_fixed-width.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_icons.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_icons.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_larger.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_larger.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_list.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_list.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_mixins.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_mixins.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_path.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_path.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_rotated-flipped.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_rotated-flipped.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_screen-reader.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_screen-reader.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_stacked.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_stacked.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_variables.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\_variables.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\font-awesome.scss",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\font-awesome-4.7.0\\scss\\font-awesome.scss"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\jquery-ui-1.12.1.custom\\jquery-ui.css",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\jquery-ui-1.12.1.custom\\jquery-ui.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\jquery-ui-1.12.1.custom\\jquery-ui.js",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\jquery-ui-1.12.1.custom\\jquery-ui.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\themify-icons\\fonts\\themify.eot",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\themify-icons\\fonts\\themify.eot"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\themify-icons\\fonts\\themify.svg",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\themify-icons\\fonts\\themify.svg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\themify-icons\\fonts\\themify.ttf",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\themify-icons\\fonts\\themify.ttf"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\themify-icons\\fonts\\themify.woff",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\themify-icons\\fonts\\themify.woff"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\plugins\\themify-icons\\themify-icons.css",
+      "PackagePath": "staticwebassets\\UsAssets\\plugins\\themify-icons\\themify-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\bootstrap4\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\bootstrap4\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\bootstrap4\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\bootstrap4\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\bootstrap4\\popper.js",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\bootstrap4\\popper.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\categories_responsive.css",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\categories_responsive.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\categories_styles.css",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\categories_styles.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\contact_responsive.css",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\contact_responsive.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\contact_styles.css",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\contact_styles.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\main_styles.css",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\main_styles.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\responsive.css",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\responsive.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\single_responsive.css",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\single_responsive.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\UsAssets\\styles\\single_styles.css",
+      "PackagePath": "staticwebassets\\UsAssets\\styles\\single_styles.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\assets\\script.js",
+      "PackagePath": "staticwebassets\\assets\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\assets\\style.css",
+      "PackagePath": "staticwebassets\\assets\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\assets\\upload.png",
+      "PackagePath": "staticwebassets\\assets\\upload.png"
+    },
+    {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH01 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH01 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH01 2.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH01 2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH01 3.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH01 3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH02 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH02 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH03 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH03 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH04 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH04 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH05 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH05 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH06 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH06 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH07 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH07 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH08 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH08 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\Slide\\6.jpg",
+      "PackagePath": "staticwebassets\\img\\Slide\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\BaoCaoLoiNhuan.js",
+      "PackagePath": "staticwebassets\\jsAdmin\\BaoCaoLoiNhuan.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\HangHoa.js",
+      "PackagePath": "staticwebassets\\jsAdmin\\HangHoa.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\PhieuNhap.js",
+      "PackagePath": "staticwebassets\\jsAdmin\\PhieuNhap.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\PhieuXuat.js",
+      "PackagePath": "staticwebassets\\jsAdmin\\PhieuXuat.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\TinTuc.js",
+      "PackagePath": "staticwebassets\\jsAdmin\\TinTuc.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\TonKho.js",
+      "PackagePath": "staticwebassets\\jsAdmin\\TonKho.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\common.js",
+      "PackagePath": "staticwebassets\\jsAdmin\\common.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\js\\Jquery\\jquery.inputmask.js",
+      "PackagePath": "staticwebassets\\js\\Jquery\\jquery.inputmask.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\js\\Jquery\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\Jquery\\jquery.min.js"
     },
     {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\js\\site.js",
@@ -4663,6 +5143,22 @@
     {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\select\\css\\selectize.bootstrap5.css",
+      "PackagePath": "staticwebassets\\select\\css\\selectize.bootstrap5.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\select\\css\\selectize.css",
+      "PackagePath": "staticwebassets\\select\\css\\selectize.css"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\select\\js\\selectize.js",
+      "PackagePath": "staticwebassets\\select\\js\\selectize.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\select\\js\\selectize.min.js",
+      "PackagePath": "staticwebassets\\select\\js\\selectize.min.js"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BanHangOnl.Microsoft.AspNetCore.StaticWebAssets.props",

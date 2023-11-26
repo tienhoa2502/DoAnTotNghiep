@@ -6,18 +6,18 @@
 
 
 
-    string getTenNhom(int? id)
-    {
-        if (id > 0)
-        {
-            return context.HangHoas.Find(id).TenHh;
+    //string getTenNhom(int? id)
+    //{
+    //    if (id > 0)
+    //    {
+    //        return context.HangHoas.Find(id).TenHh;
 
-        }
-        else
-        {
-            return "";
-        }
-    }
+    //    }
+    //    else
+    //    {
+    //        return "";
+    //    }
+    //}
 
 }
 
@@ -76,7 +76,8 @@
                                     <td>@tk?.IddvtNavigation?.TenDvt</td>
                                     <td>@tk?.GiaBan</td>
                                     <td>@tk?.GiaSale</td>
-                                    <td>@getTenNhom(@tk.Idnhh)</td>
+                                    @*<td>@getTenNhom(@tk.Idnhh)</td>*@
+                                    <td>@tk?.IdnhhNavigation?.TenNhh</td>
 
                                     @if (tk.HienThi == true)
                                     {

@@ -89,7 +89,7 @@
 <link rel="stylesheet" type="text/css" href="~/usassets/styles/categories_responsive.css">
 
 
-@model BanHangOnl.Models.HangHoa
+@model BanHangOnl.Models.NhomHangHoa
 
 
 
@@ -155,18 +155,19 @@
                     {
                         <ul class="sidebar_categories">
                             <li class="category-item">
-                                <a href="/SanPham/@hh.TenNhh" onmouseover="showSubCategories(this)" onmouseout="hideSubCategories(this)">
+                                <a href="/NhomSanPham/@hh.TenNhh" onmouseover="showSubCategories(this)" onmouseout="hideSubCategories(this)">
                                     <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>@hh.TenNhh
                                 </a>
+
+                                <ul class="sub-categories">
                                 @foreach (NhomHangHoa hh2 in ViewBag.NhomHangHoaCap2)
                                 {
                                     if (hh2.Thuoc == hh.Idnhh)
                                     {
-                                        <ul class="sub-categories">
-                                            <li><a href="/SanPham/@hh.TenNhh" style="color: black">@hh2.TenNhh</a></li>
-                                        </ul>
+                                            <li><a href="/NhomSanPham/@hh.TenNhh" style="color: black">@hh2.TenNhh</a></li>
                                     }
                                 }
+                                </ul>
 
                             </li>
                         </ul>
@@ -255,7 +256,7 @@
                             <div class="product-grid" style="position: relative; height: 1140px;">
 
                                 <!-- Product 1 -->
-                                @foreach (HangHoa hh in ViewBag.HangHoa)
+                                @foreach (var hh in Model.HangHoas)
                                 {
                                     <div class="product-item men" style="position: absolute; left: 0px; top: 0px;">
                                         <div class="product discount product_filter" style="border-right: 1px solid rgb(233, 233, 233); padding: 5px">
