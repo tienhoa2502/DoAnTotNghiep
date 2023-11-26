@@ -47,15 +47,19 @@
 					<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
 						<div class="single_product_thumbnails">
 							<ul>
-								<li><img src="~/img/HangHoa/HH04 1.jpg" alt="" data-image="images/single_1.jpg"></li>
-								<li class="active"><img src="/img/HangHoa/HH06 1.jpg" alt="" data-image="images/single_2.jpg"></li>
-								<li><img src="~/img/HangHoa/HH05 1.jpg" alt="" data-image="images/single_3.jpg"></li>
+								@foreach (ImgHangHoa i in ViewBag.Img)
+								{
+									
+								
+								<li><img src="@i.Img" alt="" data-image="@i.Img"></li>
+									@*<li class="active"><img src="images/single_2_thumb.jpg" alt="" data-image="images/single_2.jpg"></li> *@
+								}
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-9 image_col order-lg-2 order-1">
 						<div class="single_product_image">
-							<div class="single_product_image_background" style="background-image:url('/img/hanghoa/hh04 1.jpg' );"></div>
+							<div class="single_product_image_background" style="background-image:url('@ViewBag.ImgD')"></div>
 						</div>
 					</div>
 				</div>

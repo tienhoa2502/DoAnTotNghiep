@@ -99,7 +99,13 @@ function addRowBaoCaoChiTiet(data) {
         </td>
         <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${data.tenHang}
-        </td>  
+        </td> 
+        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
+        ${data.mau}
+        </td>         
+        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
+        ${data.size}
+        </td> 
         <td class="p-1">
             <input readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.soLuongNhap)}" name="soLuong" />
         </td>

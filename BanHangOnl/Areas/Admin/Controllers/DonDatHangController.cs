@@ -4,6 +4,7 @@ using BanHangOnl.Models;
 using BanHangOnl.Models.Mapping;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging.Console;
 using QuanLyNhaHang.Models.Mapping;
 using System.Text.RegularExpressions;
 
@@ -34,10 +35,18 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 .Include(x => x.IdhhNavigation)
                 .Where(x => x.Idhh == idHH && x.Idmau == idMau && x.Idsize == idSize)
                 .ToList();
+            double slc = 0;
+            if (tonKho.Count() != 0)
+            {
+                double sl = (double)tonKho.Sum(x => x.SoLuong);
+                double slx = (double)tonKho.Sum(x => x.SoLuongXuat);
+                slc = sl - slx;
+            }
+
             var ton = new
             {
-                DonViTinh = getDonViTinh(tonKho.Count() != 0 ?(int)tonKho.First().Idhh : idHH),
-                SoLuong = tonKho.Count() != 0 ? tonKho.Sum(x => x.SoLuong) : 0,
+                DonViTinh = getDonViTinh(tonKho.Count() != 0 ?(int)tonKho.First().Idhh : idHH).Result,
+                SoLuong = slc,
                 DonGia = tonKho.Count() != 0 ? tonKho?.First().IdhhNavigation.GiaBan : 0,
             };
 
@@ -79,7 +88,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             string cleanedInput = Regex.Replace(khachHang.Phone, @"\s+", "");
 
             // Sử dụng biểu thức chính quy để tìm số điện thoại
-            khachHang.Phone = GetPhoneNumber(cleanedInput); 
+            khachHang.Phone = cleanedInput; 
             PhieuXuat phieuXuat = _mapper.Map<PhieuXuat>(ph);
             List<ChiTietPhieuXuatMap> chiTietPhieuXuatMaps = data.ChiTietDonDatHang;
             List<ChiTietPhieuNhap> soLuongHhcon = await context.ChiTietPhieuNhaps
@@ -101,7 +110,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                     context.TaiKhoans.Add(tk);
                     context.SaveChanges();
                     taiKhoan = tk;
-                    khachHang.MaKh = "KH" + (a.Count() + 1).ToString("D4"); ;
+                    khachHang.MaKh = "KH" + (a.Count() + 1).ToString("D4"); 
                     khachHang.Idtk = tk.Idtk;
                     khachHang.Active = true;
                     context.KhachHangs.Add(khachHang);
@@ -118,8 +127,10 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 foreach (ChiTietPhieuXuatMap t in chiTietPhieuXuatMaps.ToList())
                 {
                     double slq = double.Parse(t.SoLuong);
-                    foreach (ChiTietPhieuNhap slhhc in soLuongHhcon.Where(x => x.Idhh == int.Parse(t.Idhh) && x.Idmau == int.Parse(t.Idmau) && x.Idsize == int.Parse(t.Idsize)))
+                    foreach (ChiTietPhieuNhap slhhc in soLuongHhcon.Where(x => x.Idhh == int.Parse(t.Idhh) && x.Idmau == int.Parse(t.Idmau) && x.Idsize == int.Parse(t.Idsize) && x.SoLuong != x.SoLuongXuat))
                     {
+                        slhhc.SoLuongXuat = slhhc.SoLuongXuat ?? 0;
+                        double slc = (double)((double)slhhc.SoLuong - slhhc.SoLuongXuat);
                         ChiTietPhieuXuat ct = new ChiTietPhieuXuat();
                         ct.Idhh = int.Parse(t.Idhh);
                         ct.Idpx = phieuXuat.Idpx;
@@ -129,36 +140,35 @@ namespace BanHangOnl.Areas.Admin.Controllers
                         ct.Idsize = int.Parse(t.Idsize);
                         ct.Active = true;
                         //nếu mà trong kho còn nhiều hơn số xuất
-                        if (slhhc.SoLuong > slq)
+                        if (slc > slq)
                         {
                             ct.SoLuong = double.Parse(t.SoLuong);
-                            slhhc.SoLuong -= slq;
                             slhhc.SoLuongXuat += Convert.ToInt32(slq);
                             context.ChiTietPhieuXuats.Add(ct);
                             context.SaveChanges();
                             break;
                         }
                         //nếu mà trong kho ngang với số cần xuất
-                        if (slhhc.SoLuong == slq)
+                        if (slc == slq)
                         {
-                            ct.SoLuong = double.Parse(t.SoLuong);
+                            ct.SoLuong = slc;
                             slhhc.SoLuongXuat += Convert.ToInt32(slq);
                             context.ChiTietPhieuXuats.Add(ct);
                             context.SaveChanges();
                             break;
                         }
                         //nếu trong kho còn ít hơn số cần xuất
-                        if (slhhc.SoLuong < slq)
+                        if (slc < slq)
                         {
-                            ct.SoLuong = (double)slhhc.SoLuong;
-                            slq = (double)(slq - slhhc.SoLuong);
-                            slhhc.SoLuongXuat += Convert.ToInt32(slq);
+                            ct.SoLuong = (double)slc;
+                            slq = (double)(slq - slc);
+                            slhhc.SoLuongXuat += Convert.ToInt32(slc);
                             t.SoLuong = slq.ToString();
                             context.ChiTietPhieuXuats.Add(ct);
                             context.SaveChanges();
                         }
                         context.ChiTietPhieuNhaps.Update(slhhc);
-
+                        context.SaveChanges();
                     }
                     chiTietPhieuXuatMaps.Remove(t);
                     context.SaveChanges();
@@ -212,7 +222,6 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 foreach (ChiTietPhieuXuat chiTietPhieu in chiTietPhieuXuats)
                 {
                     ChiTietPhieuNhap chiTietPhieuNhap = context.ChiTietPhieuNhaps.Include(x => x.IdpnNavigation).FirstOrDefault(x => x.Idctpn == chiTietPhieu.Idctpn);
-                    chiTietPhieuNhap.SoLuong += chiTietPhieu.SoLuong;
                     chiTietPhieuNhap.SoLuongXuat -= Convert.ToInt32(chiTietPhieu.SoLuong);
                     context.ChiTietPhieuNhaps.Update(chiTietPhieuNhap);
                     context.SaveChanges();
@@ -250,7 +259,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             HangHoa dvt = await context.HangHoas
                 .Include(x => x.IddvtNavigation)
                 .FirstOrDefaultAsync(x => x.Idhh == idHH);
-            return dvt.IddvtNavigation.TenDvt;
+            return dvt?.IddvtNavigation?.TenDvt;
         }
 
         [Route("/DonDatHang/Them")]
@@ -277,7 +286,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [Route("/DonDatHang/ViewSua/{id}")]
         public IActionResult viewEdit(int id)
         {
-            PhieuNhap sua = context.PhieuNhaps.Find(id);
+            PhieuXuat sua = context.PhieuXuats.Find(id);
             return View("Edit", sua);
         }
 

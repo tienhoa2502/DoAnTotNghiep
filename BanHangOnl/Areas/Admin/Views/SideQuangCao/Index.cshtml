@@ -45,9 +45,8 @@
                             @foreach (SideQuangCao tk in ViewBag.SideQuangCao)
                             {
                                 <tr>
-
-                                    <td><img src="@tk.Img" width="350" height="150" /> </td>
-
+                             
+                                    <td><img src="@tk?.Img" width="300" height="150" /> </td>
                                     <td>@tk.NgayTao</td>
                                     <td>@tk.NguoiTao</td>
                                     <td>

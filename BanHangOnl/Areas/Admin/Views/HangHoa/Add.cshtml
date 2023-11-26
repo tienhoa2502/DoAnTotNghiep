@@ -193,7 +193,7 @@
             <span class="dandev_insert_attach"><i class="dandev-plus">+</i></span>
             </div>*@
 
-            <div class="col-md-8 col-lg-9">
+            @* <div class="col-md-8 col-lg-9">
                 <input type="file" id="fileInput" class="custom-file-input" name="file" style="display: none">
                 <label class="custom-file-upload btn btn-primary btn-sm" for="fileInput">
                     <i class="bi bi-upload"></i> Tải lên tệp
@@ -202,12 +202,10 @@
                 <label for="fileInput" class="custom-file-upload">Chọn Ảnh</label>
                 <button id="saveButton" onclick="UpdateHangHoa()">Lưu Ảnh</button>
             </div>
-        </div>
+        </div> *@
 
 
         <!-- Horizontal Form -->
-
-        <form>
             <div class="row mb-3">
 
 
@@ -230,7 +228,6 @@
                             <div class="upload-area-img">
                                 <img src="assets/upload.png" alt="">
                                 <img src="~/assets/upload.png" width="100" height="100" />
-
                             </div>
                         </div>
                         <input style="width:1px" type="file" name="file" multiple class="visually-hidden" id="upload-input">
@@ -249,6 +246,7 @@
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Mã hàng hóa</label>
                 <div class="col-sm-10">
+                    <input asp-for="@Model.Idhh" type="hidden" value="0" class="form-control" id="inputText">
                     <input asp-for="@Model.MaHh" type="text" class="form-control" id="inputText">
                 </div>
             </div>
@@ -313,7 +311,6 @@
                 <button id="saveButton" onclick="UpdateHangHoa()" class="btn btn-primary">Lưu</button>
                 <button type="reset" class="btn btn-secondary">Hủy</button>
             </div>
-        </form>
     </div>
 </div>
 <script>

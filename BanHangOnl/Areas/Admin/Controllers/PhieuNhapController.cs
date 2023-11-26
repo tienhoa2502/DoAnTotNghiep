@@ -79,6 +79,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 foreach (ChiTietPhieuNhap chiTiet in chiTietPhieuNhaps)
                 {
                     chiTiet.Idpn = phieuNhap.Idpn;
+                    chiTiet.SoLuongXuat = 0;
                     chiTiet.Active = true;
                 }
                 await context.ChiTietPhieuNhaps.AddRangeAsync(chiTietPhieuNhaps);

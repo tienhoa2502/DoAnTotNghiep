@@ -46,6 +46,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult viewEdit(int id)
         {
             NhomHangHoa sua = context.NhomHangHoas.Find(id);
+            ViewBag.NhomHangHoa = context.NhomHangHoas.Where(x => x.Active == true).ToList();
 
             ViewBag.NhomHHCap1 = context.NhomHangHoas.Where(x => x.Levels == 1 && x.Active == true).ToList();
             return View("Edit", sua);
