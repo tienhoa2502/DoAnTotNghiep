@@ -18,7 +18,7 @@ namespace BanHangOnl.Controllers
         QuanLyBanHangContext context = new QuanLyBanHangContext();
 		
 
-		private readonly QuanLyBanHangContext _context;
+		//private readonly QuanLyBanHangContext _context;
 		//public TinTucBlogController(QuanLyBanHangContext context)
 		//{
 		//	_context = context;
@@ -33,14 +33,39 @@ namespace BanHangOnl.Controllers
         }
 
 
-        [HttpGet("/ChiTietTinTuc")]
-        public ActionResult Info()
-        {
-            
-            return View();
-        }
+		//[HttpGet("/ChiTietTinTuc/{id}")]
+		//public IActionResult Info(int id)
+		//{
+		//          ViewBag.TinTuc = context.TinTucs.Where(x => x.Active == true && x.HienThi == true).ToList();
+
+		//          var tinTuc = context.TinTucs
+		//					 .Include(hh => hh.IdnttNavigation)
+		//					 .FirstOrDefault(hh => hh.Idtt == id);
+
+		//	if (tinTuc == null)
+		//	{
+		//		return NotFound(); // Trả về 404 nếu không tìm thấy sản phẩm
+		//	}
+		//	return View();
+		//}
+		[HttpGet("/ChiTietTinTuc/{id}")]
+
+		public IActionResult Info(int id)
+		{
+			var tinTuc = context.TinTucs
+							 .Include(hh => hh.IdnttNavigation)
+							 .FirstOrDefault(hh => hh.Idtt == id);
+
+			if (tinTuc == null)
+			{
+				return NotFound(); // Trả về 404 nếu không tìm thấy sản phẩm
+			}
 
 
-    }
+
+			return View("Info", tinTuc);
+		}
+
+	}
 }
 

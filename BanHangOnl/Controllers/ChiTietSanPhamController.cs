@@ -29,6 +29,13 @@ namespace BanHangOnl.Controllers
                              .Include(hh => hh.IddvtNavigation) // Đảm bảo navigation properties được load
                              .Include(hh => hh.IdnhhNavigation)
                              .FirstOrDefault(hh => hh.Idhh == id);
+            var chiTietPhieuNhaps = context.ChiTietPhieuNhaps
+                .Include(x => x.IdmauNavigation)
+                .Include(x => x.IdsizeNavigation)
+                .Where(x => x.Idhh == id && x.SoLuong != x.SoLuongXuat).ToList();
+            ViewBag.Mau = chiTietPhieuNhaps.GroupBy(x => x.IdmauNavigation.Mau1).ToList();
+            ViewBag.Size = chiTietPhieuNhaps.GroupBy(x => x.IdsizeNavigation.Size1).ToList();
+            ViewBag.SLCon = chiTietPhieuNhaps.Sum(x => x.SoLuong);
             //ViewBag.Mau = context.ChiTietPhieuNhaps.Where(x => x.Idhh == id && x.SoLuong != x.so)
             ViewBag.Img = context.ImgHangHoas.Where(x => x.Idhh == id).ToList();
             ViewBag.ImgD = context.ImgHangHoas.FirstOrDefault(x => x.Idhh == id && x.IsDefault == true).Img;

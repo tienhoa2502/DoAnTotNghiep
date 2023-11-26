@@ -21,5 +21,13 @@ namespace BanHangOnl.Controllers
 
             return View();
         }
-    }
+
+		//[HttpGet("/ThanhToan")]
+		//public ActionResult ThanhToan()
+		//{
+		//	//var items = context.HangHoas.ToList();
+
+		//	return View();
+		//}
+	}
 }

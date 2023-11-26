@@ -18,7 +18,10 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpGet("/HangHoa")]
         public IActionResult Index()
         {
-            ViewBag.HangHoa = context.HangHoas.Include(x => x.ImgHangHoas).Where(x => x.Active == true).ToList();
+            ViewBag.HangHoa = context.HangHoas.Include(x => x.ImgHangHoas)
+                .Include(x => x.IddvtNavigation)
+                .Include(x => x.IdnhhNavigation)
+                .Where(x => x.Active == true).ToList();
             return View();
         }
         [HttpGet("/HangHoa/Them")]

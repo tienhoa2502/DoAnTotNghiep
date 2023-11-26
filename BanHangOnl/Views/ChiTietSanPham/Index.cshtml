@@ -32,7 +32,7 @@
 			<div class="breadcrumbs d-flex flex-row align-items-center">
 				<ul>
 					<li><a href="/Home">Trang chủ</a></li>
-					<li><a href="/SanPham"><i class="fa fa-angle-right" aria-hidden="true"></i>Tấ cả sản phẩm</a></li>
+					<li><a href="/SanPham"><i class="fa fa-angle-right" aria-hidden="true"></i>Tất cả sản phẩm</a></li>
 					<li><a ><i class="fa fa-angle-right" aria-hidden="true"></i>@Model.TenHh</a></li>
 				</ul>
 			</div>
@@ -99,28 +99,42 @@
 					<ul>
 						<li style="background: #e54e5d"></li>
 						<li style="background: #252525"></li>
-						<li style="background: #60b3f3"></li>
+						@foreach (var mau in ViewBag.Mau)
+						{
+
+							<li style="">@mau?.Key </li>
+
+						}
 					</ul>
 					<span>Sizes:</span>
 					<ul>
-						<li >S</li>
-						<li >M</li>
-						<li >L</li>
+						@foreach (var s in ViewBag.Size)
+						{
+							<li>@s?.Key</li>
+						}
 					</ul>
 				</div>
 				<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
 					<span>Số lượng:</span>
+					@*@foreach (var SlCon in ViewBag.SlCon)
+						{*@
 					<div class="quantity_selector">
 						<span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
 						<span id="quantity_value">1</span>
 						<span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
 					</div>
+						
 					<div class="red_button add_to_cart_button"><a href="#">Thêm vào giỏ hàng</a></div>
 					<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
 				</div>
-				<div class="red_button add_to_cart_button"><a href="#">Mua ngay</a></div>
 
+				<div style="display: flex; flex-wrap: wrap; width: 100%; padding: 5px">
+					<button type="submit" class="red_button add_to_cart_button">MUA NGAY</button>
+				</div>
+				
 			</div>
+			
+
 		</div>
 	</div>
 
@@ -138,7 +152,6 @@
 					<ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
 						<li class="tab active" data-active-tab="tab_1"><span>Description</span></li>
 						<li class="tab" data-active-tab="tab_2"><span>Additional Information</span></li>
-						<li class="tab" data-active-tab="tab_3"><span>Reviews (2)</span></li>
 					</ul>
 				</div>
 			</div>
@@ -187,10 +200,17 @@
 					<div class="row">
 						<div class="col additional_info_col">
 							<div class="tab_title additional_info_title">
-								<h4>Chính sách giao hàng</h4>
+								<h4>Chính sách giao hàng </h4>
 							</div>
-							<p>COLOR:<span>Gold, Red</span></p>
-							<p>SIZE:<span>L,M,XL</span></p>
+
+							<p>COLOR:<span>Gold, Red
+
+								</span>
+							</p>
+							<p>SIZE:<span>L,M,XL
+
+								</span>
+							</p>
 						</div>
 					</div>
 				</div>

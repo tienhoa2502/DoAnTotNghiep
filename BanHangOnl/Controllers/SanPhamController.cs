@@ -32,13 +32,28 @@ namespace BanHangOnl.Controllers
             return View();
 		}
 
-		[HttpGet("/SanPham/{string}")]
-		public IActionResult Index(string TenNhh)
+		[HttpGet("/NhomSanPham/{TenNhh}")]
+		public IActionResult NhomSP(string TenNhh)
 		{
-			HangHoa xem = context.HangHoas.Find(TenNhh);
+            NhomHangHoa nhomHangHoa = context.NhomHangHoas
+				.FirstOrDefault(x => x.TenNhh == TenNhh && x.Active == true && x.HienThi == true);
+            if (nhomHangHoa == null)
+            {
+                // Handle the case where the product category is not found
+                return NotFound();
+            }
+
+            List<HangHoa> HangHoa = context.HangHoas
+				.Include(x => x.ImgHangHoas)
+				.Where(x => x.Idnhh == nhomHangHoa.Idnhh && x.HienThi == true && x.Active == true)
+				.ToList();
+
+            ViewBag.HangHoa = HangHoa;
+
+
 			ViewBag.HangHoa = context.HangHoas
-							.Include(x => x.ImgHangHoas)
-							.Where(x => x.HienThi == true && x.Active == true).ToList();
+	   .Include(x => x.ImgHangHoas)
+	   .Where(x => x.HienThi == true && x.Active == true).ToList();
 
 
 			ViewBag.NhomHangHoa = context.NhomHangHoas.Where(x => x.Active == true && x.HienThi == true).ToList();
@@ -46,7 +61,7 @@ namespace BanHangOnl.Controllers
 
 			ViewBag.NhomHangHoaCap1 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 1 && x.HienThi == true).ToList();
 			ViewBag.NhomHangHoaCap2 = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 2 && x.HienThi == true).ToList();
-			return View("Index", xem);
+			return View("NhomSP", nhomHangHoa);
 		}
 
 
