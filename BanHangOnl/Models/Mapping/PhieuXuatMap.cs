@@ -12,6 +12,7 @@ namespace QuanLyNhaHang.Models.Mapping
         public string SoHd { get; set; }
         public string NgayHd { get; set; }
         public string NgayTao { get; set; }
+        public string DaGiao { get; set; }
 
         public string GhiChu { get; set; }
         public bool? Active { get; set; }

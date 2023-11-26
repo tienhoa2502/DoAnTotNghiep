@@ -9,7 +9,12 @@ namespace BanHangOnl.Areas.Admin.Controllers
     {
         
         QuanLyBanHangContext context = new QuanLyBanHangContext();
-        [HttpGet("/SideQuangCao")]
+		private readonly IWebHostEnvironment _hostingEnvironment;
+		public SideQuangCaoController(IWebHostEnvironment hostingEnvironment)
+		{
+			_hostingEnvironment = hostingEnvironment;
+		}
+		[HttpGet("/SideQuangCao")]
         public IActionResult Index()
         {
             ViewBag.SideQuangCao = context.SideQuangCaos.Where(x => x.Active == true).ToList();
@@ -23,12 +28,25 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return View("Add");
         }
 
-        [Route("/SideQuangCao/Them")]
+        [HttpPost("/SideQuangCao/Them")]
 
-        public IActionResult Add(SideQuangCao vaiTro)
+        public IActionResult Add([FromForm] IFormFile files)
         {
-            vaiTro.Active = true;
-            context.SideQuangCaos.Add(vaiTro);
+			SideQuangCao sideQuangCao = new SideQuangCao();
+			string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "img/Slide");
+			string uniqueFileName = DateTime.Now.ToString("HH-mm-ss") + Path.GetExtension(files.FileName);
+			string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+			// Lưu file ảnh vào thư mục /assets/img/avatars/
+			using (var fileStream = new FileStream(filePath, FileMode.Create))
+			{
+				files.CopyTo(fileStream);
+			}
+            sideQuangCao.Img = "/img/Slide/" + uniqueFileName;
+            sideQuangCao.HienThi = true;
+            sideQuangCao.NgayTao = DateTime.Now;
+			sideQuangCao.Active = true;
+            context.SideQuangCaos.Add(sideQuangCao);
             context.SaveChanges();
             return RedirectToAction("Index");
         }

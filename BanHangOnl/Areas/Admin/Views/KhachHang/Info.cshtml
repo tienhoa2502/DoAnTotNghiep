@@ -32,9 +32,14 @@
                         </li>
 
                         <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#donhang" aria-selected="false" role="tab" tabindex="-1">Đơn hàng</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" role="tab" tabindex="-1">Lịch sử đặt hàng</button>
                         </li>
 
+                        
 
                     </ul>
                     <div class="tab-content pt-2">
@@ -74,59 +79,116 @@
 
                         </div>
 
-                        <div class="tab-pane fade profile-edit pt-3" id="profile-edit" role="tabpanel">
+                    <div class="tab-pane fade profile-overview" id="donhang" role="tabpanel">
 
-                            <!-- Profile Edit Form -->
-                            <form>
-                            <table class="table datatable">
+                          <h5 class="card-title">Thông tin chi tiết</h5>
+                               
+                          @foreach(PhieuXuat px in ViewBag.DonDangGiao){
+                            
+                        
+                        <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Mã đơn hàng</div>
+                                    <div class="col-lg-9 col-md-8"> @px.SoPx</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Ngày đặt hàng</div>
+                                    <div class="col-lg-9 col-md-8">@px.NgayTao</div>
+                                </div>
+                            <div id="table-nhapkho" class="table-responsive">
+                                <table class="table table-bordered table-vcenter table-input" id="tableDonHang">
+                                    <thead>
+                                        <tr class="text-wrap">
+                                            <th class="text-center p-1 first-th-column text-wrap" style="width:32px;">TT</th>
+                                            <th class="text-center p-1 w-25 text-wrap" style="position: sticky;left: 33px;z-index: 4 !important;">Tên hàng hóa</th>
+                                            <th class="text-center p-1 text-wrap">SL</th>
+                                            <th class="text-center p-1 text-wrap">Giá</th>
+                                            <th class="text-center p-1 text-wrap">Size</th>
+                                            <th class="text-center p-1 text-wrap">Màu</th>
+                                            <th class="text-center p-1 text-wrap">Thành tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tBody-DonHang">
+                                        @{
+                                            int i = 1;
+                                        }
+                                        @foreach(ChiTietPhieuXuat ct in px.ChiTietPhieuXuats){
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@ct?.IdhhNavigation?.TenHh</td>
+                                                <td>@ct.SoLuong</td>
+                                                <td>@ct.Gia</td>
+                                                <td>@ct?.IdsizeNavigation?.Size1</td>
+                                                <td>@ct?.IdmauNavigation?.Mau1</td>
+                                                <td>@(ct.SoLuong * ct.Gia)</td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    </tbody>
+                                    </table>
+                                </div>
+                                
+                               @*  <div class="row justify-content-end">
+                                    @if (px.DonTra != true)
+                                    {
+                                        <button id="traHang" class="col-auto btn btn-success" onclick="traHang(@px.Idpx)">Trả hàng</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="col-auto btn btn-success" disabled>Trả hàng</button>
+                                    }
+
+                                </div> *@
+                                }
+                    </div>
+
+                    <div class="tab-pane fade profile-overview" id="profile-edit" role="tabpanel">
+                        <h5 class="card-title">Thông tin chi tiết</h5>
+                                                  @foreach(PhieuXuat px in ViewBag.LichSuDon){
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Mã đơn hàng</div>
+                            <div class="col-lg-9 col-md-8"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Ngày đặt hàng</div>
+                            <div class="col-lg-9 col-md-8"></div>
+                        </div>
+                        <div id="table-nhapkho" class="table-responsive">
+                            <table class="table table-bordered table-vcenter table-input" id="tableDonHang">
                                 <thead>
-                                    <tr>
-                                        <th scope="col">Hình ảnh</th>
-                                        <th scope="col">Mã hàng hóa</th>
-                                        <th scope="col">Tên hàng hóa</th>
-                                        <th scope="col">Size</th>
-                                        <th scope="col">Màu</th>
-                                        <th scope="col">ĐVT</th>
-                                        <th scope="col">Giá bán</th>
-                                        <th scope="col">Giá sale</th>
-                                        <th scope="col">Thuộc nhóm</th>
-                                        <th scope="col">Hiển thị</th>
-                                        <th scope="col">Tùy chọn</th>
-
+                                    <tr class="text-wrap">
+                                        <th class="text-center p-1 first-th-column text-wrap" style="width:32px;">TT</th>
+                                        <th class="text-center p-1 w-25 text-wrap" style="position: sticky;left: 33px;z-index: 4 !important;">Tên hàng hóa</th>
+                                        <th class="text-center p-1 text-wrap">SL</th>
+                                        <th class="text-center p-1 text-wrap">Giá</th>
+                                        <th class="text-center p-1 text-wrap">Size</th>
+                                        <th class="text-center p-1 text-wrap">Màu</th>
+                                        <th class="text-center p-1 text-wrap">Thành tiền</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                   @* @foreach (HangHoa tk in ViewBag.HangHoa)
-                                    {
-                                        <tr>
-                                            <td><img src="@tk?.ImgHangHoas.FirstOrDefault(x => x.IsDefault == true)?.Img" width="50" height="50" /> </td>
-                                            <td>@tk.MaHh</td>
-                                            <td>@tk.TenHh</td>
-                                            <td>@tk.Size</td>
-                                            <td>@tk.Color</td>
-                                            <td>@tk?.IddvtNavigation?.TenDvt</td>
-                                            <td>@tk?.IdgiaNavigation?.GiaBan</td>
-                                            <td>@tk?.IdgiaNavigation?.GiaSale</td>
-                                            <td>@getTenNhom(@tk.Idnhh)</td>
-                                            <td>
-                                                <div class="form-check form-switch">
-                                                    <input @tk.HienThi class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a href="/HangHoa/ViewSua/@tk.Idhh" type="button" class="btn btn-primary btn-sm">Sửa</a>
-                                                <a href="/HangHoa/Xoa/@tk.Idhh" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
-                                            </td>s
-                                        </tr>
-                                    }*@
-
-
+                                <tbody id="tBody-DonHang">
+                                        @{
+                                            int j = 1;
+                                        }
+                                        @foreach (ChiTietPhieuXuat ct in px.ChiTietPhieuXuats)
+                                        {
+                                            <tr>
+                                                <td>@j</td>
+                                                <td>@ct?.IdhhNavigation?.TenHh</td>
+                                                <td>@ct.SoLuong</td>
+                                                <td>@ct.Gia</td>
+                                                <td>@ct?.IdsizeNavigation?.Size1</td>
+                                                <td>@ct?.IdmauNavigation?.Mau1</td>
+                                                <td>@(ct.SoLuong * ct.Gia)</td>
+                                            </tr>
+                                            j++;
+                                        }
                                 </tbody>
                             </table>
-
-                                
-                            </form><!-- End Profile Edit Form -->
-
+                        </div>  
+                        }
                         </div>
 
                        @* <div class="tab-pane fade pt-3" id="profile-change-password" role="tabpanel">

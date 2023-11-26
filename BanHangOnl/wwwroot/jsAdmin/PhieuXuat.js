@@ -42,6 +42,7 @@ $('#groupTTChiTiet').on('change', 'select[name="idHangHoa"], select[name="mau"],
                 idSize: idSize
             },
             success: function (response) {
+                console.log(response);
                 $('#groupTTChiTiet #dVT').val(response.donViTinh);
                 $('#groupTTChiTiet #DonGia').val(formatTotal(response.donGia));
                 $('#groupTTChiTiet #sLCon').val(formatTotal(getSoLuongCon(idHH, idMau, idSize, response.soLuong)));
@@ -113,7 +114,6 @@ function addChiTietDonDatHang() {
             <input type="hidden" name="idHangHoa" value="${idHangHoa}" />
         </td>
         <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
-                    <input type="hidden" name="size" value="${idHangHoa}" />
         ${tenHangHoa}
         </td>
         <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
@@ -121,7 +121,7 @@ function addChiTietDonDatHang() {
         ${tenMau}
         </td>
         <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
-                    <input type="hidden" name="idHangHoa" value="${idSize}" />
+                    <input type="hidden" name="size" value="${idSize}" />
         ${tensize}
         </td>
         <td class="p-1">
@@ -228,6 +228,7 @@ function themDonDatHang() {
     dataKhachHang.append("Email", email);
     dataKhachHang.append("DiaChi", diaChi);
     dataKhachHang.append("TenKh", tenKH);
+    dataPhieuNhapMaster.append("DaGiao", true);
 
     var data = {
         DonDatHang: queryStringToData(dataPhieuNhapMaster),

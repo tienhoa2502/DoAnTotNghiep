@@ -30,7 +30,8 @@ namespace BanHangOnl.Controllers
                              .Include(hh => hh.IdnhhNavigation)
                              .FirstOrDefault(hh => hh.Idhh == id);
             //ViewBag.Mau = context.ChiTietPhieuNhaps.Where(x => x.Idhh == id && x.SoLuong != x.so)
-
+            ViewBag.Img = context.ImgHangHoas.Where(x => x.Idhh == id).ToList();
+            ViewBag.ImgD = context.ImgHangHoas.FirstOrDefault(x => x.Idhh == id && x.IsDefault == true).Img;
             if (hangHoa == null)
             {
                 return NotFound(); // Trả về 404 nếu không tìm thấy sản phẩm

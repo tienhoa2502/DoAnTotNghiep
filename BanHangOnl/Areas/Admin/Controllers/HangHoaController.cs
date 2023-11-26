@@ -51,8 +51,25 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [HttpPost("/HangHoa/updateHangHoa")]
         public dynamic addHangHoa(HangHoa hangHoa) 
         {
-            hangHoa.Active = true;
-            context.HangHoas.Add(hangHoa);
+            if (hangHoa.Idhh == 0)
+            {
+                hangHoa.Active = true;
+                hangHoa.HienThi = true;
+                context.HangHoas.Add(hangHoa);
+            }
+            else
+            {
+                HangHoa hh = context.HangHoas.Find(hangHoa.Idhh);
+                hh.MaHh = hangHoa.MaHh;
+                hh.TenHh = hangHoa.TenHh;
+                hh.Idnhh = hangHoa.Idnhh;
+                hh.Iddvt = hangHoa.Iddvt;
+                hh.Idsize = hangHoa.Idsize;
+                hh.GiaBan = hangHoa.GiaBan;
+                hh.GiaSale = hangHoa.GiaSale;
+                context.HangHoas.Update(hh);
+
+            }
             context.SaveChanges();
             return new
             {
@@ -100,6 +117,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult viewEdit(int id)
         {
             HangHoa sua = context.HangHoas.Find(id);
+            ViewBag.NhomHangHoa = context.NhomHangHoas.Where(x => x.Active == true && x.Levels == 2).ToList();
+            ViewBag.Image = context.ImgHangHoas.Where(x => x.Idhh == id).ToList();
             //ViewBag.NhomHangHoa = context.NhomHangHoas.Where(x => x.Active == true).ToList();
             return View("Edit", sua);
         }

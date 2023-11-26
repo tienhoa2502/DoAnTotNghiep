@@ -20,8 +20,17 @@ namespace BanHangOnl.Areas.Admin.Controllers
         public IActionResult Info(int id)
         {
             KhachHang xem = context.KhachHangs.Find(id);
-
-            ViewBag.KhachHang = context.KhachHangs.Where(x => x.Active == true).ToList();
+            List<PhieuXuat> PhieuXuats = context.PhieuXuats
+                .Include(x => x.ChiTietPhieuXuats)
+                .ThenInclude(x => x.IdmauNavigation)
+                    .Include(x => x.ChiTietPhieuXuats)
+                    .ThenInclude(x => x.IdsizeNavigation)
+                    .Include(x => x.ChiTietPhieuXuats)
+                    .ThenInclude(x => x.IdhhNavigation)
+                .Where(x => x.Idkh == id).ToList();
+            ViewBag.DonDangGiao = PhieuXuats.Where(x => x.DaGiao != true);
+            ViewBag.LichSuDon = PhieuXuats.Where(x => x.DaGiao == true);
+            ViewBag.KhachHang = context.KhachHangs.Where(x => x.Idtk== id && x.Active == true).ToList();
             return View();
         }
 

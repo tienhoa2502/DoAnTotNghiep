@@ -45,7 +45,7 @@ namespace QuanLyNhaHang.Models.Mapping
             CreateMap<PhieuXuatMap, PhieuXuat>()
             .ForMember(dest => dest.Idkh, opt => opt.MapFrom(src => src.Idkh != null ? long.Parse(src.Idkh) : (long?)null))
             .ForMember(dest => dest.NgayHd, opt => opt.MapFrom(src => src.NgayHd != "" ? DateTime.ParseExact(src.NgayHd, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null))
-
+            .ForMember(dest => dest.DaGiao, opt => opt.MapFrom(src => src.DaGiao == "true" ? true : false))
             .ForMember(dest => dest.NgayTao, opt => opt.MapFrom(src => src.NgayHd != "" ? DateTime.ParseExact(src.NgayTao, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null));
             CreateMap<KhachHangMap, KhachHang>();
             CreateMap<KhachHang, KhachHangMap>();

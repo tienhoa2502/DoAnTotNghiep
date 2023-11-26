@@ -1,61 +1,27 @@
-﻿function UpdateHangHoa() {
-    var form = $('#formThemHH');
-    var hangHoa = form.serialize();
-    var dataPhieuNhapMaster = new FormData();
-    var MaHh = $('input[name="MaHh"]').val();
-    var TenHh = $('input[name="TenHh"]').val();
-    var idNhom = parseInt($('select[name="Idnhh"]').val());
-    var idDVT = parseInt($('select[name="Iddvt"]').val());
-    var giaBan = parseFloat($('input[name="GiaBan"]').val());
-    var giaSale = parseFloat($('input[name="GiaSale"]').val());
-    var idHH = parseInt($('input[name="Idhh"]').val());
-    dataPhieuNhapMaster.append("MaHh", MaHh);
-    dataPhieuNhapMaster.append("TenHh", TenHh);
-    dataPhieuNhapMaster.append("Idnhh", idNhom);
-    dataPhieuNhapMaster.append("Iddvt", idDVT);
-    dataPhieuNhapMaster.append("GiaBan", giaBan);
-    dataPhieuNhapMaster.append("GiaSale", giaSale);
-    dataPhieuNhapMaster.append("Idhh", idHH);
+﻿function luuSlide() {
+    const files = $("#upload-input")[0].files;
+    const fileFormData = new FormData(); // Đặt tên biến khác
 
-
+    // Thêm các tệp đã chọn vào FormData
+    for (let i = 0; i < files.length; i++) {
+        fileFormData.append("files", files[i]);
+    }
+    console.log(fileFormData);
     $.ajax({
-        url: "/HangHoa/updateHangHoa",
+        url: "/SideQuangCao/Them",
         type: "POST",
-        data: {
-            hangHoa: queryStringToData(dataPhieuNhapMaster)
-        },
+        data: fileFormData, // Sử dụng biến khác
+        processData: false,
+        contentType: false,
         success: function (response) {
-            const files = $("#upload-input")[0].files;
-            const fileFormData = new FormData(); // Đặt tên biến khác
-
-            // Thêm các tệp đã chọn vào FormData
-            for (let i = 0; i < files.length; i++) {
-                fileFormData.append("files", files[i]);
-            }
-            console.log(fileFormData);
-            $.ajax({
-                url: "/HangHoa/UpdateAnh?idHangHoa=" + response.id,
-                type: "POST",
-                data: fileFormData, // Sử dụng biến khác
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    console.log("ok");
-                    window.location.href = "/HangHoa";
-                },
-                error: function (error) {
-                    console.error("Lỗi khi cập nhật hàng hóa: " + error);
-                }
-            });
+            console.log("ok");
+            window.location.href = "/SideQuangCao";
         },
         error: function (error) {
             console.error("Lỗi khi cập nhật hàng hóa: " + error);
         }
     });
-
 }
-
-
 
 var imgList = [];
 var imgAvt = null;

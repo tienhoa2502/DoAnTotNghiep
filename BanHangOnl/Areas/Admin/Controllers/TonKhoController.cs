@@ -35,7 +35,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                         Id = x.Key,
                         MaHang = getMaHang((int)x.Key),
                         TenHang = getTenHang((int)x.Key),
-                        TongSL = x.Sum(x => x.SoLuong),
+                        TongSL = x.Sum(x => x.SoLuong - x.SoLuongXuat),
                         TongTien = x.Sum(x => x.Gia * x.SoLuong)
 
                     })
@@ -65,6 +65,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
             var tonKho = await context.ChiTietPhieuNhaps
                 .Include(x => x.IdpnNavigation.IdnccNavigation)
                 .Include(x => x.IdhhNavigation.IddvtNavigation)
+                .Include(x => x.IdmauNavigation)
+                .Include(x => x.IdsizeNavigation)
                 .Where(x => (x.IdpnNavigation.NgayNhap.Value.Date >= FromDay.Date && x.IdpnNavigation.NgayNhap.Value.Date <= ToDay)
                             && (idNhomHang == 0 || x.IdhhNavigation.Idnhh == idNhomHang)
                             && (idHangHoa == 0 || x.Idhh == idHangHoa)
@@ -78,6 +80,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 NhaCungCap = x?.IdpnNavigation?.IdnccNavigation?.TenNcc,
                 MaHang = x.IdhhNavigation?.MaHh,
                 TenHang = x.IdhhNavigation?.TenHh,
+                Mau = x.IdmauNavigation?.Mau1,
+                Size = x.IdsizeNavigation?.Size1,
                 SoLuongNhap = x.SoLuong,
                 SoLuongXuat = getSoLuongXuat((int)x.Idctpn),
                 SoLuongTon = x.SoLuong,
