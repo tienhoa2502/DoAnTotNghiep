@@ -4873,12 +4873,48 @@
       "PackagePath": "staticwebassets\\img\\HangHoa\\HH08 1.jpg"
     },
     {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH1111 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH1111 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH11111 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH11111 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH111R 1.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH111R 1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH111R 2.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH111R 2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\HangHoa\\HH111R 3.jpg",
+      "PackagePath": "staticwebassets\\img\\HangHoa\\HH111R 3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\Slide\\20-06-54.jpg",
+      "PackagePath": "staticwebassets\\img\\Slide\\20-06-54.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\Slide\\23-04-37.jpg",
+      "PackagePath": "staticwebassets\\img\\Slide\\23-04-37.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\Slide\\23-05-20.jpg",
+      "PackagePath": "staticwebassets\\img\\Slide\\23-05-20.jpg"
+    },
+    {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\img\\Slide\\6.jpg",
       "PackagePath": "staticwebassets\\img\\Slide\\6.jpg"
     },
     {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\BaoCaoLoiNhuan.js",
       "PackagePath": "staticwebassets\\jsAdmin\\BaoCaoLoiNhuan.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\DangNhap.js",
+      "PackagePath": "staticwebassets\\jsAdmin\\DangNhap.js"
     },
     {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\HangHoa.js",
@@ -4891,6 +4927,10 @@
     {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\PhieuXuat.js",
       "PackagePath": "staticwebassets\\jsAdmin\\PhieuXuat.js"
+    },
+    {
+      "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\Slide.js",
+      "PackagePath": "staticwebassets\\jsAdmin\\Slide.js"
     },
     {
       "Id": "C:\\Users\\tienh\\source\\repos\\BanHangOnl\\BanHangOnl\\wwwroot\\jsAdmin\\TinTuc.js",

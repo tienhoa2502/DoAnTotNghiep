@@ -1,4 +1,16 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.SlidingExpiration = true;
+        options.AccessDeniedPath = "/NotFound";
+        options.LoginPath = "/DangNhap";
+        options.LogoutPath = "/logout";
+        options.Cookie.Name = "banhang_onl";
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

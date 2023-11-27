@@ -84,7 +84,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 Size = x.IdsizeNavigation?.Size1,
                 SoLuongNhap = x.SoLuong,
                 SoLuongXuat = getSoLuongXuat((int)x.Idctpn),
-                SoLuongTon = x.SoLuong,
+                SoLuongTon = x.SoLuong - x.SoLuongXuat,
                 DonViTinh = x?.IdhhNavigation?.IddvtNavigation?.TenDvt,
                 GiaNhap = x?.Gia,
                 ThanhTien = x.Gia * x.SoLuong,
