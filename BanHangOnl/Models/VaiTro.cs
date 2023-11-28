@@ -13,6 +13,8 @@ public partial class VaiTro
 
     public bool? NhanVien { get; set; }
 
+    public bool? QuanLy { get; set; }
+
     public bool? Active { get; set; }
 
     public virtual ICollection<TaiKhoan> TaiKhoans { get; set; } = new List<TaiKhoan>();

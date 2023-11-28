@@ -1,10 +1,13 @@
 ﻿using BanHangOnl.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace BanHangOnl.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "QuanLy")]
     public class AccountController : Controller
     {
         QuanLyBanHangContext context = new QuanLyBanHangContext();
