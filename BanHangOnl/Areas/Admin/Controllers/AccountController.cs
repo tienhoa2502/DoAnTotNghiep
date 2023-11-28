@@ -90,28 +90,23 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            // Tạo đối tượng ViewModel
-            //var viewModel = new TaiKhoanViewModel
-            //{
-            //    Id = taiKhoan.Idtk,
-            //    Ten = taiKhoan.NhanViens.t,
-            //    Tuoi = taiKhoan.Tuoi,
-            //    Phone = taiKhoan.Phone,
-            //    DiaChi = taiKhoan.DiaChi,
-            //    // Thêm các thông tin khác từ các bảng liên quan nếu cần
-            //};
+            
 
-            return View();
+            return View(taiKhoan);
         }
 
-        //[HttpGet("/TaiKhoan/ThongTinCaNhan")]
-        //public IActionResult Info()
-        //{
-        //     ViewBag.NhanVien = context.NhanViens.Include(x => x.IdtkNavigation).Where(x => x.Active == true).ToList();
+		//[HttpGet("/TaiKhoan/ThongTinCaNhan")]
+		//public IActionResult Info()
+		//{
+		//     ViewBag.NhanVien = context.NhanViens.Include(x => x.IdtkNavigation).Where(x => x.Active == true).ToList();
 
-        //     return View();
-        //}
+		//     return View();
+		//}
 
-    }
+
+
+
+        
+	}
 }
 

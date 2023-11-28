@@ -42,7 +42,7 @@
                     <h5 class="card-title text-center pb-0 fs-4">Đăng nhập</h5>
                   </div>
 
-                  <form asp-controller="Login" asp-action="LoginUser" method="post" class="row g-3 needs-validation" novalidate="">
+                  <form id="LoginUser">
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Số điện thoại</label>
@@ -66,7 +66,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Đăng nhập</button>
+                      <button class="btn btn-primary w-100" id="btnLogin" type="submit">Đăng nhập</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Bạn chưa có tài khoản? Vui lòng <a href="/Register">đăng kí </a> tại đây!</p>
@@ -81,6 +81,7 @@
             </div>
           </div>
         </div>
-
       </section>
-     
+
+
+<script src="~/jsadmin/dangnhap.js"></script>
