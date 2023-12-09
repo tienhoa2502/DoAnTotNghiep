@@ -83,21 +83,24 @@
 				<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 
 					<!-- Product 1 -->
-					@foreach (HangHoa tk in ViewBag.HangHoa)
+					@foreach (HangHoa hh in ViewBag.HangHoa)
                     {
 					<div class="product-item men">
 						<div class="product discount product_filter">
 							<div class="product_image">
-									<img src="@tk?.ImgHangHoas.FirstOrDefault(x => x.IsDefault == true)?.Img" alt="">
+									@{
+										string urlImage = hh?.ImgHangHoas.FirstOrDefault(x => x.IsDefault == true)?.Img;
+									}
+									<img src="@urlImage" alt="">
 							</div>
 							<div class="favorite favorite_left"></div>
 							<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
 							<div class="product_info">
-									<h6 class="product_name"><a href="/SanPham/ChiTietSanPham/@tk.Idhh">@tk.TenHh</a></h6>
-								<div class="product_price">@tk.GiaBan<span>@tk.GiaSale</span></div>
+									<h6 class="product_name"><a href="/SanPham/ChiTietSanPham/@hh.Idhh">@hh.TenHh</a></h6>
+								<div class="product_price">@hh.GiaBan<span>@hh.GiaSale</span></div>
 							</div>
 						</div>
-						<div class="red_button add_to_cart_button"><a href="#">Thêm vào giỏ hàng</a></div>
+							<div class="red_button add_to_cart_button"><a href="#" data-idhh="@hh.Idhh" data-sl="1" data-ten="@hh.TenHh" data-gia="@hh.GiaBan" data-mau="" data-size="" data-url="@urlImage">Thêm vào giỏ hàng</a></div>
 					</div>
 					}
 					
