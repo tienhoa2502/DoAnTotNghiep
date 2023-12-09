@@ -26,8 +26,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
 
 
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpPost("/DangNhapTaiKhoan")]
+        [Authorize]
         public async Task<IActionResult> DangNhap(string UserName, string PassWord)
         {
             if (UserName == null || PassWord == null)
@@ -41,50 +41,99 @@ namespace BanHangOnl.Areas.Admin.Controllers
             else
             {
                 var taiKhoan = context.TaiKhoans
-                                           .FirstOrDefault(x => x.TenTk.ToLower() == UserName.ToLower() && x.Pass == PassWord);
+                    .Include(x => x.IdvtNavigation)
+                    .FirstOrDefault(x => x.TenTk.ToLower() == UserName.ToLower() && x.Pass == PassWord);
+
                 var claims = new List<Claim>();
                 if (taiKhoan != null)
                 {
-                    bool isNhanVien = (bool)context.VaiTros.FirstOrDefault(x => x.Idvt == taiKhoan.Idvt).NhanVien;
+                    bool isNhanVien = taiKhoan.IdvtNavigation?.NhanVien == true ? true : false;
+                    bool isQuanLy = taiKhoan.IdvtNavigation?.QuanLy == true ? true : false;
 
                     if (isNhanVien)
                     {
                         var user = context.NhanViens.FirstOrDefault(x => x.Idtk == taiKhoan.Idtk);
-                        claims.Add(new Claim(ClaimTypes.Name, user.Idnv.ToString(), user.Ten));
-                        claims.Add(new Claim(ClaimTypes.Role, "NhanVien"));
-                        claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString()));
+                        if (user != null)
+                        {
+                            claims.Add(new Claim(ClaimTypes.Name, user.Idnv.ToString(), user.Ten));
+                            if (isQuanLy)
+                            {
+                                claims.Add(new Claim(ClaimTypes.Role, "QuanLy"));
+                                claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString(), "1"));
+                            }
+                            else
+                            {
+                                claims.Add(new Claim(ClaimTypes.Role, "NhanVien"));
+                                claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString(), "2"));
+
+                            }
+
+                            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                            var principal = new ClaimsPrincipal(identity);
+                            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal,
+                            new AuthenticationProperties
+                            {
+                                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(1),
+                                IsPersistent = false
+                            });
+                            //return RedirectToAction("Index", "Admin");
+                            return Ok(new
+                            {
+                                statusCode = 200,
+                                message = "Đăng nhập thành công!",
+                                url = "/Admin"
+                            });
+                        }
+                        else
+                        {
+                            return Ok(new
+                            {
+                                statusCode = 500,
+                                message = "Đăng nhập thất bại!"
+                            });
+                        }
                     }
                     else
                     {
                         var user = context.KhachHangs.FirstOrDefault(x => x.Idtk == taiKhoan.Idtk);
-                        claims.Add(new Claim(ClaimTypes.Name, user.Idkh.ToString(), user.TenKh));
-                        claims.Add(new Claim(ClaimTypes.Role, "KhachHang"));
-                        claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString()));
+                        if (user != null)
+                        {
+                            claims.Add(new Claim(ClaimTypes.Name, user.Idkh.ToString(), user.TenKh));
+                            claims.Add(new Claim(ClaimTypes.Role, "KhachHang"));
+                            claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString(), "0"));
+
+                            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                            var principal = new ClaimsPrincipal(identity);
+                            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal,
+                            new AuthenticationProperties
+                            {
+                                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(1),
+                                IsPersistent = false
+                            });
+                            return Ok(new
+                            {
+                                statusCode = 200,
+                                message = "Đăng nhập thành công!",
+                                url = "/"
+                            });
+                        }
+                        else
+                        {
+                            return Ok(new
+                            {
+                                statusCode = 500,
+                                message = "Đăng nhập thất bại!"
+                            });
+                        }
+                        
                     }
-
-                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    var principal = new ClaimsPrincipal(identity);
-
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal,
-                    new AuthenticationProperties
-                    {
-                        ExpiresUtc = DateTimeOffset.UtcNow.AddDays(1),
-                        IsPersistent = false
-                    });
-
-                    return Ok(new
-                    {
-                        statusCode = 200,
-                        message = "Đăng nhập thành công!",
-                        url = "/"
-                    });
                 }
                 else
                 {
                     return Ok(new
                     {
                         statusCode = 500,
-                        message = "Đăng nhập thất bại!"
+                        message = "Tài khoản hoặc mật khẩu không chính xác!"
                     });
                 }
             }
