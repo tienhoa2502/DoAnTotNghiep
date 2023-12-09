@@ -252,7 +252,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="/TaiKhoan/ThongTinCaNhan/">
+                            <a class="dropdown-item d-flex align-items-center" href="/TaiKhoan/ThongTinCaNhan/{id}">
                                 <i class="bi bi-person"></i>
                                 <span>Thông tin tài khoản</span>
                             </a>
@@ -295,7 +295,7 @@
             @*dành cho quản lý*@
             @{
                 var user = User.Claims.ElementAtOrDefault(2);
-                var quanLy = int.Parse(user?.Value);
+                var quanLy = int.Parse(user?.ValueType);
                 if (quanLy == 1)
                 {
                     <li class="nav-heading">Người dùng</li>

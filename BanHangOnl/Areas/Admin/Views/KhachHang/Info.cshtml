@@ -4,6 +4,11 @@
 
     QuanLyBanHangContext context = new QuanLyBanHangContext();
 
+    string formatNumber(double? tien)
+    {
+        return tien?.ToString("0,###");
+    }
+
 }
 
 
@@ -115,11 +120,11 @@
                                             <tr>
                                                 <td>@i</td>
                                                 <td>@ct?.IdhhNavigation?.TenHh</td>
-                                                <td>@ct.SoLuong</td>
-                                                <td>@ct.Gia</td>
+                                                <td>@ct.SoLuong)</td>
+                                                <td>@formatNumber(@ct.Gia)</td>
                                                 <td>@ct?.IdsizeNavigation?.Size1</td>
                                                 <td>@ct?.IdmauNavigation?.Mau1</td>
-                                                <td>@(ct.SoLuong * ct.Gia)</td>
+                                                <td>@formatNumber((@ct.SoLuong * ct.Gia))</td>
                                             </tr>
                                             i++;
                                         }
@@ -177,10 +182,10 @@
                                                 <td>@j</td>
                                                 <td>@ct?.IdhhNavigation?.TenHh</td>
                                                 <td>@ct.SoLuong</td>
-                                                <td>@ct.Gia</td>
+                                                <td>@formatNumber(@ct.Gia)</td>
                                                 <td>@ct?.IdsizeNavigation?.Size1</td>
                                                 <td>@ct?.IdmauNavigation?.Mau1</td>
-                                                <td>@(ct.SoLuong * ct.Gia)</td>
+                                                <td>@formatNumber((@ct.SoLuong * ct.Gia))</td>
                                             </tr>
                                             j++;
                                         }

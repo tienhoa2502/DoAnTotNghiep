@@ -5,6 +5,10 @@
     QuanLyBanHangContext context = new QuanLyBanHangContext();
 
 
+    string formatNumber(double? tien)
+    {
+        return tien?.ToString("0,###");
+    }
 
     //string getTenNhom(int? id)
     //{
@@ -73,8 +77,8 @@
                                     </td>
                                     <td>@tk.TenHh</td>
                                     <td>@tk?.IddvtNavigation?.TenDvt</td>
-                                    <td>@tk?.GiaBan</td>
-                                    <td>@tk?.GiaSale</td>
+                                    <td>@formatNumber(@tk?.GiaBan)</td>
+                                    <td>@formatNumber(@tk?.GiaSale)</td>
                                     @*<td>@getTenNhom(@tk.Idnhh)</td>*@
                                     <td>@tk?.IdnhhNavigation?.TenNhh</td>
 

@@ -30,9 +30,10 @@
 
             <!-- Sidebar -->
             <!-- Main Content -->
-            <div class="row" style="justify-content:center">
 
-                
+         <form action="/GioHang/CreatePaymentUrl" id="frmCreateOrder" method="POST">
+                <div class="row" style="justify-content:center">
+
                 <div class="col-md-6">
                     
                     <div class="form-group">
@@ -61,7 +62,7 @@
                 </div>
                 <div class="col-md-4">
 
-
+           
                         <tr class="product" data-product-id="1041247610" data-variant-id="1090004378">
                             <td class="product-image">
                                 <div class="product-thumbnail">
@@ -90,19 +91,28 @@
                         <div class="d-flex justify-content-between mb-5">
                             <h5 class="text-uppercase">Tổng cộng: </h5>
                             <h5>137.000</h5>
+                            <div class="form-group">
+                                <label for="Amount">Số tiền</label>
+                                <input class="form-control"
+                                       id="Amount"
+                                       name="Amount"
+                                       type="text"
+                                       value="20000000">
+                            </div>
                         </div>
 
-                    <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark" id="thanhToanButton">
+                    <button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark" id="thanhToanButton">
                         THANH TOÁN
                     </button>
-
+                    <button type="submit" class="btn btn-primary">Thanh toán (Checkout)</button>
+                </div>
                 </div>
 
-            </div>
+        </form>
            
            
 
-
+            
 
         </div>
     </div>
@@ -144,7 +154,7 @@
    </script>*@
 
 
-<script>
+@*<script>
     document.addEventListener("DOMContentLoaded", function () {
         var thanhToanButton = document.querySelector("#thanhToanButton");
 
@@ -161,4 +171,4 @@
             }
         });
     });
-</script>
+</script>*@

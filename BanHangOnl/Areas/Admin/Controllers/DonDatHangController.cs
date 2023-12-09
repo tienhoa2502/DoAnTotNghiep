@@ -2,17 +2,20 @@
 using AutoMapper.Configuration.Conventions;
 using BanHangOnl.Models;
 using BanHangOnl.Models.Mapping;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Console;
 using QuanLyNhaHang.Models.Mapping;
+using System.Data;
 using System.Text.RegularExpressions;
 
 namespace BanHangOnl.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
-    public class PhieuXuatController : Controller
+	[Authorize(Roles = "NhanVien, QuanLy")]
+	public class PhieuXuatController : Controller
     {
         QuanLyBanHangContext context = new QuanLyBanHangContext();
         private readonly IMapper _mapper;

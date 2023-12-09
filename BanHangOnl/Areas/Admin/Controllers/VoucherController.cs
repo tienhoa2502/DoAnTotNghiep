@@ -1,10 +1,12 @@
 ﻿using BanHangOnl.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BanHangOnl.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class VoucherController : Controller
+	[Authorize(Roles = "NhanVien, QuanLy")]
+	public class VoucherController : Controller
     {
         QuanLyBanHangContext context = new QuanLyBanHangContext();
         [HttpGet("/Voucher")]

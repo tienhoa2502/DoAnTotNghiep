@@ -5,7 +5,10 @@
     QuanLyBanHangContext context = new QuanLyBanHangContext();
 
 
-
+    string formatNumber(double? tien)
+    {
+        return tien?.ToString("0,###");
+    }
     //string getTenNhom(int? id)
     //{
     //    if (id > 0)
@@ -66,7 +69,7 @@
                                 <tr>
                                     <td>@tk.SoPn</td>
                                     <td>@tk?.IdnccNavigation?.TenNcc</td>
-                                    <td>@tk?.ChiTietPhieuNhaps?.Sum(x => x.Gia)</td>
+                                    <td>@formatNumber(@tk?.ChiTietPhieuNhaps?.Sum(x => x.Gia * x.SoLuong))</td>
                                     <td>@tk.NgayNhap</td>                                 
                                     <td>@tk?.IdnvNavigation?.Ten</td>
                                     <td>@tk.GhiChu</td>

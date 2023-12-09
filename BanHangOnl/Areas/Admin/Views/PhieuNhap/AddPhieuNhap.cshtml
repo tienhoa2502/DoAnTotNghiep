@@ -108,7 +108,7 @@
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Nhà cung cấp</label>
-                            <div class="col-md-10">
+                            <div class="col-sm-4">
                                 <select name="nhaCungCap" class="form-select" style="width : max">
                                     <option selected value="0">-- Nhà cung cấp--</option>
                                     @foreach (NhaCungCap n in getListNhaCungCap())
@@ -116,18 +116,20 @@
                                         <option value="@n.Idncc">@n.TenNcc</option>
                                     }
                                 </select>
-                            </div>                          
+                            </div>   
+                            
+                            <label class="col-sm-2 col-form-label">Ngày nhập</label>
+                            <div class="col-sm-4">
+                                <input class="form-control"
+                                       type="text"
+                                       name="ngayNhap"
+                                       value="@DateTime.Now.ToString("dd-MM-yyyy")"
+                                       placeholder="Ngày nhập" />
+                            </div>
                         </div>
                         
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">Ngày nhập</label>
-                                <div class="col-sm-4">
-                                    <input class="form-control"
-                                           type="text"
-                                           name="ngayNhap"
-                                           value="@DateTime.Now.ToString("dd-MM-yyyy")"
-                                           placeholder="Ngày nhập" />
-                                </div>
+                        @*<div class="row mb-3">
+                            
 
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Người nhập</label>
                                 <div class="col-sm-4">
@@ -137,7 +139,7 @@
                                            value=""
                                            placeholder="Người nhập" />
                                 </div>
-                        </div>
+                        </div>*@
                    
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Ghi chú</label>
@@ -145,7 +147,7 @@
                                 <input class="form-control"
                                        type="text"
                                        name="ghiChu"
-                                       placeholder="..." />
+                                       placeholder="--- Ghi chú ---" />
                             </div>
 
                             @*<div class="col-sm-10">
@@ -227,6 +229,8 @@
                                            name="soLuong"
                                            id="soLuong"
                                            min="1"
+                                           
+                                           oninput="validity.valid||(value='');"
                                            placeholder="Số lượng" />
                                 </div>
                             </div>
@@ -236,10 +240,12 @@
                                 <label class="col-sm-auto col-lg-2 col-form-label">Giá nhập</label>
                                 <div class="col-sm-3">
                                     <input class="form-control formatted-number"
-                                           type="text"
+                                           type="number"
                                            name="donGia"
                                            id="donGia"
                                            min="0"
+                                         
+                                           oninput="validity.valid||(value='');"
                                            placeholder="Đơn giá" />
                                 </div>
                                 <label class="col-sm-auto col-lg-2 col-form-label">Thành tiền</label>
@@ -248,6 +254,7 @@
                                            type="text"
                                            name="thanhTien"
                                            id="thanhTien"
+                                           readonly
                                            placeholder="Thành tiền" />
                                 </div>
                                 <div class="col-md-2 mb-2 col-lg-2">

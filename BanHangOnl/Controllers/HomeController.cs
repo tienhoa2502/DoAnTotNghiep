@@ -21,7 +21,12 @@ namespace BanHangOnl.Controllers
 			ViewBag.HangHoa = context.HangHoas
 				.Include(x => x.ImgHangHoas)
 				.Where(x => x.HienThi == true && x.Active == true ).ToList();
-            return View();
+
+			
+				List<string> imageUrls = context.SideQuangCaos.Select(s => s.Img).ToList();
+				ViewBag.ImageUrls = imageUrls;
+			
+			return View();
 		}
 
         public IActionResult Privacy()

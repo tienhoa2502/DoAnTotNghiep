@@ -128,12 +128,12 @@ function addChiTietDonDatHang() {
             <input autocomplete="off" readonly type="text" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${donViTinh}" id="dVT" name="dVT" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuong}" name="soLuong" />
-            <input autocomplete="off" type="hidden" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuongTon}" name="soLuongTon" />
+            <input autocomplete="off" type="text" readonly class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuong}" name="soLuong" />
+            <input autocomplete="off" type="hidden"  readonly class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuongTon}" name="soLuongTon" />
 
         </td>
         <td class="p-1">
-            <input autocomplete="off" t type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${donGia}" name="donGia" />
+            <input autocomplete="off" t type="text" readonly class="w-100 form-control form-table formatted-number" style="width:80px;" value="${donGia}" name="donGia" />
         </td>
         <td class="p-1">
             <input autocomplete="off" type="text" readonly class="w-100 form-control form-table formatted-number" style="width:100px;" value="${thanhTien}" name="thanhTien" />
