@@ -197,7 +197,11 @@
                     <p>
                         <input type="text" id="amount" readonly="" style="border:0; color:#f6931f; font-weight:bold;">
                     </p>
-                    <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 58%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 58%;"></span></div>
+                    <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                        <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 58%;"></div>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 58%;"></span>
+                    </div>
                     <div class="filter_button"><span>filter</span></div>
                 </div>
 
@@ -261,8 +265,11 @@
                                 {
                                     <div class="product-item men" style="position: absolute; left: 0px; top: 0px;">
                                         <div class="product discount product_filter" style="border-right: 1px solid rgb(233, 233, 233); padding: 5px">
-										<div class="product_image">
-												<img src="@hh?.ImgHangHoas.FirstOrDefault(x => x.IsDefault == true)?.Img" alt="" alt="">
+                                            <div class="product_image">
+                                                @{
+                                                    string urlImage = hh?.ImgHangHoas.FirstOrDefault(x => x.IsDefault == true)?.Img;
+                                                }
+                                                <img src="@urlImage" alt="">
 										</div>
 										<div class="favorite favorite_left"></div>
 										<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
@@ -271,7 +278,9 @@
 											<div class="product_price">@hh.GiaSale<span>@hh.GiaBan</span></div>
 										</div>
 									</div>
-									<div class="red_button add_to_cart_button"><a href="#">Thêm vào giỏ hàng</a></div>
+									<div class="red_button add_to_cart_button">
+                                            <div class="red_button add_to_cart_button"><a href="#" data-idhh="@hh.Idhh" data-sl="1" data-ten="@hh.TenHh" data-gia="@hh.GiaBan" data-mau="" data-size="" data-url="@urlImage">Thêm vào giỏ hàng</a></div>
+                                    </div>
 								    </div>
 								}
 								
