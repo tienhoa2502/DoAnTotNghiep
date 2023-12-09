@@ -37,6 +37,12 @@
                     <input asp-for="@Model.TenVoucher" type="text" class="form-control" id="inputText">
                 </div>
             </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">% giảm giá</label>
+                <div class="col-sm-10">
+@*                    <input asp-for="@Model.TenVoucher" type="text" class="form-control" id="inputText">
+*@                </div>
+            </div>
 
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Ngày bắt đầu</label>
@@ -53,9 +59,10 @@
 
 
 
+
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Lưu</button>
-                <button type="reset" class="btn btn-secondary">Hủy</button>
+                <button type="reset" class="btn btn-secondary" onclick="window.history.go(-1);">Hủy</button>
             </div>
         </form><!-- End Horizontal Form -->
 

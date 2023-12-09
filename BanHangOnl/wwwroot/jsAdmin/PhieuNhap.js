@@ -80,10 +80,10 @@ function AddRowPhieuNhapKho() {
             <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${size}" id="size1" name="size" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuong}" name="soLuong" />
+            <input autocomplete="off" readonly type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuong}" name="soLuong" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${donGia}" name="donGia" />
+            <input autocomplete="off" readonly type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${donGia}" name="donGia" />
         </td>
         <td class="p-1">
             <input readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:100px;" value="${thanhTien}" name="thanhTien" />
@@ -113,8 +113,8 @@ function clearFormThem() {
     var soLuong = $('#groupThemHangHoa #soLuong').val('');
     var donGia = $('#groupThemHangHoa #donGia').val('');
     var thanhTien = $('#groupThemHangHoa #thanhTien').val('');
-    var size = $('#groupThemHangHoa #size').val('');
-    var mau = $('#groupThemHangHoa #mau').val('');
+    //var size = $('#groupThemHangHoa #size').val('');
+    //var mau = $('#groupThemHangHoa #mau').val('');
 }
 $('#tBody-ThemChiTietPhieuNhap').on("click", ".remove-phieuNhapCt", function (event) {
     event.preventDefault();

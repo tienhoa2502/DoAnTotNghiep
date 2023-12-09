@@ -1,11 +1,13 @@
 ﻿using BanHangOnl.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BanHangOnl.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class VaiTroController : Controller
+	[Authorize(Roles = "QuanLy")]
+	public class VaiTroController : Controller
     {
         QuanLyBanHangContext context = new QuanLyBanHangContext();
         [HttpGet("/VaiTro")]

@@ -3,12 +3,14 @@ using BanHangOnl.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyNhaHang.Models.Mapping;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BanHangOnl.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
-    public class PhieuNhapController : Controller
+	[Authorize(Roles = "NhanVien, QuanLy")]
+	public class PhieuNhapController : Controller
     {
         QuanLyBanHangContext context = new QuanLyBanHangContext();
         private readonly IMapper _mapper;

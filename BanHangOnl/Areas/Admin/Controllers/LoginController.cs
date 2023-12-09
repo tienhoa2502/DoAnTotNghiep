@@ -210,5 +210,15 @@ namespace BanHangOnl.Areas.Admin.Controllers
         {
             return View();
         }
+        [Route("/DangKy")]
+
+        public IActionResult Register(KhachHang kh)
+        {
+            kh.Active = true;
+
+            context.KhachHangs.Add(kh);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -94,16 +94,16 @@ function addRowBaoCaoChiTiet(data) {
              <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${data.nhaCungCap}
         </td>
-        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
+        <td class="text-center" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${data.maHang}
         </td>
-        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
+        <td class="text-center" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${data.tenHang}
         </td> 
-        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
+        <td class="text-center" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${data.mau}
         </td>         
-        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
+        <td class="text-center" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${data.size}
         </td> 
         <td class="p-1">
@@ -115,7 +115,7 @@ function addRowBaoCaoChiTiet(data) {
         <td class="p-1">
             <input  readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${formatTotal(data.soLuongTon)}" name="soLuong" />
         </td>
-            <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
+            <td class="text-center" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${data.donViTinh}
         </td>
         <td class="p-1">
