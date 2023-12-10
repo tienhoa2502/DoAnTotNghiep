@@ -1,5 +1,7 @@
 ﻿using BanHangOnl.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System;
 
 namespace BanHangOnl.Controllers
 {
@@ -9,9 +11,105 @@ namespace BanHangOnl.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            //var items = context.HangHoas.ToList();
+			//var items = context.HangHoas.ToList();
+			// Lấy dữ liệu từ cookie
+			string myCookieValue = HttpContext.Request.Cookies["cart"];
+			string myCookieValue2 = HttpContext.Request.Cookies["MyCookieName"];
 
-            return View();
+			// Sử dụng dữ liệu từ cookie
+			if (!string.IsNullOrEmpty(myCookieValue))
+			{
+				ViewBag.Cart = JsonConvert.DeserializeObject<List<Cart>>(myCookieValue);
+			}
+			return View();
+        }
+		[HttpPost("/updateCookies")]
+		public IActionResult updateCookies([FromBody]Cart item)
+		{
+            var cookieName = "cart";
+
+            string myCookieValue = HttpContext.Request.Cookies[cookieName];
+            Response.Cookies.Delete(cookieName);
+
+            List<Cart> carts;
+            if (!string.IsNullOrEmpty(myCookieValue))
+            {
+                carts = JsonConvert.DeserializeObject<List<Cart>>(myCookieValue);
+            }
+            else
+            {
+                carts = new List<Cart>();
+            }
+            var get = carts.FirstOrDefault(x => x.idHh == item.idHh);
+            if (get == null)
+            {
+                carts.Add(item);
+            }
+            
+            string json = JsonConvert.SerializeObject(carts);
+            
+            var expireDays = 7; // Số ngày cookie tồn tại
+            var option = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(expireDays),
+                HttpOnly = true,
+                IsEssential = true // Chọn theo nhu cầu của bạn
+            };
+
+            Response.Cookies.Append(cookieName, json, option);
+            return Ok(carts.Count);
+		}
+        [HttpPost("/removeCookies")]
+        public IActionResult removeCookies(int idHh)
+        {
+            var cookieName = "cart";
+
+            string myCookieValue = HttpContext.Request.Cookies[cookieName];
+            Response.Cookies.Delete(cookieName);
+
+            List<Cart> carts;
+            if (!string.IsNullOrEmpty(myCookieValue))
+            {
+                carts = JsonConvert.DeserializeObject<List<Cart>>(myCookieValue);
+            }
+            else
+            {
+                carts = new List<Cart>();
+            }
+            var get = carts.FirstOrDefault(x => x.idHh == idHh);
+            if (get != null)
+            {
+                carts.Remove(get);
+            }
+            string json = JsonConvert.SerializeObject(carts);
+
+            var expireDays = 7; // Số ngày cookie tồn tại
+            var option = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(expireDays),
+                HttpOnly = true,
+                IsEssential = true // Chọn theo nhu cầu của bạn
+            };
+
+            Response.Cookies.Append(cookieName, json, option);
+            return Ok(carts.Count);
+        }
+        [HttpPost("/getCookiesCount")]
+        public IActionResult getCookiesCount()
+        {
+            var cookieName = "cart";
+
+            string myCookieValue = HttpContext.Request.Cookies[cookieName];
+            List<Cart> carts;
+            if (!string.IsNullOrEmpty(myCookieValue))
+            {
+                carts = JsonConvert.DeserializeObject<List<Cart>>(myCookieValue);
+            }
+            else
+            {
+                carts = new List<Cart>();
+            }
+            return Ok(carts.Count);
         }
 
         [HttpGet("/ThanhToan")]
@@ -21,13 +119,33 @@ namespace BanHangOnl.Controllers
 
             return View();
         }
+        [HttpPost("/thanhToanHoaDon")]
+        public ActionResult thucHienThanhToan([FromBody] List<ChiTietPhieuXuat> cts)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return Ok(cts);
+            }
+            else
+            {
+                return Ok(new
+                {
+                    statusCode = 403
+                });
+            }
+            
+        }
+        //[HttpGet("/ThanhToan")]
+        //public ActionResult ThanhToan()
+        //{
+        //	//var items = context.HangHoas.ToList();
 
-		//[HttpGet("/ThanhToan")]
-		//public ActionResult ThanhToan()
-		//{
-		//	//var items = context.HangHoas.ToList();
-
-		//	return View();
-		//}
-	}
+        //	return View();
+        //}
+    }
+    public class Cart
+    {
+        public int idHh { get; set; }
+        public int sl { get; set; }
+    }
 }
