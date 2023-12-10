@@ -1,6 +1,30 @@
 ﻿// Hàm để đặt giỏ hàng vào cookie
 function setCartItems(cartItems) {
-    setCookie("cart", JSON.stringify(cartItems), 7);
+    $.ajax({
+        url: '/updateCookies',
+        type: 'POST',
+        data: JSON.stringify(cartItems),
+        contentType: "application/json",
+        success: function (response) {
+            showNumberOfCart(response);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+getCookiesCount();
+function getCookiesCount() {
+    $.ajax({
+        url: '/getCookiesCount',
+        type: 'POST',
+        success: function (response) {
+            showNumberOfCart(response);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
 }
 
 // Hàm để lấy giỏ hàng từ cookie
@@ -55,32 +79,24 @@ function getCookie(cookieName) {
     }
     return "";
 }
-function showNumberOfCart() {
-    $('#checkout_items').text(getCartItems().length)
+function showNumberOfCart(cout) {
+    $('#checkout_items').text(cout)
 }
 
-// 
+/*// 
 if (!getCookie("cart")) {
     setCartItems([]);
 }
-showNumberOfCart();
+showNumberOfCart();*/
 
 
 $(document).on('click', '.add_to_cart_button a', function (event) {
     event.preventDefault();
-    if (!getCookie("cart")) {
-        setCartItems([]);
-    }
+
     var a = $(this);
     var data = {
         idHh: a.data('idhh'),
-        ten: a.data('ten'),
-        sl: a.data('sl'),
-        gia: a.data('gia'),
-        mau: a.data('mau'),
-        size: a.data('size'),
-        url: a.data('url'),
+        sl: $('#quantity_value').length ? parseInt($('#quantity_value').text()) : 1,
     };
-    addToCart(data);
-    showNumberOfCart();
+    setCartItems(data);
 });

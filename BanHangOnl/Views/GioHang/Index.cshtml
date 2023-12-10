@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Giỏ hàng";
     Layout = "/Views/Shared/_Layout.cshtml";
+    QuanLyBanHangContext context = new QuanLyBanHangContext();
 }
 <style>
        media (min-width: 1025px) {
@@ -38,10 +39,6 @@
     }
     }
 </style>
-
-
-<link rel="stylesheet" type="text/css" href="~/usassets/assets/styles/categories_styles.css">
-<link rel="stylesheet" type="text/css" href="~/usassets/assets/styles/categories_responsive.css">
 
 @*<div class="container product_section_container">
     <div class="row">
@@ -111,108 +108,79 @@
                                                     </a>
                                                 </h6>
 
-                                                <hr class="my-4">
+                                                @foreach (var d in ViewBag.Cart)
+                                                {
+                                                    int idHh = int.Parse(d.idHh.ToString());
+                                                    var hh = context.HangHoas.Include(x=>x.IdnhhNavigation)
+                                                    .Include(x=>x.ChiTietPhieuNhaps)
+                                                    .ThenInclude(x => x.IdmauNavigation)
+                                                    .Include(x => x.ChiTietPhieuNhaps)
+                                                    .ThenInclude(x => x.IdsizeNavigation)
+                                                    .Include(x=>x.ImgHangHoas)
+                                                    .FirstOrDefault(c => c.Idhh == idHh);
+                                                    var mau = hh.ChiTietPhieuNhaps.GroupBy(x => x.IdmauNavigation).ToList();
+                                                    var size = hh.ChiTietPhieuNhaps.GroupBy(x => x.IdsizeNavigation).ToList();
+                                                    var slCon = hh.ChiTietPhieuNhaps.Sum(x => x.SoLuong - x.SoLuongXuat);
+                                                    <hr class="my-4">
 
-                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
-                                                             class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-3">
-                                                        <h6 class="text-muted">Shirt</h6>
-                                                        <h6 class="text-black mb-0">Cotton T-shirt</h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                        <button class="btn btn-link px-2"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
+                                                    <div class="row mb-4 d-flex justify-content-between align-items-center row-item @(slCon < 1 ? "hetHang" : "conHang")">
+                                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                                            <img src="@hh?.ImgHangHoas.FirstOrDefault(x => x.IsDefault == true)?.Img"
+                                                                 class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                                        </div>
+                                                        <div class="col-md-3 col-lg-3 col-xl-3">
+                                                            <h6 class="text-muted">@hh.IdnhhNavigation?.TenNhh</h6>
+                                                            <h6 class="text-black">@hh.TenHh</h6>
+                                                            @if(slCon < 1){
+                                                                <h6 class="text-danger mb-0">Hết hàng</h6>
+                                                            }else{
+                                                                <h6 class="text-success mb-0">Còn hàng</h6>
+                                                            }
+                                                        </div>
+                                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                            <button class="btn btn-link px-2 down">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 9l6 6l6 -6" /></svg>
+                                                            </button>
 
-                                                        <input id="form1" min="0" name="quantity" value="1" type="number"
-                                                               class="form-control form-control-sm" />
+                                                            <input id="form1" min="0" name="quantity" value="@d.sl" type="number" max="@slCon"
+                                                                   class="form-control form-control-sm sl" style="min-width:50px" />
 
-                                                        <button class="btn btn-link px-2"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                            <i class="fas fa-plus"></i>
-                                                        </button>
+                                                            <button class="btn btn-link px-2 up">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15l6 -6l6 6" /></svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                            <h6 class="mb-0">@hh.GiaSale?.ToString("#,##0.##") VNĐ</h6>
+                                                        </div>
+                                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                            <a href="#" class="text-danger remove-cookies" data-idhh="@hh.Idhh">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-12 mt-1">
+                                                            <div class="row">
+                                                                <div class="col-4">
+                                                                    <input type="hidden" class="idHh" value="@hh.Idhh"/>
+                                                                    <input type="hidden" class="giaBan" value="@hh.GiaSale" />
+                                                                    <select class="form-control cbMau">
+                                                                        @foreach (var m in mau)
+                                                                        {
+                                                                            <option value="@m?.Key.Idmau">@m?.Key.Mau1 </option>
+                                                                        }
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-4">
+                                                                    <select class="form-control cbSize">
+                                                                        @foreach (var s in size)
+                                                                        {
+                                                                            <option value="@s?.Key.Idsize">@s?.Key.Size1 </option>
+                                                                        }
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                        <h6 class="mb-0">€ 44.00</h6>
-                                                    </div>
-                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                        <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
-                                                    </div>
-                                                </div>
-
-                                                <hr class="my-4">
-
-                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img6.webp"
-                                                             class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-3">
-                                                        <h6 class="text-muted">Shirt</h6>
-                                                        <h6 class="text-black mb-0">Cotton T-shirt</h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                        <button class="btn btn-link px-2"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
-
-                                                        <input id="form1" min="0" name="quantity" value="1" type="number"
-                                                               class="form-control form-control-sm" />
-
-                                                        <button class="btn btn-link px-2"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                            <i class="fas fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                        <h6 class="mb-0">€ 44.00</h6>
-                                                    </div>
-                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                        <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
-                                                    </div>
-                                                </div>
-
-                                                <hr class="my-4">
-
-                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img7.webp"
-                                                             class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-3">
-                                                        <h6 class="text-muted">Shirt</h6>
-                                                        <h6 class="text-black mb-0">Cotton T-shirt</h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                        <button class="btn btn-link px-2"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
-
-                                                        <input id="form1" min="0" name="quantity" value="1" type="number"
-                                                               class="form-control form-control-sm" />
-
-                                                        <button class="btn btn-link px-2"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                            <i class="fas fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                        <h6 class="mb-0">€ 44.00</h6>
-                                                    </div>
-                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                        <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
-                                                    </div>
-                                                </div>
-
-                                                <hr class="my-4">
-
-
+                                                }
                                             </div>
                                         </div>
                                         <div class="col-lg-4 bg-grey">
@@ -234,11 +202,11 @@
 
                                                 <div class="d-flex justify-content-between mb-5">
                                                     <h5 class="text-uppercase">Tổng cộng: </h5>
-                                                    <h5>€ 137.00</h5>
+                                                    <h5 id="tongGia"> VNĐ</h5>
                                                 </div>
 
                                                 <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">
-                                                    <a href="/ThanhToan">THANH TOÁN</a>
+                                                    <a href="#" id="thanhToan">THANH TOÁN</a>
                                                 </button>
 
                                             </div>
@@ -254,8 +222,82 @@
         </div>
     </div>
 </div>
+<script>
+    function updateTong() {
+        var tong = 0;
+        $('.conHang .giaBan').each(function () {
+            var sl = $(this).closest('.conHang').find('.sl').val();
+            if ($(this).val()) {
+                tong += parseFloat($(this).val()) * parseFloat(sl);
+            }
+        });
+        var formattedNumber = tong.toLocaleString('en-US', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        $('#tongGia').text(formattedNumber + ' VNĐ');
+    }
+    updateTong();
+    $(document).on('input', '.sl', function () {
+        updateTong();
+    })
+    $(document).on('click', '.up', function () {
+       this.parentNode.querySelector('input[type=number]').stepUp();
+        $(this.parentNode.querySelector('input[type=number]')).trigger('input');
+    })
+    $(document).on('click', '.down', function () {
+        this.parentNode.querySelector('input[type=number]').stepDown();
+        $(this.parentNode.querySelector('input[type=number]')).trigger('input');
+    })
+    $(document).on('click', '.remove-cookies', function (event) {
+        event.preventDefault();
 
-<script src="~/usassets/js/categories_custom.js"></script>
+        var a = $(this);
+        $.ajax({
+            url: '/removeCookies',
+            type: 'POST',
+            data: 'idHh=' + a.data('idhh'),
+            success: function (response) {
+                showNumberOfCart(response);
+                a.closest('.row-item').prev('hr').remove();
+                a.closest('.row-item').remove();
+                updateTong();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+    $('#thanhToan').click(function (event) {
+        event.preventDefault();
+        var phieuXuatCT = [];
+        $('.conHang').each(function(){
+            var row = $(this);
+            var ct = {
+                Idctpx: 0,
+                Idhh: parseInt(row.find('.idHh').val()),
+                SoLuong: parseFloat(row.find('.sl').val()),
+                Gia: parseFloat(row.find('.giaBan').val()),
+                Idsize: parseInt(row.find('.cbSize').val()),
+                Idmau: parseInt(row.find('.cbMau').val())
+            }
+            phieuXuatCT.push(ct);
+        })
+        $.ajax({
+            url: '/thanhToanHoaDon',
+            type: 'POST',
+            data: JSON.stringify(phieuXuatCT),
+            contentType: "application/json",
+            success: function (response) {
+                if(response.statusCode == 403){
+                    window.location.href = "/DangNhap"
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+</script>
+
+@*<script src="~/usassets/js/categories_custom.js" defer></script>*@
 
 
 
