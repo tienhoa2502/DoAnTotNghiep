@@ -1,12 +1,14 @@
 ﻿using BanHangOnl.Models;
 using Humanizer.Localisation.TimeToClockNotation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BanHangOnl.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class HangHoaController : Controller
+	[Authorize(Roles = "NhanVien, QuanLy")]
+	public class HangHoaController : Controller
     {
         QuanLyBanHangContext context = new QuanLyBanHangContext();
         private readonly IWebHostEnvironment _hostingEnvironment;

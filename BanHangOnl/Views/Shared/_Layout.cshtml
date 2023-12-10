@@ -53,7 +53,35 @@
 								</ul>
 								<ul class="navbar_user">
 									<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+@*									<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
+*@										
+									<li class="nav-item dropdown pe-3">
+
+										<a b-1h11pv3tg9="" class="nav-link nav-profile d-flex align-items-center pe-0" data-bs-toggle="dropdown" aria-expanded="false" id="userDropdown">
+											<i class="fa fa-user" aria-hidden="true"></i>
+											<span b-1h11pv3tg9="" class="d-none d-md-block dropdown-toggle ps-2"></span>
+										</a>
+
+										<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profileDropdown">
+											<li>
+												<a class="dropdown-item" href="/TaiKhoan/ThongTinCaNhan/">
+													<i class="bi bi-person"></i>
+													<span>Thông tin tài khoản</span>
+												</a>
+											</li>
+											<li>
+												<hr class="dropdown-divider">
+											</li>
+											<li>
+												<a class="dropdown-item" href="/logout">
+													<i class="bi bi-box-arrow-right"></i>
+													<span>Đăng xuất</span>
+												</a>
+											</li>
+										</ul><!-- End Profile Dropdown Items -->
+									</li>
+									
+									</li>
 									<li class="checkout">
 										<a href="/GioHang">
 											<i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -148,7 +176,11 @@
 		</section>*@
 
 
-		
+		<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+		<df-messenger intent="WELCOME"
+					  chat-title="EdwardChat"
+					  agent-id="7bb8f221-d165-4836-8d0f-9cfd37537c33"
+					  language-code="vi"></df-messenger>
 
 
 
@@ -240,6 +272,46 @@
 	<script src="~/usassets/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 	<script src="~/usassets/plugins/easing/easing.js"></script>
 	<script src="~/usassets/js/custom.js"></script>
+	<script>
+		// Đoạn mã JavaScript để xử lý sự kiện click
+		document.addEventListener('DOMContentLoaded', function () {
+			// Lấy tham chiếu đến các phần tử cần sử dụng
+			var userDropdown = document.getElementById('userDropdown');
+			var profileDropdown = document.getElementById('profileDropdown');
+
+			// Xử lý sự kiện click
+			userDropdown.addEventListener('click', function () {
+				// Kiểm tra lớp 'show' có tồn tại không
+				var isDropdownVisible = profileDropdown.classList.contains('show');
+
+				// Nếu có, ẩn dropdown, ngược lại hiển thị dropdown
+				if (isDropdownVisible) {
+					profileDropdown.classList.remove('show');
+				} else {
+					profileDropdown.classList.add('show');
+				}
+			});
+
+			// Bổ sung xử lý sự kiện để ẩn dropdown khi click bên ngoài dropdown
+			document.addEventListener('click', function (event) {
+				if (!userDropdown.contains(event.target) && !profileDropdown.contains(event.target)) {
+					profileDropdown.classList.remove('show');
+				}
+			});
+		});
+	</script>
+
+	<style>
+		df-messenger {
+			--df-messenger-bot-message: #878fac;
+			--df-messenger-button-titlebar-color: #df9b56;
+			--df-messenger-chat-background-color: #fafafa;
+			--df-messenger-font-color: white;
+			--df-messenger-send-icon: #878fac;
+			--df-messenger-user-message: #479b3d;
+		}
+
+	</style>
 	<script src="/js/cart.js" defer asp-append-version="true"></script>
 </body>
 

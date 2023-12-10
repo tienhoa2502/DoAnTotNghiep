@@ -240,6 +240,7 @@
                                     <input class="form-control formatted-number"
                                            type="number"
                                            name="sLCon"
+                                           readonly
                                            id="sLCon" 
                                            placeholder="Số lượng" readonly />
                                 </div>
@@ -253,6 +254,7 @@
                                     <input class="form-control formatted-number"
                                            type="number"
                                            min= "1"
+                                           oninput="validity.valid||(value='');"
                                            data-content="Không được để trống" id="SLHH" placeholder="Số lượng" />
                                 </div>
 
@@ -261,6 +263,7 @@
                                     <input class="form-control formatted-number"
                                            type="text"
                                            name="donGia"
+                                           readonly
                                            id="DonGia" 
                                            placeholder="Đơn giá" />
                                 </div>
@@ -269,6 +272,7 @@
                                     <input class="form-control formatted-number"
                                            type="text"
                                            name="thanhTien"
+                                           readonly
                                            id="ThanhTien"
                                            placeholder="Thành tiền" />
                                 </div>
@@ -294,10 +298,10 @@
                             <thead>
                                 <tr class="text-wrap">
                                     <th class="text-center p-1 first-th-column text-wrap" style="width:32px;">TT</th>
-                                    <th class="text-center p-1 text-wrap">Hình ảnh</th>
                                     <th class="text-center p-1 w-25 text-wrap" style="position: sticky;left: 33px;z-index: 4 !important;">Tên hàng hóa</th>
                                     <th class="text-center p-1 text-wrap">Size</th>
                                     <th class="text-center p-1 text-wrap">Màu</th>
+                                    <th class="text-center p-1 text-wrap">ĐVT</th>
                                     <th class="text-center p-1 text-wrap">SL xuất</th>
                                     <th class="text-center p-1 text-wrap">Giá xuất</th>
                                     
