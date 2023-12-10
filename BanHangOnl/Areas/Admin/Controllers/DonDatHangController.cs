@@ -29,6 +29,10 @@ namespace BanHangOnl.Areas.Admin.Controllers
             ViewBag.PhieuXuat = context.PhieuXuats
                 .Include(x => x.ChiTietPhieuXuats)
                 .Include(x => x.IdnvNavigation).Where(x => x.Active == true).ToList();
+
+
+
+
             return View();
         }
         [HttpPost("/DonDatHang/getDonViTinhVaSL")]

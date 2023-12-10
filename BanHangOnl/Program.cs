@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using CodeMegaVNPay.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IVnPayService, VnPayService>();
+
 
 var app = builder.Build();
 

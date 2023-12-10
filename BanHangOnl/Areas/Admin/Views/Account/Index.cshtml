@@ -2,6 +2,7 @@
     ViewData["Title"] = "Thông tin tài khoản";
     Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+@model BanHangOnl.Models.TaiKhoan
 
 
 <div class="pagetitle">
@@ -41,12 +42,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(TaiKhoan tk in ViewBag.TaiKhoan)
+                            @foreach(TaiKhoan tk in ViewBag.DanhSachTaiKhoan)
                             {
                                 <tr>
                                     <td>@tk.TenTk</td>
                                     <td>@tk.Pass</td>
-                                    <td>@Model.</td>
+                                    <td>
+                                        @if (tk.NhanViens.Any())
+                                        {
+                                            <span>@tk.NhanViens.First().Ten</span>
+                                        }
+                                        else if (tk.KhachHangs.Any())
+                                        {
+                                            <span>@tk.KhachHangs.First().TenKh</span>
+                                        }
+                                    </td>
                                     <td>@tk?.IdvtNavigation?.TenVt</td>
                                     <td>
                                         <a href="/TaiKhoan/ThongTinCaNhan/@tk.Idtk" type="button" class="btn btn-primary btn-sm">Xem</a>

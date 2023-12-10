@@ -11,6 +11,9 @@
 
 <link rel="stylesheet" type="text/css" href="~/usassets/styles/main_styles.css">
 
+<link rel="stylesheet" type="text/css" href="~/usassets/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/usassets/styles/categories_responsive.css">
+
 <style>
 	.news_section_container {
 		margin-top: 180px;
@@ -33,11 +36,22 @@
 	}
 </style>
 
+<div class="container news_section_container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="title-news">Tin tức / @Model.TenTt</h1>
+		</div>
+	</div>
+
+</div>
+
+<div class="container product_section_container">
+
 <div class="row">
     <section class="right-content col-lg-9 col-12 mx-auto">
 		<article class="article-main">
 			<div class="article-details">
-				<h1 class="article-title title_page">@Model.TenTt</h1>
+				<h3 class="article-title title_page">@Model.TenTt</h3>
 				<div class="media ">
 					<div class="media-body text-right">
 						<div class="mt-0 ">@Model.NguoiTao</div>
@@ -52,15 +66,24 @@
 						</div>
 					</div>
 				</div>
-							
 
-				<div class="article-content js-toc-content">
-					<div class="rte" id="ega-uti-editable-content" data-platform="haravan" data-id="1002166300" data-blog-id="1000618488"></div>
-				</div>
+					<div class="article-content js-toc-content">
+						<div class="rte" id="ega-uti-editable-content" data-platform="haravan" data-id="1002186927" data-blog-id="1000680689">
+
+							<h1 id="ben-tod-fashion-show" style="text-align: center;"><span style="font-size:26px"><strong>Ben &amp; Tod Fashion Show&nbsp;</strong></span></h1>
+							<h1 id="c-m-h-ng-vi-t-nam" style="text-align: center;"><span style="font-size:26px"><strong>CẢM HỨNG VIỆT NAM</strong></span></h1>
+							<div>&nbsp;</div>
+							<h2 id="v-th-ng-hi-u-ben-tod"><span style="font-size:22px"><strong>Về thương hiệu Ben &amp; Tod</strong></span></h2>
+							<p style="text-align: justify;">@Model.ChiTiet</p>
+							<p style="text-align: center"><img style="width: 312px; height: 312px;" src="//file.hstatic.net/1000378223/file/15-11_the_stamp_cam_hung_viet_nam__facebook_99789e33444b489b91cd226a7c931929_grande.jpg"></p>
+							<p style="text-align: justify;">@Model.ChiTiet</p>
+
+						</div>
+					</div>
 			</div>
 		</article>
 	</section>
-</div>		
-				
+</div>
+</div>
 
 

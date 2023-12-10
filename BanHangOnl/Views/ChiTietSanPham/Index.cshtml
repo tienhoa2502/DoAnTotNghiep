@@ -102,7 +102,7 @@
 						@foreach (var mau in ViewBag.Mau)
 						{
 
-							<li style="">@mau?.Key </li>
+							<li style="background: #e54e5d">@mau?.Key </li>
 
 						}
 					</ul>
@@ -110,9 +110,16 @@
 					<ul>
 						@foreach (var s in ViewBag.Size)
 						{
-							<li>@s?.Key</li>
+							<input type="radio" name="size" value="@s?.Key" />
+							@s?.Key
 						}
 					</ul>
+
+
+
+
+
+
 				</div>
 				<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
 					<span>Số lượng:</span>

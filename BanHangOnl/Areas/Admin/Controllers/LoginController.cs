@@ -210,15 +210,33 @@ namespace BanHangOnl.Areas.Admin.Controllers
         {
             return View();
         }
-        [Route("/DangKy")]
 
-        public IActionResult Register(KhachHang kh)
-        {
-            kh.Active = true;
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Register(TaiKhoan model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Tạo đối tượng KhachHang từ dữ liệu đăng ký
+        //        var khachHang = new TaiKhoan
+        //        {
+        //            TenKh = model.TenKh,
+        //            Email = model.Email,
+        //            DiaChi = model.DiaChi,
+        //            Phone = model?.IdtkNavigation.TenTk,
+        //            // Set các giá trị khác tùy thuộc vào logic của bạn
+        //        };
 
-            context.KhachHangs.Add(kh);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //        // Thêm vào cơ sở dữ liệu
+        //        context.KhachHangs.Add(khachHang);
+        //        await context.SaveChangesAsync();
+
+        //        // Chuyển hướng hoặc thực hiện các hành động khác
+        //        return RedirectToAction("RegisterSuccess");
+        //    }
+
+        //    // Nếu ModelState không hợp lệ, trả về lại view đăng ký
+        //    return View("Register", model);
+        //}
     }
 }

@@ -72,7 +72,7 @@
                                         <input type="hidden" name="idTT" value="@tk.Idtt"/>
                                     </td>
                                     <td>@tk.TenTt</td>
-                                    <td>@tk.ChiTiet</td>
+                                    <td class="ellipsis">@tk.ChiTiet</td>
                                     <td>@tk.NgayTao</td>
                                     <td>@getTenNhom(@tk.Idntt)</td>
                                     @if(tk.HienThi == true){
@@ -112,3 +112,21 @@
 </section>
 <script src="~/jsadmin/tintuc.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var maxLength = 100; // Số ký tự tối đa bạn muốn hiển thị
+
+        // Lặp qua từng phần tử có class "ellipsis" và xử lý
+        $(".ellipsis").each(function () {
+            var content = $(this).text();
+
+            // Nếu chiều dài nội dung lớn hơn số ký tự tối đa
+            if (content.length > maxLength) {
+                // Cắt chuỗi và thêm dấu "..."
+                var trimmedContent = content.substring(0, maxLength) + "...";
+                $(this).text(trimmedContent);
+            }
+        });
+    });
+</script>
