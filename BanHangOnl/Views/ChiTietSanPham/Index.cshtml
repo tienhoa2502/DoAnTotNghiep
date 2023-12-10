@@ -123,22 +123,29 @@
 				</div>
 				<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
 					<span>Số lượng:</span>
-					@*@foreach (var SlCon in ViewBag.SlCon)
-						{*@
 					<div class="quantity_selector">
 						<span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
 						<span id="quantity_value">1</span>
 						<span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
 					</div>
-						
-					<div class="red_button add_to_cart_button"><a href="#">Thêm vào giỏ hàng</a></div>
+					@if (ViewBag.SlCon != 0)
+					{
+						<span class="text-success" style="margin-left: 1rem;">CÒN HÀNG</span>
+					}
+					else
+					{
+						<span class="text-danger" style="margin-left: 1rem;">HẾT HÀNG</span>
+					}
 					<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
 				</div>
-
-				<div style="display: flex; flex-wrap: wrap; width: 100%; padding: 5px">
-					<button type="submit" class="red_button add_to_cart_button">MUA NGAY</button>
+				<div class="row mt-2">
+					<div class="col-auto">
+						<div class="red_button add_to_cart_button"><a href="#" data-idhh="@Model.Idhh">Thêm vào giỏ hàng</a></div>
+					</div>
+					<div class="col-auto">
+						<button type="submit" class="red_button add_to_cart_button">MUA NGAY</button>
+					</div>
 				</div>
-				
 			</div>
 			
 
