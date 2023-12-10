@@ -221,7 +221,6 @@ C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\bin\Debug\net7.0\runtimes\win\
 C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\obj\Debug\net7.0\BanHangOnl.csproj.CopyComplete
-C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\obj\Debug\net7.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css
 C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
@@ -255,3 +254,4 @@ C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\bin\Debug\net7.0\runtimes\win\
 C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\obj\Debug\net7.0\scopedcss\Areas\Admin\Views\Shared\_LoginLayout.cshtml.rz.scp.css
+C:\Users\tienh\source\repos\BanHangOnl\BanHangOnl\obj\Debug\net7.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css
