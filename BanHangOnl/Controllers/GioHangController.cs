@@ -145,30 +145,24 @@ namespace BanHangOnl.Controllers
 
         //	return View();
         //}
-    }
-    public class Cart
-    {
-        public int idHh { get; set; }
-        public int sl { get; set; }
-    }
-		[HttpGet("/ThanhToanThanhCong")]
-		public ActionResult ThanhToanSuccess()
-		{
-			//var items = context.HangHoas.ToList();
+        [HttpGet("/ThanhToanThanhCong")]
+        public ActionResult ThanhToanSuccess()
+        {
+            //var items = context.HangHoas.ToList();
 
-			return View();
-		}
+            return View();
+        }
 
-		//[HttpGet("/ThanhToan")]
-		//public ActionResult ThanhToan()
-		//{
-		//	//var items = context.HangHoas.ToList();
+        //[HttpGet("/ThanhToan")]
+        //public ActionResult ThanhToan()
+        //{
+        //	//var items = context.HangHoas.ToList();
 
-		//	return View();
-		//}
+        //	return View();
+        //}
 
 
-		private readonly IVnPayService _vnPayService;
+        private readonly IVnPayService _vnPayService;
 
         public GioHangController(IVnPayService vnPayService)
         {
@@ -197,5 +191,10 @@ namespace BanHangOnl.Controllers
 
             return Json(response);
         }
+    }
+    public class Cart
+    {
+        public int idHh { get; set; }
+        public int sl { get; set; }
     }
 }
