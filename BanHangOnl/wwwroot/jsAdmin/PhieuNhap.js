@@ -23,6 +23,20 @@ $('#groupThemHangHoa').on('change', 'select[name = "hangHoa"]', function () {
         });
     }
 });
+
+function getSoLuongCon(idHH, idMau, idSize, soLuong) {
+    var $rowsWithSameId = $('#tbodyChiTietDonDatHang tr[data-idhh="' + idHH + '"][data-idMau="' + idMau + '"][data-idSize="' + idSize + '"]');
+    if ($rowsWithSameId.length == 0) {
+        return soLuong;
+    } else {
+        var soluongdacap = 0;
+        $rowsWithSameId.each(function (index) {
+            soluongdacap += Number($(this).find('td input[name="soLuong"]').val());
+        });
+        return soLuong - Number(soluongdacap);
+    }
+}
+
 function TinhTongTien() {
     var tongTien = 0;
     $('#tBody-ThemChiTietPhieuNhap tr').each(function () {
@@ -74,19 +88,25 @@ function AddRowPhieuNhapKho() {
         ${tenHangHoa}
         </td>
          <td class="p-1">${tenmau}
-            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${mau}" id="mau1" name="mau" />
+            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;text-align: center;" value="${mau}" id="mau1" name="mau" />
         </td>
         <td class="p-1">${tensize}
-            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${size}" id="size1" name="size" />
+            <input autocomplete="off" type="hidden" class="w-100 form-control form-table input-date-short-mask" style="width:90px;text-align: center;" value="${size}" id="size1" name="size" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" readonly type="text" class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuong}" name="soLuong" />
+            <input autocomplete="off" readonly type="text" class="w-100 form-control form-table input-date-short-mask" style="width:90px;text-align: center;" value="${donViTinh}" id="dVT" name="dVT" />
+        </td>
+
+        <td class="p-1">
+            <input autocomplete="off" readonly type="text" class="w-100 form-control form-table formatted-number" style="width:55px;text-align: center;" value="${soLuong}" name="soLuong" />
+            <input autocomplete="off" type="hidden"  readonly class="w-100 form-control form-table formatted-number" style="width:55px;text-align: center;" value="${soLuongTon}" name="soLuongTon" />
+
         </td>
         <td class="p-1">
-            <input autocomplete="off" readonly type="text" class="w-100 form-control form-table formatted-number" style="width:80px;" value="${donGia}" name="donGia" />
+            <input autocomplete="off" readonly type="text" class="w-100 form-control form-table formatted-number" style="width:80px;text-align: end;" value="${donGia}" name="donGia" />
         </td>
         <td class="p-1">
-            <input readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:100px;" value="${thanhTien}" name="thanhTien" />
+            <input readonly autocomplete="off" type="text" class="w-100 form-control form-table formatted-number" style="width:100px;text-align: end;" value="${thanhTien}" name="thanhTien" />
         </td>
        
         <td class="text-center p-1 last-td-column">

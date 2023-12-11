@@ -116,27 +116,27 @@ function addChiTietDonDatHang() {
         <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
         ${tenHangHoa}
         </td>
-        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
+        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2;text-align: center;">
                     <input type="hidden" name="mau" value="${idMau}" />
         ${tenMau}
         </td>
-        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2">
+        <td class="p-1 td-sticky" style="position: sticky;left: 33px;background-color: #fff !important; z-index:2;text-align: center;">
                     <input type="hidden" name="size" value="${idSize}" />
         ${tensize}
         </td>
         <td class="p-1">
-            <input autocomplete="off" readonly type="text" class="w-100 form-control form-table input-date-short-mask" style="width:90px;" value="${donViTinh}" id="dVT" name="dVT" />
+            <input autocomplete="off" readonly type="text" class="w-100 form-control form-table input-date-short-mask" style="width:90px;text-align: center;" value="${donViTinh}" id="dVT" name="dVT" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" type="text" readonly class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuong}" name="soLuong" />
-            <input autocomplete="off" type="hidden"  readonly class="w-100 form-control form-table formatted-number" style="width:55px;" value="${soLuongTon}" name="soLuongTon" />
+            <input autocomplete="off" type="text" readonly class="w-100 form-control form-table formatted-number" style="width:55px;text-align: center;" value="${soLuong}" name="soLuong" />
+            <input autocomplete="off" type="hidden"  readonly class="w-100 form-control form-table formatted-number" style="width:55px;text-align: center;" value="${soLuongTon}" name="soLuongTon" />
 
         </td>
         <td class="p-1">
-            <input autocomplete="off" t type="text" readonly class="w-100 form-control form-table formatted-number" style="width:80px;" value="${donGia}" name="donGia" />
+            <input autocomplete="off" t type="text" readonly class="w-100 form-control form-table formatted-number" style="width:80px;text-align: end;" value="${donGia}" name="donGia" />
         </td>
         <td class="p-1">
-            <input autocomplete="off" type="text" readonly class="w-100 form-control form-table formatted-number" style="width:100px;" value="${thanhTien}" name="thanhTien" />
+            <input autocomplete="off" type="text" readonly class="w-100 form-control form-table formatted-number" style="width:100px;text-align: end;" value="${thanhTien}" name="thanhTien" />
         </td>
         <td class="text-center p-1 last-td-column">
             <button type="button" class="btn btn-icon btn-sm text-red remove-DonDatHangCt">

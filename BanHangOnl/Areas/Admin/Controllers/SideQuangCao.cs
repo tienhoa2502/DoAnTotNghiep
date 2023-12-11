@@ -53,7 +53,14 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-    
+        [HttpPost("/SideQuangCao/UpdateAcTive")]
+        public void UpdateActive(int idSL)
+        {
+            SideQuangCao sl = context.SideQuangCaos.Find(idSL);
+            sl.HienThi = !sl.HienThi;
+            context.SideQuangCaos.Update(sl);
+            context.SaveChanges();
+        }
 
 
         [Route("/SideQuangCao/Xoa/{id}")]

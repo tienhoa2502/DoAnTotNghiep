@@ -40,19 +40,32 @@
                                 <th scope="col">Tùy chọn</th>
                             </tr>
                         </thead>
-                        <tbody id="tbodyTT">
+                        <tbody id="tbodySL">
                             @foreach (SideQuangCao tk in ViewBag.SideQuangCao)
                             {
                                 <tr>
                              
                                     <td><img src="@tk?.Img" width="300" height="150" /> </td>
-                                    <td>@tk.NgayTao</td>
-                                    <td>@tk.NguoiTao</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input @tk.HienThi class="form-check-input" type="checkbox"  id="flexSwitchCheckDefault">
-                                        </div>
+                                    <td>@tk.NgayTao
+                                        <input type="hidden" name="idSL" value="@tk.Id" />
                                     </td>
+                                    <td>@tk.NguoiTao</td>
+                                    @if (@tk.HienThi == true)
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active" checked id="flexSwitchCheckDefault">
+                                            </div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" name="active" id="flexSwitchCheckDefault">
+                                            </div>
+                                        </td>
+                                    }
                                     <td>
                                         <a href="/SideQuangCao/Xoa/@tk.Id" onclick="return confirm('Bạn có muốn xóa thông tin?')" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
@@ -69,3 +82,15 @@
     </div>
 </section>
 
+<script>
+    $('#tbodySL').on('click', 'input[name="active"]', function () {
+        var idSL = $(this).closest('tr').find('input[name="idSL"]').val();
+        $.ajax({
+            url: '/SideQuangCao/UpdateAcTive', // Đường dẫn đến action xử lý form
+            method: 'POST',
+            data: {
+                idSL: idSL,
+            },
+        });
+    });
+</script>

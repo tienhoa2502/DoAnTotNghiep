@@ -15,6 +15,23 @@
         color: white;
     }
 
+    #tableTaoChiTietPhieuNhap td input {
+        border: none !important;
+    }
+
+    #tableTaoChiTietPhieuNhap td {
+        vertical-align: middle;
+    }
+    
+    #tBody-BaoCaoChiTiet td input {
+        border: none !important;
+    }
+
+    #tBody-BaoCaoChiTiet td {
+        vertical-align: middle;
+    }
+
+
 </style>
 
 <div class="pagetitle">
@@ -133,10 +150,10 @@
                     </div>
                 </form>
 
-                <div class="justify-content-end">
+                <div class="d-flex justify-content-end">
                     <div class="col-auto">
-                        <button class="btn btn-primary justify-content-end">In PDF </button>
-                    </div>                                                                         
+                        <button class="btn btn-primary ml-auto">In PDF</button>
+                    </div>
                 </div>
 
             </div>
@@ -232,10 +249,10 @@
                                         <th class="text-center">Tên hàng </th>
                                         <th class="text-center">Màu </th>
                                         <th class="text-center">Size </th>
+                                        <th class="text-center">ĐVT</th>
                                         <th class="text-center">Số lượng nhập</th>
                                         <th class="text-center">Số lượng xuất</th>
                                         <th class="text-center">Số lượng tồn</th>
-                                        <th class="text-center">ĐVT</th>
                                         <th class="text-center">Giá nhập</th>
 
                                         <th class="text-center last-th-column">Thành tiền</th>
@@ -246,6 +263,12 @@
                             </table>
                         </div>
                     </div>
+
+                <div class="d-flex justify-content-end">
+                    <div class="col-auto">
+                        <button class="btn btn-primary ml-auto">In PDF</button>
+                    </div>
+                </div>
             </div>
 
 <script src="~/jsadmin/tonkho.js" defer asp-append-version="true"></script>

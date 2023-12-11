@@ -32,6 +32,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
         {
             ViewBag.PhieuNhap = context.PhieuNhaps
                 .Include(x => x.IdnccNavigation)
+                .Include(x => x.IdnvNavigation)
                 .Include(x => x.ChiTietPhieuNhaps)
                     .ThenInclude(x => x.IdhhNavigation)
                     .Include(x => x.ChiTietPhieuNhaps)
