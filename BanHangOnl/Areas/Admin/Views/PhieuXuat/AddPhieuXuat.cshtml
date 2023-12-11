@@ -39,6 +39,12 @@
         color: white;
     }
 
+    #tableTaoChiTietPhieuNhap td input {
+        border: none !important;
+    } 
+    #tableTaoChiTietPhieuNhap td {
+        vertical-align: middle;
+    }
 </style>
 
 
@@ -121,7 +127,7 @@
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Mã khách hàng</label>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <input class="form-control"
                                        type="text"
                                        name="maKH"
@@ -131,7 +137,7 @@
                             </div>
 
                             <label class="col-sm-auto col-form-label">Tên khách hàng</label>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <input class="form-control"
                                        type="text"
                                        name="tenKH"
@@ -140,7 +146,7 @@
                                         />
                             </div>
 
-                            <label class="col-sm-2 col-form-label">Số điện thoại</label>
+                            <label class="col-sm-auto col-form-label">Số điện thoại</label>
                             <div class="col-md-2">
                                 <select id="sdt" name="sdt" class="form-select col-sm-4" style="width : max">
                                     <option selected value="0">-- SĐT --</option>
@@ -181,7 +187,7 @@
 
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Tên hàng hóa</label>
-                                <div class="col-sm-6">
+                                <div class="col-sm-5">
                                     <select id="selectHH" name="idHangHoa" class="form-select col-sm-4" style="width : max">
                                         <option selected value="0">-- Tên hàng hóa --</option>
                                         @foreach (HangHoa n in getListHangHoa())
@@ -191,7 +197,7 @@
                                 </select>
                                 </div>
 
-                                <label class="col-sm-2 col-form-label">Đơn vị tính</label>
+                                <label class="col-sm-2 col-form-label" style="text-align-last: right">Đơn vị tính</label>
                                 <div class="col-sm-4 col-lg-2">
                                     <input class="form-control"
                                            type="text"
@@ -235,7 +241,7 @@
 
                                 </div>
 
-                                <label class="col-sm-auto col-form-label">Số lượng còn</label>
+                                <label class="col-sm-2 col-form-label" style="text-align-last: right">Số lượng còn</label>
                                 <div class="col-md-2 mb-2 col-lg-2">
                                     <input class="form-control formatted-number"
                                            type="number"
@@ -267,7 +273,7 @@
                                            id="DonGia" 
                                            placeholder="Đơn giá" />
                                 </div>
-                                <label class="col-sm-auto col-form-label">Thành tiền</label>
+                                <label class="col-sm-2 col-form-label" style="text-align-last: right">Thành tiền</label>
                                 <div class="col-md-2">
                                     <input class="form-control formatted-number"
                                            type="text"
@@ -276,7 +282,7 @@
                                            id="ThanhTien"
                                            placeholder="Thành tiền" />
                                 </div>
-                                <div class="col-lg-1 col-sm-2">
+                                <div class="col-lg-auto col-sm-auto">
                                     <button type="button" class="btn btn-primary" onclick="addChiTietDonDatHang()">
                                         Thêm
                                     </button>
@@ -298,9 +304,9 @@
                             <thead>
                                 <tr class="text-wrap">
                                     <th class="text-center p-1 first-th-column text-wrap" style="width:32px;">TT</th>
-                                    <th class="text-center p-1 w-25 text-wrap" style="position: sticky;left: 33px;z-index: 4 !important;">Tên hàng hóa</th>
-                                    <th class="text-center p-1 text-wrap">Size</th>
+                                    <th class="text-center p-1 w-25 text-wrap" style="left: 33px;z-index: 4 !important;">Tên hàng hóa</th>
                                     <th class="text-center p-1 text-wrap">Màu</th>
+                                    <th class="text-center p-1 text-wrap">Size</th>
                                     <th class="text-center p-1 text-wrap">ĐVT</th>
                                     <th class="text-center p-1 text-wrap">SL xuất</th>
                                     <th class="text-center p-1 text-wrap">Giá xuất</th>
@@ -346,7 +352,7 @@
                             <label class="form-label mb-0 text-white">.</label>
                             <div class="row justify-content-end">
                                 <div class="col-auto">
-                                    <button class="btn" id="btnXoaTrang">
+                                    <button class="btn btn-success" id="btnXoaTrang">
                                         Xuất HĐ
                                     </button>
                                 </div>

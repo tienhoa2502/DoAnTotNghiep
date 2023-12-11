@@ -79,6 +79,12 @@
 <div class="container product_section_container">
     <div class="row">
         <div class="col product_section clearfix">
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a href="/GioHang">Giỏ hàng</a></li>
+                    <li class="active"><a href="/"><i class="fa fa-angle-right" aria-hidden="true"></i>Thanh toán</a></li>
+                </ul>
+            </div>
 
             <!-- Breadcrumbs -->
 
@@ -89,6 +95,7 @@
                 </ul>
             </div>
 
+         <form action="/GioHang/CreatePaymentUrl" id="frmCreateOrder" method="POST">
 
             <section class="h-100 h-custom">
                 <div class="container py-5 h-100">
@@ -103,7 +110,7 @@
                                             <div class="p-5">
 
                                                 <h6 class="mb-0">
-                                                    <a href="" class="text-body" onclick="window.history.go(-1);">
+                                                    <a href="/SanPham" class="text-body" onclick="window.history.go(-1);">
                                                         <i class="fas fa-long-arrow-alt-left me-2">Tiếp tục mua sắm</i>
                                                     </a>
                                                 </h6>
@@ -150,7 +157,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                            <h6 class="mb-0">@hh.GiaSale?.ToString("#,##0.##") VNĐ</h6>
+                                                            <h6 class="mb-0">@hh.GiaSale?.ToString("0.###") VNĐ</h6>
                                                         </div>
                                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                             <a href="#" class="text-danger remove-cookies" data-idhh="@hh.Idhh">
@@ -205,10 +212,14 @@
                                                     <h5 id="tongGia"> VNĐ</h5>
                                                 </div>
 
-                                                <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">
+                                                    @*<button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">
                                                     <a href="#" id="thanhToan">THANH TOÁN</a>
-                                                </button>
-
+                                                </button>*@
+                                                    <button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark" id="thanhToan">
+                                                        THANH TOÁN
+                                                    </button>
+@*                                                <button type="submit" class="btn btn-primary">Thanh toán</button>
+*@
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +229,7 @@
                     </div>
                 </div>
             </section>
-
+            </form>
         </div>
     </div>
 </div>

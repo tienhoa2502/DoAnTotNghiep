@@ -32,39 +32,24 @@
         max-height: 100%;
     }
 </style>
+
+<style>
+    .art-summary {
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Số dòng muốn hiển thị */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
+
 <div class="container news_section_container">
     <div class="row">
         <div class="col-md-12">
             <h1 class="title-news">Tin tức</h1>
         </div>
     </div>
-   @* @if (Model != null && Model.Any())
-    {
-        foreach (var item in Model)
-        {
-            <div class="row row-item-new">
-                <div class="col-md-3">
-                    <div class="img-box">
-                        <a href="" title="@item.Title"><img src="@item.Image" alt="@item.Title" /></a>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="content-box">
-                        <h3><a href="/@item.Alias-n@(item.Id)" title="@item.Title">@item.Title</a></h3>
-                        <div class="description-box">
-                            @item.Description
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-        <div class="row">
-            <div class="col-6"></div>
-            <div class="col-6" style="text-align:right;">
-@*                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-          </div>
-        </div>
-    }*@
 
 </div>
 
@@ -86,8 +71,8 @@
                                 <div class="col-md-4">
                                     <div class="blogwp">
                                         <!-- Hình ảnh nằm ở bên trái -->
-                                        <a class="image-blog card-img-top text-center position-relative d-flex align-items-center justify-content-center aspect-ratio rounded overflow-hidden" 
-                                        href="/blogs/tuyen-dung/ben-tod-tuyen-dung-photographer" 
+                                        <a class="image-blog card-img-top text-center position-relative d-flex align-items-center justify-content-center aspect-ratio rounded overflow-hidden"
+                                        href="/ChiTietTinTuc/@tt.Idtt"
                                         title="[Ben & Tod Tuyển Dụng] PHOTOGRAPHER" 
                                         style="--width: 433; --height: 231;">
                                             <img class="img-fluid m-auto mh-100 w-auto" src="https://file.hstatic.net/1000378223/article/1_600cdb7775b047a3a96588a0b1f85dce.jpg" alt="[Ben & Tod Tuyển Dụng] PHOTOGRAPHER">
@@ -115,7 +100,7 @@
                                             </span>
                                         </p>
                                         <div>
-                                            <a class="button_custome_35 link" href="/blogs/tuyen-dung/ben-tod-tuyen-dung-photographer" title="Đọc tiếp">Đọc tiếp</a>
+                                            <a class="button_custome_35 link" href="/ChiTietTinTuc/@tt.Idtt" title="Đọc tiếp">Đọc tiếp</a>
                                         </div>
 
                                     </div>

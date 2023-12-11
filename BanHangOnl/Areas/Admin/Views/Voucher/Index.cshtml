@@ -38,7 +38,7 @@
                                 
                                 <th scope="col">Ngày áp dụng</th>
                                 <th scope="col">Ngày kết thúc</th>
-                                <th scope="col">% giảm giá</th>
+                                <th scope="col">Áp dụng giảm giá</th>
                                 <th scope="col">Hiển thị</th>
                                 <th scope="col">Tùy chọn</th>
 
@@ -55,11 +55,7 @@
                               
                                     <td>@tk.NgayBd</td>
                                     <td>@tk.NgayKt</td>
-                                    <td>
-                                        <div class="form-check form-switch">
-                                            <input @tk.ApDung class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                        </div>
-                                    </td>
+                                    <td>@tk.ApDung %</td>
                                     @if (tk.HienThi == true)
                                     {
                                         <td>

@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    QuanLyBanHangContext context = new QuanLyBanHangContext();
+
+}
+
+<form method="post" asp-action="SendEmail">
+    <div>
+        <label>Email:</label>
+        <input type="email" name="toEmail" required />
+    </div>
+    <button type="submit">Send Email</button>
+</form>
+
+<p>@ViewBag.Message</p>

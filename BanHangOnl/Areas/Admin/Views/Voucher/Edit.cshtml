@@ -40,6 +40,13 @@
             </div>
 
             <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Áp dụng giảm giá</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.ApDung" min="10" max="100" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+            <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Ngày bắt đầu</label>
                 <div class="col-sm-4">
                     <input asp-for="@Model.NgayBd" type="date" class="form-control">
