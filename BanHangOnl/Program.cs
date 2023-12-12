@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using CodeMegaVNPay.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddDistributedMemoryCache();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -18,9 +18,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IVnPayService, VnPayService>();
 
-
+builder.Services.AddSession(); 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -33,8 +32,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

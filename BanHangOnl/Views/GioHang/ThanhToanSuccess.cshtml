@@ -2,6 +2,9 @@
 @{
     ViewData["Title"] = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var tt = ViewBag.payment;
+    var a = 0;
+
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
@@ -22,17 +25,24 @@
             <!-- Sidebar -->
             <!-- Main Content -->
 
-            <div class="row">
+            <div class="row" style="margin-top: 200px;">
                 <div class="col-md-12" id="load_data">
-                    <h2>Bạn đã mua hàng thành công</h2>
-                </div>
+                    @if (tt != null && tt.Result.statusCode == 200) {
+                        <h2>Bạn đã mua hàng thành công</h2>
+                    }
+                    else
+                    {
+                        <h2>Thanh toán thất bại</h2>
+
+
+                    }
+
+                        
+                       
 
             </div>
         </div>
     </div>
 </div>
 
-@section scripts{
-    <script src="~/Content/assets/js/categories_custom.js"></script>
-}
 
