@@ -65,7 +65,7 @@ public partial class QuanLyBanHangContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-4KER1P3\\MSSQLSERVER22;Database=QuanLyBanHang;User Id=sa;Password=123456;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Server=TRAN-UY\\MSSQLSERVER22;Database=QuanLyBanHang;User Id=sa;Password=123456;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -76,22 +76,9 @@ public partial class QuanLyBanHangContext : DbContext
             entity.ToTable("ChiTietHoaDon");
 
             entity.Property(e => e.Idcthd).HasColumnName("IDCTHD");
-            entity.Property(e => e.Idca).HasColumnName("IDCa");
             entity.Property(e => e.Idhd).HasColumnName("IDHD");
             entity.Property(e => e.Idtd).HasColumnName("IDTD");
             entity.Property(e => e.Sl).HasColumnName("SL");
-            entity.Property(e => e.Tgbep)
-                .HasColumnType("datetime")
-                .HasColumnName("TGBep");
-            entity.Property(e => e.TghoanThanh)
-                .HasColumnType("datetime")
-                .HasColumnName("TGHoanThanh");
-            entity.Property(e => e.Tgorder)
-                .HasColumnType("datetime")
-                .HasColumnName("TGOrder");
-            entity.Property(e => e.TgphucVu)
-                .HasColumnType("datetime")
-                .HasColumnName("TGPhucVu");
 
             entity.HasOne(d => d.IdhdNavigation).WithMany(p => p.ChiTietHoaDons)
                 .HasForeignKey(d => d.Idhd)
@@ -442,6 +429,10 @@ public partial class QuanLyBanHangContext : DbContext
             entity.Property(e => e.SoPx)
                 .HasMaxLength(100)
                 .HasColumnName("SoPX");
+
+            entity.HasOne(d => d.IdkhNavigation).WithMany(p => p.PhieuXuats)
+                .HasForeignKey(d => d.Idkh)
+                .HasConstraintName("FK_PhieuXuat_TaiKhoan");
 
             entity.HasOne(d => d.IdnvNavigation).WithMany(p => p.PhieuXuats)
                 .HasForeignKey(d => d.Idnv)

@@ -21,6 +21,10 @@ public partial class PhieuXuat
 
     public string? GhiChu { get; set; }
 
+    public int? TyLeGiam { get; set; }
+
+    public double? TongTien { get; set; }
+
     public bool? Active { get; set; }
 
     public bool? DonTra { get; set; }
@@ -28,6 +32,8 @@ public partial class PhieuXuat
     public bool? DaGiao { get; set; }
 
     public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; } = new List<ChiTietPhieuXuat>();
+
+    public virtual TaiKhoan? IdkhNavigation { get; set; }
 
     public virtual NhanVien? IdnvNavigation { get; set; }
 }

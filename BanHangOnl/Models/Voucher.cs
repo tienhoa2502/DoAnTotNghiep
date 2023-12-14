@@ -13,9 +13,9 @@ public partial class Voucher
 
     public bool? Active { get; set; }
 
-    public bool? HienThi { get; set; }
+    public int? ApDung { get; set; }
 
-    public int ApDung { get; set; }
+    public bool? HienThi { get; set; }
 
     public DateTime? NgayBd { get; set; }
 

@@ -68,7 +68,12 @@
             if (response.statusCode == 200) {
                 localStorage.setItem('data', JSON.stringify(response.ctx));
                 localStorage.setItem('datakh', JSON.stringify(response.kh));
-
+                localStorage.setItem('tyLeGiam', JSON.stringify($('#voucher').val()));
+                $.ajax({
+                    url: '/ganTyLeGiam',
+                    type: 'POST',
+                    data: 'tyleGiam=' + $('#voucher').val(),
+                });
                 window.location.href = "/ThanhToan"
             }
         showToast(response.message, response.statusCode);
@@ -78,3 +83,21 @@
             }
         });
     });
+function getMaGiam() {
+    $.ajax({
+        url: '/getMaGiamGia',
+        type: 'POST',
+        data: 'ma=' + $('#form3Examplea2').val(),
+        success: function (response) {
+            showToast(response.message, response.statusCode);
+            if (response.statusCode == 200) {
+                $('#voucher').val(response.tyLeGiam);
+            } else {
+                $('#voucher').val('');
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}

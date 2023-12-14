@@ -72,6 +72,25 @@ namespace BanHangOnl.Controllers
             Response.Cookies.Append(cookieName, json, option);
             return Ok(carts.Count);
 		}
+        [HttpPost("/getMaGiamGia")]
+        public dynamic getMaGiamGia(string ma)
+        {
+            var voucher = context.Vouchers.FirstOrDefault(x => x.MaVoucher == ma);
+            if (voucher != null)
+            {
+                return new
+                {
+                    statusCode = 200,
+                    message = "Áp dụng mã thành công",
+                    tyLeGiam = voucher.ApDung,
+                };
+            }
+            return new
+            {
+                statusCode = 500,
+                message = "Voucher hết hạn hoặc không tồn tại!",
+            };
+        }
         [HttpPost("/removeCookies")]
         public IActionResult removeCookies(int idHh)
         {
@@ -168,6 +187,11 @@ namespace BanHangOnl.Controllers
                 });
             }
             
+        }
+        [HttpPost("/ganTyLeGiam")]
+        public void ganTyLeGiam(int tyleGiam)
+        {
+            HttpContext.Session.SetString("TyLeGiam", JsonConvert.SerializeObject(tyleGiam));
         }
         public bool KiemTraSoLuongCon(List<ChiTietPhieuXuat> cts)
         {
@@ -292,6 +316,8 @@ namespace BanHangOnl.Controllers
         public async Task<dynamic> luuPhieuXuat(KhachHang khachHang, List<ChiTietPhieuXuat> chiTietPhieuXuats)
         {
             string cleanedInput = Regex.Replace(khachHang.Phone, @"\s+", "");
+            // ty le giam
+            var tylegiam = JsonConvert.DeserializeObject<int>(HttpContext.Session.GetString("TyLeGiam"));
 
             // Sử dụng biểu thức chính quy để tìm số điện thoại
             khachHang.Phone = cleanedInput;
@@ -302,6 +328,9 @@ namespace BanHangOnl.Controllers
             var tran = context.Database.BeginTransaction();
             try
             {
+                double tongTien = (double)chiTietPhieuXuats.Sum(x => x.SoLuong * x.Gia);
+                double tienGiam = ((double)tylegiam / 100) * tongTien;
+                double tongGiam = tongTien - tienGiam;
                 TaiKhoan taiKhoan = context.TaiKhoans.FirstOrDefault(x => x.TenTk == khachHang.Phone);
                 List<KhachHang> a = context.KhachHangs.ToList();
                 if (taiKhoan == null)
@@ -328,6 +357,8 @@ namespace BanHangOnl.Controllers
                 phieuXuat.SoPx = taoSoPhieuXuat(context);
                 phieuXuat.DaGiao = false;
                 phieuXuat.DonTra = false;
+                phieuXuat.TyLeGiam = tylegiam;
+                phieuXuat.TongTien = tongGiam;
                 context.PhieuXuats.Add(phieuXuat);
                 context.SaveChanges();
 
