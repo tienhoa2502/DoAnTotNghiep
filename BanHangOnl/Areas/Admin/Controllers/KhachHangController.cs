@@ -29,7 +29,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                     .ThenInclude(x => x.IdsizeNavigation)
                     .Include(x => x.ChiTietPhieuXuats)
                     .ThenInclude(x => x.IdhhNavigation)
-                .Where(x => x.Idkh == id).ToList();
+                .Where(x => x.Idtk == id).ToList();
             ViewBag.DonDangGiao = PhieuXuats.Where(x => x.DaGiao != true);
             ViewBag.LichSuDon = PhieuXuats.Where(x => x.DaGiao == true);
             ViewBag.KhachHang = context.KhachHangs.Where(x => x.Idtk== id && x.Active == true).ToList();

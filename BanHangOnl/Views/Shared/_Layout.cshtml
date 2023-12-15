@@ -1,4 +1,15 @@
-﻿
+﻿@{
+	var vaitro = User.Claims.ElementAtOrDefault(2);
+	var user = User.Claims.ElementAtOrDefault(0);
+
+	var tenVaiTro = vaitro?.Issuer;
+	var tenNguoiDung = user?.ValueType;
+	var idNguoiDung = user?.Value;
+	var idTaiKhoan = user?.Issuer;
+	var quanLy = vaitro == null ? 0 : int.Parse(vaitro?.ValueType);
+}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +79,7 @@
 											<span b-1h11pv3tg9="" class="d-none d-md-block dropdown-toggle ps-2"></span>
 										</a>
 
-										<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profileDropdown">
+										@*<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 											<li>
 												<a class="dropdown-item" href="/TaiKhoan/ThongTinCaNhan/">
 													<i class="bi bi-person"></i>
@@ -84,7 +95,57 @@
 													<span>Đăng xuất</span>
 												</a>
 											</li>
-										</ul><!-- End Profile Dropdown Items -->
+										</ul>*@
+										@if (user != null && quanLy == 0)
+										{
+											<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profileDropdown">
+												<li class="dropdown-header">
+													<h6>@tenNguoiDung</h6>
+												</li>
+												<li>
+													<hr class="dropdown-divider">
+												</li>
+
+												<li>
+													<a class="dropdown-item d-flex align-items-center" href="/TaiKhoan/ThongTinCaNhan/@idTaiKhoan">
+														<i class="bi bi-person"></i>
+														<span>Thông tin tài khoản</span>
+													</a>
+												</li>
+												<li>
+													<hr class="dropdown-divider">
+												</li>
+
+
+												<li>
+													<hr class="dropdown-divider">
+												</li>
+
+												<li>
+													<a class="dropdown-item d-flex align-items-center" href="/logout">
+														<i class="bi bi-box-arrow-right"></i>
+														<span>Đăng xuất</span>
+													</a>
+												</li>
+
+											</ul>
+										}
+										else
+										{
+
+											<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profileDropdown">
+												<li>
+													<a class="dropdown-item d-flex align-items-center" href="/DangNhap">
+														<i class="bi bi-box-arrow-right"></i>
+														<span>Đăng nhập</span>
+													</a>
+												</li>
+
+											</ul>
+										}
+
+										
+										<!-- End Profile Dropdown Items -->
 									</li>
 									
 									</li>

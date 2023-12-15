@@ -9,7 +9,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
-	[Authorize(Roles = "NhanVien, QuanLy")]
+	[Authorize(Roles = "QuanLy")]
 	public class PhieuNhapController : Controller
     {
         QuanLyBanHangContext context = new QuanLyBanHangContext();

@@ -20,4 +20,6 @@ public partial class TaiKhoan
     public virtual ICollection<KhachHang> KhachHangs { get; set; } = new List<KhachHang>();
 
     public virtual ICollection<NhanVien> NhanViens { get; set; } = new List<NhanVien>();
+
+    public virtual ICollection<PhieuXuat> PhieuXuats { get; set; } = new List<PhieuXuat>();
 }

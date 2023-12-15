@@ -7,7 +7,7 @@ public partial class PhieuXuat
 {
     public int Idpx { get; set; }
 
-    public int? Idkh { get; set; }
+    public int? Idtk { get; set; }
 
     public int? Idnv { get; set; }
 
@@ -27,7 +27,13 @@ public partial class PhieuXuat
 
     public bool? DaGiao { get; set; }
 
+    public int? TyLeGiam { get; set; }
+
+    public double? TongTien { get; set; }
+
     public virtual ICollection<ChiTietPhieuXuat> ChiTietPhieuXuats { get; set; } = new List<ChiTietPhieuXuat>();
 
     public virtual NhanVien? IdnvNavigation { get; set; }
+
+    public virtual TaiKhoan? IdtkNavigation { get; set; }
 }

@@ -321,7 +321,7 @@ namespace BanHangOnl.Controllers
                     context.SaveChanges();
                 }
                 PhieuXuat phieuXuat = new PhieuXuat();
-                phieuXuat.Idkh = taiKhoan.Idtk;
+                phieuXuat.Idtk = taiKhoan.Idtk;
                 phieuXuat.NgayTao = DateTime.Now;
                 phieuXuat.Active = true;
                 phieuXuat.Idnv = 1;

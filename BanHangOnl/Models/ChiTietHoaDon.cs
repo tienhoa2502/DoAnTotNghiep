@@ -17,19 +17,9 @@ public partial class ChiTietHoaDon
 
     public double? ThanhTien { get; set; }
 
-    public DateTime? Tgorder { get; set; }
-
-    public DateTime? Tgbep { get; set; }
-
-    public DateTime? TghoanThanh { get; set; }
-
-    public DateTime? TgphucVu { get; set; }
-
     public bool? TrangThaiOrder { get; set; }
 
     public bool? Active { get; set; }
-
-    public int? Idca { get; set; }
 
     public virtual HoaDon? IdhdNavigation { get; set; }
 }

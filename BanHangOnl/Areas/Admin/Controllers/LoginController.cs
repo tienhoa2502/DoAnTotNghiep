@@ -55,16 +55,16 @@ namespace BanHangOnl.Areas.Admin.Controllers
                         var user = context.NhanViens.FirstOrDefault(x => x.Idtk == taiKhoan.Idtk);
                         if (user != null)
                         {
-                            claims.Add(new Claim(ClaimTypes.Name, user.Idnv.ToString(), user.Ten));
+                            claims.Add(new Claim(ClaimTypes.Name, user.Idnv.ToString(), user.Ten, taiKhoan.Idtk.ToString()));
                             if (isQuanLy)
                             {
                                 claims.Add(new Claim(ClaimTypes.Role, "QuanLy"));
-                                claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString(), "1"));
+                                claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString(), "1", taiKhoan.IdvtNavigation?.TenVt));
                             }
                             else
                             {
                                 claims.Add(new Claim(ClaimTypes.Role, "NhanVien"));
-                                claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString(), "2"));
+                                claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString(), "2", taiKhoan.IdvtNavigation?.TenVt));
 
                             }
 
@@ -98,9 +98,9 @@ namespace BanHangOnl.Areas.Admin.Controllers
                         var user = context.KhachHangs.FirstOrDefault(x => x.Idtk == taiKhoan.Idtk);
                         if (user != null)
                         {
-                            claims.Add(new Claim(ClaimTypes.Name, user.Idkh.ToString(), user.TenKh));
+                            claims.Add(new Claim(ClaimTypes.Name, user.Idkh.ToString(), user.TenKh, taiKhoan.Idtk.ToString()));
                             claims.Add(new Claim(ClaimTypes.Role, "KhachHang"));
-                            claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString(), "0"));
+                            claims.Add(new Claim("VaiTro", taiKhoan.Idvt.ToString(), "0", taiKhoan.IdvtNavigation?.TenVt));
 
                             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                             var principal = new ClaimsPrincipal(identity);

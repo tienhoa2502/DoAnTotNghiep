@@ -39,5 +39,28 @@ namespace BanHangOnl.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        [HttpGet("/ThongTinCaNhan/{id}")]
+
+        public IActionResult Index(int id)
+        {
+            //đổi lại người dùng
+            var hangHoa = context.HangHoas
+                             .Include(hh => hh.IddvtNavigation) // Đảm bảo navigation properties được load
+                             .Include(hh => hh.IdnhhNavigation)
+                             .FirstOrDefault(hh => hh.Idhh == id);
+          
+            if (hangHoa == null)
+            {
+                return NotFound(); // Trả về 404 nếu không tìm thấy sản phẩm
+            }
+
+
+
+            return View("ThongTinCaNhan", hangHoa);
+        }
+
+
     }
 }
