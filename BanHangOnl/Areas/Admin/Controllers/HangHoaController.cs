@@ -71,7 +71,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                 hh.Iddvt = hangHoa.Iddvt;
                 hh.Idsize = hangHoa.Idsize;
                 hh.GiaBan = hangHoa.GiaBan;
-                hh.GiaSale = hangHoa.GiaSale;
+                //hh.GiaSale = hangHoa.GiaSale;
                 context.HangHoas.Update(hh);
 
             }

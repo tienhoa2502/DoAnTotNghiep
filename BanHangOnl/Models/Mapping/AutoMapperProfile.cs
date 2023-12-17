@@ -39,11 +39,11 @@ namespace QuanLyNhaHang.Models.Mapping
             .ForMember(dest => dest.Hsd, opt => opt.MapFrom(src => src.Hsd != "" ? DateTime.ParseExact(src.Hsd, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null))
             .ForMember(dest => dest.Nsx, opt => opt.MapFrom(src => src.Nsx != "" ? DateTime.ParseExact(src.Nsx, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null));
             CreateMap<PhieuXuat, PhieuXuatMap>()
-            .ForMember(dest => dest.Idkh, opt => opt.MapFrom(src => src.Idkh.ToString()))
+            .ForMember(dest => dest.Idkh, opt => opt.MapFrom(src => src.Idtk.ToString()))
             .ForMember(dest => dest.NgayHd, opt => opt.MapFrom(src => src.NgayHd.ToString()))
             .ForMember(dest => dest.NgayTao, opt => opt.MapFrom(src => src.NgayTao.ToString()));
             CreateMap<PhieuXuatMap, PhieuXuat>()
-            .ForMember(dest => dest.Idkh, opt => opt.MapFrom(src => src.Idkh != null ? long.Parse(src.Idkh) : (long?)null))
+            .ForMember(dest => dest.Idtk, opt => opt.MapFrom(src => src.Idkh != null ? long.Parse(src.Idkh) : (long?)null))
             .ForMember(dest => dest.NgayHd, opt => opt.MapFrom(src => src.NgayHd != "" ? DateTime.ParseExact(src.NgayHd, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null))
             .ForMember(dest => dest.DaGiao, opt => opt.MapFrom(src => src.DaGiao == "true" ? true : false))
             .ForMember(dest => dest.NgayTao, opt => opt.MapFrom(src => src.NgayHd != "" ? DateTime.ParseExact(src.NgayTao, "dd-MM-yyyy", CultureInfo.InvariantCulture) : (DateTime?)null));

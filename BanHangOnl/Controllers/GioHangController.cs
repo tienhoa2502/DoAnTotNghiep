@@ -10,12 +10,15 @@ using BanHangOnl.Areas.Admin.Controllers;
 using BanHangOnl.Models.Mapping;
 using QuanLyNhaHang.Models.Mapping;
 using System.Text.RegularExpressions;
+using BanHangOnl.Services;
 
 namespace BanHangOnl.Controllers
 {
     public class GioHangController : Controller
     {
-        QuanLyBanHangContext context = new QuanLyBanHangContext();
+		private readonly IEmailSender _emailSender;
+
+		QuanLyBanHangContext context = new QuanLyBanHangContext();
         // GET: Products
         private class data{
             public KhachHang khach { get;set; }
@@ -266,10 +269,11 @@ namespace BanHangOnl.Controllers
 
         private readonly IVnPayService _vnPayService;
 
-        public GioHangController(IVnPayService vnPayService)
+        public GioHangController(IVnPayService vnPayService, IEmailSender emailSender)
         {
             _vnPayService = vnPayService;
-        }
+			_emailSender = emailSender;
+		}
 
 
         //public IActionResult Index()
@@ -293,8 +297,8 @@ namespace BanHangOnl.Controllers
             if(response.VnPayResponseCode == "00")
             {
                 var chiTietXuat = JsonConvert.DeserializeObject<List<ChiTietPhieuXuat>>(HttpContext.Session.GetString("ChiTietXuat"));
-                var khachHang = JsonConvert.DeserializeObject<KhachHang>(HttpContext.Session.GetString("KhachHang"));
-               var a  = luuPhieuXuat(khachHang, chiTietXuat);
+                KhachHang khachHang = JsonConvert.DeserializeObject<KhachHang>(HttpContext.Session.GetString("KhachHang"));
+                var a  = luuPhieuXuat(khachHang, chiTietXuat);
                 ViewBag.payment = a;
                 if (a.Result.statusCode == 200)
                 {
@@ -303,7 +307,10 @@ namespace BanHangOnl.Controllers
                     string myCookieValue = HttpContext.Request.Cookies[cookieName];
                     Response.Cookies.Delete(cookieName);
                 }
-            }
+
+				_emailSender.sendEmail(khachHang.Email, "Order Thanh Cong", "Thank you!");
+			}
+
             return View("ThanhToanSuccess");
         }
         public static string taoSoPhieuXuat(QuanLyBanHangContext context)
@@ -350,7 +357,7 @@ namespace BanHangOnl.Controllers
                     context.SaveChanges();
                 }
                 PhieuXuat phieuXuat = new PhieuXuat();
-                phieuXuat.Idkh = taiKhoan.Idtk;
+                phieuXuat.Idtk = taiKhoan.Idtk;
                 phieuXuat.NgayTao = DateTime.Now;
                 phieuXuat.Active = true;
                 phieuXuat.Idnv = 1;

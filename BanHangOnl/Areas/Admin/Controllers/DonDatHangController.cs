@@ -28,7 +28,10 @@ namespace BanHangOnl.Areas.Admin.Controllers
         {
             ViewBag.PhieuXuat = context.PhieuXuats
                 .Include(x => x.ChiTietPhieuXuats)
-                .Include(x => x.IdnvNavigation).Where(x => x.Active == true).ToList();
+                .Include(x => x.IdnvNavigation)
+                .Include(x => x.IdtkNavigation)
+                    .ThenInclude(tk => tk.KhachHangs)
+                .Where(x => x.Active == true).ToList();
 
 
 
@@ -123,7 +126,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
                     context.KhachHangs.Add(khachHang);
                     context.SaveChanges();
                 }
-                phieuXuat.Idkh = taiKhoan.Idtk;
+                phieuXuat.Idtk = taiKhoan.Idtk;
                 phieuXuat.NgayTao = DateTime.Now;
                 phieuXuat.Active = true;
                 phieuXuat.Idnv = 1;
