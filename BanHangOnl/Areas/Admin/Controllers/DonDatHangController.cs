@@ -29,7 +29,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
             ViewBag.PhieuXuat = context.PhieuXuats
                 .Include(x => x.ChiTietPhieuXuats)
                 .Include(x => x.IdnvNavigation)
-                .Include(x => x.IdtkNavigation.KhachHangs)
+                .Include(x => x.IdtkNavigation)
+                    .ThenInclude(tk => tk.KhachHangs)
                 .Where(x => x.Active == true).ToList();
 
 

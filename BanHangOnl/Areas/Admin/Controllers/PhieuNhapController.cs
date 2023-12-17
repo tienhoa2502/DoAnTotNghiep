@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyNhaHang.Models.Mapping;
 using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace BanHangOnl.Areas.Admin.Controllers
 {

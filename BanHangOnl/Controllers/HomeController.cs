@@ -1,4 +1,5 @@
 ﻿using BanHangOnl.Models;
+using BanHangOnl.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -10,10 +11,14 @@ namespace BanHangOnl.Controllers
 		QuanLyBanHangContext context = new QuanLyBanHangContext();
 
 		private readonly ILogger<HomeController> _logger;
+		private readonly IEmailSender _emailSender;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
+        public HomeController(
+            ILogger<HomeController> logger,
+			IEmailSender emailSender
+        ) {
             _logger = logger;
+			_emailSender = emailSender;
         }
 
         public IActionResult Index()
@@ -62,5 +67,12 @@ namespace BanHangOnl.Controllers
         }
 
 
+        [HttpGet("/send-mail")]
+        public IActionResult sendMail()
+        {
+            _emailSender.sendEmail("phucgrande@gmail.com", "order confirmation", "<h1>Your order has been confirmed</h1>");
+
+            return View();
+        }
     }
 }

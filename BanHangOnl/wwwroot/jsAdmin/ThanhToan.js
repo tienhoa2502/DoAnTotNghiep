@@ -2,6 +2,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     var myData = JSON.parse(localStorage.getItem('data'));
     var kh = JSON.parse(localStorage.getItem('datakh'));
+    var tyLeGiam = JSON.parse(localStorage.getItem('tyLeGiam'));
+
     GanThongTinKH(kh);
     var tongTien = 0;
     myData.forEach(function (data) {
@@ -9,8 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tongTien += data.idhhNavigation.giaBan;
     });
     $('#Amount').val(tongTien);
-    console.log(myData);
-    console.log(kh);
+    console.log(tyLeGiam);
     //localStorage.removeItem('datakh');
     // Sau khi sử dụng xong, bạn có thể xóa dữ liệu khỏi localStorage (nếu cần)
 //    localStorage.removeItem('myData');

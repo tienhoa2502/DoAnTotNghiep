@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using CodeMegaVNPay.Services;
+using BanHangOnl.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDistributedMemoryCache();
@@ -17,6 +18,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IVnPayService, VnPayService>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 builder.Services.AddSession(); 
 var app = builder.Build();

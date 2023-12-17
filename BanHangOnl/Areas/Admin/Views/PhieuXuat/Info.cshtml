@@ -5,6 +5,11 @@
     QuanLyBanHangContext context = new QuanLyBanHangContext();
     PhieuXuat px = ViewBag.DDH;
 
+    string formatNumber(double? tien)
+    {
+        return tien?.ToString("0,###");
+    }
+
 }
 
 
@@ -63,11 +68,11 @@
                     <thead>
                         <tr class="text-wrap">
                             <th class="text-center p-1 first-th-column text-wrap" style="width:32px;">TT</th>
-                            <th class="text-center p-1 w-25 text-wrap" style="position: sticky;left: 33px;z-index: 4 !important;">Tên hàng hóa</th>
-                            <th class="text-center p-1 text-wrap">SL</th>
-                            <th class="text-center p-1 text-wrap">Giá</th>
+                            <th class="text-center p-1 w-25 text-wrap" style="left: 33px;z-index: 4 !important;">Tên hàng hóa</th>                          
                             <th class="text-center p-1 text-wrap">Size</th>
                             <th class="text-center p-1 text-wrap">Màu</th>
+                            <th class="text-center p-1 text-wrap">SL</th>
+                            <th class="text-center p-1 text-wrap">Giá</th>
                             <th class="text-center p-1 text-wrap">Thành tiền</th>
                             @*<th class="text-center last-th-column p-1">
                                 <a href="#" class="text-red" id="remove-all-phieuNhapCt">
@@ -91,12 +96,12 @@
                         {
                             <tr>
                                 <td class="text-center p-1 text-wrap">@i</td>
-                                <td class="text-center p-1 text-wrap">@ct?.IdhhNavigation?.TenHh</td>
-                                <td class="text-center p-1 text-wrap">@ct?.SoLuong</td>
-                                <td class="text-center p-1 text-wrap">@ct?.Gia</td>
+                                <td class="text-center p-1 text-wrap">@ct?.IdhhNavigation?.TenHh</td>                               
                                 <td class="text-center p-1 text-wrap">@ct?.IdsizeNavigation?.Size1</td>
                                 <td class="text-center p-1 text-wrap">@ct?.IdmauNavigation?.Mau1</td>
-                                <td class="text-center p-1 text-wrap">@(ct?.SoLuong * ct?.Gia)</td>
+                                <td class="text-center p-1 text-wrap">@ct?.SoLuong</td>
+                                <td class="text-center p-1 text-wrap">@formatNumber(@ct?.Gia)</td>
+                                <td class="text-center p-1 text-wrap">@formatNumber((ct?.SoLuong * ct?.Gia))</td>
                             </tr>
                             i++;
                         }
