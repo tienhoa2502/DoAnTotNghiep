@@ -19,17 +19,14 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return View("TonKho");
         }
         [HttpPost("/TonKho/BaoCaoTongHop")]
-        public async Task<dynamic> getBaoCaoTongHop(int idNhomHang, int idHangHoa, string tuNgay, string denNgay)
+        public async Task<dynamic> getBaoCaoTongHop(int idNhomHang, int idHangHoa)
         {
             try
             {
-                DateTime FromDay = DateTime.ParseExact(tuNgay, "dd-MM-yyyy", CultureInfo.InvariantCulture);
-                DateTime ToDay = DateTime.ParseExact(denNgay, "dd-MM-yyyy", CultureInfo.InvariantCulture);
                 var tonKho = await context.ChiTietPhieuNhaps
                     .Include(x => x.IdhhNavigation)
-                    .Where(x => (x.IdpnNavigation.NgayNhap.Value.Date >= FromDay.Date && x.IdpnNavigation.NgayNhap.Value.Date <= ToDay)
-                                && (idNhomHang == 0 || x.IdhhNavigation.Idnhh == idNhomHang)
-                                && (idHangHoa == 0 || x.Idhh == idHangHoa))
+                    .Where(x => ((idNhomHang == 0 || x.IdhhNavigation.Idnhh == idNhomHang)
+                                && (idHangHoa == 0 || x.Idhh == idHangHoa)))
                     .ToListAsync();
                 var tonkho1 = tonKho.GroupBy(x => x.Idhh)
                     .Select(x => new

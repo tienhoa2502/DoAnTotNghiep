@@ -16,6 +16,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Bootstrap.v3.Datetimepicker" Version="4.17.49" />
+    <PackageReference Include="Bootstrap.v3.Datetimepicker.CSS" Version="4.17.49" />
     <PackageReference Include="MailKit" Version="4.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13">
@@ -529,6 +531,9 @@
     <None Include="wwwroot\AdAssets\scss\variables\_theme-variables.scss" />
     <None Include="wwwroot\AdAssets\scss\variables\_variables.scss" />
     <None Include="wwwroot\assets\script.js" />
+    <None Include="wwwroot\datetimepicker\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\datetimepicker\moment.js\moment.min.js" />
+    <None Include="wwwroot\datetimepicker\umd\popper.min.js" />
   </ItemGroup>
 
   <ItemGroup>

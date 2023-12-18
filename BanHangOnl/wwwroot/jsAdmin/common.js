@@ -46,7 +46,9 @@ function formatNumberInput() {
 }
 
 function showToast(message, statusCode) {
+    console.log(message);
     var backgrounColor;
+    console.log($('#toast'));  
     document.getElementById('toast').className = 'toast align-items-center text-white border-0 position-fixed top-0 end-0 p-3';
     $("#toastContent").text(message);
     if (statusCode === 200) {

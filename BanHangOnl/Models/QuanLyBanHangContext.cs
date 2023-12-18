@@ -65,7 +65,7 @@ public partial class QuanLyBanHangContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-4KER1P3\\MSSQLSERVER22;Database=QuanLyBanHang;User Id=sa;Password=123456;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Data Source=TRAN-UY\\MSSQLSERVER22;Database=QuanLyBanHang;User Id=sa;Password=123456;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -430,8 +430,8 @@ public partial class QuanLyBanHangContext : DbContext
                 .HasMaxLength(100)
                 .HasColumnName("SoPX");
 
-            entity.HasOne(d => d.IdkhNavigation).WithMany(p => p.PhieuXuats)
-                .HasForeignKey(d => d.Idkh)
+            entity.HasOne(d => d.IdtkNavigation).WithMany(p => p.PhieuXuats)
+                .HasForeignKey(d => d.Idtk)
                 .HasConstraintName("FK_PhieuXuat_TaiKhoan");
 
             entity.HasOne(d => d.IdnvNavigation).WithMany(p => p.PhieuXuats)

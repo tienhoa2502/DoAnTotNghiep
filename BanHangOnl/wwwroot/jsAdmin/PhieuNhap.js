@@ -8,7 +8,7 @@ $('#groupThemHangHoa').on('input', 'input[name="soLuong"], input[name="donGia"]'
         $('#groupThemHangHoa #thanhTien').val(formatTotal(soLuong * donGia));
     }
 });
-$('#groupThemHangHoa').on('change', 'select[name = "hangHoa"]', function () {
+$('#groupThemHangHoa').on('change', 'select[name = "hangHoa"],#mau,#size', function () {
     var idhh = $(this).val();
     if (idhh != '') {
         $.ajax({
@@ -16,9 +16,13 @@ $('#groupThemHangHoa').on('change', 'select[name = "hangHoa"]', function () {
             method: 'POST',
             data: {
                 idHH: idhh,
+                idSize: $('#groupThemHangHoa #size').val(),
+                idMau: $('#groupThemHangHoa #mau').val()
             },
             success: function (response) {
-                $('#groupThemHangHoa #donViTinh').val(response);
+                console.log(response);
+                $('#groupThemHangHoa #donViTinh').val(response.donViTinh);
+                $('#groupThemHangHoa #sLCon').val(response.soLuong);
             }
         });
     }
@@ -99,7 +103,6 @@ function AddRowPhieuNhapKho() {
 
         <td class="p-1">
             <input autocomplete="off" readonly type="text" class="w-100 form-control form-table formatted-number" style="width:55px;text-align: center;" value="${soLuong}" name="soLuong" />
-            <input autocomplete="off" type="hidden"  readonly class="w-100 form-control form-table formatted-number" style="width:55px;text-align: center;" value="${soLuongTon}" name="soLuongTon" />
 
         </td>
         <td class="p-1">

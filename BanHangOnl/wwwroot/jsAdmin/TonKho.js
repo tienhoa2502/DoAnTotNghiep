@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
-    formatNumberInput()
+    loadBaoCaoTH();
+    formatNumberInput();
 });
 function formatTotal(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -7,16 +8,12 @@ function formatTotal(number) {
 function loadBaoCaoTH() {
     var idNhomHang = $('select[name="nhomHang"]').val();
     var idHangHoa = $('select[name="hangHoa"]').val();
-    var tuNgay = $('#tuNgay').val();
-    var denNgay = $('#denNgay').val();
     $.ajax({
         url: '/TonKho/BaoCaoTongHop', // Đường dẫn đến action xử lý form
         method: 'POST',
         data: {
             idNhomHang: idNhomHang,
             idHangHoa: idHangHoa,
-            tuNgay: tuNgay,
-            denNgay: denNgay,
         },
         success: function (response) {
             $('#tBody-BaoCaoTongHop').empty();

@@ -54,12 +54,35 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return View("AddPhieuNhap");
         }
         [HttpPost("/NhapKho/getDonViTinh")]
+        public async Task<dynamic> getDonViTinhVaSL(int idHH, int idMau, int idSize)
+        {
+            var tonKho = context.ChiTietPhieuNhaps
+                .Include(x => x.IdhhNavigation)
+                .Where(x => x.Idhh == idHH && x.Idmau == idMau && x.Idsize == idSize)
+                .ToList();
+            double slc = 0;
+            if (tonKho.Count() != 0)
+            {
+                double sl = (double)tonKho.Sum(x => x.SoLuong);
+                double slx = (double)tonKho.Sum(x => x.SoLuongXuat);
+                slc = sl - slx;
+            }
+
+            var ton = new
+            {
+                DonViTinh = getDonViTinh(tonKho.Count() != 0 ? (int)tonKho.First().Idhh : idHH).Result,
+                SoLuong = slc,
+                DonGia = tonKho.Count() != 0 ? tonKho?.First().IdhhNavigation.GiaBan : 0,
+            };
+
+            return ton;
+        }
         public async Task<dynamic> getDonViTinh(int idHH)
         {
             HangHoa dvt = await context.HangHoas
                 .Include(x => x.IddvtNavigation)
                 .FirstOrDefaultAsync(x => x.Idhh == idHH);
-            return dvt.IddvtNavigation.TenDvt;
+            return dvt?.IddvtNavigation?.TenDvt;
         }
         [HttpPost("/NhapKho/ThemPhieuNhap")]
         public async Task<dynamic> ThemPhieuNhap([FromBody] TTPhieuNhap data)
