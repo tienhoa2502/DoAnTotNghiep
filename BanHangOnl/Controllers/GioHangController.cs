@@ -303,7 +303,7 @@ namespace BanHangOnl.Controllers
                 if (a.Result.statusCode == 200)
                 {
                     var cookieName = "cart";
-
+                    ViewBag.PhieuXuat = a.Result.PhieuXuat;
                     string myCookieValue = HttpContext.Request.Cookies[cookieName];
                     Response.Cookies.Delete(cookieName);
                 }
@@ -423,6 +423,7 @@ namespace BanHangOnl.Controllers
                 {
                     statusCode = 200,
                     message = "Thành công",
+                    PhieuXuat = phieuXuat,
                 };
             }
             catch (Exception ex)
