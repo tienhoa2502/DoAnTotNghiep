@@ -93,6 +93,7 @@
                         <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Mã đơn hàng</div>
                                     <div class="col-lg-9 col-md-8"> @px.SoPx</div>
+                                <button class="col-lg-1 col-md-8 btn btn-success traHang_@px.Idpx" @(px.DonTra == true ? "disabled" : "") onclick="traHang(@px.Idpx)"> Trả hàng </button>
                                 </div>
 
                                 <div class="row">
@@ -206,4 +207,21 @@
         </div>
 
 </section>
-
+<script src="~/jsadmin/common.js"></script>
+<script>
+    function traHang(id) {
+        $.ajax({
+            url: '/DonDatHang/TraHang', // Đường dẫn đến action xử lý form
+            method: 'POST',
+            data: {
+                idPX: id,
+            },
+            success: function (response) {
+                if (response.statusCode == 200) {
+                    $(document).find('button.traHang_' + id).prop('disabled', true);
+                }
+                showToast(response.message, response.statusCode);
+            }
+        });
+    }
+</script>

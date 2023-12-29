@@ -91,7 +91,8 @@ namespace BanHangOnl.Areas.Admin.Controllers
         }
         public double getSoLuongXuat(int idCTPN)
         {
-            List<ChiTietPhieuXuat> chiTietPhieuXuats = context.ChiTietPhieuXuats.Where(x => x.Idctpn == idCTPN)
+            List<ChiTietPhieuXuat> chiTietPhieuXuats = context.ChiTietPhieuXuats
+                .Include(x => x.IdpxNavigation).Where(x => x.Idctpn == idCTPN && x.IdpxNavigation.DonTra != true)
                 .ToList();
             double soLuong = 0;
             if (chiTietPhieuXuats.Count() > 0)

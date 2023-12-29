@@ -36,7 +36,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             var doanhThu = context.PhieuXuats
               .Include(x => x.ChiTietPhieuXuats)
               .ThenInclude(x => x.IdctpnNavigation)
-              .Where(x => x.NgayTao.Value.Date >= tuNgay.Date && x.NgayTao.Value.Date <= denNgay.Date)
+              .Where(x => x.NgayTao.Value.Date >= tuNgay.Date && x.NgayTao.Value.Date <= denNgay.Date && x.DonTra != true)
               .ToList()
               .OrderBy(x => x.NgayTao)
               .GroupBy(x => x.NgayTao.Value.Date)
@@ -49,7 +49,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             var giaVon = context.PhieuXuats
               .Include(x => x.ChiTietPhieuXuats)
               .ThenInclude(x => x.IdctpnNavigation)
-              .Where(x => x.NgayTao.Value.Date >= tuNgay.Date && x.NgayTao.Value.Date <= denNgay.Date)
+              .Where(x => x.NgayTao.Value.Date >= tuNgay.Date && x.NgayTao.Value.Date <= denNgay.Date && x.DonTra != true)
               .ToList()
               .OrderBy(x => x.NgayTao)
               .GroupBy(x => x.NgayTao.Value.Date)
@@ -102,17 +102,17 @@ namespace BanHangOnl.Areas.Admin.Controllers
         }
         public double tongPhieuNhap(List<PhieuXuat> phieuNhaps)
         {
-            double tong = (double)phieuNhaps.Sum(x => x.ChiTietPhieuXuats.Sum(ct => ct.Gia));
+            double tong = (double)phieuNhaps.Sum(x => x.ChiTietPhieuXuats.Sum(ct => ct.Gia * ct.SoLuong));
             return tong;
         }
         public double GiaVon(List<PhieuXuat> phieuNhaps)
         {
-            double tong = (double)phieuNhaps.Sum(x => x.ChiTietPhieuXuats.Sum(ct => ct.IdctpnNavigation.Gia ?? 0));
+            double tong = (double)phieuNhaps.Sum(x => x.ChiTietPhieuXuats.Sum(ct => (ct.IdctpnNavigation.Gia ?? 0) * ct.SoLuong));
             return tong;
         }
         public double tongChiTietPhieuNhap(List<ChiTietPhieuNhap> chiTietPhieuNhaps)
         {
-            double tong = (double)chiTietPhieuNhaps.Sum(ct => ct.Gia);
+            double tong = (double)chiTietPhieuNhaps.Sum(ct => ct.Gia * ct.SoLuong);
             return tong;
         }
     }

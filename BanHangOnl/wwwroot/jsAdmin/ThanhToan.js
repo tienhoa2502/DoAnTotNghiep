@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tongTien += data.idhhNavigation.giaBan;
     });
     $('#tongGia').text(tongGia);
+    $('#Amount').val(tongGia.replace(/[^\d]/g, ''));
     console.log(tyLeGiam);
     //localStorage.removeItem('datakh');
     // Sau khi sử dụng xong, bạn có thể xóa dữ liệu khỏi localStorage (nếu cần)
