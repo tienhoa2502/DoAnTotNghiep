@@ -7,7 +7,6 @@ using System.Data;
 namespace BanHangOnl.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "QuanLy")]
     public class AccountController : Controller
     {
         QuanLyBanHangContext context = new QuanLyBanHangContext();
@@ -50,11 +49,16 @@ namespace BanHangOnl.Areas.Admin.Controllers
         }
         [Route("/TaiKhoan/Them")]
 
-        public IActionResult Add(TaiKhoan vaiTro)
+        public IActionResult Add(TaiKhoan vaiTro, int idNhanVien)
         {
             vaiTro.Active = true;
             context.TaiKhoans.Add(vaiTro);
             context.SaveChanges();
+
+            NhanVien nhanVien = context.NhanViens.Find(idNhanVien);
+            nhanVien.Idtk = vaiTro.Idtk;
+            context.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -62,13 +66,14 @@ namespace BanHangOnl.Areas.Admin.Controllers
         [Route("/TaiKhoan/ViewSua/{id}")]
         public IActionResult viewEdit(int id)
         {
-            TaiKhoan sua = context.TaiKhoans.Find(id);
+            TaiKhoan sua = context.TaiKhoans
+                .Include(x => x.NhanViens).FirstOrDefault(x => x.Idtk == id);
             return View("Edit", sua);
         }
 
         [Route("/TaiKhoan/Sua")]
 
-        public IActionResult Edit(TaiKhoan vaiTro)
+        public IActionResult Edit(TaiKhoan vaiTro,  int idNhanVien)
         {
             TaiKhoan ncc = context.TaiKhoans.Find(vaiTro.Idtk);
             ncc.TenTk = vaiTro.TenTk;
@@ -77,6 +82,11 @@ namespace BanHangOnl.Areas.Admin.Controllers
 
             context.TaiKhoans.Update(ncc);
             context.SaveChanges();
+
+            NhanVien nhanVien = context.NhanViens.Find(idNhanVien);
+            nhanVien.Idtk = vaiTro.Idtk;
+            context.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -91,8 +101,7 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-
-
+        [Authorize(Roles = "NhanVien, QuanLy")]
         [Route("/TaiKhoan/ThongTinCaNhan/{id}")]
         public IActionResult Info(int id)
         {
@@ -114,40 +123,40 @@ namespace BanHangOnl.Areas.Admin.Controllers
             return View("Info",taiKhoan);
         }
 
-        [HttpPost("/TaiKhoan/ThongTinCaNhan/{id}")]
-        public IActionResult Info(int id, string currentPassword, string newPassword, string renewPassword)
-        {
-            // Lấy tài khoản từ database dựa trên id
-            TaiKhoan taiKhoan = context.TaiKhoans.Find(id);
+        //[HttpPost("/TaiKhoan/ThongTinCaNhan/{id}")]
+        //public IActionResult Info(int id, string currentPassword, string newPassword, string renewPassword)
+        //{
+        //    // Lấy tài khoản từ database dựa trên id
+        //    TaiKhoan taiKhoan = context.TaiKhoans.Find(id);
 
-            // Kiểm tra mật khẩu hiện tại
-            if (currentPassword == taiKhoan.Pass)
-            {
-                // Kiểm tra mật khẩu mới và nhập lại mật khẩu
-                if (newPassword == renewPassword)
-                {
-                    // Cập nhật mật khẩu mới vào database
-                    taiKhoan.Pass = newPassword;
-                    context.SaveChanges();
+        //    // Kiểm tra mật khẩu hiện tại
+        //    if (currentPassword == taiKhoan.Pass)
+        //    {
+        //        // Kiểm tra mật khẩu mới và nhập lại mật khẩu
+        //        if (newPassword == renewPassword)
+        //        {
+        //            // Cập nhật mật khẩu mới vào database
+        //            taiKhoan.Pass = newPassword;
+        //            context.SaveChanges();
 
-                    // Redirect hoặc trả về thông báo thành công
-                    return RedirectToAction("Info", new { id = id });
-                }
-                else
-                {
-                    // Trả về thông báo lỗi nếu mật khẩu mới không trùng khớp
-                    ModelState.AddModelError("NewPassword", "Mật khẩu mới và nhập lại mật khẩu không khớp.");
-                }
-            }
-            else
-            {
-                // Trả về thông báo lỗi nếu mật khẩu hiện tại không đúng
-                ModelState.AddModelError("CurrentPassword", "Mật khẩu hiện tại không đúng.");
-            }
+        //            // Redirect hoặc trả về thông báo thành công
+        //            return RedirectToAction("Info", new { id = id });
+        //        }
+        //        else
+        //        {
+        //            // Trả về thông báo lỗi nếu mật khẩu mới không trùng khớp
+        //            ModelState.AddModelError("NewPassword", "Mật khẩu mới và nhập lại mật khẩu không khớp.");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Trả về thông báo lỗi nếu mật khẩu hiện tại không đúng
+        //        ModelState.AddModelError("CurrentPassword", "Mật khẩu hiện tại không đúng.");
+        //    }
 
-            // Trả về view với thông báo lỗi
-            return View("Info", taiKhoan);
-        }
+        //    // Trả về view với thông báo lỗi
+        //    return View("Info", taiKhoan);
+        //}
 
 
 

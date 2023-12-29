@@ -60,67 +60,18 @@
                     <!-- Thêm các trường thông tin khác cần nhập -->
 
                 </div>
-                <div class="col-md-4" id="divHH">
+                <div class="col-md-4" >
 
-           
-                        @* <tr class="product" data-product-id="1041247610" data-variant-id="1090004378">
-                            <td class="product-image">
-                                <div class="product-thumbnail">
-                                    <div class="product-thumbnail-wrapper">
-                                        <img class="product-thumbnail-image" alt="Áo Khoác Nam Bomber R1111BB143" src="//product.hstatic.net/1000378223/product/3_29fb73367cfc4a91bfd66447a333156b_small.jpg">
-                                    </div>
-                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
-                                </div>
-                            </td>
-                            <td class="product-description">
-                                <span class="product-description-name order-summary-emphasis">Áo Khoác Nam Bomber R1111BB143</span>
+                        <div id="divHH">
 
-                                <span class="product-description-variant order-summary-small-text">
-                                    Trắng / M
-                                </span>
-
-                            </td>
-                            <td class="product-quantity visually-hidden">1</td>
-                            <td class="product-price">
-                                <span class="order-summary-emphasis">399,000₫</span>
-                            </td>
-                        </tr>
-                        <tr class="product" data-product-id="1041247610" data-variant-id="1090004378">
-                            <td class="product-image">
-                                <div class="product-thumbnail">
-                                    <div class="product-thumbnail-wrapper">
-                                        <img class="product-thumbnail-image" alt="Áo Khoác Nam Bomber R1111BB143" src="//product.hstatic.net/1000378223/product/3_29fb73367cfc4a91bfd66447a333156b_small.jpg">
-                                    </div>
-                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
-                                </div>
-                            </td>
-                            <td class="product-description">
-                                <span class="product-description-name order-summary-emphasis">Áo Khoác Nam Bomber R1111BB143</span>
-
-                                <span class="product-description-variant order-summary-small-text">
-                                    Trắng / M
-                                </span>
-
-                            </td>
-                            <td class="product-quantity visually-hidden">1</td>
-                            <td class="product-price">
-                                <span class="order-summary-emphasis">399,000₫</span>
-                            </td>
-                        </tr> *@
+                        </div>
 
                         <hr class="my-4">
 
                         <div class="d-flex justify-content-between mb-5">
                             <h5 class="text-uppercase">Tổng cộng: </h5>
-                            <h5>137.000</h5>
-                            <div class="form-group">
-                                <label for="Amount">Số tiền</label>
-                                <input class="form-control"
-                                       id="Amount"
-                                       name="Amount"
-                                       type="text"
-                                       value="20000000">
-                            </div>
+                            <h5 id="tongGia"> VNĐ</h5>
+
                         </div>
 
                     <button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark" id="thanhToanButton">
@@ -141,55 +92,3 @@
 </div>
 <script src="~/jsadmin/thanhtoan.js"></script>
 <script src="~/usassets/js/categories_custom.js"></script>
-   @* <script>
-        function Ònailure(rs) {
-            if (!rs.Success) {
-                $('#show_success').html("Bạn mua hàng thất bại! Xin vui lòng thử lại");
-            }
-        }
-        $(document).ready(function () {
-            $('#myForm').validate({
-                rules: {
-                    'CustomerName': {
-                        required: true
-                    },
-                    'Phone': {
-                        required: true
-                    },
-                    'Address': {
-                        required: true
-                    },
-                    'Email': {
-                        required: true,
-                        email: true
-                    }
-                },
-                messages: {
-                    'CustomerName': 'Bạn khổng để trống trường này',
-                    'Phone': 'Bạn khổng để trống trường này',
-                    'Address': 'Bạn khổng để trống trường này',
-                    'Email': 'Email chưa hợp lệ'
-                }
-            });
-        });
-   </script>*@
-
-
-@*<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var thanhToanButton = document.querySelector("#thanhToanButton");
-
-        thanhToanButton.addEventListener("click", function () {
-            var hoTenValue = document.getElementById("hoTen").value;
-            var emailValue = document.getElementById("email").value;
-            var sdtValue = document.getElementById("sdt").value;
-            var diaChiValue = document.getElementById("add").value;
-
-            if (hoTenValue === "" || emailValue === "" || sdtValue === "" || diaChiValue === "") {
-                alert("Vui lòng điền đầy đủ thông tin.");
-            } else {
-                alert("Thanh toán thành công!"); // Hoặc thực hiện các bước thanh toán khác ở đây
-            }
-        });
-    });
-</script>*@

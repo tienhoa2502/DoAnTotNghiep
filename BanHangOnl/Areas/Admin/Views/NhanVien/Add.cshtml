@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+
+@model BanHangOnl.Models.NhanVien
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="/NhanVien">Danh sách nhân viên</a></li>
+            <li class="breadcrumb-item active">Thêm mới nhân viên</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Horizontal Form</h5>
+
+        <!-- Horizontal Form -->
+        <form action="/NhanVien/Them" method="post">
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Mã nhân viên</label>
+                <div class="col-sm-3">
+                    <input asp-for="@Model.MaMv" type="text" class="form-control" id="inputText">
+                </div>
+
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Tên nhân viên</label>
+                <div class="col-sm-5">
+                    <input asp-for="@Model.Ten" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Giới tính</label>
+                <div class="col-sm-3">
+                    <div class="form-check form-check-inline">
+                        <input asp-for="@Model.GioiTinh" class="form-check-input" type="radio" name="GioiTinh" id="Male" value="true" checked="">
+                        <label class="form-check-label" for="Male">Nam</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input asp-for="@Model.GioiTinh" class="form-check-input" type="radio" name="GioiTinh" id="Female" value="false">
+                        <label class="form-check-label" for="Female">Nữ</label>
+                    </div>
+                </div>
+
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Số điện thoại</label>
+                <div class="col-sm-5">
+                    <input asp-for="@Model.Sdt" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input asp-for="@Model.Email" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Quê quán</label>
+                <div class="col-sm-3">
+                    <input asp-for="@Model.QueQuan" type="text" class="form-control" id="inputText">
+                </div>
+
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Địa chỉ</label>
+                <div class="col-sm-5">
+                    <input asp-for="@Model.DiaChi" type="text" class="form-control" id="inputText">
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <button type="reset" class="btn btn-secondary" onclick="window.history.go(-1);">Hủy</button>
+            </div>
+
+            
+
+        </form><!-- End Horizontal Form -->
+
+    </div>
+</div>
+
+
+

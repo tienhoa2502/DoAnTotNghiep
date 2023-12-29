@@ -18,7 +18,7 @@
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/Admin">Trang chủ</a></li>
-            <li class="breadcrumb-item"><a href="index.html">Danh sách phiếu xuất</a></li>
+            <li class="breadcrumb-item"><a href="/DonDatHang">Danh sách phiếu xuất</a></li>
             <li class="breadcrumb-item active">Xem thông tin phiếu xuất</li>
         </ol>
     </nav>
@@ -57,7 +57,20 @@
 
                     <div class="row">
                         <div class="col-lg-3 col-md-4 label">Khách hàng</div>
-                        <div class="col-lg-9 col-md-8"></div>
+                        <div class="col-lg-9 col-md-8">
+                            @{
+                                var firstKhachHang = px?.IdtkNavigation?.KhachHangs?.FirstOrDefault();
+                                if (firstKhachHang != null)
+                                {
+                                    @firstKhachHang.TenKh
+                                }
+                                else
+                                {
+                                    // Xử lý trường hợp không có KhachHang
+                                    @("")
+                                }
+                            }
+                        </div>
                     </div>
                    
                 </div>

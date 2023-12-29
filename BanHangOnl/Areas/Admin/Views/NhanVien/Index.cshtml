@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Nhân viên";
+    Layout = "/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Danh sách nhân viên</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <h5 class="card-title">Datatables</h5>
+                        </div>
+                        <div class="col-auto mt-3">
+                            <a href="/NhanVien/ViewThem" class="btn btn-success">Thêm mới</a>
+                        </div>
+                    </div>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã nhân viên</th>
+                                <th scope="col">Tên nhân viên</th>
+                                <th scope="col">Giới tính</th>
+                                <th scope="col">SĐT</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Quê quán</th>
+                                <th scope="col">Địa chỉ</th>
+                                <th scope="col">Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (NhanVien vt in ViewBag.NhanVien)
+                            {
+                                <tr>
+                                    <td>@vt.MaMv</td>
+                                    <td>@vt.Ten</td>
+                                    <td>@(vt.GioiTinh.HasValue ? (vt.GioiTinh.Value ? "Nam" : "Nữ") : "")</td>
+                                    <td>@vt.Sdt</td>
+                                    <td>@vt.Email</td>
+                                    <td>@vt.QueQuan</td>
+                                    <td>@vt.DiaChi</td>
+                                    <td>
+                                        <a href="/NhanVien/ViewSua/@vt.Idnv" type="button" class="btn btn-primary btn-sm">Sửa</a>
+                                        <a href="/NhanVien/Xoa/@vt.Idnv" onclick="return confirm('Bạn có muốn xóa thông tin?')" type="button" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

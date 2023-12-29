@@ -6,8 +6,8 @@
         tong += parseFloat($(this).val()) * parseFloat(sl);
             }
         });
-    var formattedNumber = tong.toLocaleString('en-US', {style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    $('#tongGia').text(formattedNumber + ' VN�');
+    var formattedNumber = tong.toLocaleString('en-US', {style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    $('#tongGia').text(formattedNumber + ' VNĐ');
     }
     updateTong();
     $(document).on('input', '.sl', function () {
@@ -69,6 +69,8 @@
                 localStorage.setItem('data', JSON.stringify(response.ctx));
                 localStorage.setItem('datakh', JSON.stringify(response.kh));
                 localStorage.setItem('tyLeGiam', JSON.stringify($('#voucher').val()));
+                localStorage.setItem('tongGia', JSON.stringify($('#tongGia').text()));
+
                 $.ajax({
                     url: '/ganTyLeGiam',
                     type: 'POST',
@@ -83,7 +85,17 @@
             }
         });
     });
+// Define a flag to track whether the voucher has been applied
+var voucherApplied = false;
+
 function getMaGiam() {
+    // Check if the voucher has already been applied
+    if (voucherApplied) {
+        // Display a message or take appropriate action for attempting to apply the voucher again
+        showToast("Voucher đang được áp dụng!", 400); // Assuming 400 is an appropriate error code
+        return;
+    }
+
     $.ajax({
         url: '/getMaGiamGia',
         type: 'POST',
@@ -91,8 +103,19 @@ function getMaGiam() {
         success: function (response) {
             showToast(response.message, response.statusCode);
             if (response.statusCode == 200) {
+                // Log the original total price
+                console.log('Original Total Price:', $('#tongGia').text());
+
+                // Update voucher value in the input field
                 $('#voucher').val(response.tyLeGiam);
+
+                // Calculate and update the new total price
+                updateTotalPrice();
+
+                // Set the flag to indicate that the voucher has been applied
+                voucherApplied = true;
             } else {
+                // Clear the voucher value if there is an error
                 $('#voucher').val('');
             }
         },
@@ -101,3 +124,19 @@ function getMaGiam() {
         }
     });
 }
+
+// Function to update total price based on the voucher value
+function updateTotalPrice() {
+    // Get the original total price
+    var originalTotalPrice = parseFloat($('#tongGia').text().replace(/[^\d.]/g, ''));
+
+    // Get the voucher value
+    var voucherValue = parseFloat($('#voucher').val());
+
+    // Calculate the new total price after applying the voucher
+    var newTotalPrice = originalTotalPrice - (originalTotalPrice * (voucherValue / 100));
+
+    // Update the #tongGia element with the new total price
+    $('#tongGia').text(newTotalPrice.toFixed(2)); // Assuming 2 decimal places for the total price
+}
+

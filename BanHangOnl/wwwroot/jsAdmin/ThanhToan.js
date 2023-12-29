@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var myData = JSON.parse(localStorage.getItem('data'));
     var kh = JSON.parse(localStorage.getItem('datakh'));
     var tyLeGiam = JSON.parse(localStorage.getItem('tyLeGiam'));
+    var tongGia = JSON.parse(localStorage.getItem('tongGia'));
+    console.log(tongGia);
 
     GanThongTinKH(kh);
     var tongTien = 0;
@@ -10,12 +12,15 @@ document.addEventListener("DOMContentLoaded", function () {
         addHH(data);
         tongTien += data.idhhNavigation.giaBan;
     });
-    $('#Amount').val(tongTien);
+    $('#tongGia').text(tongGia);
     console.log(tyLeGiam);
     //localStorage.removeItem('datakh');
     // Sau khi sử dụng xong, bạn có thể xóa dữ liệu khỏi localStorage (nếu cần)
 //    localStorage.removeItem('myData');
 });
+function formatCurrency(number) {
+    return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
 //    <img class="product-thumbnail-image" alt="${data.idhhNavigation.tenHh}" src="${data.idhhNavigation.imgHangHoas[0].img}">
 function addHH(data) {
     var tr = `    <tr class="product" data-product-id="${data.idhh}" data-variant-id="${data.idhh}">

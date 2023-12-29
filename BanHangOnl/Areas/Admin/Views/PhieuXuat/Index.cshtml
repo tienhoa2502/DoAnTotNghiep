@@ -57,7 +57,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Số phiếu xuất</th>
-                        <th scope="col">Tên khách hàng</th>
+                        <th scope="col">Khách hàng</th>
                         <th scope="col">Tổng tiền</th>
                         <th scope="col">Ngày xuất</th>
                         <th scope="col">Người xuất</th>
@@ -71,7 +71,20 @@
                     {
                         <tr>
                             <td>@tk.SoPx</td>
-                            <td></td>
+                            <td>
+                                @{
+                                    var firstKhachHang = tk.IdtkNavigation?.KhachHangs?.FirstOrDefault();
+                                    if (firstKhachHang != null)
+                                    {
+                                        @firstKhachHang.TenKh
+                                    }
+                                    else
+                                    {
+                                        // Xử lý trường hợp không có KhachHang
+                                        @("")
+                                    }
+                                }
+                            </td>
                             <td>@formatNumber(@tk?.ChiTietPhieuXuats?.Sum(x => x.Gia * x.SoLuong))</td>
                             <td>@tk.NgayTao</td>
                             <td>@tk?.IdnvNavigation?.Ten</td>
